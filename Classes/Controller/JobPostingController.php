@@ -17,9 +17,7 @@ class JobPostingController extends ActionController
 
     public function __construct(
         protected readonly JobPostingRepository $jobPostingRepository
-    )
-    {
-    }
+    ) {}
 
     public function detailAction(?JobPosting $jobPosting = null): ResponseInterface {
         if ($jobPosting === null) {

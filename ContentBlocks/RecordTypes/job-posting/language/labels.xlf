@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file source-language="en" original="labels.xlf" datatype="plaintext" product-name="hire-me/job-posting" date="2025-02-24T14:23:43+01:00">
+		<header></header>
+		<body>
+			<trans-unit id="education_requirements_text.description">
+				<source>Educational background required for the profession</source>
+			</trans-unit>
+			<trans-unit id="education_requirements_text.label">
+				<source>Educational background</source>
+			</trans-unit>
+
+
+			<trans-unit id="education_requirements.items.HIGH_SCHOOL.label">
+				<source>Für den Job ist ein Abschluss von einer weiterführenden Schule erforderlich.</source>
+			</trans-unit>
+            <trans-unit id="education_requirements.items.ASSOCIATE_DEGREE.label">
+				<source>Für den Job ist eine Berufszusatzausbildung erforderlich.</source>
+			</trans-unit>
+            <trans-unit id="education_requirements.items.BACHELOR_DEGREE.label">
+				<source>Der Job erfordert einen Bachelor-Abschluss.</source>
+			</trans-unit>
+            <trans-unit id="education_requirements.items.PROFESSIONAL_CERTIFICATE.label">
+				<source>Für den Job ist ein Berufszertifikat erforderlich.</source>
+			</trans-unit>
+            <trans-unit id="education_requirements.items.POSTGRADUATE_DEGREE.label">
+				<source>Für den Job ist ein Masterabschluss erforderlich.</source>
+			</trans-unit>
+            <trans-unit id="education_requirements.items.NO_REQUIREMENTS.label">
+				<source>Keine Anforderungen</source>
+			</trans-unit>
+
+            <trans-unit id="job_location_type.items.ON_SITE.label">
+				<source>vor ort / teilweise homeoffice</source>
+			</trans-unit>
+            <trans-unit id="job_location_type.items.TELECOMMUTE.label">
+				<source>zu 100% homeoffice</source>
+			</trans-unit>
+
+            <trans-unit id="base_salary_type.items.SALARY.label">
+				<source>Salary</source>
+			</trans-unit>
+            <trans-unit id="base_salary_type.items.SALARY_RANGE.label">
+				<source>Salary range</source>
+			</trans-unit>
+
+
+
+
+            <trans-unit id="base_salary_unit.items.HOUR.label">
+				<source>stundenlohn</source>
+			</trans-unit>
+
+            <trans-unit id="base_salary_unit.items.DAY.label">
+				<source>tagesngehalt</source>
+			</trans-unit>
+
+            <trans-unit id="base_salary_unit.items.WEEK.label">
+				<source>wochengehalt</source>
+			</trans-unit>
+
+            <trans-unit id="base_salary_unit.items.MONTH.label">
+				<source>monatsgehalt</source>
+			</trans-unit>
+
+            <trans-unit id="base_salary_unit.items.YEAR.label">
+				<source>jahresgehalt</source>
+			</trans-unit>
+
+
+
+
+
+<trans-unit id="base_salary_currency.items.ALL.label">
+    <source>Albanian Lek</source>
+</trans-unit>
+<trans-unit id="base_salary_currency.items.AMD.label">
+    <source>Armenian Dram</source>
+</trans-unit>
+<trans-unit id="base_salary_currency.items.AZN.label">
+    <source>Azerbaijani Manat</source>
+</trans-unit>
+<trans-unit id="base_salary_currency.items.BYN.label">
+    <source>Belarusian Ruble</source>
+</trans-unit>
+<trans-unit id="base_salary_currency.items.BAM.label">
+    <source>Bosnia and Herzegovina Convertible Mark</source>
+</trans-unit>
+<trans-unit id="base_salary_currency.items.GBP.label">
+    <source>British Pound Sterling</source>
+</trans-unit>
+<trans-unit id="base_salary_currency.items.BGN.label">
+    <source>Bulgarian Lev</source>
+</trans-unit>
+<trans-unit id="base_salary_currency.items.CZK.label">
+    <source>Czech Koruna</source>
+</trans-unit>
+<trans-unit id="base_salary_currency.items.DKK.label">
+    <source>Danish Krone</source>
+</trans-unit>
+<trans-unit id="base_salary_currency.items.EUR.label">
+    <source>Euro</source>
+</trans-unit>
+<trans-unit id="base_salary_currency.items.GEL.label">
+    <source>Georgian Lari</source>
+</trans-unit>
+<trans-unit id="base_salary_currency.items.HUF.label">
+    <source>Hungarian Forint</source>
+</trans-unit>
+<trans-unit id="base_salary_currency.items.ISK.label">
+    <source>Icelandic Króna</source>
+</trans-unit>
+<trans-unit id="base_salary_currency.items.MKD.label">
+    <source>Macedonian Denar</source>
+</trans-unit>
+<trans-unit id="base_salary_currency.items.MDL.label">
+    <source>Moldovan Leu</source>
+</trans-unit>
+<trans-unit id="base_salary_currency.items.NOK.label">
+    <source>Norwegian Krone</source>
+</trans-unit>
+<trans-unit id="base_salary_currency.items.PLN.label">
+    <source>Polish Złoty</source>
+</trans-unit>
+<trans-unit id="base_salary_currency.items.RON.label">
+    <source>Romanian Leu</source>
+</trans-unit>
+<trans-unit id="base_salary_currency.items.RUB.label">
+    <source>Russian Ruble</source>
+</trans-unit>
+<trans-unit id="base_salary_currency.items.RSD.label">
+    <source>Serbian Dinar</source>
+</trans-unit>
+<trans-unit id="base_salary_currency.items.SEK.label">
+    <source>Swedish Krona</source>
+</trans-unit>
+<trans-unit id="base_salary_currency.items.CHF.label">
+    <source>Swiss Franc</source>
+</trans-unit>
+<trans-unit id="base_salary_currency.items.TRY.label">
+    <source>Turkish Lira</source>
+</trans-unit>
+<trans-unit id="base_salary_currency.items.UAH.label">
+    <source>Ukrainian Hryvnia</source>
+</trans-unit>
+<trans-unit id="base_salary_currency.items.USD.label">
+    <source>United States dollar</source>
+</trans-unit>
+
+
+
+
+
+
+			<trans-unit id="employment_type.description">
+				<source>Several values can be selected here</source>
+			</trans-unit>
+			<trans-unit id="employment_type.items.CONTRACTOR.label">
+				<source>Contractor position</source>
+			</trans-unit>
+			<trans-unit id="employment_type.items.FULL_TIME.label">
+				<source>Full-time position</source>
+			</trans-unit>
+			<trans-unit id="employment_type.items.INTERN.label">
+				<source>Internship</source>
+			</trans-unit>
+			<trans-unit id="employment_type.items.OTHER.label">
+				<source>Other job type (not covered by the other possible values)</source>
+			</trans-unit>
+			<trans-unit id="employment_type.items.PART_TIME.label">
+				<source>Part-time position</source>
+			</trans-unit>
+			<trans-unit id="employment_type.items.TEMPORARY.label">
+				<source>Temporary position</source>
+			</trans-unit>
+			<trans-unit id="employment_type.items.VOLUNTEER.label">
+				<source>Volunteer position</source>
+			</trans-unit>
+			<trans-unit id="employment_type.label">
+				<source>Employment type</source>
+			</trans-unit>
+			<trans-unit id="experience_requirements_text.description">
+				<source>Description of the skills and experience required for the profession</source>
+			</trans-unit>
+			<trans-unit id="experience_requirements_text.label">
+				<source>Professional experience</source>
+			</trans-unit>
+			<trans-unit id="hiring_organization.description">
+				<source></source>
+			</trans-unit>
+			<trans-unit id="hiring_organization.label">
+				<source>Hiring organization</source>
+			</trans-unit>
+			<trans-unit id="qualifications.description">
+				<source>Specific qualifications required for this role or profession</source>
+			</trans-unit>
+			<trans-unit id="qualifications.label">
+				<source>Qualifications</source>
+			</trans-unit>
+			<trans-unit id="responsibilities.description">
+				<source>Responsibilities in connection with this profession</source>
+			</trans-unit>
+			<trans-unit id="responsibilities.label">
+				<source>Responsibilities</source>
+			</trans-unit>
+			<trans-unit id="skills.description">
+				<source>Knowledge, skills and abilities desired or required for practicing this profession</source>
+			</trans-unit>
+			<trans-unit id="skills.label">
+				<source>Skills</source>
+			</trans-unit>
+			<trans-unit id="slug.description">
+				<source>The URL section that uniquely identifies a page or content</source>
+			</trans-unit>
+			<trans-unit id="slug.label">
+				<source>URL segment</source>
+			</trans-unit>
+			<trans-unit id="tabs.tab_application">
+				<source>Application</source>
+			</trans-unit>
+			<trans-unit id="tabs.tab_information">
+				<source>Information</source>
+			</trans-unit>
+			<trans-unit id="tabs.tab_location">
+				<source>Location</source>
+			</trans-unit>
+			<trans-unit id="tabs.tab_salary">
+				<source>Salary</source>
+			</trans-unit>
+			<trans-unit id="tabs.tab_seo">
+				<source>SEO</source>
+			</trans-unit>
+			<trans-unit id="tabs.tab_social_media">
+				<source>Social Media</source>
+			</trans-unit>
+			<trans-unit id="title">
+				<source>Job posting</source>
+			</trans-unit>
+			<trans-unit id="title.description">
+				<source>For example, it could say “Software developer (m/f/d)” or “Office management assistant (m/f/d)”. It is not the title of the page, this can be entered separately under SEO.</source>
+			</trans-unit>
+			<trans-unit id="title.label">
+				<source>Job title</source>
+			</trans-unit>
+			<trans-unit id="working_hours.description">
+				<source>The typical working hours for this position (e.g. 1st shift, night shift, 8am-5pm)</source>
+			</trans-unit>
+			<trans-unit id="working_hours.label">
+				<source>Typical working hours</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,36 @@
+name: hire-me/location
+table: tx_hireme_location
+prefixFields: false
+labelField: title
+security:
+  ignorePageTypeRestriction: true
+fields:
+  - identifier: title
+    type: Text
+    label: TODO Title
+    description: TODO Title
+
+  - identifier: street_address # streetAddress
+    type: Text
+    label: TODO street_address
+    description: TODO
+
+  - identifier: address_locality # addressLocality
+    type: Text
+    label: TODO address_locality
+    description: TODO
+
+  - identifier: address_region # addressRegion
+    type: Text
+    label: TODO address_region
+    description: TODO
+
+  - identifier: postal_code # postalCode
+    type: Text
+    label: TODO postal_code
+    description: TODO
+
+  - identifier: address_country # addressCountry
+    type: Text
+    label: TODO address_country
+    description: TODO

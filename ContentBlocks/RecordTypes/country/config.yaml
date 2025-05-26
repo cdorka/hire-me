@@ -1,0 +1,19 @@
+name: hire-me/country
+table: tx_hireme_country
+prefixFields: false
+labelField: title
+security:
+  ignorePageTypeRestriction: true
+fields:
+  -
+    identifier: title
+    type: Text
+    label: Title
+
+  - identifier: slug
+    required: true
+    type: Slug
+    eval: uniqueInSite
+    generatorOptions:
+      fields:
+        - title

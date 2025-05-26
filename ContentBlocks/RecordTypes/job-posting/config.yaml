@@ -1,0 +1,260 @@
+name: hire-me/job-posting
+table: tx_hireme_jobposting
+prefixFields: false
+labelField: title
+internalDescription: true
+hideAtCopy: true
+restriction:
+  disabled: true
+  startTime: true
+  endTime: true
+  userGroup: true
+security:
+  ignorePageTypeRestriction: true
+fields:
+
+  - identifier: title
+    required: true
+    type: Text
+
+  - identifier: slug
+    required: true
+    type: Slug
+    eval: uniqueInSite
+    generatorOptions:
+      fields:
+        - title
+
+  - identifier: hiring_organization # hiringOrganization
+    type: Select
+    renderType: selectMultipleSideBySide
+    foreign_table: tx_hireme_organization
+    MM: tx_sitepackage_jobposting_organization_mm
+    minitems: 1
+    maxitems: 1
+
+    # totalJobOpenings	Integer	The number of positions open for this job posting. Use a positive integer. Do not use if the number of positions is unclear or not known.
+
+  - identifier: employment_type # employmentType
+    type: Select
+    renderType: selectCheckBox
+    itemsProcFunc: ChristianDorka\HireMe\UserFunction\FormEngine\JobPostingItemsProcFunc->employmentTypeItemsProcFunc
+
+  - identifier: employment_unit # employmentUnit
+    type: Collection
+    relationship: oneToMany
+    minitems: 0
+    foreign_table: tx_hireme_location
+    label: TODO Department
+    description: TODO Indicates the department, unit and/or facility where the employee reports and/or in which the job is to be performed.
+
+  - identifier: tab_information
+    type: Tab
+
+  - identifier: teaser
+    type: Textarea
+    description: text für teaservorschau
+
+  - identifier: intro
+    type: Textarea
+    enableRichtext: true
+    description: einleitungstext auf der stellenauschreibungsdetailseite
+
+  - identifier: eligibility_to_work_requirement # eligibilityToWorkRequirement
+    type: Text
+    label: Legal requirements
+    description: Such as citizenship, visa and other documentation required for an applicant to this job
+
+  - identifier: responsibilities # responsibilities - teil von description
+    type: Textarea
+
+  - identifier: qualifications # qualifications - teil von description
+    type: Textarea
+
+  - identifier: skills # skills
+    type: Textarea
+    description: A statement of knowledge, skill, ability, task or any other assertion expressing a competency that is either claimed by a person, an organization or desired or required to fulfill a role or to work in an occupation.
+
+  - identifier: working_hours # workingHours
+    type: Textarea
+
+  - identifier: education_requirements_text # educationRequirements
+    type: Textarea
+
+  - identifier: education_requirements # BETA - educationRequirements.credentialCategory
+    type: Select
+    renderType: selectCheckBox
+    label: TODO Die Bildungsanforderungen an die Stellenausschreibung.
+    description: TODO  Wenn es keine Bildungsanforderungen gibt, verwende den Wert no requirements. Wenn du die Bildungsanforderungen nicht kennst, füge diese Property nicht hinzu.
+    itemsProcFunc: ChristianDorka\HireMe\UserFunction\FormEngine\JobPostingItemsProcFunc->educationRequirementsItemsProcFunc
+
+  - identifier: experience_requirements_text # experienceRequirements
+    type: Textarea
+
+  - identifier: incentives # incentives
+    type: Collection
+    description: TODO Description of bonus and commission compensation aspects of the job. Supersedes incentives.
+    fields:
+      - identifier: description
+        type: Text
+
+  - identifier: job_benefits # jobBenefits
+    type: Collection
+    relationship: oneToMany
+    foreign_table: tx_hireme_benefit
+    description: TODO Description of benefits associated with the job. Supersedes benefits.
+
+  - identifier: physical_requirements # physicalRequirement
+    type: Collection
+    description: TODO  A description of the types of physical activity associated with the job. Defined terms such as those in O*net may be used, but note that there is no way to specify the level of ability as well as its nature when using a defined term. e.g Must be able to lift and carry loads of up to 50kg.
+    fields:
+      - identifier: description
+        type: Text
+
+  - identifier: sensory_requirement # sensoryRequirement
+    type: Collection
+    description: TODO  A description of any sensory requirements and levels necessary to function on the job, including hearing and vision. Defined terms such as those in O*net may be used, but note that there is no way to specify the level of ability as well as its nature when using a defined term.
+    fields:
+      - identifier: description
+        type: Text
+
+  - identifier: experienceRequirements # BETA - experienceRequirements.monthsOfExperience
+    type: Number
+    format: integer
+    label: TODO Die minimale Berufserfahrung, die für die Stellenausschreibung erforderlich ist, für Google, wenn es auf der seite angezeigt werden soll muss es im text vorhanden sein
+    description: "TODO Wenn es komplexere Anforderungen an die Berufserfahrung gibt, lege die Mindestanforderungen fest. Beispiel: 12 Monate als Koch oder 24 Monate als Souschef: Gibt an, dass der Bewerber eine von beiden Vorgaben erfüllen muss und die Mindestanforderung 12 Monate beträgt. 12 Monate als Koch und 24 Monate als Souschef: Gibt an, dass der Bewerber alle angegebenen Vorgaben erfüllen muss und die Mindestanforderung 24 Monate beträgt."
+
+  - identifier: tab_location
+    type: Tab
+
+  - identifier: job_location_type # jobLocationType
+    type: Select
+    renderType: selectSingle
+    itemsProcFunc: ChristianDorka\HireMe\UserFunction\FormEngine\JobPostingItemsProcFunc->jobLocationTypeItemsProcFunc
+
+  - identifier: job_location # jobLocation
+    type: Collection
+    relationship: oneToMany
+    minitems: 1
+    foreign_table: tx_hireme_location
+    label: TODO job_location
+    description: TODO Wenn die Tätigkeit an mehreren Standorten ausgeübt wird, kann können hier mehrere orte angegeben werden. bei 100% homeffice muss mindestens eine location / land angeeben werden von aus im homeoffice gearbeitet werden kann.
+
+  - identifier: applicant_location_requirements # applicantLocationRequirements
+    type: Collection
+    relationship: oneToMany
+    minitems: 0
+    foreign_table: tx_hireme_location
+    label: TODO Die Standorte, von denen aus Mitarbeiter einen Job im Homeoffice ausüben können
+    description: TODO Diese Property ist erforderlich, wenn sich Bewerber an einem oder mehreren Standorten befinden können und der Job zu 100 % im Homeoffice ausgeübt werden soll.
+
+  - identifier: tab_salary
+    type: Tab
+
+  - identifier: has_base_salary # ---
+    type: Checkbox
+    onChange: reload
+    default: 0
+    label: TODO Grundgehalt angeben?
+    description: TODO keine Schätzung
+
+  - identifier: base_salary_type # Salary
+    type: Select
+    renderType: selectSingle
+    onChange: reload
+    displayCond: 'FIELD:has_base_salary:=:1'
+    itemsProcFunc: ChristianDorka\HireMe\UserFunction\FormEngine\JobPostingItemsProcFunc->salaryTypeItemsProcFunc
+    label: TODO
+    description: TODO keine Schätzung
+
+  - identifier: base_salary # Salary
+    type: Number
+    format: decimal
+    label: TODO Tatsächliche Grundgehalt für den Job
+    displayCond: 'FIELD:base_salary_type:=:0'
+    description: TODO keine Schätzung
+
+  - identifier: base_salary_min # Salary - minValue
+    type: Number
+    format: decimal
+    label: TODO Tatsächliche mindest Grundgehalt für den Job
+    displayCond: 'FIELD:base_salary_type:=:1'
+    description: TODO keine Schätzung
+
+  - identifier: base_salary_max # Salary - maxValue
+    type: Number
+    format: decimal
+    label: TODO Tatsächliche maximal Grundgehalt für den Job
+    displayCond: 'FIELD:base_salary_type:=:1'
+    description: TODO keine Schätzung
+
+  - identifier: base_salary_unit # Salary
+    label: TODO zeitraum für die gehaltsangabe
+    type: Select
+    renderType: selectSingle
+    displayCond: 'FIELD:has_base_salary:=:1'
+    description: TODO keine Schätzung
+    itemsProcFunc: ChristianDorka\HireMe\UserFunction\FormEngine\JobPostingItemsProcFunc->salaryTypeItemsProcFunc
+
+  - identifier: base_salary_currency # Salary.currency
+    label: TODO currency
+    type: Select
+    renderType: selectSingle
+    displayCond: 'FIELD:has_base_salary:=:1'
+    description: TODO
+    itemsProcFunc: ChristianDorka\HireMe\UserFunction\FormEngine\JobPostingItemsProcFunc->salaryCurrencyItemsProcFunc
+
+  - identifier: tab_application
+    type: Tab
+
+  - identifier: starttime # datePosted
+    required: true
+    useExistingField: true
+    type: DateTime
+    label: TODO Veröffentlichungsdatum
+    description: TODO Das ursprüngliche Datum, an dem der Arbeitgeber den Job veröffentlicht hat
+
+  - identifier: valid_through # validThrough
+    type: DateTime
+    label: TODO Ende der Bewerbungsfrist
+    description: TODO Wenn es für ein Stellenangebot keine Bewerbungsfrist gibt oder sie dir nicht bekannt ist, lasse diese Property weg. Wird ein Job vor dem Ende der Bewerbungsfrist vergeben, muss die Stellenausschreibung entfernt werden.
+
+  - identifier: job_immediate_start # jobImmediateStart
+    type: Checkbox
+    description: Boolean	An indicator as to whether a position is available for an immediate start.
+
+  - identifier: job_start_date # jobStartDate
+    displayCond: 'FIELD:job_immediate_start:=:0'
+    type: DateTime
+    description: The date on which a successful applicant for this job would be expected to start work. Choose a specific date in the future or use the jobImmediateStart property to indicate the position is to be filled as soon as possible.
+
+  - identifier: has_direct_apply # directApply
+    label: TODO has_direct_apply
+    type: Checkbox
+    description: TODO
+
+  - identifier: tab_special
+    type: Tab
+
+  - identifier: special_commitments # specialCommitments
+    type: Collection
+    description: TODO  Any special commitments associated with this job posting. Valid entries include VeteranCommit, MilitarySpouseCommit, etc.
+    fields:
+      - identifier: description
+        type: Text
+
+  - identifier: security_clearance_requirement  # securityClearanceRequirement
+    type: Checkbox
+    description: Text  or URL	A description of any security clearance requirements of the job.
+
+  - identifier: tab_seo
+    type: Tab
+
+  - identifier: hire-me/seo-palette
+    type: Basic
+
+  - identifier: tab_social_media
+    type: Tab
+
+  - identifier: hire-me/social-media-palette
+    type: Basic

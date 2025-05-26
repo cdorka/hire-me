@@ -1,0 +1,34 @@
+<?php
+
+declare(strict_types=1);
+
+namespace ChristianDorka\HireMe\UserFunction\FormEngine;
+
+use ChristianDorka\HireMe\Enum\Job\EducationRequirements;
+use ChristianDorka\HireMe\Enum\Job\EmploymentType;
+use ChristianDorka\HireMe\Enum\Job\JobLocationType;
+use ChristianDorka\HireMe\Enum\Salary\SalaryCurrency;
+use ChristianDorka\HireMe\Enum\Salary\SalaryType;
+use ChristianDorka\HireMe\Enum\Salary\SalaryUnit;
+
+class JobPostingItemsProcFunc
+{
+    public function salaryUnitItemsProcFunc(array &$params) : void {
+        $params['items'] = SalaryUnit::getTcaItems();
+    }
+    public function salaryCurrencyItemsProcFunc(array &$params) : void {
+        $params['items'] = SalaryCurrency::getTcaItems();
+    }
+    public function salaryTypeItemsProcFunc(array &$params) : void {
+        $params['items'] = SalaryType::getTcaItems();
+    }
+    public function jobLocationTypeItemsProcFunc(array &$params) : void {
+        $params['items'] = JobLocationType::getTcaItems();
+    }
+    public function employmentTypeItemsProcFunc(array &$params) : void {
+        $params['items'] = EmploymentType::getTcaItems();
+    }
+    public function educationRequirementsItemsProcFunc(array &$params) : void {
+        $params['items'] = EducationRequirements::getTcaItems();
+    }
+}

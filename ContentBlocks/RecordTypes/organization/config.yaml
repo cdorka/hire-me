@@ -1,0 +1,56 @@
+name: hire-me/organization
+table: tx_hireme_organization
+prefixFields: false
+labelField: title
+security:
+  ignorePageTypeRestriction: true
+fields:
+  - identifier: title
+    required: true
+    type: Text
+
+  - identifier: slug
+    required: true
+    type: Slug
+    eval: uniqueInSite
+    generatorOptions:
+      fields:
+        - title
+
+  - identifier: legal_name
+    required: true
+    type: Text
+    label: Eingetragene Firmenname
+    description: Statt "CP/COMPARTNER" "CP/COMPARTNER Agentur für Kommunikation GmbH"
+
+  - identifier: homepage
+    type: Link
+
+  - identifier: same_as
+    type: FlexForm
+    fields:
+      - identifier: header
+        type: Text
+      - identifier: check
+        type: Checkbox
+
+  - identifier: detail_page
+    type: Link
+
+  - identifier: logo
+    type: File
+    minitems: 0
+    maxitems: 1
+    allowed:
+      - jpeg
+      - png
+      - webp
+      - svg
+      - gif
+      - bmp
+    appearance:
+      fileUploadAllowed: false
+
+  # social media link
+
+  # employerOverview	Text	A description of the employer, career opportunities and work environment for this position.

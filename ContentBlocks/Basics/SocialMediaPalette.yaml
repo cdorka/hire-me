@@ -1,0 +1,89 @@
+identifier: hire-me/social-media-palette
+fields:
+
+  - identifier: palette_open_graph_facebook
+    type: Palette
+    label: TODO Open-Graph (Facebook)
+    description: TODO
+    fields:
+
+    - identifier: og_title
+      type: Text
+      label: TODO OpenGraph-Titel
+      description: TODO
+
+    - type: Linebreak
+
+    - identifier: og_description
+      type: Textarea
+      label: TODO OpenGraph-Titel
+      description: TODO
+
+    - type: Linebreak
+
+    - identifier: og_image
+      type: File
+      minitems: 0
+      maxitems: 1
+      allowed:
+        - jpeg
+        - png
+        - webp
+      appearance:
+        fileUploadAllowed: false
+      cropVariants:
+        social:
+          title: 1.91:1
+          allowedAspectRatios:
+            1.91x1:
+              title: 1.91:1
+              value: 1200 / 630
+
+  - identifier: palette_open_graph_twitter
+    type: Palette
+    label: TODO X / Twitter Cards
+    description: TODO
+    fields:
+
+      - identifier: twitter_title
+        type: Text
+        label: TODO X / Twitter Titel
+        description: TODO
+
+      - type: Linebreak
+
+      - identifier: twitter_description
+        type: Textarea
+        label: TODO X / Twitter Beschreibung
+        description: TODO
+
+      - type: Linebreak
+
+      - identifier: twitter_image
+        type: File
+        label: TODO X / Twitter Bild
+        description: TODO
+        minitems: 0
+        maxitems: 1
+        allowed:
+          - jpeg
+          - png
+          - webp
+        appearance:
+          fileUploadAllowed: false
+        cropVariants:
+          social:
+            title: 1.91:1
+            allowedAspectRatios:
+              1.91x1:
+                title: 1.91:1
+                value: 1200 / 630
+
+      - type: Linebreak
+
+      - identifier: twitter_card
+        type: Select
+        label: TODO Kartentyp, der angezeigt werden soll
+        description: TODO
+        renderType: selectSingle
+        itemsProcFunc: ChristianDorka\HireMe\UserFunction\FormEngine\SeoItemsProcFunc->twitterCardItemsProcFunc

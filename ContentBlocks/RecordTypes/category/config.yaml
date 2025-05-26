@@ -1,0 +1,46 @@
+name: hire-me/category
+table: tx_hireme_category
+prefixFields: false
+labelField: title
+security:
+  ignorePageTypeRestriction: true
+fields:
+  - identifier: title
+    type: Text
+    label: Title
+
+  - identifier: description
+    type: Textarea
+
+  - identifier: icon
+    type: File
+    minitems: 0
+    maxitems: 1
+    allowed:
+      - png
+      - jpg
+      - jpeg
+      - gif
+      - webp
+    appearance:
+      fileUploadAllowed: false
+      fileByUrlAllowed: false
+
+  - identifier: job_postings
+    type: Select
+    renderType: selectMultipleSideBySide
+    foreign_table: tx_hireme_jobposting
+    MM: tx_hireme_jobposting_category_mm
+    MM_opposite_field: categories
+
+  - identifier: parent
+    type: Select
+    renderType: selectTree
+    size: 20
+    foreign_table: tx_hireme_category
+    foreign_table_where: 'ORDER BY tx_hireme_category.sorting'
+    treeConfig:
+      parentField: parent
+      appearance:
+        expandAll: true
+        showHeader: true

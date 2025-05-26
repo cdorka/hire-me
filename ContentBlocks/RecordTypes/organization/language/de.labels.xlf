@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file source-language="en" target-language="de" original="" datatype="plaintext" date="2025-02-23T13:41:43+01:00">
+		<body>
+			<trans-unit id="detail_page.description">
+				<source>Page within the TYPO3 system with further information or a profile of the company, e.g. “About us” area or a profile of the company</source>
+				<target>Seite innerhalb des TYPO3-Systems mit weiteren Informationen oder einem Profil des Unternehmens, z.B. „Über uns“-Bereich oder ein Profil des Unternehmens</target>
+			</trans-unit>
+			<trans-unit id="detail_page.label">
+				<source>Detail page to the company profile</source>
+				<target>Detailseite zum Unternehmensprofil</target>
+			</trans-unit>
+			<trans-unit id="homepage.label">
+				<source>Website of the company</source>
+				<target>Internetseite der Unternehmens</target>
+			</trans-unit>
+			<trans-unit id="logo.description">
+				<source>This logo is displayed in Google search results when the job is listed as a “job posting”.</source>
+				<target>Dieses Logo wird in den Google-Suchergebnissen angezeigt, wenn die Stelle als &#34;Job-Posting&#34; ausgegeben wird.</target>
+			</trans-unit>
+			<trans-unit id="logo.label">
+				<source>Logo</source>
+				<target>Logo</target>
+			</trans-unit>
+			<trans-unit id="same_as.description">
+				<source>URLs of pages on another website with additional information about your organization, if applicable. For example, a URL to your organization&#39;s profile page on a social media site, review platform, Wikipedia, ... . Multiple entries are possible here.</source>
+				<target>URLs von Seite auf einer anderen Website mit zusätzlichen Informationen über Ihre Organisation, falls zutreffend. Zum Beispiel eine URL zur Profilseite Ihrer Organisation auf einer Website für soziale Medien, Bewertungsplattform, Wikipedia, ... . Hier sind mehrere Angaben möglich.</target>
+			</trans-unit>
+			<trans-unit id="same_as.label">
+				<source>URLs</source>
+				<target>URLs</target>
+			</trans-unit>
+			<trans-unit id="title.description">
+				<source>The name of the company must be given here (e.g. “Starbucks”) and not the specific location for which the job is advertised (e.g. “Starbucks at the main station”)</source>
+				<target>Hier muss der Name des Unternehmens angegeben werden (z. B. „Starbucks“) und nicht der konkrete Standort, für den die Stelle ausgeschrieben ist (z. B. „Starbucks am Hauptbahnhof“)</target>
+			</trans-unit>
+			<trans-unit id="title.label">
+				<source>Companyname</source>
+				<target>Firmenname</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

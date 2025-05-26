@@ -1,0 +1,117 @@
+identifier: hire-me/seo-palette
+fields:
+
+  - identifier: palette_seo
+    type: Palette
+    label: TODO Allgemeine SEO-Einstellungen
+    description: TODO
+    fields:
+
+      - identifier: seo_title
+        type: Text
+        label: TODO Titel für Suchmaschinen
+        description: TODO
+
+      - type: Linebreak
+
+      - identifier: hide_seo_sitetitle
+        type: Checkbox
+        label: TODO Standard Seitentitel für diese Seite ausblenden?
+        description: TODO
+        renderType: checkboxToggle
+
+      - type: Linebreak
+
+      - identifier: description
+        type: Text
+        label: TODO Beschreibung für Suchmaschinen
+        description: TODO
+
+  - identifier: palette_robots
+    type: Palette
+    label: TODO Robot-Anweisungen
+    description: TODO
+    fields:
+
+      - identifier: no_index
+        type: Checkbox
+        label: TODO Index dieser Seite
+        description: TODO
+        renderType: checkboxToggle
+
+      - identifier: no_follow
+        type: Checkbox
+        label: TODO Dieser Seite folgen
+        description: TODO
+        renderType: checkboxToggle
+
+  - identifier: palette_canonical
+    type: Palette
+    label: TODO Kanonisch
+    description: TODO
+    fields:
+
+      - identifier: canonical_link
+        type: Link
+        label: TODO Kanonischer Link
+        description: TODO Eine kanonische URL ist die URL einer Seite, die als Repräsentativste aus einer Reihe von Seiten mit (fast) gleichem Inhalt Suchmaschinen empfohlen wird. Dieser Prozess, der oft als Deduplication bezeichnet wird, hilft Suchmaschinen, nur eine Version des zu indexieren und verhindert eine Abwertung der Seiten mit ähnlichem Inhalt. <br/> TYPO3 setzt dies automatisch auf die wahrscheinlichste URL der Seite, wenn sie nicht explizit gesetzt wird - was höchstwahrscheinlich die URL der Seite selbst ist. <br/> Wenn hier gesetzt, wird die Seite aus der XML-Sitemap entfernt.
+
+
+  - identifier: palette_sitemap
+    type: Palette
+    label: TODO Sitemap
+    description: TODO
+    fields:
+
+      - identifier: sitemap_changefreq
+        type: Select
+        label: TODO Änderungshäufigkeit
+        description: TODO
+        renderType: selectSingle
+        items:
+          - value: ''
+            label: 'LLL:EXT:seo/Resources/Private/Language/locallang_tca.xlf:pages.sitemap_changefreq.none'
+          - value: always
+            label: 'LLL:EXT:seo/Resources/Private/Language/locallang_tca.xlf:pages.sitemap_changefreq.always'
+          - value: hourly
+            label: 'LLL:EXT:seo/Resources/Private/Language/locallang_tca.xlf:pages.sitemap_changefreq.hourly'
+          - value: daily
+            label: 'LLL:EXT:seo/Resources/Private/Language/locallang_tca.xlf:pages.sitemap_changefreq.daily'
+          - value: weekly
+            label: 'LLL:EXT:seo/Resources/Private/Language/locallang_tca.xlf:pages.sitemap_changefreq.weekly'
+          - value: monthly
+            label: 'LLL:EXT:seo/Resources/Private/Language/locallang_tca.xlf:pages.sitemap_changefreq.monthly'
+          - value: yearly
+            label: 'LLL:EXT:seo/Resources/Private/Language/locallang_tca.xlf:pages.sitemap_changefreq.yearly'
+          - value: never
+            label: 'LLL:EXT:seo/Resources/Private/Language/locallang_tca.xlf:pages.sitemap_changefreq.never'
+
+      - identifier: sitemap_priority
+        type: Select
+        label: TODO Priorität
+        description: TODO
+        default: '0.5'
+        renderType: selectSingle
+        items:
+          - value: '0.0'
+            label: '0.0'
+          - value: '0.1'
+            label: '0.1'
+          - value: '0.2'
+            label: '0.2'
+          - value: '0.3'
+            label: '0.3'
+          - value: '0.4'
+            label: '0.4'
+          - value: '0.5'
+            label: '0.5'
+          - value: '0.6'
+            label: '0.6'
+          - value: '0.7'
+            label: '0.7'
+          - value: '0.8'
+            label: '0.8'
+          - value: '0.9'
+            label: '0.9'
+          - value: '1.0'
+            label: '1.0'

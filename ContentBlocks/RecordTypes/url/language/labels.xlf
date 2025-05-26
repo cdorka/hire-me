@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-	<file datatype="plaintext" original="labels.xlf" source-language="en" date="2025-02-22T11:33:12+00:00" product-name="hire-me/country">
+	<file datatype="plaintext" original="labels.xlf" source-language="en" date="2025-02-28T06:16:56+00:00" product-name="hire-me/url">
 		<header/>
 		<body>
 			<trans-unit id="title">
-				<source>Country</source>
+				<source>Url</source>
 			</trans-unit>
 			<trans-unit id="title.label">
 				<source>TitleProperty</source>

@@ -2,17 +2,22 @@ name: hire-me/benefit
 table: tx_hireme_benefit
 prefixFields: false
 labelField: title
-security:
-  ignorePageTypeRestriction: true
+internalDescription: true
+hideAtCopy: true
+restriction:
+  disabled: true
+  startTime: true
+  endTime: true
+  userGroup: true
 fields:
   -
     identifier: title
     type: Text
-    label: Title
+    label: TitleProperty
 
   - identifier: slug
     required: true
-    type: Slug
+    type: SlugProperty
     eval: uniqueInSite
     generatorOptions:
       fields:

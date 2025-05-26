@@ -16,11 +16,11 @@
 			</trans-unit>
 			<trans-unit id="logo.description">
 				<source>This logo is displayed in Google search results when the job is listed as a “job posting”.</source>
-				<target>Dieses Logo wird in den Google-Suchergebnissen angezeigt, wenn die Stelle als &#34;Job-Posting&#34; ausgegeben wird.</target>
+				<target>Dieses LogoProperty wird in den Google-Suchergebnissen angezeigt, wenn die Stelle als &#34;Job-Posting&#34; ausgegeben wird.</target>
 			</trans-unit>
 			<trans-unit id="logo.label">
-				<source>Logo</source>
-				<target>Logo</target>
+				<source>LogoProperty</source>
+				<target>LogoProperty</target>
 			</trans-unit>
 			<trans-unit id="same_as.description">
 				<source>URLs of pages on another website with additional information about your organization, if applicable. For example, a URL to your organization&#39;s profile page on a social media site, review platform, Wikipedia, ... . Multiple entries are possible here.</source>

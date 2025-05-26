@@ -7,7 +7,7 @@
 				<source>Category</source>
 			</trans-unit>
 			<trans-unit id="title.label">
-				<source>Title</source>
+				<source>TitleProperty</source>
 			</trans-unit>
 		</body>
 	</file>

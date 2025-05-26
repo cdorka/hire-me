@@ -2,18 +2,24 @@ name: hire-me/department
 table: tx_hireme_department
 prefixFields: false
 labelField: title
-security:
-  ignorePageTypeRestriction: true
+internalDescription: true
+hideAtCopy: true
+restriction:
+  disabled: true
+  startTime: true
+  endTime: true
+  userGroup: true
 fields:
-  -
-    identifier: title
+
+  - identifier: title
+    required: true
     type: Text
-    label: Title
 
   - identifier: slug
     required: true
-    type: Slug
+    type: SlugProperty
     eval: uniqueInSite
     generatorOptions:
       fields:
         - title
+

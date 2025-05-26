@@ -2,8 +2,13 @@ name: hire-me/organization
 table: tx_hireme_organization
 prefixFields: false
 labelField: title
-security:
-  ignorePageTypeRestriction: true
+internalDescription: true
+hideAtCopy: true
+restriction:
+  disabled: true
+  startTime: true
+  endTime: true
+  userGroup: true
 fields:
   - identifier: title
     required: true
@@ -11,7 +16,7 @@ fields:
 
   - identifier: slug
     required: true
-    type: Slug
+    type: SlugProperty
     eval: uniqueInSite
     generatorOptions:
       fields:
@@ -26,13 +31,10 @@ fields:
   - identifier: homepage
     type: Link
 
-  - identifier: same_as
-    type: FlexForm
-    fields:
-      - identifier: header
-        type: Text
-      - identifier: check
-        type: Checkbox
+  - identifier: urls # same_as
+    type: Collection
+    relationship: oneToMany
+    foreign_table: tx_hireme_url
 
   - identifier: detail_page
     type: Link

@@ -19,7 +19,7 @@ fields:
 
   - identifier: slug
     required: true
-    type: Slug
+    type: SlugProperty
     eval: uniqueInSite
     generatorOptions:
       fields:
@@ -41,12 +41,12 @@ fields:
     itemsProcFunc: ChristianDorka\HireMe\UserFunction\FormEngine\JobPostingItemsProcFunc->employmentTypeItemsProcFunc
 
   - identifier: employment_unit # employmentUnit
-    type: Collection
-    relationship: oneToMany
-    minitems: 0
-    foreign_table: tx_hireme_location
-    label: TODO Department
-    description: TODO Indicates the department, unit and/or facility where the employee reports and/or in which the job is to be performed.
+    type: Pass
+    # relationship: oneToMany
+    # minitems: 0
+    # foreign_table: tx_hireme_location
+    # label: TODO Department
+    # description: TODO Indicates the department, unit and/or facility where the employee reports and/or in which the job is to be performed.
 
   - identifier: tab_information
     type: Tab
@@ -132,21 +132,22 @@ fields:
     renderType: selectSingle
     itemsProcFunc: ChristianDorka\HireMe\UserFunction\FormEngine\JobPostingItemsProcFunc->jobLocationTypeItemsProcFunc
 
-  - identifier: job_location # jobLocation
-    type: Collection
-    relationship: oneToMany
-    minitems: 1
+  - identifier: locations # jobLocation
+    type: Select
+    renderType: selectMultipleSideBySide
     foreign_table: tx_hireme_location
+    minitems: 1
+    MM: tx_hireme_jobposting_location_mm
     label: TODO job_location
     description: TODO Wenn die Tätigkeit an mehreren Standorten ausgeübt wird, kann können hier mehrere orte angegeben werden. bei 100% homeffice muss mindestens eine location / land angeeben werden von aus im homeoffice gearbeitet werden kann.
 
   - identifier: applicant_location_requirements # applicantLocationRequirements
-    type: Collection
-    relationship: oneToMany
-    minitems: 0
-    foreign_table: tx_hireme_location
-    label: TODO Die Standorte, von denen aus Mitarbeiter einen Job im Homeoffice ausüben können
-    description: TODO Diese Property ist erforderlich, wenn sich Bewerber an einem oder mehreren Standorten befinden können und der Job zu 100 % im Homeoffice ausgeübt werden soll.
+    type: Pass
+    # relationship: oneToMany
+    # minitems: 0
+    # foreign_table: tx_hireme_location
+    # label: TODO Die Standorte, von denen aus Mitarbeiter einen Job im Homeoffice ausüben können
+    # description: TODO Diese Property ist erforderlich, wenn sich Bewerber an einem oder mehreren Standorten befinden können und der Job zu 100 % im Homeoffice ausgeübt werden soll.
 
   - identifier: tab_salary
     type: Tab
@@ -258,3 +259,12 @@ fields:
 
   - identifier: hire-me/social-media-palette
     type: Basic
+
+  - identifier: tab_categories
+    type: Tab
+
+  - identifier: categories
+    type: Select
+    renderType: selectMultipleSideBySide
+    foreign_table: tx_hireme_category
+    MM: tx_hireme_jobposting_category_mm

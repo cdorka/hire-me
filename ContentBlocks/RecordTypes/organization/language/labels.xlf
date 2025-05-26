@@ -19,7 +19,7 @@
 				<source>This logo is displayed in Google search results when the job is listed as a “job posting”.</source>
 			</trans-unit>
 			<trans-unit id="logo.label">
-				<source>Logo</source>
+				<source>LogoProperty</source>
 			</trans-unit>
 			<trans-unit id="same_as.description">
 				<source>URLs of pages on another website with additional information about your organization, if applicable. For example, a URL to your organization&#39;s profile page on a social media site, review platform, Wikipedia, ... . Multiple entries are possible here.</source>

@@ -1,0 +1,22 @@
+name: hire-me/url
+table: tx_hireme_url
+prefixFields: false
+labelField: link
+internalDescription: true
+hideAtCopy: true
+restriction:
+  disabled: true
+  startTime: true
+  endTime: true
+  userGroup: true
+fields:
+
+  - identifier: link
+    required: true
+    type: Link
+
+  - identifier: link_type
+    required: true
+    type: Select
+    renderType: selectSingle
+    itemsProcFunc: ChristianDorka\HireMe\UserFuncs\FormEngine\ItemsProcFunc->urlTypeItems

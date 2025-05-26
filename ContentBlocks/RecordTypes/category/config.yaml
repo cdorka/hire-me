@@ -2,12 +2,25 @@ name: hire-me/category
 table: tx_hireme_category
 prefixFields: false
 labelField: title
-security:
-  ignorePageTypeRestriction: true
+internalDescription: true
+hideAtCopy: true
+restriction:
+  disabled: true
+  startTime: true
+  endTime: true
+  userGroup: true
 fields:
+
   - identifier: title
     type: Text
-    label: Title
+
+  - identifier: slug
+    required: true
+    type: SlugProperty
+    eval: uniqueInSite
+    generatorOptions:
+      fields:
+        - title
 
   - identifier: description
     type: Textarea

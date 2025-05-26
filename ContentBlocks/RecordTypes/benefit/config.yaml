@@ -17,7 +17,7 @@ fields:
 
   - identifier: slug
     required: true
-    type: SlugProperty
+    type: Slug
     eval: uniqueInSite
     generatorOptions:
       fields:

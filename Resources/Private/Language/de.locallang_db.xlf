@@ -1,67 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" original="messages" datatype="plaintext" date="2025-03-19T22:01:18+01:00">
-        <header>
-            <authorName>Christian Dorka</authorName>
-            <authorEmail>mail@christiandorka.de</authorEmail>
-        </header>
+    <file source-language="en" target-language="de" original="" datatype="plaintext" date="2025-03-19T22:01:18+01:00">
         <body>
             <trans-unit id="enum.filter_option_generation_type.items.GENERATED.label">
                 <source>generated (based on the storage location configuration) </source>
+                <target>generiert (anhand der Speicherortkonfiguration) </target>
             </trans-unit>
             <trans-unit id="enum.filter_option_generation_type.items.MANUALLY.label">
                 <source>manually (using the element selection)</source>
+                <target>manuell (anhand der Elementauswahl)</target>
             </trans-unit>
             <trans-unit id="enum.logical_operator.items.AND.label">
                 <source>(And) - all selected entries must match</source>
+                <target>(Und) - alle ausgewählten Einträge müssen übereinstimmen</target>
             </trans-unit>
             <trans-unit id="enum.logical_operator.items.NOT.label">
                 <source>(Not) - none of the selected entries may match</source>
+                <target>(Nicht) - keine der ausgewählten Einträge darf übereinstimmen</target>
             </trans-unit>
             <trans-unit id="enum.logical_operator.items.OR.label">
                 <source>(Or) - at least one of the selected entries must match</source>
+                <target>(Oder) - mindestens eine der ausgewählten Einträge muss übereinstimmen</target>
             </trans-unit>
             <trans-unit id="enum.pagination_position.items.AFTER.label">
                 <source>after result items</source>
+                <target>nach Ergebnis</target>
             </trans-unit>
             <trans-unit id="enum.pagination_position.items.BEFORE.label">
                 <source>before result items</source>
+                <target>vor Ergebnis</target>
             </trans-unit>
             <trans-unit id="enum.pagination_position.items.BEFORE_AND_AFTER.label">
                 <source>before and after result items</source>
+                <target>vor und nach Ergebnissen</target>
             </trans-unit>
             <trans-unit id="enum.pagination_type.items.ARROWS.label">
                 <source>as arrows for the previous and next page</source>
+                <target>als Pfeile für die vorherige und nächste Seite</target>
             </trans-unit>
             <trans-unit id="enum.pagination_type.items.DOTS.label">
                 <source>as numbered dots</source>
+                <target>als nummerierte Punkte</target>
             </trans-unit>
             <trans-unit id="enum.starting_point_depth.items.INFINITE.label">
                 <source>infinite</source>
+                <target>unendlich</target>
             </trans-unit>
             <trans-unit id="enum.starting_point_depth.items.LEVELS_1.label">
                 <source>1 level</source>
+                <target>1 Ebene</target>
             </trans-unit>
             <trans-unit id="enum.starting_point_depth.items.LEVELS_2.label">
                 <source>2 levels</source>
+                <target>2 Ebenen</target>
             </trans-unit>
             <trans-unit id="enum.starting_point_depth.items.LEVELS_3.label">
                 <source>3 levels</source>
+                <target>3 Ebenen</target>
             </trans-unit>
             <trans-unit id="enum.starting_point_depth.items.LEVELS_4.label">
                 <source>4 levels</source>
+                <target>4 Ebenen</target>
             </trans-unit>
             <trans-unit id="enum.starting_point_depth.items.ONLY_SELECTION.label">
                 <source>0 levels (only selected page)</source>
+                <target>0 Ebenen (nur die ausgewählte Seite)</target>
             </trans-unit>
             <trans-unit id="tabs.filter_config">
                 <source>Filter</source>
+                <target>Filter</target>
             </trans-unit>
             <trans-unit id="tabs.pagination_config">
                 <source>Pagination</source>
+                <target>Paginierung</target>
             </trans-unit>
             <trans-unit id="tabs.source_config">
                 <source>Data source</source>
+                <target>Datenquellen</target>
             </trans-unit>
         </body>
     </file>

@@ -19,7 +19,7 @@ fields:
 
   - identifier: slug
     required: true
-    type: SlugProperty
+    type: Slug
     eval: uniqueInSite
     generatorOptions:
       fields:
@@ -27,9 +27,8 @@ fields:
 
   - identifier: hiring_organization # hiringOrganization
     type: Select
-    renderType: selectMultipleSideBySide
+    renderType: selectSingle
     foreign_table: tx_hireme_organization
-    MM: tx_sitepackage_jobposting_organization_mm
     minitems: 1
     maxitems: 1
 

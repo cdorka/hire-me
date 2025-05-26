@@ -1,0 +1,39 @@
+<?php
+
+/**
+ * Logical operator enum for query conditions
+ * php version 8.2
+ *
+ * @category     Enum
+ * @package      CpCompartner\Blog\Enum\General
+ * @license      TODO
+ * @author       Christian Dorka <mail@christiandorka.de>
+ * @noinspection PhpUnused
+ */
+
+declare(strict_types=1);
+
+namespace ChristianDorka\HireMe\Enum;
+
+use ChristianDorka\HireMe\Trait\TcaItemsTrait;
+
+/**
+ * Represents logical operators (AND, OR, NOT) for database queries
+ *
+ * @category Enum
+ * @package  CpCompartner\Blog\Enum\General
+ * @license  TODO
+ * @author   Christian Dorka <mail@christiandorka.de>
+ * @link     TODO
+ */
+enum LogicalOperatorEnum: int
+{
+    use TcaItemsTrait;
+
+    case OR = 0;
+    case AND = 1;
+    case NOT = 2;
+
+    const string EXT_LANGUAGE_FILE_PATH = 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf';
+    const string LABEL_KEY = 'enum.logical_operator';
+}

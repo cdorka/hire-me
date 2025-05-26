@@ -26,7 +26,7 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
  * @license  TODO
  * @link     TODO
  */
-trait JobPostings
+trait JobPostingsProperty
 {
     /**
      * @var ObjectStorage<JobPosting>|null

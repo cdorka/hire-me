@@ -27,18 +27,18 @@ use RuntimeException;
  * @license  TODO
  * @link     TODO
  */
-trait DetailPage
+trait LegalNameProperty
 {
-    protected ?string $detailPage = null;
+    protected ?string $legalName = null;
 
-    public function getDetailPage(): ?string
+    public function getLegalName(): ?string
     {
-        return $this->detailPage;
+        return $this->legalName;
     }
 
-    public function setDetailPage(?string $detailPage): self
+    public function setLegalName(?string $legalName): self
     {
-        $this->detailPage = $detailPage;
+        $this->legalName = $legalName;
         return $this;
     }
 

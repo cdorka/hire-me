@@ -14,9 +14,9 @@ declare(strict_types=1);
 
 namespace ChristianDorka\HireMe\Domain\Model;
 
-use ChristianDorka\HireMe\Domain\Trait\Description;
-use ChristianDorka\HireMe\Domain\Trait\Icon;
-use ChristianDorka\HireMe\Domain\Trait\JobPostings;
+use ChristianDorka\HireMe\Domain\Trait\DescriptionProperty;
+use ChristianDorka\HireMe\Domain\Trait\IconProperty;
+use ChristianDorka\HireMe\Domain\Trait\JobPostingsProperty;
 use ChristianDorka\HireMe\Domain\Trait\ParentCategory;
 use ChristianDorka\HireMe\Domain\Trait\SlugProperty;
 use ChristianDorka\HireMe\Domain\Trait\SystemProperties;
@@ -38,9 +38,9 @@ class Category extends AbstractDomainObject
     use SystemProperties;
     use TitleProperty;
     use SlugProperty;
-    use Description;
-    use Icon;
-    use JobPostings;
+    use DescriptionProperty;
+    use IconProperty;
+    use JobPostingsProperty;
     use ParentCategory;
 
     public function __construct()

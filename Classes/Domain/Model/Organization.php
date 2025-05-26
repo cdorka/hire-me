@@ -14,13 +14,14 @@ declare(strict_types=1);
 
 namespace ChristianDorka\HireMe\Domain\Model;
 
-use ChristianDorka\HireMe\Domain\Trait\Homepage;
-use ChristianDorka\HireMe\Domain\Trait\LegalName;
+use ChristianDorka\HireMe\Domain\Trait\DetailPageProperty;
+use ChristianDorka\HireMe\Domain\Trait\HomepageProperty;
+use ChristianDorka\HireMe\Domain\Trait\LegalNameProperty;
 use ChristianDorka\HireMe\Domain\Trait\LogoProperty;
 use ChristianDorka\HireMe\Domain\Trait\SlugProperty;
 use ChristianDorka\HireMe\Domain\Trait\SystemProperties;
 use ChristianDorka\HireMe\Domain\Trait\TitleProperty;
-use ChristianDorka\HireMe\Domain\Trait\Urls;
+use ChristianDorka\HireMe\Domain\Trait\UrlsProperty;
 use TYPO3\CMS\Extbase\DomainObject\AbstractDomainObject;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
@@ -37,12 +38,12 @@ class Organization extends AbstractDomainObject
 {
     use SystemProperties;
     use TitleProperty;
+    use LegalNameProperty;
     use SlugProperty;
-    use LegalName;
-    use Homepage;
-    use Urls;
+    use HomepageProperty;
+    use UrlsProperty;
+    use DetailPageProperty;
     use LogoProperty;
-
 
     public function __construct()
     {

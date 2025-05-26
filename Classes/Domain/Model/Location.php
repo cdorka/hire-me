@@ -15,8 +15,9 @@ declare(strict_types=1);
 namespace ChristianDorka\HireMe\Domain\Model;
 
 use ChristianDorka\HireMe\Domain\Trait\AddressProperties;
-use ChristianDorka\HireMe\Domain\Trait\JobPostings;
+use ChristianDorka\HireMe\Domain\Trait\JobPostingsProperty;
 use ChristianDorka\HireMe\Domain\Trait\SystemProperties;
+use ChristianDorka\HireMe\Domain\Trait\TitleProperty;
 use TYPO3\CMS\Extbase\DomainObject\AbstractDomainObject;
 
 /**
@@ -31,8 +32,9 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractDomainObject;
 class Location extends AbstractDomainObject
 {
     use SystemProperties;
+    use TitleProperty;
     use AddressProperties;
-    use JobPostings;
+    use JobPostingsProperty;
 
     public function __construct()
     {

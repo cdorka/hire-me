@@ -26,7 +26,7 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
  * @license  TODO
  * @link     TODO
  */
-trait Urls
+trait UrlsProperty
 {
     /**
      * @var ObjectStorage<Url>|null

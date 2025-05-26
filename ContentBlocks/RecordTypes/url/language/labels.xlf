@@ -7,7 +7,7 @@
 				<source>Url</source>
 			</trans-unit>
 			<trans-unit id="title.label">
-				<source>TitleProperty</source>
+				<source>Title</source>
 			</trans-unit>
 		</body>
 	</file>

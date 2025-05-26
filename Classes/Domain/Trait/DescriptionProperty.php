@@ -27,7 +27,7 @@ use RuntimeException;
  * @license  TODO
  * @link     TODO
  */
-trait Description
+trait DescriptionProperty
 {
     protected ?string $description = null;
 

@@ -1,0 +1,24 @@
+name: hire-me/scope
+table: tx_hireme_scope
+prefixFields: false
+labelField: title
+internalDescription: true
+hideAtCopy: true
+restriction:
+  disabled: true
+  startTime: true
+  endTime: true
+  userGroup: true
+fields:
+
+  - identifier: title
+    required: true
+    type: Text
+
+  - identifier: slug
+    required: true
+    type: Slug
+    eval: uniqueInSite
+    generatorOptions:
+      fields:
+        - title

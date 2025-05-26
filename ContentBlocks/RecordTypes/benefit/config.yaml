@@ -10,10 +10,9 @@ restriction:
   endTime: true
   userGroup: true
 fields:
-  -
-    identifier: title
+
+  - identifier: title
     type: Text
-    label: TitleProperty
 
   - identifier: slug
     required: true
@@ -22,6 +21,9 @@ fields:
     generatorOptions:
       fields:
         - title
+
+  - identifier: description
+    type: Textarea
 
   - identifier: icon
     type: File
@@ -36,3 +38,10 @@ fields:
     appearance:
       fileUploadAllowed: false
       fileByUrlAllowed: false
+
+  - identifier: job_postings
+    type: Select
+    renderType: selectMultipleSideBySide
+    foreign_table: tx_hireme_jobposting
+    MM: tx_hireme_jobposting_benefit_mm
+    MM_opposite_field: benefits

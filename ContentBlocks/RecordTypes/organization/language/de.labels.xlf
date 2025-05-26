@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-	<file source-language="en" target-language="de" original="" datatype="plaintext" date="2025-02-23T13:41:43+01:00">
+	<file source-language="en" target-language="de" original="" datatype="plaintext" date="2025-03-23T09:57:39+01:00">
 		<body>
 			<trans-unit id="detail_page.description">
 				<source>Page within the TYPO3 system with further information or a profile of the company, e.g. “About us” area or a profile of the company</source>
@@ -14,29 +14,45 @@
 				<source>Website of the company</source>
 				<target>Internetseite der Unternehmens</target>
 			</trans-unit>
+			<trans-unit id="legal_name.description">
+				<source>Company name including company name “CP/COMPARTNER Agentur für Kommunikation GmbH” instead of “CP/COMPARTNER”</source>
+				<target>Firmenname mit Firmenbezeichnung „CP/COMPARTNER Agentur für Kommunikation GmbH“ anstelle von „CP/COMPARTNER“</target>
+			</trans-unit>
+			<trans-unit id="legal_name.label">
+				<source>Registered company name</source>
+				<target>Eingetragener Firmenname</target>
+			</trans-unit>
 			<trans-unit id="logo.description">
 				<source>This logo is displayed in Google search results when the job is listed as a “job posting”.</source>
 				<target>Dieses LogoProperty wird in den Google-Suchergebnissen angezeigt, wenn die Stelle als &#34;Job-Posting&#34; ausgegeben wird.</target>
 			</trans-unit>
 			<trans-unit id="logo.label">
-				<source>LogoProperty</source>
-				<target>LogoProperty</target>
+				<source>Logo</source>
+				<target>Logo</target>
 			</trans-unit>
-			<trans-unit id="same_as.description">
-				<source>URLs of pages on another website with additional information about your organization, if applicable. For example, a URL to your organization&#39;s profile page on a social media site, review platform, Wikipedia, ... . Multiple entries are possible here.</source>
-				<target>URLs von Seite auf einer anderen Website mit zusätzlichen Informationen über Ihre Organisation, falls zutreffend. Zum Beispiel eine URL zur Profilseite Ihrer Organisation auf einer Website für soziale Medien, Bewertungsplattform, Wikipedia, ... . Hier sind mehrere Angaben möglich.</target>
+			<trans-unit id="slug.title">
+				<source>URL segment</source>
+				<target>URL-Segment</target>
 			</trans-unit>
-			<trans-unit id="same_as.label">
-				<source>URLs</source>
-				<target>URLs</target>
+			<trans-unit id="title">
+				<source>Organization</source>
+				<target>Unternehmen</target>
 			</trans-unit>
 			<trans-unit id="title.description">
-				<source>The name of the company must be given here (e.g. “Starbucks”) and not the specific location for which the job is advertised (e.g. “Starbucks at the main station”)</source>
-				<target>Hier muss der Name des Unternehmens angegeben werden (z. B. „Starbucks“) und nicht der konkrete Standort, für den die Stelle ausgeschrieben ist (z. B. „Starbucks am Hauptbahnhof“)</target>
+				<source>The name of the company must be given here (e.g. “CP/COMPARTNER”) and not the specific location for which the job is advertised (e.g. “CP/COMPARTNER at Essen main station”)</source>
+				<target>Hier muss der Name des Unternehmens angegeben werden (z. B. „CP/COMPARTNER“) und nicht der konkrete Standort, für den die Stelle ausgeschrieben ist (z. B. „CP/COMPARTNER am Essener Hbf“)</target>
 			</trans-unit>
 			<trans-unit id="title.label">
-				<source>Companyname</source>
+				<source>Company name</source>
 				<target>Firmenname</target>
+			</trans-unit>
+			<trans-unit id="urls.description">
+				<source>URLs of pages on another website with additional information about your organization. For example, a URL to your organization&#39;s profile page on a social media site, review platform, Wikipedia, ... .</source>
+				<target>URLs von Seite auf einer anderen Website mit zusätzlichen Informationen über Ihre Organisation. Zum Beispiel eine URL zur Profilseite Ihrer Organisation auf einer Website für soziale Medien, Bewertungsplattform, Wikipedia, ... .</target>
+			</trans-unit>
+			<trans-unit id="urls.label">
+				<source>URLs</source>
+				<target>URLs</target>
 			</trans-unit>
 		</body>
 	</file>

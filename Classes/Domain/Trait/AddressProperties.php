@@ -31,21 +31,32 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
  */
 trait AddressProperties
 {
-    protected ?string $street = null;
+    protected ?string $streetName = null;
+    protected ?string $houseNumber = null;
     protected ?string $postalCode = null;
     protected ?string $city = null;
     protected ?string $region = null;
-    protected ?string $title = null;
     protected ?Country $country = null;
 
-    public function getStreet(): ?string
+    public function getStreetName(): ?string
     {
-        return $this->street;
+        return $this->streetName;
     }
 
-    public function setStreet(?string $street): self
+    public function setStreetName(?string $streetName): AddressProperties
     {
-        $this->street = $street;
+        $this->streetName = $streetName;
+        return $this;
+    }
+
+    public function getHouseNumber(): ?string
+    {
+        return $this->houseNumber;
+    }
+
+    public function setHouseNumber(?string $houseNumber): AddressProperties
+    {
+        $this->houseNumber = $houseNumber;
         return $this;
     }
 
@@ -79,17 +90,6 @@ trait AddressProperties
     public function setRegion(?string $region): self
     {
         $this->region = $region;
-        return $this;
-    }
-
-    public function getTitle(): ?string
-    {
-        return $this->title;
-    }
-
-    public function setTitle(?string $title): self
-    {
-        $this->title = $title;
         return $this;
     }
 

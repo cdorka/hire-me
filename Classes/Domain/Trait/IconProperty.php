@@ -15,8 +15,8 @@ declare(strict_types=1);
 namespace ChristianDorka\HireMe\Domain\Trait;
 
 use ChristianDorka\HireMe\Domain\Model\Category;
-use DateTime;
 use RuntimeException;
+use TYPO3\CMS\Core\Resource\FileReference;
 
 /**
  * TODO
@@ -27,19 +27,18 @@ use RuntimeException;
  * @license  TODO
  * @link     TODO
  */
-trait Link
+trait IconProperty
 {
-    protected ?string $link = null;
+    protected ?FileReference $icon = null;
 
-    public function getLink(): ?string
+    public function getIcon(): ?FileReference
     {
-        return $this->link;
+        return $this->icon;
     }
 
-    public function setLink(?string $link): self
+    public function setIcon(?FileReference $icon): self
     {
-        $this->link = $link;
+        $this->icon = $icon;
         return $this;
     }
-
 }

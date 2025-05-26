@@ -10,10 +10,18 @@ restriction:
   endTime: true
   userGroup: true
 fields:
-  -
-    identifier: title
+
+  - identifier: title
     type: Text
     required: true
+
+  - identifier: slug
+    required: true
+    type: Slug
+    eval: uniqueInSite
+    generatorOptions:
+      fields:
+        - title
 
   - identifier: two_letter_iso_code
     type: Text

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file source-language="en" target-language="de" original="" datatype="plaintext" date="2025-03-23T10:21:18+01:00">
+		<body>
+			<trans-unit id="slug.label">
+				<source>URL segment</source>
+				<target>URL-Segment</target>
+			</trans-unit>
+			<trans-unit id="three_letter_iso_code.description">
+				<source>Official three-letter ISO 3166-1 alpha-2 country code.</source>
+				<target>Offizieller Drei-Buchstaben-ISO-3166-1-Alpha-3-Ländercode.</target>
+			</trans-unit>
+			<trans-unit id="three_letter_iso_code.label">
+				<source>Three-letter ISO code</source>
+				<target>Drei-Buchstaben-ISO-Code</target>
+			</trans-unit>
+			<trans-unit id="title">
+				<source>Country</source>
+				<target>Land</target>
+			</trans-unit>
+			<trans-unit id="title.label">
+				<source>Title</source>
+				<target>Titel</target>
+			</trans-unit>
+			<trans-unit id="two_letter_iso_code.description">
+				<source>Official two-letter ISO 3166-1 alpha-2 country code.</source>
+				<target>Offizieller Zwei-Buchstaben-ISO-3166-1-Alpha-2-Ländercode.</target>
+			</trans-unit>
+			<trans-unit id="two_letter_iso_code.label">
+				<source>Two-letter ISO code</source>
+				<target>Zwei-Buchstaben-ISO-Code</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

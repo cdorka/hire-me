@@ -14,8 +14,8 @@ declare(strict_types=1);
 
 namespace ChristianDorka\HireMe\Domain\Model;
 
-use ChristianDorka\HireMe\Domain\Trait\Link;
-use ChristianDorka\HireMe\Domain\Trait\LinkType;
+use ChristianDorka\HireMe\Domain\Trait\LinkProperty;
+use ChristianDorka\HireMe\Domain\Trait\LinkTypeProperty;
 use ChristianDorka\HireMe\Domain\Trait\SystemProperties;
 use TYPO3\CMS\Extbase\DomainObject\AbstractDomainObject;
 
@@ -31,8 +31,8 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractDomainObject;
 class Url extends AbstractDomainObject
 {
     use SystemProperties;
-    use Link;
-    use LinkType;
+    use LinkProperty;
+    use LinkTypeProperty;
 
     public function __construct()
     {

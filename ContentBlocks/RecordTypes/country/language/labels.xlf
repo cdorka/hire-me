@@ -1,13 +1,34 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-	<file datatype="plaintext" original="labels.xlf" source-language="en" date="2025-02-22T11:33:12+00:00" product-name="hire-me/country">
-		<header/>
+	<file source-language="en" original="labels.xlf" datatype="plaintext" product-name="hire-me/country" date="2025-03-23T10:21:18+01:00">
+		<header></header>
 		<body>
+			<trans-unit id="slug.description">
+				<source></source>
+			</trans-unit>
+			<trans-unit id="slug.label">
+				<source>URL segment</source>
+			</trans-unit>
+			<trans-unit id="three_letter_iso_code.description">
+				<source>Official three-letter ISO 3166-1 alpha-2 country code.</source>
+			</trans-unit>
+			<trans-unit id="three_letter_iso_code.label">
+				<source>Three-letter ISO code</source>
+			</trans-unit>
 			<trans-unit id="title">
 				<source>Country</source>
 			</trans-unit>
+			<trans-unit id="title.description">
+				<source></source>
+			</trans-unit>
 			<trans-unit id="title.label">
-				<source>TitleProperty</source>
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="two_letter_iso_code.description">
+				<source>Official two-letter ISO 3166-1 alpha-2 country code.</source>
+			</trans-unit>
+			<trans-unit id="two_letter_iso_code.label">
+				<source>Two-letter ISO code</source>
 			</trans-unit>
 		</body>
 	</file>

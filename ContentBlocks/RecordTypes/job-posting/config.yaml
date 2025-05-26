@@ -17,6 +17,22 @@ fields:
     required: true
     type: Text
 
+  - identifier: type
+    type: Select
+    renderType: selectSingle
+    foreign_table: tx_hireme_type
+    minitems: 1
+    maxitems: 1
+
+
+
+  - identifier: scope # Area???
+    type: Select
+    renderType: selectSingle
+    foreign_table: tx_hireme_scope
+    minitems: 1
+    maxitems: 1
+
   - identifier: slug
     required: true
     type: Slug
@@ -31,6 +47,10 @@ fields:
     foreign_table: tx_hireme_organization
     minitems: 1
     maxitems: 1
+
+  - identifier: job_id # ??
+    type: Text
+    eval: unique
 
     # totalJobOpenings	Integer	The number of positions open for this job posting. Use a positive integer. Do not use if the number of positions is unclear or not known.
 
@@ -97,11 +117,13 @@ fields:
       - identifier: description
         type: Text
 
-  - identifier: job_benefits # jobBenefits
-    type: Collection
-    relationship: oneToMany
+  - identifier: benefits # jobBenefits
+    type: Select
+    renderType: selectMultipleSideBySide
     foreign_table: tx_hireme_benefit
+    MM: tx_hireme_jobposting_benefit_mm
     description: TODO Description of benefits associated with the job. Supersedes benefits.
+
 
   - identifier: physical_requirements # physicalRequirement
     type: Collection
@@ -117,7 +139,7 @@ fields:
       - identifier: description
         type: Text
 
-  - identifier: experienceRequirements # BETA - experienceRequirements.monthsOfExperience
+  - identifier: experience_requirements # BETA - experienceRequirements.monthsOfExperience
     type: Number
     format: integer
     label: TODO Die minimale Berufserfahrung, die für die Stellenausschreibung erforderlich ist, für Google, wenn es auf der seite angezeigt werden soll muss es im text vorhanden sein

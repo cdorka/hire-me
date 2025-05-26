@@ -10,7 +10,12 @@ restriction:
   endTime: true
   userGroup: true
 fields:
+
   - identifier: title
+    required: true
+    type: Text
+
+  - identifier: legal_name
     required: true
     type: Text
 
@@ -21,12 +26,6 @@ fields:
     generatorOptions:
       fields:
         - title
-
-  - identifier: legal_name
-    required: true
-    type: Text
-    label: Eingetragene Firmenname
-    description: Statt "CP/COMPARTNER" "CP/COMPARTNER Agentur für Kommunikation GmbH"
 
   - identifier: homepage
     type: Link
@@ -52,7 +51,3 @@ fields:
       - bmp
     appearance:
       fileUploadAllowed: false
-
-  # social media link
-
-  # employerOverview	Text	A description of the employer, career opportunities and work environment for this position.

@@ -1,13 +1,40 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-	<file datatype="plaintext" original="labels.xlf" source-language="en" date="2025-02-28T06:16:56+00:00" product-name="hire-me/benefit">
-		<header/>
+	<file source-language="en" original="labels.xlf" datatype="plaintext" product-name="hire-me/benefit" date="2025-03-23T11:43:40+01:00">
+		<header></header>
 		<body>
+			<trans-unit id="description.description">
+				<source></source>
+			</trans-unit>
+			<trans-unit id="description.label">
+				<source>Description</source>
+			</trans-unit>
+			<trans-unit id="icon.description">
+				<source></source>
+			</trans-unit>
+			<trans-unit id="icon.label">
+				<source>Icon</source>
+			</trans-unit>
+			<trans-unit id="job_postings.description">
+				<source>Job postings that have selected this benefit.</source>
+			</trans-unit>
+			<trans-unit id="job_postings.label">
+				<source>Job postings</source>
+			</trans-unit>
+			<trans-unit id="slug.description">
+				<source></source>
+			</trans-unit>
+			<trans-unit id="slug.label">
+				<source>URL segment</source>
+			</trans-unit>
 			<trans-unit id="title">
 				<source>Benefit</source>
 			</trans-unit>
+			<trans-unit id="title.description">
+				<source></source>
+			</trans-unit>
 			<trans-unit id="title.label">
-				<source>TitleProperty</source>
+				<source>Title</source>
 			</trans-unit>
 		</body>
 	</file>

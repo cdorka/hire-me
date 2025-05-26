@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace ChristianDorka\HireMe\Domain\Trait;
 
 use ChristianDorka\HireMe\Domain\Model\Category;
+use ChristianDorka\HireMe\Enum\Url\UrlTypeEnum;
 use DateTime;
 use RuntimeException;
 
@@ -27,24 +28,23 @@ use RuntimeException;
  * @license  TODO
  * @link     TODO
  */
-trait Homepage
+trait LinkTypeProperty
 {
-    protected ?string $homepage = null;
+    protected ?int $linkType = null;
 
-    public function getHomepage(): ?string
+    public function getLinkType(): ?int
     {
-        return $this->homepage;
+        return $this->linkType;
     }
 
-    public function setHomepage(mixed $homepage): self
+    public function setLinkType(?int $linkType): self
     {
-        if ($homepage === null || is_string($homepage)) {
-            $this->homepage = null;
+        if ($linkType === null) {
+            $this->linkType = null;
             return $this;
         }
-
-        if (is_numeric($homepage) || (is_object($homepage) && method_exists($homepage, '__toString'))) {
-            $this->homepage = (string)$homepage;
+        if (is_int($linkType)) {
+            $this->linkType = UrlTypeEnum::tryFrom($linkType)->value;
             return $this;
         }
 

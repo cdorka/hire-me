@@ -29,8 +29,8 @@ enum PaginationTypeEnum: int
 {
     use TcaItemsTrait;
 
-    const string EXT_LANGUAGE_FILE_PATH = 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf';
-    const string LABEL_KEY = 'enum.pagination_type';
+    const EXT_LANGUAGE_FILE_PATH = 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf';
+    const LABEL_KEY = 'enum.pagination_type';
 
     case DOTS = 0;
     case ARROWS = 1;

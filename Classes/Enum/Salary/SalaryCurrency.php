@@ -143,12 +143,12 @@ enum SalaryCurrency: int implements LanguageFilePaths
     /**
      * Path to the language file
      */
-    const string EXT_LANGUAGE_FILE_PATH = self::JOB_POSTING_LANGUAGE_PATH;
+    const EXT_LANGUAGE_FILE_PATH = self::JOB_POSTING_LANGUAGE_PATH;
 
     /**
      * Key for the label in language file
      */
-    const string LABEL_KEY = 'base_salary_currency';
+    const LABEL_KEY = 'base_salary_currency';
 
     /**
      * Get the ISO 4217 currency code as a string

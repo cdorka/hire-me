@@ -45,7 +45,7 @@ class JobPosting extends AbstractDomainObject
 
     use SlugProperty;
 
-    protected ?Organization $hiringOrganization = null;
+    protected ?Organization $hiringOrganizations = null;
     protected ?string $jobId = null;
     protected ?string $employmentType = null; // EmploymentType::class
     protected ?string $teaser = null;

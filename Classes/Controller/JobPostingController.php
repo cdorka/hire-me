@@ -10,6 +10,7 @@ use ChristianDorka\HireMe\Domain\Repository\JobPostingRepository;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3\CMS\Frontend\Controller\ErrorController;
 
 class JobPostingController extends ActionController
@@ -20,12 +21,20 @@ class JobPostingController extends ActionController
     ) {}
 
     public function detailAction(?JobPosting $jobPosting = null): ResponseInterface {
-        if ($jobPosting === null) {
-            // TODO error page content is called twice
-            /** @var ErrorController $errorController */
-            $errorController = GeneralUtility::makeInstance(ErrorController::class);
-            return $errorController->pageNotFoundAction($this->request, 'Job Posting not ');
-        }
+      //  if ($jobPosting === null) {
+      //      // TODO error page content is called twice
+      //      /** @var ErrorController $errorController */
+      //      $errorController = GeneralUtility::makeInstance(ErrorController::class);
+      //      return $errorController->pageNotFoundAction($this->request, 'Job Posting not ');
+      //  }
+
+        DebuggerUtility::var_dump($this->jobPostingRepository->findByConfigWithResult());
+
+
+        $this->view->assignMultiple([
+            "jobPosting" => $this->jobPostingRepository->findByConfigWithResult()
+        ]);
+
         return $this->htmlResponse();
     }
 

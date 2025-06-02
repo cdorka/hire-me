@@ -26,10 +26,10 @@ enum TwitterCard: int implements LanguageFilePaths
     /**
      * Path to the language file
      */
-    const string EXT_LANGUAGE_FILE_PATH = self::BASICS_LANGUAGE_PATH;
+    const EXT_LANGUAGE_FILE_PATH = self::BASICS_LANGUAGE_PATH;
 
     /**
      * Key for the label in language file
      */
-    const string LABEL_KEY = 'twitter_card';
+    const LABEL_KEY = 'twitter_card';
 }

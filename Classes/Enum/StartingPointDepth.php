@@ -29,8 +29,8 @@ enum StartingPointDepth: int
 {
     use TcaItemsTrait;
 
-    const string EXT_LANGUAGE_FILE_PATH = 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf';
-    const string LABEL_KEY = 'enum.starting_point_depth';
+    const EXT_LANGUAGE_FILE_PATH = 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf';
+    const LABEL_KEY = 'enum.starting_point_depth';
 
     case ONLY_SELECTION = 0;
     case LEVELS_1 = 1;

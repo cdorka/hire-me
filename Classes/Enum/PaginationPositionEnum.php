@@ -29,8 +29,8 @@ enum PaginationPositionEnum: int
 {
     use TcaItemsTrait;
 
-    const string EXT_LANGUAGE_FILE_PATH = 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf';
-    const string LABEL_KEY = 'enum.pagination_position';
+    const EXT_LANGUAGE_FILE_PATH = 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf';
+    const LABEL_KEY = 'enum.pagination_position';
 
     case AFTER = 0;
     case BEFORE = 1;

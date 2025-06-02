@@ -11,12 +11,23 @@ use CpCompartner\Base\Core\Repository\Repository;
 
 class JobPostingRepository extends Repository
 {
+    public function initializeObject(): void
+    {
+        $querySettings = $this->createQuery()->getQuerySettings();
+        $querySettings->setRespectStoragePage(false);
+        $querySettings->setIgnoreEnableFields(true);
+        $this->setDefaultQuerySettings($querySettings);
+    }
+
+
     public function findByConfigWithResult(
     ): Result {
-        $criteria = new CriteriaBuilder();
+        $query = $this->createQuery();
+        $query->matching($query->equals('uid', 1));
 
 
-        return parent::findWithResult(
-        );
+
+        return Result::success($query->execute());
+
     }
 }

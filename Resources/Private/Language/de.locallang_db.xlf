@@ -1,82 +1,418 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" target-language="de" original="" datatype="plaintext" date="2025-03-19T22:01:18+01:00">
+    <file source-language="en" target-language="de" original="messages" datatype="plaintext" date="2025-06-02T14:29:53+02:00">
+        <header>
+            <authorName>Christian Dorka</authorName>
+            <authorEmail>mail@christiandorka.de</authorEmail>
+        </header>
         <body>
-            <trans-unit id="enum.filter_option_generation_type.items.GENERATED.label">
-                <source>generated (based on the storage location configuration) </source>
-                <target>generiert (anhand der Speicherortkonfiguration) </target>
+            <trans-unit id="tx_hireme_domain_model_domain_model_benefit">
+                <source>Benefit</source>
+                <target>Benefit</target>
             </trans-unit>
-            <trans-unit id="enum.filter_option_generation_type.items.MANUALLY.label">
-                <source>manually (using the element selection)</source>
-                <target>manuell (anhand der Elementauswahl)</target>
+            <trans-unit id="tx_hireme_domain_model_domain_model_benefit.description.label">
+                <source>Description</source>
+                <target>Beschreibung</target>
             </trans-unit>
-            <trans-unit id="enum.logical_operator.items.AND.label">
-                <source>(And) - all selected entries must match</source>
-                <target>(Und) - alle ausgewählten Einträge müssen übereinstimmen</target>
+            <trans-unit id="tx_hireme_domain_model_domain_model_benefit.icon.label">
+                <source>Icon</source>
+                <target>Icon</target>
             </trans-unit>
-            <trans-unit id="enum.logical_operator.items.NOT.label">
-                <source>(Not) - none of the selected entries may match</source>
-                <target>(Nicht) - keine der ausgewählten Einträge darf übereinstimmen</target>
+            <trans-unit id="tx_hireme_domain_model_domain_model_benefit.job_postings.description">
+                <source>Job postings that have selected this benefit.</source>
+                <target>Stellenausschreibungen, welche diesen Benefit ausgewählt haben.</target>
             </trans-unit>
-            <trans-unit id="enum.logical_operator.items.OR.label">
-                <source>(Or) - at least one of the selected entries must match</source>
-                <target>(Oder) - mindestens eine der ausgewählten Einträge muss übereinstimmen</target>
+            <trans-unit id="tx_hireme_domain_model_domain_model_benefit.job_postings.label">
+                <source>Job postings</source>
+                <target>Stellenausschreibungen</target>
             </trans-unit>
-            <trans-unit id="enum.pagination_position.items.AFTER.label">
-                <source>after result items</source>
-                <target>nach Ergebnis</target>
+            <trans-unit id="tx_hireme_domain_model_domain_model_benefit.slug.label">
+                <source>URL segment</source>
+                <target>URL-Segment</target>
             </trans-unit>
-            <trans-unit id="enum.pagination_position.items.BEFORE.label">
-                <source>before result items</source>
-                <target>vor Ergebnis</target>
+            <trans-unit id="tx_hireme_domain_model_domain_model_benefit.title.label">
+                <source>Title</source>
+                <target>Titel</target>
             </trans-unit>
-            <trans-unit id="enum.pagination_position.items.BEFORE_AND_AFTER.label">
-                <source>before and after result items</source>
-                <target>vor und nach Ergebnissen</target>
+            <trans-unit id="tx_hireme_domain_model_domain_model_category">
+                <source>Category</source>
+                <target>Kategorie</target>
             </trans-unit>
-            <trans-unit id="enum.pagination_type.items.ARROWS.label">
-                <source>as arrows for the previous and next page</source>
-                <target>als Pfeile für die vorherige und nächste Seite</target>
+            <trans-unit id="tx_hireme_domain_model_domain_model_category.description.label">
+                <source>Description</source>
+                <target>Beschreibung</target>
             </trans-unit>
-            <trans-unit id="enum.pagination_type.items.DOTS.label">
-                <source>as numbered dots</source>
-                <target>als nummerierte Punkte</target>
+            <trans-unit id="tx_hireme_domain_model_domain_model_category.icon.label">
+                <source>Icon</source>
+                <target>Icon</target>
             </trans-unit>
-            <trans-unit id="enum.starting_point_depth.items.INFINITE.label">
-                <source>infinite</source>
-                <target>unendlich</target>
+            <trans-unit id="tx_hireme_domain_model_domain_model_category.job_postings.description">
+                <source>Job postings that have selected this category.</source>
+                <target>Stellenausschreibungen, welche diese Kategorie ausgewählt haben.</target>
             </trans-unit>
-            <trans-unit id="enum.starting_point_depth.items.LEVELS_1.label">
-                <source>1 level</source>
-                <target>1 Ebene</target>
+            <trans-unit id="tx_hireme_domain_model_domain_model_category.job_postings.label">
+                <source>Job postings</source>
+                <target>Stellenausschreibungen</target>
             </trans-unit>
-            <trans-unit id="enum.starting_point_depth.items.LEVELS_2.label">
-                <source>2 levels</source>
-                <target>2 Ebenen</target>
+            <trans-unit id="tx_hireme_domain_model_domain_model_category.parent.description">
+                <source>Allows you to create a hierarchical structure of categories with subcategories.</source>
+                <target>Ermöglicht es eine hierarchische Struktur der Kategorien, mit Unterkategorien aufzubauen.</target>
             </trans-unit>
-            <trans-unit id="enum.starting_point_depth.items.LEVELS_3.label">
-                <source>3 levels</source>
-                <target>3 Ebenen</target>
+            <trans-unit id="tx_hireme_domain_model_domain_model_category.parent.label">
+                <source>Superordinate category</source>
+                <target>Übergeordnete Kategorie</target>
             </trans-unit>
-            <trans-unit id="enum.starting_point_depth.items.LEVELS_4.label">
-                <source>4 levels</source>
-                <target>4 Ebenen</target>
+            <trans-unit id="tx_hireme_domain_model_domain_model_category.slug.label">
+                <source>URL segment</source>
+                <target>URL-Segment</target>
             </trans-unit>
-            <trans-unit id="enum.starting_point_depth.items.ONLY_SELECTION.label">
-                <source>0 levels (only selected page)</source>
-                <target>0 Ebenen (nur die ausgewählte Seite)</target>
+            <trans-unit id="tx_hireme_domain_model_domain_model_category.title.label">
+                <source>Title</source>
+                <target>Titel</target>
             </trans-unit>
-            <trans-unit id="tabs.filter_config">
-                <source>Filter</source>
-                <target>Filter</target>
+            <trans-unit id="tx_hireme_domain_model_domain_model_country">
+                <source>Country</source>
+                <target>Land</target>
             </trans-unit>
-            <trans-unit id="tabs.pagination_config">
-                <source>Pagination</source>
-                <target>Paginierung</target>
+            <trans-unit id="tx_hireme_domain_model_domain_model_country.slug.label">
+                <source>URL segment</source>
+                <target>URL-Segment</target>
             </trans-unit>
-            <trans-unit id="tabs.source_config">
-                <source>Data source</source>
-                <target>Datenquellen</target>
+            <trans-unit id="tx_hireme_domain_model_domain_model_country.three_letter_iso_code.description">
+                <source>Official three-letter ISO 3166-1 alpha-2 country code.</source>
+                <target>Offizieller Drei-Buchstaben-ISO-3166-1-Alpha-3-Ländercode.</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_domain_model_country.three_letter_iso_code.label">
+                <source>Three-letter ISO code</source>
+                <target>Drei-Buchstaben-ISO-Code</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_domain_model_country.title.label">
+                <source>Title</source>
+                <target>Titel</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_domain_model_country.two_letter_iso_code.description">
+                <source>Official two-letter ISO 3166-1 alpha-2 country code.</source>
+                <target>Offizieller Zwei-Buchstaben-ISO-3166-1-Alpha-2-Ländercode.</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_domain_model_country.two_letter_iso_code.label">
+                <source>Two-letter ISO code</source>
+                <target>Zwei-Buchstaben-ISO-Code</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_domain_model_department">
+                <source>Department</source>
+                <target>Abteilung</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_domain_model_department.slug.title">
+                <source>URL segment</source>
+                <target>URL-Segment</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_domain_model_department.title.label">
+                <source>Title</source>
+                <target>Titel</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_domain_model_location">
+                <source>Location</source>
+                <target>Standort</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_domain_model_location.city.label">
+                <source>City</source>
+                <target>Stadt</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_domain_model_location.country.label">
+                <source>Country</source>
+                <target>Land</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_domain_model_location.house_number.label">
+                <source>House number</source>
+                <target>Hausnummer</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_domain_model_location.job_postings.description">
+                <source>Job postings that have selected this location.</source>
+                <target>Stellenausschreibungen, welche diesen Standort ausgewählt haben.</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_domain_model_location.job_postings.label">
+                <source>Job postings</source>
+                <target>Stellenausschreibungen</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_domain_model_location.postal_code.label">
+                <source>Postal code</source>
+                <target>Postleitzahl</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_domain_model_location.region.label">
+                <source>Region/State</source>
+                <target>Region/Bundesland</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_domain_model_location.street_name.label">
+                <source>Street</source>
+                <target>Straße und Hausnummer</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_domain_model_location.title.label">
+                <source>Title</source>
+                <target>Titel</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_domain_model_organization">
+                <source>Organization</source>
+                <target>Unternehmen</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_domain_model_organization.detail_page.description">
+                <source>Page within the TYPO3 system with further information or a profile of the company, e.g. “About us” area or a profile of the company</source>
+                <target>Seite innerhalb des TYPO3-Systems mit weiteren Informationen oder einem Profil des Unternehmens, z.B. „Über uns“-Bereich oder ein Profil des Unternehmens</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_domain_model_organization.detail_page.label">
+                <source>Detail page to the company profile</source>
+                <target>Detailseite zum Unternehmensprofil</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_domain_model_organization.homepage.label">
+                <source>Website of the company</source>
+                <target>Internetseite der Unternehmens</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_domain_model_organization.legal_name.description">
+                <source>Company name including company name “CP/COMPARTNER Agentur für Kommunikation GmbH” instead of “CP/COMPARTNER”</source>
+                <target>Firmenname mit Firmenbezeichnung „CP/COMPARTNER Agentur für Kommunikation GmbH“ anstelle von „CP/COMPARTNER“</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_domain_model_organization.legal_name.label">
+                <source>Registered company name</source>
+                <target>Eingetragener Firmenname</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_domain_model_organization.logo.description">
+                <source>This logo is displayed in Google search results when the job is listed as a “job posting”.</source>
+                <target>Dieses LogoProperty wird in den Google-Suchergebnissen angezeigt, wenn die Stelle als &#34;Job-Posting&#34; ausgegeben wird.</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_domain_model_organization.logo.label">
+                <source>Logo</source>
+                <target>Logo</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_domain_model_organization.slug.title">
+                <source>URL segment</source>
+                <target>URL-Segment</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_domain_model_organization.title.description">
+                <source>The name of the company must be given here (e.g. “CP/COMPARTNER”) and not the specific location for which the job is advertised (e.g. “CP/COMPARTNER at Essen main station”)</source>
+                <target>Hier muss der Name des Unternehmens angegeben werden (z. B. „CP/COMPARTNER“) und nicht der konkrete Standort, für den die Stelle ausgeschrieben ist (z. B. „CP/COMPARTNER am Essener Hbf“)</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_domain_model_organization.title.label">
+                <source>Company name</source>
+                <target>Firmenname</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_domain_model_organization.urls.description">
+                <source>URLs of pages on another website with additional information about your organization. For example, a URL to your organization&#39;s profile page on a social media site, review platform, Wikipedia, ... .</source>
+                <target>URLs von Seite auf einer anderen Website mit zusätzlichen Informationen über Ihre Organisation. Zum Beispiel eine URL zur Profilseite Ihrer Organisation auf einer Website für soziale Medien, Bewertungsplattform, Wikipedia, ... .</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_domain_model_organization.urls.label">
+                <source>URLs</source>
+                <target>URLs</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_domain_model_scope">
+                <source>Area of work</source>
+                <target>Tätigkeitsbereich</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_domain_model_scope.slug.label">
+                <source>URL segment</source>
+                <target>URL-Segment</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_domain_model_scope.title.label">
+                <source>Title</source>
+                <target>Titel</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_domain_model_type">
+                <source>Job posting type</source>
+                <target>Art der Stellenausschreibung</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_domain_model_type.icon.label">
+                <source>Icon</source>
+                <target>Icon</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_domain_model_type.slug.label">
+                <source>URL segment</source>
+                <target>URL-Segment</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_domain_model_type.title.label">
+                <source>Title</source>
+                <target>Titel</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting">
+                <source>Job posting</source>
+                <target>Stellenausschreibung</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.education_requirements_text.description">
+                <source>Educational background required for the profession</source>
+                <target>Für den Beruf erforderlicher Bildungshintergrund</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.education_requirements_text.label">
+                <source>Educational background</source>
+                <target>Bildungshintergrund</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.eligibility_to_work_requirement.description">
+                <source>The legal requirements such as citizenship, visa and other documents required for an applicant for this position.</source>
+                <target>Die rechtlichen Voraussetzungen wie Staatsbürgerschaft, Visum und andere Dokumente, die für einen Bewerber für diese Stelle erforderlich sind.</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.eligibility_to_work_requirement.label">
+                <source>Legal requirements</source>
+                <target>Rechtlichen Voraussetzungen</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.employment_type.description">
+                <source>Several options can be selected here</source>
+                <target>Hier können mehrere Optionen ausgewählt werden</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.employment_type.items.CONTRACTOR.label">
+                <source>Contractor position</source>
+                <target>Stelle als Auftragnehmer</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.employment_type.items.FULL_TIME.label">
+                <source>Full-time position</source>
+                <target>Vollzeitstelle</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.employment_type.items.INTERN.label">
+                <source>Internship</source>
+                <target>Praktikum</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.employment_type.items.OTHER.label">
+                <source>Other job type (not covered by the other possible values)</source>
+                <target>Anderer Stellentyp (der nicht durch die anderen möglichen Werte abgedeckt ist)</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.employment_type.items.PART_TIME.label">
+                <source>Part-time position</source>
+                <target>Teilzeitstelle</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.employment_type.items.TEMPORARY.label">
+                <source>Temporary position</source>
+                <target>Temporäre Stelle</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.employment_type.items.VOLUNTEER.label">
+                <source>Volunteer position</source>
+                <target>Ehrenamtliche Stelle</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.employment_type.label">
+                <source>Employment type</source>
+                <target>Beschäftigungsart</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.experience_requirements.label">
+                <source>Number of months of professional experience required in this profession</source>
+                <target>Anzahl der Monate der erforderlichen Berufserfahrung in diesem Beruf</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.experience_requirements_text.description">
+                <source>Description of the skills and experience required for the profession</source>
+                <target>Beschreibung der für den Beruf erforderlichen Fähigkeiten und Erfahrungen</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.experience_requirements_text.label">
+                <source>Professional experience</source>
+                <target>Berufserfahrung</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.experience_requirements_type.description">
+                <source>Selection of skills and experience required for the position, as free text or number of months of experience required, as a number.</source>
+                <target>Auswahl der für die Stelle erforderlichen Fähigkeiten und Erfahrungen als Freitext oder Anzahl der erforderlichen Erfahrungsmonate als Zahl.</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.experience_requirements_type.items.MONTH.label">
+                <source>Number of month</source>
+                <target>Anzahl der Monate</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.experience_requirements_type.items.TEXT.label">
+                <source>Free text</source>
+                <target>Freitext</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.experience_requirements_type.label">
+                <source>Type of “required experience” issue.</source>
+                <target>Art der &#34;erforderlichen Fähigkeiten&#34; Ausgabe.</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.hide_hiring_organization.label">
+                <source>Do not show hiring company/companies to visitors?</source>
+                <target>Einstellende(n) Firma(n) für Besucher nicht anzeigen?</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.hiring_organizations.description">
+                <source>In the case of a multiple selection, the job posting for Google is displayed with an anonymous company, as Google does not support multiple companies for one job.</source>
+                <target>Im Falle einer Mehrfachauswahl wird die Stellenausschreibung für Google mit einem anonymen Unternehmen angezeigt, da Google nicht mehrere Unternehmen für eine Stelle unterstützt.</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.hiring_organizations.label">
+                <source>Hiring organization/organizations</source>
+                <target>Einstellende(n) Firma(n)</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.job_id.description">
+                <source>The unique identifier of the hiring organization for the job, e.g. an ID from an application/personnel software.</source>
+                <target>Die eindeutige Kennung der einstellenden Organisation für die Stelle, z. B. eine ID aus einer Bewerbungs-/Personalsoftware.</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.job_id.label">
+                <source>Identifier</source>
+                <target>Kennung</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.qualifications.description">
+                <source>Specific qualifications required for this role or profession</source>
+                <target>Spezifische Qualifikationen, die für diese Rolle oder diesen Beruf erforderlich sind</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.qualifications.label">
+                <source>Qualifications</source>
+                <target>Qualifikationen</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.responsibilities.description">
+                <source>Responsibilities in connection with this profession</source>
+                <target>Verantwortlichkeiten in Verbindung mit diesem Beruf</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.responsibilities.label">
+                <source>Responsibilities</source>
+                <target>Aufgaben</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.skills.description">
+                <source>Knowledge, skills and abilities desired or required for practicing this profession</source>
+                <target>Kenntnisse, Fähigkeiten und Fertigkeiten, die für die Ausübung dieses Berufs erwünscht oder erforderlich sind</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.skills.label">
+                <source>Skills</source>
+                <target>Kompetenzen</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.slug.description">
+                <source>The URL section that uniquely identifies a page or content. Is generated on the basis of the job title and must be renewed manually after a change.</source>
+                <target>Der URL-Abschnitt, der eine Seite oder einen Inhalt eindeutig identifiziert. Wird auf der Grundlage des Jobtitels generiert und muss nach einer Änderung manuell erneuert werden. </target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.slug.label">
+                <source>URL segment</source>
+                <target>URL-Segment</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.tabs.tab_application">
+                <source>Application</source>
+                <target>Bewerbung</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.tabs.tab_information">
+                <source>Information</source>
+                <target>Informationen</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.tabs.tab_location">
+                <source>Location</source>
+                <target>Standort</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.tabs.tab_salary">
+                <source>Salary</source>
+                <target>Gehalt</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.tabs.tab_seo">
+                <source>SEO</source>
+                <target>SEO</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.tabs.tab_social_media">
+                <source>Social Media</source>
+                <target>Soziale Medien</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.teaser.description">
+                <source>Is not used for the Google job advertisement or displayed on the detail page of the job advertisement. Only displayed as text in the preview tiles for this job ad.</source>
+                <target>Wird nicht für die Google-Stellenanzeige verwendet oder auf der Detailseite der Stellenanzeige angezeigt. Wird nur als Text in den Vorschaukacheln zu dieser Stellenanzeige angezeigt.</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.teaser.label">
+                <source>Short preview text</source>
+                <target>Kurzer Vorschautext</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.title.description">
+                <source>For example, it could say “Software developer (m/f/d)” or “Office management assistant (m/f/d)”. It is not the title of the page, this can be entered separately under SEO.</source>
+                <target>Hier könnte beispielsweise „TYPO3-Entwickler*in (m/w/d)“ oder „Kauffrau/-mann für Büromanagement (m/w/d)“ stehen. Es handelt sich nicht um den Titel der Seite, dieser kann separat unter SEO eingegeben werden.</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.title.label">
+                <source>Job title</source>
+                <target>Jobtitel</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.working_hours.description">
+                <source>The typical working hours for this position (e.g. 1st shift, night shift, 8am-5pm)</source>
+                <target>Die typischen Arbeitszeiten für diese Stelle (z. B. 1. Schicht, Nachtschicht, 8-17 Uhr)</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.working_hours.label">
+                <source>Typical working hours</source>
+                <target>Typischen Arbeitszeiten</target>
             </trans-unit>
         </body>
     </file>

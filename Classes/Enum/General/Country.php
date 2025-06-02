@@ -51,10 +51,10 @@ enum Country: int implements LanguageFilePaths
     /**
      * Path to the language file
      */
-    const string EXT_LANGUAGE_FILE_PATH = self::JOB_POSTING_LANGUAGE_PATH;
+    const EXT_LANGUAGE_FILE_PATH = self::JOB_POSTING_LANGUAGE_PATH;
 
     /**
      * Key for the label in language file
      */
-    const string LABEL_KEY = 'employment_type';
+    const LABEL_KEY = 'employment_type';
 }

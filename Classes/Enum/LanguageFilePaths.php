@@ -7,6 +7,7 @@ namespace ChristianDorka\HireMe\Enum;
  */
 interface LanguageFilePaths
 {
-    const string JOB_POSTING_LANGUAGE_PATH = 'LLL:EXT:hire_me/ContentBlocks/RecordTypes/job-posting/language/labels.xlf';
-    const string BASICS_LANGUAGE_PATH = 'LLL:EXT:hire_me/ContentBlocks/Basics/language/labels.xlf';
+    const JOB_POSTING_LANGUAGE_PATH = 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf';
+    const BASICS_LANGUAGE_PATH = 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf';
+
 }

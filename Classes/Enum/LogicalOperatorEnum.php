@@ -34,6 +34,6 @@ enum LogicalOperatorEnum: int
     case AND = 1;
     case NOT = 2;
 
-    const string EXT_LANGUAGE_FILE_PATH = 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf';
-    const string LABEL_KEY = 'enum.logical_operator';
+    const EXT_LANGUAGE_FILE_PATH = 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf';
+    const LABEL_KEY = 'enum.logical_operator';
 }

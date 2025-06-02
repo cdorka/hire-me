@@ -46,10 +46,10 @@ enum EducationRequirements: int implements LanguageFilePaths
     /**
      * Path to the language file
      */
-    const string EXT_LANGUAGE_FILE_PATH = self::JOB_POSTING_LANGUAGE_PATH;
+    const EXT_LANGUAGE_FILE_PATH = self::JOB_POSTING_LANGUAGE_PATH;
 
     /**
      * Key for the label in language file
      */
-    const string LABEL_KEY = 'education_requirements';
+    const LABEL_KEY = 'tx_hireme_domain_model_jobposting.education_requirements';
 }

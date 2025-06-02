@@ -24,7 +24,7 @@ use ChristianDorka\HireMe\Domain\Model\Type;
 
 return [
     Category::class => [
-        'tableName' => 'tx_hireme_category',
+        'tableName' => 'tx_hireme_domain_model_category',
         'properties' => [
             'crdate'  => ['fieldName' => 'crdate'],
             'tstamp'  => ['fieldName' => 'tstamp'],
@@ -50,7 +50,7 @@ return [
         ]
     ],
     Organization::class => [
-        'tableName' => 'tx_hireme_url',
+        'tableName' => 'tx_hireme_organization',
         'properties' => [
             'crdate'  => ['fieldName' => 'crdate'],
             'tstamp'  => ['fieldName' => 'tstamp'],
@@ -81,8 +81,19 @@ return [
             'jobPostings'  => ['fieldName' => 'job_postings'],
         ]
     ],
+    \ChristianDorka\HireMe\Domain\Model\Incentive::class => [
+        'tableName' => 'tx_hireme_domain_model_incentive',
+        'properties' => [
+            'crdate'  => ['fieldName' => 'crdate'],
+            'tstamp'  => ['fieldName' => 'tstamp'],
+            'sorting'  => ['fieldName' => 'sorting'],
+            'uid'  => ['fieldName' => 'uid'],
+            'title'  => ['fieldName' => 'title'],
+            // ...
+        ]
+    ],
     Country::class => [
-        'tableName' => 'tx_hireme_country',
+        'tableName' => 'tx_hireme_domain_model_country',
         'properties' => [
             'crdate'  => ['fieldName' => 'crdate'],
             'tstamp'  => ['fieldName' => 'tstamp'],
@@ -106,7 +117,7 @@ return [
         ]
     ],
     Department::class => [
-        'tableName' => 'tx_hireme_department',
+        'tableName' => 'tx_hireme_domain_model_department',
         'properties' => [
             'crdate'  => ['fieldName' => 'crdate'],
             'tstamp'  => ['fieldName' => 'tstamp'],
@@ -129,7 +140,7 @@ return [
         ]
     ],
     Benefit::class => [
-        'tableName' => 'tx_hireme_benefit',
+        'tableName' => 'tx_hireme_domain_model_benefit',
         'properties' => [
             'crdate'  => ['fieldName' => 'crdate'],
             'tstamp'  => ['fieldName' => 'tstamp'],

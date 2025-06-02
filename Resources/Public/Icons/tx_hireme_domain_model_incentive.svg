@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+    <!-- Star/reward icon for incentives -->
+    <polygon points="32,8 40,24 56,24 44,36 48,52 32,42 16,52 20,36 8,24 24,24" fill="#FFC107" stroke="#F57F17" stroke-width="2"/>
+    <circle cx="32" cy="32" r="8" fill="#FF6F00"/>
+    <text x="32" y="37" text-anchor="middle" fill="white" font-size="12" font-weight="bold">€</text>
+</svg>

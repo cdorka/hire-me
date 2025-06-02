@@ -29,8 +29,8 @@ enum FilterOptionGenerationTypeEnum: int
 {
     use TcaItemsTrait;
 
-    const string EXT_LANGUAGE_FILE_PATH = 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf';
-    const string LABEL_KEY = 'enum.filter_option_generation_type';
+    const EXT_LANGUAGE_FILE_PATH = 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf';
+    const LABEL_KEY = 'enum.filter_option_generation_type';
 
     case GENERATED = 0;
     case MANUALLY = 1;

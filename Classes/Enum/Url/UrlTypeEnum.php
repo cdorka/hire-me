@@ -28,8 +28,8 @@ enum UrlTypeEnum: int
 {
     use EnumTcaTrait;
 
-    const string EXT_LANGUAGE_FILE_PATH = 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf';
-    const string LABEL_KEY = 'enum.url_type_enum';
+    const EXT_LANGUAGE_FILE_PATH = 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf';
+    const LABEL_KEY = 'enum.url_type_enum';
 
     case NOT_SET = 0;
     case GENERAL = 1;

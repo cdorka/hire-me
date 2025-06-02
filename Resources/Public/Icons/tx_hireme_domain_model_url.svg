@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Link/chain icon for URLs -->
+  <g transform="rotate(-45 32 32)">
+    <rect x="12" y="26" width="20" height="12" rx="6" fill="none" stroke="#1976D2" stroke-width="3"/>
+    <rect x="32" y="26" width="20" height="12" rx="6" fill="none" stroke="#1976D2" stroke-width="3"/>
+    <rect x="22" y="30" width="20" height="4" fill="#2196F3"/>
+  </g>
+</svg>

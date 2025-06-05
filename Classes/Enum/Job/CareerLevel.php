@@ -1,27 +1,24 @@
 <?php
 declare(strict_types=1);
 
-namespace ChristianDorka\HireMe\Enum\Salary;
+namespace ChristianDorka\HireMe\Enum\Job;
 
 use ChristianDorka\HireMe\Enum\EnumTcaTrait;
 use ChristianDorka\HireMe\Enum\LanguageFilePaths;
 
 /**
- * Base salary type options
+ * Education requirements options
  */
-enum SalaryType: int implements LanguageFilePaths
+enum CareerLevel: int implements LanguageFilePaths
 {
     use EnumTcaTrait;
 
-    /**
-     * Fixed salary amount
-     */
-    case SALARY = 0;
-
-    /**
-     * Salary range (min-max)
-     */
-    case SALARY_RANGE = 1;
+    case ALL = 0;
+    case CAREER_STARTER = 1;
+    case JUNIOR = 2;
+    case MID_LEVEL = 3;
+    case SENIOR = 4;
+    case LEAD_MANAGER = 5;
 
     /**
      * Path to the language file
@@ -31,5 +28,5 @@ enum SalaryType: int implements LanguageFilePaths
     /**
      * Key for the label in language file
      */
-    const LABEL_KEY = 'tx_hireme_domain_model_jobposting.base_salary_type';
+    const LABEL_KEY = 'tx_hireme_domain_model_jobposting.career_level';
 }

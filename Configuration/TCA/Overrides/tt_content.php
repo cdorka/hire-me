@@ -54,16 +54,16 @@ if (!isset($GLOBALS['TCA']['tt_content']['types'][$jobPostingLatestSignature])) 
 }
 
 
-$jobPostingFilterSignature = ExtensionUtility::registerPlugin(
+$jobPostingSearchSignature = ExtensionUtility::registerPlugin(
     'hire_me',
-    'JobPostingFilter',
-    $languageFile . 'tt_content.hireme_jobpostingfilter.title',
+    'JobPostingSearch',
+    $languageFile . 'tt_content.hireme_jobpostingsearch.title',
     'TODO',
     'hire_me',
-    $languageFile . 'tt_content.hireme_jobpostingfilter.description',
+    $languageFile . 'tt_content.hireme_jobpostingsearch.description',
 );
-if (!isset($GLOBALS['TCA']['tt_content']['types'][$jobPostingFilterSignature])) {
-    $GLOBALS['TCA']['tt_content']['types'][$jobPostingFilterSignature] = $GLOBALS['TCA']['tt_content']['types']['list'];
+if (!isset($GLOBALS['TCA']['tt_content']['types'][$jobPostingSearchSignature])) {
+    $GLOBALS['TCA']['tt_content']['types'][$jobPostingSearchSignature] = $GLOBALS['TCA']['tt_content']['types']['list'];
 }
 
 
@@ -83,6 +83,185 @@ if (!isset($GLOBALS['TCA']['tt_content']['types'][$jobPostingFilterSignature])) 
 //
 //
 //
+
+
+ExtensionManagementUtility::addTCAcolumns('tt_content', [
+    'tx_hireme_header' => [
+        'exclude' => true,
+        'label' => $languageFile . 'tt_content.tx_hireme_header.label',
+        'description' => $languageFile . 'tt_content.tx_hireme_header.description',
+        'config' => [
+            'type' => 'text',
+            'enableRichtext' => true,
+        ],
+    ],
+    'tx_hireme_text' => [
+        'exclude' => true,
+        'label' => $languageFile . 'tt_content.tx_hireme_text.label',
+        'description' => $languageFile . 'tt_content.tx_hireme_text.description',
+        'config' => [
+            'type' => 'text',
+            'enableRichtext' => true,
+        ],
+    ],
+    "tx_hireme_detail_page" => [
+        "exclude" => false,
+        "label" => $languageFile . "tt_content.tx_hireme_detail_page.label",
+        "description" => $languageFile . "tt_content.tx_hireme_detail_page.description",
+        "config" => [
+            "type" => "group",
+            "internal_type" => "db",
+            "allowed" => "pages",
+            "size" => 1,
+            "maxitems" => 1,
+            "minitems" => 0,
+            "default" => null,
+            "suggestOptions" => [
+                "default" => [
+                    "searchWholePhrase" => true,
+                ],
+            ],
+            "behaviour" => [
+                "allowLanguageSynchronization" => true,
+            ],
+            "eval" => "int,null",
+            "fieldControl" => [
+                "elementBrowser" => [
+                    "disabled" => false,
+                ],
+            ],
+        ],
+    ],
+    'tx_hireme_btn_overview_link' => [
+        'exclude' => true,
+        'label' => $languageFile . 'tt_content.tx_hireme_btn_overview_link.label',
+        'description' => $languageFile . 'tt_content.tx_hireme_btn_overview_link.description',
+        'config' => [
+            'type' => 'link',
+        ],
+    ],
+    'tx_hireme_btn_overview_text' => [
+        'exclude' => true,
+        'label' => $languageFile . 'tt_content.tx_hireme_btn_overview_text.label',
+        'description' => $languageFile . 'tt_content.tx_hireme_btn_overview_text.description',
+        'config' => [
+            'type' => 'text',
+            'rows' => 2,
+        ],
+    ],
+    'tx_hireme_hide_newtime' => [
+        'exclude' => true,
+        'label' => $languageFile . 'tt_content.tx_hireme_hide_newtime.label',
+        'description' => $languageFile . 'tt_content.tx_hireme_hide_newtime.description',
+        'config' => [
+            'type' => 'check',
+            'renderType' => 'checkboxToggle',
+        ],
+    ],
+    'tx_hireme_hide_toptime' => [
+        'exclude' => true,
+        'label' => $languageFile . 'tt_content.tx_hireme_hide_toptime.label',
+        'description' => $languageFile . 'tt_content.tx_hireme_hide_toptime.description',
+        'config' => [
+            'type' => 'check',
+            'renderType' => 'checkboxToggle',
+        ],
+    ],
+    'tx_hireme_hide_map' => [
+        'exclude' => true,
+        'label' => $languageFile . 'tt_content.tx_hireme_hide_map.label',
+        'description' => $languageFile . 'tt_content.tx_hireme_hide_map.description',
+        'config' => [
+            'type' => 'check',
+            'renderType' => 'checkboxToggle',
+        ],
+    ],
+    'tx_hireme_hide_search' => [
+        'exclude' => true,
+        'label' => $languageFile . 'tt_content.tx_hireme_hide_search.label',
+        'description' => $languageFile . 'tt_content.tx_hireme_hide_search.description',
+        'config' => [
+            'type' => 'check',
+            'renderType' => 'checkboxToggle',
+        ],
+    ],
+    'tx_hireme_hide_orderby' => [
+        'exclude' => true,
+        'label' => $languageFile . 'tt_content.tx_hireme_hide_orderby.label',
+        'description' => $languageFile . 'tt_content.tx_hireme_hide_orderby.description',
+        'config' => [
+            'type' => 'check',
+            'renderType' => 'checkboxToggle',
+        ],
+    ],
+    'tx_hireme_hide_filter' => [
+        'exclude' => true,
+        'label' => $languageFile . 'tt_content.tx_hireme_hide_filter.label',
+        'description' => $languageFile . 'tt_content.tx_hireme_hide_filter.description',
+        'config' => [
+            'type' => 'check',
+            'renderType' => 'checkboxToggle',
+        ],
+    ],
+    'tx_hireme_hide_valid_through' => [
+        'exclude' => true,
+        'label' => $languageFile . 'tt_content.tx_hireme_hide_valid_through.label',
+        'description' => $languageFile . 'tt_content.tx_hireme_hide_valid_through.description',
+        'config' => [
+            'type' => 'check',
+            'renderType' => 'checkboxToggle',
+        ],
+    ],
+    'tx_hireme_hide_job_start_date' => [
+        'exclude' => true,
+        'label' => $languageFile . 'tt_content.tx_hireme_hide_job_start_date.label',
+        'description' => $languageFile . 'tt_content.tx_hireme_hide_job_start_date.description',
+        'config' => [
+            'type' => 'check',
+            'renderType' => 'checkboxToggle',
+        ],
+    ],
+    'tx_hireme_hide_location' => [
+        'exclude' => true,
+        'label' => $languageFile . 'tt_content.tx_hireme_hide_location.label',
+        'description' => $languageFile . 'tt_content.tx_hireme_hide_location.description',
+        'config' => [
+            'type' => 'check',
+            'renderType' => 'checkboxToggle',
+        ],
+    ],
+    'tx_hireme_hide_companies' => [
+        'exclude' => true,
+        'label' => $languageFile . 'tt_content.tx_hireme_hide_companies.label',
+        'description' => $languageFile . 'tt_content.tx_hireme_hide_companies.description',
+        'config' => [
+            'type' => 'check',
+            'renderType' => 'checkboxToggle',
+        ],
+    ],
+    'tx_hireme_results_limit' => [
+        'exclude' => true,
+        'label' => $languageFile . 'tt_content.tx_hireme_results_limit.label',
+        'description' => $languageFile . 'tt_content.tx_hireme_results_limit.description',
+        'config' => [
+            'type' => 'number',
+            'default' => 4,
+            'nullable' => true,
+            'range' => [
+                'lower' => 1,
+            ],
+        ],
+    ],
+    'tx_hireme_show_direct_apply_link' => [
+        'exclude' => true,
+        'label' => $languageFile . 'tt_content.tx_hireme_show_direct_apply_link.label',
+        'description' => $languageFile . 'tt_content.tx_hireme_show_direct_apply_link.description',
+        'config' => [
+            'type' => 'check',
+            'renderType' => 'checkboxToggle',
+        ],
+    ],
+]);
 
 
 // Add some fields to fe_users table to show TCA fields definitions
@@ -754,5 +933,45 @@ ExtensionManagementUtility::addToAllTCAtypes(
                 tx_hireme_source_include_selected_starting_point,
         ',
     'hireme_jobpostinglatest',
+    'after:subheader',
+);
+
+
+
+
+
+ExtensionManagementUtility::addToAllTCAtypes(
+    'tt_content',
+    'tx_hireme_header,
+        tx_hireme_text,
+        tx_hireme_detail_page,
+        tx_hireme_results_limit,
+        tx_hireme_hide_newtime,
+        tx_hireme_hide_toptime,
+        tx_hireme_hide_filter,
+        tx_hireme_hide_valid_through,
+        tx_hireme_hide_job_start_date,
+        tx_hireme_hide_location,
+        tx_hireme_hide_companies,
+
+        tx_hireme_btn_overview_link,
+        tx_hireme_btn_overview_text,',
+    'hireme_jobpostinglatest',
+    'after:subheader',
+);
+
+
+ExtensionManagementUtility::addToAllTCAtypes(
+    'tt_content',
+    'tx_hireme_header,
+        tx_hireme_text,
+        tx_hireme_hide_newtime,
+        tx_hireme_hide_toptime,
+        tx_hireme_hide_filter,
+        tx_hireme_hide_map,
+        tx_hireme_hide_search,
+        tx_hireme_hide_orderby,
+        tx_hireme_show_direct_apply_link,',
+    'hireme_jobpostingsearch',
     'after:subheader',
 );

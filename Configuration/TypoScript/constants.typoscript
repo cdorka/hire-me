@@ -1,0 +1,17 @@
+# Configuration/Sets/hire-me/constants.typoscript
+
+# =====================================================
+# Hire Me Extension Constants
+# =====================================================
+
+# Plugin configuration
+plugin.tx_hireme {
+    settings {
+        # AJAX Page Types
+        ajax {
+            pageTypes {
+                jobPostingFilter = 1748959345
+            }
+        }
+    }
+}

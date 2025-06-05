@@ -148,7 +148,7 @@ enum SalaryCurrency: int implements LanguageFilePaths
     /**
      * Key for the label in language file
      */
-    const LABEL_KEY = 'base_salary_currency';
+    const LABEL_KEY = 'tx_hireme_domain_model_jobposting.base_salary_currency';
 
     /**
      * Get the ISO 4217 currency code as a string

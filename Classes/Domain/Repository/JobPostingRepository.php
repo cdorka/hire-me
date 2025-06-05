@@ -5,11 +5,16 @@ declare(strict_types=1);
 
 namespace ChristianDorka\HireMe\Domain\Repository;
 
+use ChristianDorka\HireMe\Domain\DTO\FilterDto;
 use CpCompartner\Base\Core\Pattern\Result;
-use CpCompartner\Base\Core\Repository\Constraints\CriteriaBuilder;
-use CpCompartner\Base\Core\Repository\Repository;
+use CpCompartner\Base\Core\Repository\Constraints\CollectionConstraintBuilder;
+use CpCompartner\Base\Core\Repository\Constraints\IntegerConstraintBuilder;
+use CpCompartner\Base\Core\Repository\Enums\CollectionConstraintOperator;
+use CpCompartner\Base\Core\Repository\ExtendedRepository;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
-class JobPostingRepository extends Repository
+class JobPostingRepository extends ExtendedRepository
 {
     public function initializeObject(): void
     {
@@ -20,14 +25,34 @@ class JobPostingRepository extends Repository
     }
 
 
-    public function findByConfigWithResult(
+    public function findByConfigAndFilterDtoWithResult(
+        ?int $limit = null,
+        ?FilterDto $filterDto = null,
     ): Result {
+
+        DebuggerUtility::var_dump($limit);
         $query = $this->createQuery();
-        $query->matching($query->equals('uid', 1));
 
 
+        $collectionConstraintBuilder = GeneralUtility::makeInstance(CollectionConstraintBuilder::class);
 
-        return Result::success($query->execute());
+        $constraints = [];
+
+        if ($filterDto->getTypes()->toArray()) {
+            $constraints[] = $collectionConstraintBuilder->build(
+                $query,
+                'type',
+                CollectionConstraintOperator::OR_IN,
+                $filterDto->getTypes()->toArray()
+            );
+        }
+
+        DebuggerUtility::var_dump('$constraints');
+        DebuggerUtility::var_dump($constraints);
+
+        return $this->findWithResult(
+            constraints: $constraints,
+            limit: 1);
 
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace ChristianDorka\HireMe\UserFuncs\FormEngine;
 
+use ChristianDorka\HireMe\Enum\Job\CareerLevel;
 use ChristianDorka\HireMe\Enum\Job\EducationRequirements;
 use ChristianDorka\HireMe\Enum\Job\EmploymentType;
 use ChristianDorka\HireMe\Enum\Job\ExperienceRequirementsType;
@@ -37,5 +38,8 @@ class JobPostingItemsProcFunc
     }
     public function experienceRequirementsTypeItemsProcFunc(array &$params) : void {
         $params['items'] = ExperienceRequirementsType::getTcaItems();
+    }
+    public function careerLevelsItemsProcFunc(array &$params) : void {
+        $params['items'] = CareerLevel::getTcaItems();
     }
 }

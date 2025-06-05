@@ -1,0 +1,159 @@
+<html
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:hire="http://typo3.org/ns/ChristianDorka/Hire/ViewHelpers"
+    data-namespace-typo3-fluid="true"
+    lang="en">
+
+<f:section name="Default">
+
+
+    <f:if condition="{data.tx_hireme_detail_page}">
+        <f:then>
+            <f:variable name="link" value="{f:uri.action(pageUid: data.tx_hireme_detail_page, extensionName: 'hire_me', pluginName: 'JobPostingDetails', action: 'detail', controller: 'JobPosting', arguments: '{jobPosting: item.uid}')}"/>
+        </f:then>
+        <f:else>
+            <f:variable name="link" value=""/>
+        </f:else>
+    </f:if>
+
+
+    <div class="col">
+        <div class="card h-100">
+            <f:if condition="{link}">
+                <f:then>
+                    <a href="{link}" class="card h-100">
+                        <f:render section="DefaultCardInner" arguments="{_all}"/>
+                    </a>
+                </f:then>
+                <f:else>
+                    <div class="card h-100">
+                        <f:render section="DefaultCardInner" arguments="{_all}"/>
+                    </div>
+                </f:else>
+            </f:if>
+
+        </div>
+    </div>
+</f:section>
+
+
+<f:section name="DefaultCardInner">
+    <div class="card-body">
+        <f:if condition="{data.tx_hireme_hide_companies}">
+            <f:else>
+                <div class="d-flex justify-content-end align-items-start mb-2">
+                    logo
+                </div>
+            </f:else>
+        </f:if>
+        <f:if condition="{data.tx_hireme_hide_location} && {data.tx_hireme_hide_newtime} && {data.tx_hireme_hide_toptime}">
+            <f:else>
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                    <f:if condition="{data.tx_hireme_hide_location}">
+                        <f:else>
+                            <div>
+                                <i class="bi bi-geo-alt"></i> Essen, DE
+                            </div>
+                        </f:else>
+                    </f:if>
+                    <f:if condition="{data.tx_hireme_hide_newtime} && {data.tx_hireme_hide_toptime}">
+                        <f:else>
+                            <div>
+                                <f:if condition="{data.tx_hireme_hide_toptime}">
+                                    <f:else>
+                                        <span class="badge bg-danger">Top</span>
+                                    </f:else>
+                                </f:if>
+                                <f:if condition="{data.tx_hireme_hide_newtime}">
+                                    <f:else>
+                                        <span class="badge bg-success">New</span>
+                                    </f:else>
+                                </f:if>
+                            </div>
+                        </f:else>
+                    </f:if>
+                </div>
+            </f:else>
+        </f:if>
+
+        <f:if condition="{jobPosting.title}">
+            <h5 class="card-title">{jobPosting.title}</h5>
+        </f:if>
+
+
+        <f:debug>{jobPosting}</f:debug>
+        <f:if condition="{data.tx_hireme_hide_valid_through} && {data.tx_hireme_hide_job_start_date}">
+            <f:else>
+                <div class="small text-muted">
+                    <f:if condition="{data.tx_hireme_hide_valid_through}">
+                        <f:else>
+                            <f:if condition="{jobPosting.validThrough}">
+                                <p class="mb-1">BEWERBUNGSFRIST</p>
+                                <p class="mb-2"><f:format.date format="d.m.Y">{jobPosting.validThrough}</f:format.date></p>
+                            </f:if>
+                        </f:else>
+                    </f:if>
+                    <f:if condition="{data.tx_hireme_hide_job_start_date}">
+                        <f:else>
+                            <p class="mb-1">BEGINN</p>
+                            <p class="mb-3">01.05.2025</p>
+                        </f:else>
+                    </f:if>
+                </div>
+            </f:else>
+        </f:if>
+        <div>
+            <span class="badge bg-light text-dark">Jobtitel</span>
+            <span class="badge bg-light text-dark">Jobtitel</span>
+        </div>
+    </div>
+</f:section>
+
+<f:section name="Detailed">
+    <!-- Job Card 1 -->
+    <div class="col-12">
+        <div class="card shadow-sm h-100 border-start border-primary border-4">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                    <div class="flex-grow-1">
+                        <h5 class="card-title mb-2">
+                            <a href="#" class="text-decoration-none">Senior Software Engineer (Full Stack)</a>
+                        </h5>
+                        <h6 class="text-primary mb-2">Microsoft Deutschland GmbH</h6>
+                        <div class="d-flex flex-wrap gap-3 text-muted small">
+                            <span><i class="bi bi-geo-alt me-1"></i>München</span>
+                            <span><i class="bi bi-briefcase me-1"></i>Vollzeit</span>
+                            <span><i class="bi bi-clock me-1"></i>Heute</span>
+                            <span><i class="bi bi-house me-1"></i>Bis zu 50% Homeoffice</span>
+                        </div>
+                    </div>
+                    <div class="text-end">
+                        <button class="btn btn-outline-danger btn-sm mb-2">
+                            <i class="bi bi-heart"></i>
+                        </button>
+                        <br>
+                        <span class="badge bg-success">NEU</span>
+                    </div>
+                </div>
+                <p class="card-text text-muted">
+                    Entwickeln Sie innovative Lösungen mit modernsten Technologien in einem agilen Team.
+                    Arbeiten Sie an Cloud-nativen Anwendungen und gestalten Sie die digitale Zukunft mit.
+                </p>
+                <div class="d-flex flex-wrap gap-2 mb-3">
+                    <span class="badge bg-light text-dark">React</span>
+                    <span class="badge bg-light text-dark">Node.js</span>
+                    <span class="badge bg-light text-dark">Azure</span>
+                    <span class="badge bg-light text-dark">TypeScript</span>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="text-muted small">
+                        <i class="bi bi-people me-1"></i>Über 10.000 Mitarbeiter
+                    </div>
+                    <button class="btn btn-primary">Jetzt bewerben</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</f:section>
+
+</html>

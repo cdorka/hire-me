@@ -1,0 +1,85 @@
+<html
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:hire="http://typo3.org/ns/ChristianDorka/Hire/ViewHelpers"
+    data-namespace-typo3-fluid="true"
+    lang="en">
+
+<f:section name="Latest">
+
+
+
+</f:section>
+
+<f:section name="Search">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">
+                <i class="bi bi-funnel me-2"></i>Filter
+            </h5>
+        </div>
+        <div class="card-body">
+            <!-- Job Type Filter -->
+            <div class="mb-4">
+                <h6 class="fw-bold">Anstellungsart</h6>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="vollzeit" checked>
+                    <label class="form-check-label" for="vollzeit">Vollzeit</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="teilzeit">
+                    <label class="form-check-label" for="teilzeit">Teilzeit</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="remote">
+                    <label class="form-check-label" for="remote">Remote</label>
+                </div>
+            </div>
+
+            <!-- Career Level -->
+            <div class="mb-4">
+                <h6 class="fw-bold">Karrierelevel</h6>
+                <select class="form-select">
+                    <option selected>Alle Level</option>
+                    <option>Berufseinsteiger</option>
+                    <option>Junior</option>
+                    <option>Senior</option>
+                    <option>Lead/Manager</option>
+                </select>
+            </div>
+
+            <!-- Department -->
+            <div class="mb-4">
+                <h6 class="fw-bold">Geschäftsbereich</h6>
+                <select class="form-select">
+                    <option selected>Alle Bereiche</option>
+                    <option>IT & Software</option>
+                    <option>Marketing</option>
+                    <option>Vertrieb</option>
+                    <option>Personal</option>
+                    <option>Finanzen</option>
+                </select>
+            </div>
+
+            <!-- Company Size -->
+            <div class="mb-4">
+                <h6 class="fw-bold">Unternehmensgröße</h6>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="startup">
+                    <label class="form-check-label" for="startup">Startup (1-50)</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="mittel">
+                    <label class="form-check-label" for="mittel">Mittel (51-500)</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gross" checked>
+                    <label class="form-check-label" for="gross">Groß (500+)</label>
+                </div>
+            </div>
+
+            <button class="btn btn-outline-primary w-100">Filter zurücksetzen</button>
+        </div>
+    </div>
+</f:section>
+
+</html>

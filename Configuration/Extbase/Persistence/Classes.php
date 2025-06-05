@@ -39,7 +39,7 @@ return [
         ]
     ],
     Url::class => [
-        'tableName' => 'tx_hireme_url',
+        'tableName' => 'tx_hireme_domain_model_url',
         'properties' => [
             'crdate'  => ['fieldName' => 'crdate'],
             'tstamp'  => ['fieldName' => 'tstamp'],
@@ -50,7 +50,7 @@ return [
         ]
     ],
     Organization::class => [
-        'tableName' => 'tx_hireme_organization',
+        'tableName' => 'tx_hireme_domain_model_organization',
         'properties' => [
             'crdate'  => ['fieldName' => 'crdate'],
             'tstamp'  => ['fieldName' => 'tstamp'],
@@ -66,7 +66,7 @@ return [
         ]
     ],
     Location::class => [
-        'tableName' => 'tx_hireme_location',
+        'tableName' => 'tx_hireme_domain_model_location',
         'properties' => [
             'crdate'  => ['fieldName' => 'crdate'],
             'tstamp'  => ['fieldName' => 'tstamp'],
@@ -106,7 +106,7 @@ return [
         ]
     ],
     Scope::class => [
-        'tableName' => 'tx_hireme_scope',
+        'tableName' => 'tx_hireme_domain_model_scope',
         'properties' => [
             'crdate'  => ['fieldName' => 'crdate'],
             'tstamp'  => ['fieldName' => 'tstamp'],
@@ -127,18 +127,18 @@ return [
             'slug'  => ['fieldName' => 'slug'],
         ]
     ],
-    Type::class => [
-        'tableName' => 'tx_hireme_type',
-        'properties' => [
-            'crdate'  => ['fieldName' => 'crdate'],
-            'tstamp'  => ['fieldName' => 'tstamp'],
-            'sorting'  => ['fieldName' => 'sorting'],
-            'uid'  => ['fieldName' => 'uid'],
-            'title'  => ['fieldName' => 'title'],
-            'slug'  => ['fieldName' => 'slug'],
-            'icon'  => ['fieldName' => 'icon'],
-        ]
-    ],
+    // Type::class => [
+    //     'tableName' => 'tx_hireme_domain_model_type',
+    //     'properties' => [
+    //         'crdate'  => ['fieldName' => 'crdate'],
+    //         'tstamp'  => ['fieldName' => 'tstamp'],
+    //         'sorting'  => ['fieldName' => 'sorting'],
+    //         'uid'  => ['fieldName' => 'uid'],
+    //         'title'  => ['fieldName' => 'title'],
+    //         'slug'  => ['fieldName' => 'slug'],
+    //         'icon'  => ['fieldName' => 'icon'],
+    //     ]
+    // ],
     Benefit::class => [
         'tableName' => 'tx_hireme_domain_model_benefit',
         'properties' => [

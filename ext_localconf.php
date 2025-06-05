@@ -40,8 +40,8 @@ defined('TYPO3') or die('Access denied.');
 
     ExtensionUtility::configurePlugin(
         'hire_me',
-        'JobPostingFilter',
-        [JobPostingController::class => 'filter'],
+        'JobPostingSearch',
+        [JobPostingController::class => 'search'],
         [],
         ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
     );

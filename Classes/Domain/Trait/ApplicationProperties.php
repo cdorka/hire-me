@@ -37,6 +37,51 @@ trait ApplicationProperties
     protected ?DateTime $jobStartDate = null;
     protected bool $hasDirectApply = false;
 
+    protected ?DateTime $newtime = null;
+
+    protected ?DateTime $toptime = null;
+
+    public function getToptime(): ?DateTime
+    {
+        return $this->toptime;
+    }
+
+
+    /** if is it still top */
+    public function isTop(): bool
+    {
+        if ($this->toptime === null) {
+            return false;
+        }
+
+        return new DateTime() <= time();
+    }
+
+    public function setToptime(?DateTime $toptime): void
+    {
+        $this->toptime = $toptime;
+    }
+
+    public function getNewtime(): ?DateTime
+    {
+        return $this->newtime;
+    }
+
+    /** if is it still new */
+    public function isNew(): bool
+    {
+        if ($this->newtime === null) {
+            return false;
+        }
+
+        return new DateTime() <= time();
+    }
+
+    public function setNewtime(?DateTime $newtime): void
+    {
+        $this->newtime = $newtime;
+    }
+
     public function getStarttime(): ?DateTime
     {
         return $this->starttime;

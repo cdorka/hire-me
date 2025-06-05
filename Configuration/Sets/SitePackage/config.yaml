@@ -1,4 +1,0 @@
-name: hire-me/hire-me
-label: 'Hire me - base'
-dependencies:
-  - typo3/fluid-styled-content

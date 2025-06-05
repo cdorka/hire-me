@@ -1,0 +1,56 @@
+<html
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:hire="http://typo3.org/ns/ChristianDorka/Hire/ViewHelpers"
+    data-namespace-typo3-fluid="true"
+    lang="en">
+
+<f:layout name="Default"/>
+
+<f:section name="Content">
+
+    <div class="bg-primary text-white py-4">
+        <div class="container">
+            <div class="row g-3">
+                <div class="col-md-5">
+                    <div class="input-group">
+                        <span class="input-group-text bg-white">
+                            <i class="bi bi-search"></i>
+                        </span>
+                        <input type="text" class="form-control" placeholder="Stellenangebot oder ID suchen"
+                               value="Software Engineer">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-text bg-white">
+                            <i class="bi bi-geo-alt"></i>
+                        </span>
+                        <input type="text" class="form-control" placeholder="Standort oder PLZ" value="München">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-warning w-100 fw-bold">
+                        <i class="bi bi-search me-2"></i>suchen
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-lg-3 mb-4">
+                <f:render partial="JobPosting/Filter" section="Search" arguments="{_all}"/>
+            </div>
+            <div class="col-lg-9">
+                <f:render partial="JobPosting/Header" section="SearchResults" arguments="{_all}"/>
+                <f:render partial="JobPosting/Map" arguments="{_all}"/>
+                <f:render partial="JobPosting/Results" arguments="{_all}"/>
+                <f:render partial="JobPosting/Pagination" arguments="{_all}"/>
+            </div>
+        </div>
+    </div>
+
+</f:section>
+
+</html>

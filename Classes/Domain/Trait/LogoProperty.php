@@ -16,7 +16,7 @@ namespace ChristianDorka\HireMe\Domain\Trait;
 
 use ChristianDorka\HireMe\Domain\Model\Category;
 use RuntimeException;
-use TYPO3\CMS\Core\Resource\FileReference;
+use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 
 /**
  * TODO

@@ -144,12 +144,11 @@ return [
                     'fields' => ['title'],
                     'fieldSeparator' => '-',
                     'prefixParentPageSlug' => false,
-                    'replacements' => [
-                        '/' => '-',
-                    ],
+
+                    'replacements' => \ChristianDorka\HireMe\UserFuncs\FormEngine\ReplacementsProcFunc::generalSlugProcFunc(),
                 ],
                 'fallbackCharacter' => '-',
-                'eval' => 'uniqueInSite',
+                'eval' => 'unique',
                 'default' => '',
                 'required' => true,
             ],

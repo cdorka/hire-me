@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" target-language="de" original="messages" datatype="plaintext" date="2025-06-02T14:29:53+02:00">
+    <file source-language="en" target-language="de" original="messages" datatype="plaintext" date="2025-06-04T15:49:53+02:00">
         <header>
             <authorName>Christian Dorka</authorName>
             <authorEmail>mail@christiandorka.de</authorEmail>
@@ -234,6 +234,94 @@
                 <source>Job posting</source>
                 <target>Stellenausschreibung</target>
             </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.base_salary.label">
+                <source>Base salary</source>
+                <target>Grundgehalt</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.base_salary_currency.label">
+                <source>Currency</source>
+                <target>Währung</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.base_salary_max.label">
+                <source>Maximum base salary</source>
+                <target>Maximales Grundgehalt</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.base_salary_min.label">
+                <source>Minimal base salary</source>
+                <target>Minimales Grundgehalt</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.base_salary_type.description">
+                <source>Specifies whether a fixed salary or a salary range should be displayed on the detail page.</source>
+                <target>Gibt an, ob auf der Detailseite ein festes Gehalt oder eine Gehaltsspanne angezeigt werden soll.Gibt an, ob auf der Detailseite ein festes Gehalt oder eine Gehaltsspanne angezeigt werden soll.</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.base_salary_type.items.SALARY.label">
+                <source>Fixed salary</source>
+                <target>Feste Gehaltsangabe</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.base_salary_type.items.SALARY_RANGE.label">
+                <source>Salary range</source>
+                <target>Gehaltspanne</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.base_salary_type.label">
+                <source>Displayed salary type</source>
+                <target>Angezeigter Gehaltstyp</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.base_salary_unit.items.DAY.label">
+                <source>per day</source>
+                <target>pro Tag</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.base_salary_unit.items.HOUR.label">
+                <source>per hour</source>
+                <target>pro Stunde</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.base_salary_unit.items.MONTH.label">
+                <source>per month</source>
+                <target>pro Monat</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.base_salary_unit.items.WEEK.label">
+                <source>per week</source>
+                <target>pro Woche</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.base_salary_unit.items.YEAR.label">
+                <source>per year</source>
+                <target>pro Jahr</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.base_salary_unit.label">
+                <source>Salary interval</source>
+                <target>Gehaltsintervall</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.career_level.items.ALL.label">
+                <source>All levels</source>
+                <target>Alle Level</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.career_level.items.CAREER_STARTER.label">
+                <source>Career starter</source>
+                <target>Berufseinsteiger</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.career_level.items.JUNIOR.label">
+                <source>Junior</source>
+                <target>Junior</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.career_level.items.LEAD_MANAGER.label">
+                <source>Lead / Manager</source>
+                <target>Lead / Manager</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.career_level.items.MID_LEVEL.label">
+                <source>Mid-Level</source>
+                <target>Mid-Level</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.career_level.items.SENIOR.label">
+                <source>Senior</source>
+                <target>Senior</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.categories.description">
+                <source>The categories are used exclusively for internal organization and the targeted output of several related job advertisements, e.g. &#39;Training 2025&#39;. They are only displayed to the site visitor as a filter option in the &#39;Job advertisements with filter&#39; element if this has been explicitly activated.</source>
+                <target>Die Kategorien werden ausschließlich für die interne Organisation und die gezielte Ausgabe mehrere zusammengehöriger Stellenausschreibungen verwendet, z. B. ‚Ausbildungen 2025‘. Sie werden dem Seitenbesucherr nur im Element ‚Stellenausschreibungen mit Filter‘ als Filteroption angezeigt, wenn dies explizit aktiviert wurde.Die Kategorien werden ausschließlich für die interne Organisation und die gezielte Ausgabe mehrere zusammengehöriger Stellenausschreibungen verwendet, z. B. ‚Ausbildungen 2025‘. Sie werden dem Seitenbesucherr nur im Element ‚Stellenausschreibungen mit Filter‘ als Filteroption angezeigt, wenn dies explizit aktiviert wurde.</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.categories.label">
+                <source>Categories</source>
+                <target>Kategorien</target>
+            </trans-unit>
             <trans-unit id="tx_hireme_domain_model_jobposting.education_requirements_text.description">
                 <source>Educational background required for the profession</source>
                 <target>Für den Beruf erforderlicher Bildungshintergrund</target>
@@ -314,6 +402,18 @@
                 <source>Type of “required experience” issue.</source>
                 <target>Art der &#34;erforderlichen Fähigkeiten&#34; Ausgabe.</target>
             </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.has_base_salary.label">
+                <source>Should a salary be displayed?</source>
+                <target>Soll eine Gehaltsangabe angezeigt werden?</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.has_direct_apply.description">
+                <source>Ein Bewerbungsformular wird auf der Detailseite ausgegeben.</source>
+                <target>Ein Bewerbungsformular wird auf der Detailseite ausgegeben.</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.has_direct_apply.label">
+                <source>Activate direct application for this position on the details page?</source>
+                <target>Direkte Bewerbung auf diese Stelle auf der Detailseite aktivieren?</target>
+            </trans-unit>
             <trans-unit id="tx_hireme_domain_model_jobposting.hide_hiring_organization.label">
                 <source>Do not show hiring company/companies to visitors?</source>
                 <target>Einstellende(n) Firma(n) für Besucher nicht anzeigen?</target>
@@ -333,6 +433,26 @@
             <trans-unit id="tx_hireme_domain_model_jobposting.job_id.label">
                 <source>Identifier</source>
                 <target>Kennung</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.job_immediate_start.label">
+                <source>Is the position available for an immediate start?</source>
+                <target>Ist die Stelle für einen sofortigen Beginn verfügbar?</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.job_start_date.description">
+                <source>The date on which a successful candidate for this position would be expected to start work.</source>
+                <target>Das Datum, an dem ein erfolgreicher Bewerber für diese Stelle seine Arbeit voraussichtlich aufnehmen würde.</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.job_start_date.label">
+                <source>Job start</source>
+                <target>Jobstart</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.newtime.description">
+                <source>Until when this entry should be marked as a “New” job.</source>
+                <target>Bis wann die diese Eintrag als &#34;Neue&#34;-Stelle markiert werden soll.</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.newtime.label">
+                <source>“New” until</source>
+                <target>„Neu“ bis</target>
             </trans-unit>
             <trans-unit id="tx_hireme_domain_model_jobposting.qualifications.description">
                 <source>Specific qualifications required for this role or profession</source>
@@ -405,6 +525,22 @@
             <trans-unit id="tx_hireme_domain_model_jobposting.title.label">
                 <source>Job title</source>
                 <target>Jobtitel</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.toptime.description">
+                <source>Until when this entry should be marked as “Top”.</source>
+                <target>Bis wann die diese Eintrag als &#34;Top&#34;-Stelle markiert werden soll.</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.toptime.label">
+                <source>“Top” until</source>
+                <target>„Top“ bis</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.valid_through.description">
+                <source>When the end is reached, the application form is automatically deactivated if the online application has been activated.</source>
+                <target>Wenn das Ende erreicht ist, wird das Bewerbungsformular automatisch deaktiviert, wenn die Online-Bewerbung aktiviert wurde.</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_domain_model_jobposting.valid_through.label">
+                <source>End of the application period</source>
+                <target>Ende der Bewerbungsfrist</target>
             </trans-unit>
             <trans-unit id="tx_hireme_domain_model_jobposting.working_hours.description">
                 <source>The typical working hours for this position (e.g. 1st shift, night shift, 8am-5pm)</source>

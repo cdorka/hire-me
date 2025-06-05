@@ -145,6 +145,26 @@ return [
                 'required' => true,
             ],
         ],
+        'newtime' => [
+            'exclude' => false,
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_jobposting.newtime.label',
+            'description' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_jobposting.newtime.description',
+            'config' => [
+                'type' => 'datetime',
+                'default' => 0,
+
+            ],
+        ],
+        'toptime' => [
+            'exclude' => false,
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_jobposting.toptime.label',
+            'description' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_jobposting.toptime.description',
+            'config' => [
+                'type' => 'datetime',
+                'default' => 0,
+
+            ],
+        ],
         'type' => [
             'exclude' => false,
             'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_jobposting.type.label',
@@ -186,7 +206,7 @@ return [
                     'replacements' => \ChristianDorka\HireMe\UserFuncs\FormEngine\ReplacementsProcFunc::generalSlugProcFunc(),
                 ],
                 'fallbackCharacter' => '-',
-                'eval' => 'uniqueInSite',
+                'eval' => 'unique',
                 'default' => '',
                 'required' => true,
             ],
@@ -236,6 +256,16 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectCheckBox',
                 'itemsProcFunc' => \ChristianDorka\HireMe\UserFuncs\FormEngine\JobPostingItemsProcFunc::class . '->employmentTypeItemsProcFunc',
+            ],
+        ],
+        'career_levels' => [
+            'exclude' => false,
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_jobposting.career_levels.label',
+            'description' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_jobposting.career_levels.description',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectCheckBox',
+                'itemsProcFunc' => \ChristianDorka\HireMe\UserFuncs\FormEngine\JobPostingItemsProcFunc::class . '->careerLevelsItemsProcFunc',
             ],
         ],
         'employment_unit' => [
@@ -571,8 +601,9 @@ return [
         ],
         'job_immediate_start' => [
             'exclude' => false,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_jobposting.job_immediate_start.label',
-            'description' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_jobposting.job_immediate_start.description',
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_jobposting.job_immediate_start.label',
+            'description' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_jobposting.job_immediate_start.description',
+            'onChange' => 'reload',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
@@ -581,8 +612,8 @@ return [
         ],
         'job_start_date' => [
             'exclude' => false,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_jobposting.job_start_date.label',
-            'description' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_jobposting.job_start_date.description',
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_jobposting.job_start_date.label',
+            'description' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_jobposting.job_start_date.description',
             'displayCond' => 'FIELD:job_immediate_start:=:0',
             'config' => [
                 'type' => 'datetime',
@@ -591,8 +622,8 @@ return [
         ],
         'has_direct_apply' => [
             'exclude' => false,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_jobposting.has_direct_apply.label',
-            'description' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_jobposting.has_direct_apply.description',
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_jobposting.has_direct_apply.label',
+            'description' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_jobposting.has_direct_apply.description',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
@@ -601,8 +632,8 @@ return [
         ],
         'special_commitments' => [
             'exclude' => false,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_jobposting.special_commitments.label',
-            'description' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_jobposting.special_commitments.description',
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_jobposting.special_commitments.label',
+            'description' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_jobposting.special_commitments.description',
             'config' => [
                 'type' => 'inline',
                 'foreign_table' => 'tx_hireme_domain_model_special_commitment',
@@ -628,8 +659,8 @@ return [
         ],
         'security_clearance_requirement' => [
             'exclude' => false,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_jobposting.security_clearance_requirement.label',
-            'description' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_jobposting.security_clearance_requirement.description',
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_jobposting.security_clearance_requirement.label',
+            'description' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_jobposting.security_clearance_requirement.description',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
@@ -638,8 +669,8 @@ return [
         ],
         'categories' => [
             'exclude' => false,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_jobposting.categories.label',
-            'description' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_jobposting.categories.description',
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_jobposting.categories.label',
+            'description' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_jobposting.categories.description',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
@@ -647,7 +678,6 @@ return [
                 'multiple' => false,
                 'foreign_table_where' => 'AND {#tx_hireme_domain_model_category}.{#sys_language_uid} IN (-1,0)',
                 'MM' => 'tx_hireme_jobposting_category_mm',
-                'size' => 10,
                 'minitems' => 0,
                 'maxitems' => 9999,
             ],
@@ -658,13 +688,13 @@ return [
             'showitem' => 'hidden',
         ],
         'access' => [
-            'showitem' => 'starttime;LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_jobposting.starttime,endtime;LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.endtime,--linebreak--,fe_group;LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.fe_group',
+            'showitem' => 'starttime;LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_jobposting.starttime,endtime;LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.endtime,--linebreak--,fe_group;LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.fe_group',
         ],
         'language' => [
             'showitem' => 'sys_language_uid,l10n_parent',
         ],
         'salary' => [
-            'showitem' => 'has_base_salary,--linebreak--,base_salary_type,base_salary,base_salary_min,base_salary_max,--linebreak--,base_salary_unit,base_salary_currency',
+            'showitem' => 'has_base_salary,--linebreak--,base_salary_type,--linebreak--,base_salary,base_salary_min,base_salary_max,--linebreak--,base_salary_unit,base_salary_currency',
         ],
         'application' => [
             'showitem' => 'valid_through,--linebreak--,job_immediate_start,job_start_date,--linebreak--,has_direct_apply',
@@ -677,26 +707,26 @@ return [
         '0' => [
             'showitem' => '
                 --div--;LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.general,
-                    title,type,scope,slug,hide_hiring_organization,hiring_organizations,job_id,employment_type,employment_unit,
-                --div--;LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_jobposting.tab.information,
+                    title,newtime,toptime,type,scope,slug,hide_hiring_organization,hiring_organizations,job_id,employment_type,career_levels,employment_unit,
+                --div--;LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_jobposting.tab.information,
                     teaser,intro,eligibility_to_work_requirement,responsibilities,qualifications,skills,working_hours,education_requirements_text,education_requirements,--palette--;;experience,incentives,benefits,physical_requirements,sensory_requirement,
-                --div--;LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_jobposting.tab.location,
+                --div--;LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_jobposting.tab.location,
                     job_location_type,locations,applicant_location_requirements,
-                --div--;LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_jobposting.tab.salary,
+                --div--;LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_jobposting.tab.salary,
                     --palette--;;salary,
-                --div--;LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_jobposting.tab.application,
+                --div--;LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_jobposting.tab.application,
                     --palette--;;application,
-                --div--;LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_jobposting.tab.special,
+                --div--;LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_jobposting.tab.special,
                     special_commitments,security_clearance_requirement,
-                --div--;LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_jobposting.tab.seo,
+                --div--;LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_jobposting.tab.seo,
                     --palette--;;palette_seo,
                     --palette--;;palette_robots,
                     --palette--;;palette_canonical,
                     --palette--;;palette_sitemap,
-                --div--;LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_jobposting.tab.social_media,
+                --div--;LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_jobposting.tab.social_media,
                     --palette--;;palette_open_graph_facebook,
                     --palette--;;palette_open_graph_twitter,
-                --div--;LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_jobposting.tab.categories,
+                --div--;LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_jobposting.tab.categories,
                     categories,
                 --div--;LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language,
                     --palette--;;language,

@@ -45,12 +45,10 @@ return [
                 'type' => 'slug',
                 'generatorOptions' => [
                     'fields' => ['title'],
-                    'replacements' => [
-                        '/' => '',
-                    ],
+                    'replacements' => \ChristianDorka\HireMe\UserFuncs\FormEngine\ReplacementsProcFunc::generalSlugProcFunc(),
                 ],
                 'fallbackCharacter' => '-',
-                'eval' => 'uniqueInSite',
+                'eval' => 'unique',
                 'required' => true,
             ],
         ],

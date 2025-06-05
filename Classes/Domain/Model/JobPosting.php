@@ -75,7 +75,7 @@ class JobPosting extends AbstractDomainObject
 
 
 
-    use CategoriesProperties;
+
 
     public function __construct()
     {
@@ -85,7 +85,7 @@ class JobPosting extends AbstractDomainObject
     public function initializeObject(): void
     {
 
-        $this->categories = new ObjectStorage();
-        $this->benefits = new ObjectStorage();
+        // $this->categories = new ObjectStorage();
+        // $this->benefits = new ObjectStorage();
     }
 }

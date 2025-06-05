@@ -1,0 +1,85 @@
+<div class="card shadow-sm mb-4">
+    <div class="card-header bg-light">
+        <div class="d-flex justify-content-between align-items-center">
+            <h6 class="mb-0 fw-bold">
+                <i class="bi bi-geo-alt-fill text-primary me-2"></i>Jobs nach Standorten
+            </h6>
+            <div class="d-flex gap-2">
+                <button class="btn btn-outline-secondary btn-sm">
+                    <i class="bi bi-fullscreen"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-0">
+        <div class="position-relative" style="height: 280px; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+            <!-- Map Placeholder with Interactive Elements -->
+            <svg width="100%" height="100%" viewBox="0 0 800 280" style="position: absolute; top: 0; left: 0;">
+                <!-- Map Background -->
+                <rect width="800" height="280" fill="#e9ecef" rx="8"></rect>
+
+                <!-- Germany outline simplified -->
+                <path d="M200 80 L250 60 L320 70 L380 65 L420 80 L450 90 L480 100 L500 120 L520 140 L530 160 L525 180 L520 200 L510 220 L480 240 L450 250 L400 255 L350 250 L300 245 L250 235 L220 220 L200 200 L190 180 L185 160 L190 140 L195 120 L200 100 Z" fill="#ffffff" stroke="#dee2e6" stroke-width="2"></path>
+
+                <!-- Job Location Markers -->
+                <!-- München -->
+                <circle cx="380" cy="200" r="25" fill="#ffc107" opacity="0.8"></circle>
+                <text x="380" y="205" text-anchor="middle" font-size="12" font-weight="bold" fill="#212529">347</text>
+                <text x="380" y="230" text-anchor="middle" font-size="10" fill="#6c757d">München</text>
+
+                <!-- Berlin -->
+                <circle cx="480" cy="120" r="20" fill="#ffc107" opacity="0.8"></circle>
+                <text x="480" y="125" text-anchor="middle" font-size="12" font-weight="bold" fill="#212529">156</text>
+                <text x="480" y="145" text-anchor="middle" font-size="10" fill="#6c757d">Berlin</text>
+
+                <!-- Hamburg -->
+                <circle cx="400" cy="90" r="18" fill="#ffc107" opacity="0.8"></circle>
+                <text x="400" y="95" text-anchor="middle" font-size="11" font-weight="bold" fill="#212529">89</text>
+                <text x="400" y="115" text-anchor="middle" font-size="10" fill="#6c757d">Hamburg</text>
+
+                <!-- Frankfurt -->
+                <circle cx="350" cy="160" r="16" fill="#ffc107" opacity="0.8"></circle>
+                <text x="350" y="165" text-anchor="middle" font-size="11" font-weight="bold" fill="#212529">72</text>
+                <text x="350" y="185" text-anchor="middle" font-size="10" fill="#6c757d">Frankfurt</text>
+
+                <!-- Köln -->
+                <circle cx="310" cy="150" r="15" fill="#ffc107" opacity="0.8"></circle>
+                <text x="310" y="155" text-anchor="middle" font-size="10" font-weight="bold" fill="#212529">45</text>
+                <text x="310" y="175" text-anchor="middle" font-size="10" fill="#6c757d">Köln</text>
+
+                <!-- Stuttgart -->
+                <circle cx="360" cy="180" r="14" fill="#ffc107" opacity="0.8"></circle>
+                <text x="360" y="185" text-anchor="middle" font-size="10" font-weight="bold" fill="#212529">38</text>
+                <text x="360" y="200" text-anchor="middle" font-size="9" fill="#6c757d">Stuttgart</text>
+
+                <!-- Düsseldorf -->
+                <circle cx="320" cy="140" r="12" fill="#ffc107" opacity="0.8"></circle>
+                <text x="320" y="145" text-anchor="middle" font-size="10" font-weight="bold" fill="#212529">24</text>
+                <text x="320" y="160" text-anchor="middle" font-size="9" fill="#6c757d">Düsseldorf</text>
+
+                <!-- Hover areas for interactivity -->
+                <circle cx="380" cy="200" r="30" fill="transparent" class="map-marker" data-city="München" data-jobs="347" style="cursor: pointer; fill: transparent;"></circle>
+                <circle cx="480" cy="120" r="25" fill="transparent" class="map-marker" data-city="Berlin" data-jobs="156" style="cursor: pointer; fill: transparent;"></circle>
+                <circle cx="400" cy="90" r="23" fill="transparent" class="map-marker" data-city="Hamburg" data-jobs="89" style="cursor: pointer; fill: transparent;"></circle>
+                <circle cx="350" cy="160" r="21" fill="transparent" class="map-marker" data-city="Frankfurt" data-jobs="72" style="cursor: pointer;"></circle>
+                <circle cx="310" cy="150" r="20" fill="transparent" class="map-marker" data-city="Köln" data-jobs="45" style="cursor: pointer;"></circle>
+                <circle cx="360" cy="180" r="19" fill="transparent" class="map-marker" data-city="Stuttgart" data-jobs="38" style="cursor: pointer; fill: transparent;"></circle>
+                <circle cx="320" cy="140" r="17" fill="transparent" class="map-marker" data-city="Düsseldorf" data-jobs="24" style="cursor: pointer;"></circle>
+            </svg>
+
+            <!-- Map Legend -->
+            <div class="position-absolute bottom-0 start-0 m-2 bg-white rounded p-2 shadow-sm" style="font-size: 0.8rem;">
+                <div class="d-flex align-items-center mb-1">
+                    <div class="bg-warning rounded-circle me-2" style="width: 12px; height: 12px;"></div>
+                    <span class="text-muted">Verfügbare Stellen</span>
+                </div>
+                <div class="text-muted small">Klicken Sie auf eine Stadt für Details</div>
+            </div>
+
+            <!-- Current Filter Info -->
+            <div class="position-absolute top-0 end-0 m-2 bg-primary text-white rounded px-2 py-1" style="font-size: 0.75rem;">
+                <i class="bi bi-funnel-fill me-1"></i>Software Engineer
+            </div>
+        </div>
+    </div>
+</div>

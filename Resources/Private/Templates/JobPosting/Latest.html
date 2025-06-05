@@ -7,7 +7,311 @@
 <f:layout name="Default"/>
 
 <f:section name="Content">
-    <h1>Latest</h1>
+
+    <section id="c{data.uid}" class="ce-jobposting ce-jobposting-latest" data-uid="{data.uid}">
+
+        <div class="container">
+            <f:if condition="{data.tx_hireme_header}">
+                <header class="ce-header row mb-4">
+                    <div class="col">
+                        <f:sanitize.html>{data.tx_hireme_header}</f:sanitize.html>
+                    </div>
+                </header>
+            </f:if>
+
+
+            <f:debug>{_all}</f:debug>
+            <f:form
+                id="c{data.uid}-form"
+                method="post"
+                name="filterDto"
+                action="latest"
+                object="{filterDto}"
+                objectName="filterDto"
+                noCache="1"
+                additionalAttributes="{class: 'ajax-form'}"
+                data="{
+                    typenum: '1748959345',
+                    target: 'results-{data.uid}',
+                    uid: '{data.uid}',
+                    ajaxUrl: '{f:uri.action(action: \'latest\', controller: \'JobPosting\', additionalParams: \'{type: 1748959345}\', absolute: true)}'
+                }">
+
+
+                <f:if condition="{data.tx_hireme_text}">
+                    <div class="ce-body row mb-4">
+                        <div class="col">
+                            <f:sanitize.html>{data.tx_hireme_text}</f:sanitize.html>
+                        </div>
+                    </div>
+                </f:if>
+                <f:if condition="{data.tx_hireme_hide_filter}">
+                    <f:else>
+                        <div class="ce-filter row mb-4">
+                    <div class="col-12">
+                        filter:
+                    </div>
+
+                            <div class="col">
+                                <div class="checkbox-group" role="group">
+
+
+                                    <div class="form-check form-check-inline">
+                                        <f:form.checkbox
+                                            property="types"
+                                            value=""
+                                            id="filter-alle-{data.uid}"
+                                            class="form-check-input filter-checkbox"
+                                            additionalAttributes="{data-label: 'Alle'}" />
+                                        <label class="form-check-label btn {filterDto.hasFilter('alle') ? 'btn-warning' : 'btn-outline-secondary'}"
+                                               for="filter-alle-{data.uid}">
+                                            Alle
+                                        </label>
+                                    </div>
+
+
+                                </div>
+
+                                <f:if condition="{typeFilters.success}">
+                                    <div class="checkbox-group" role="group">
+                                        <f:for each="{typeFilters.data}" as="item">
+
+                                            <div class="form-check form-check-inline">
+                                                <f:form.checkbox
+                                                    property="types"
+                                                    value="{item.uid}"
+                                                    id="c{data.uid}-form-type-{item.uid}"
+                                                    class="form-check-input filter-checkbox"
+                                                    data="{group: 'payment', deselect-on-active: 'group:payment'}"
+                                                    additionalAttributes="{data-label: 'Alle'}" />
+                                                <label class="form-check-label btn" for="c{data.uid}-form-type-{item.uid}">
+                                                    {item.title}
+                                                </label>
+                                            </div>
+                                        </f:for>
+
+                                    </div>
+                                </f:if>
+                                <f:form.submit value="senden"></f:form.submit>
+                            </div>
+
+
+
+
+                        </div>
+                    </f:else>
+                </f:if>
+
+
+                <div id="results-{data.uid}" class="results-container" data-uid="{data.uid}">
+                    <f:if condition="{jobPostings.success}">
+                        <f:then>
+                            <f:for each="{jobPostings.data}" as="jobPosting">
+                                <f:render partial="JobPosting/Card" section="Default" arguments="{_all}" />
+                            </f:for>
+
+                        </f:then>
+                        <f:else>
+                            Errors occured
+                        </f:else>
+                    </f:if>
+
+                </div>
+
+
+            </f:form>
+
+            <f:if condition="{data.tx_hireme_btn_overview_link}">
+                <footer class="ce-footer row mt-5">
+                    <div class="col text-right">
+                        <f:link.typolink parameter="{data.tx_hireme_btn_overview_link}" class="btn btn-outline-primary btn-lg">
+                            <i class="bi bi-arrow-right"></i>
+                            <f:if condition="{data.tx_hireme_btn_overview_text}">
+                                <f:format.nl2br>{data.tx_hireme_btn_overview_text}</f:format.nl2br>
+                            </f:if>
+                        </f:link.typolink>
+                    </div>
+                </footer>
+            </f:if>
+
+        </div>
+    </section>
+
+
+    <script>
+        // Simple Checkbox Deselection System
+        document.addEventListener('change', function(e) {
+            if (e.target.type !== 'checkbox' || !e.target.checked) return;
+
+            const target = e.target.getAttribute('data-deselect-target-on-active');
+            if (!target) return;
+
+            const sourceCheckbox = e.target;
+
+            if (target === 'all') {
+                // Deselect all other checkboxes
+                document.querySelectorAll('input[type="checkbox"]:checked').forEach(cb => {
+                    if (cb !== sourceCheckbox) cb.checked = false;
+                });
+            } else if (target.startsWith('group:')) {
+                // Deselect checkboxes in the same group
+                const groupName = target.substring(6);
+                document.querySelectorAll(`input[type="checkbox"][data-group="${groupName}"]:checked`).forEach(cb => {
+                    if (cb !== sourceCheckbox) cb.checked = false;
+                });
+            } else {
+                // Deselect by CSS selector
+                document.querySelectorAll(target).forEach(cb => {
+                    if (cb.type === 'checkbox' && cb !== sourceCheckbox && cb.checked) {
+                        cb.checked = false;
+                    }
+                });
+            }
+        });
+    </script>
+
+    <script>
+        /*
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.ajax-form').forEach(function(form) {
+                const ajaxUrl = form.dataset.ajaxurl || form.action;
+                const targetId = form.dataset.target;
+                const typenum = form.dataset.typenum;
+
+                if (!targetId) {
+                    console.warn('Form missing target data attribute:', form);
+                    return;
+                }
+
+                // Handle checkbox changes
+                const checkboxes = form.querySelectorAll('.filter-checkbox');
+                const allCheckbox = form.querySelector('input[value="alle"]');
+
+                checkboxes.forEach(function(checkbox) {
+                    checkbox.addEventListener('change', function() {
+                        handleCheckboxChange(checkbox, form, ajaxUrl, targetId, typenum);
+                    });
+                });
+
+                // Special handling for "Alle" checkbox
+                if (allCheckbox) {
+                    allCheckbox.addEventListener('change', function() {
+                        if (this.checked) {
+                            // Uncheck all other checkboxes when "Alle" is selected
+                            checkboxes.forEach(function(cb) {
+                                if (cb !== allCheckbox) {
+                                    cb.checked = false;
+                                    updateLabelStyle(cb);
+                                }
+                            });
+                        }
+                        updateLabelStyle(this);
+                        submitForm(form, ajaxUrl, targetId, typenum);
+                    });
+                }
+            });
+
+            function handleCheckboxChange(checkbox, form, ajaxUrl, targetId, typenum) {
+                const allCheckbox = form.querySelector('input[value="alle"]');
+
+                // If any specific filter is selected, uncheck "Alle"
+                if (checkbox.value !== 'alle' && checkbox.checked && allCheckbox) {
+                    allCheckbox.checked = false;
+                    updateLabelStyle(allCheckbox);
+                }
+
+                // If no checkboxes are selected, check "Alle"
+                const specificCheckboxes = form.querySelectorAll('.filter-checkbox:not([value="alle"])');
+                const hasChecked = Array.from(specificCheckboxes).some(cb => cb.checked);
+
+                if (!hasChecked && allCheckbox) {
+                    allCheckbox.checked = true;
+                    updateLabelStyle(allCheckbox);
+                }
+
+                updateLabelStyle(checkbox);
+
+                // Debounce the AJAX call
+                clearTimeout(form.submitTimeout);
+                form.submitTimeout = setTimeout(() => {
+                    submitForm(form, ajaxUrl, targetId, typenum);
+                }, 300);
+            }
+
+            function updateLabelStyle(checkbox) {
+                const label = checkbox.nextElementSibling;
+                if (checkbox.checked) {
+                    label.classList.remove('btn-outline-secondary');
+                    label.classList.add('btn-warning');
+                } else {
+                    label.classList.remove('btn-warning');
+                    label.classList.add('btn-outline-secondary');
+                }
+            }
+
+            function submitForm(form, ajaxUrl, targetId, typenum) {
+                const targetContainer = document.getElementById(targetId);
+                if (!targetContainer) {
+                    console.error(`Target container with ID "${targetId}" not found`);
+                    return;
+                }
+
+                // Build URL
+                let url = ajaxUrl;
+                if (typenum) {
+                    const separator = url.includes('?') ? '&' : '?';
+                    url += `${separator}type=${typenum}`;
+                }
+
+                // Get form data
+                const formData = new FormData(form);
+
+                // Show loading state
+                targetContainer.classList.add('loading');
+
+                fetch(url, {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                        }
+                        return response.text();
+                    })
+                    .then(html => {
+                        const parser = new DOMParser();
+                        const responseDoc = parser.parseFromString(html, 'text/html');
+                        const matchingElement = responseDoc.getElementById(targetId);
+
+                        if (matchingElement) {
+                            targetContainer.innerHTML = matchingElement.innerHTML;
+                        } else {
+                            targetContainer.innerHTML = html;
+                        }
+
+                        // Trigger custom event
+                        targetContainer.dispatchEvent(new CustomEvent('resultsUpdated', {
+                            detail: {
+                                formId: form.id,
+                                filters: Array.from(form.querySelectorAll('.filter-checkbox:checked')).map(cb => cb.value)
+                            }
+                        }));
+                    })
+                    .catch(error => {
+                        console.error('Error loading results:', error);
+                        targetContainer.innerHTML = '<div class="alert alert-danger">Error loading results. Please try again.</div>';
+                    })
+                    .finally(() => {
+                        targetContainer.classList.remove('loading');
+                    });
+            }
+
+            // Initialize label styles on page load
+            document.querySelectorAll('.filter-checkbox').forEach(updateLabelStyle);
+        });*/
+    </script>
+
 </f:section>
 
 </html>

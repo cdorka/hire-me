@@ -191,8 +191,8 @@ return [
                         'value' => 0,
                     ],
                 ],
-                'foreign_table' => 'tx_hireme_domain_model_category',
-                'foreign_table_where' => 'AND {#tx_hireme_domain_model_category}.{#pid}=###CURRENT_PID### AND {#tx_hireme_domain_model_category}.{#sys_language_uid} IN (-1,0)',
+                'foreign_table' => 'tx_hireme_domain_model_physicalrequirement',
+                'foreign_table_where' => 'AND {#tx_hireme_domain_model_physicalrequirement}.{#pid}=###CURRENT_PID### AND {#tx_hireme_domain_model_physicalrequirement}.{#sys_language_uid} IN (-1,0)',
                 'default' => 0,
             ],
         ],
@@ -206,6 +206,21 @@ return [
                 'type' => 'passthrough',
                 'default' => '',
             ],
+        ],
+        'crdate' => [
+            'config' => [
+                'type' => 'passthrough',
+            ]
+        ],
+        'tstamp' => [
+            'config' => [
+                'type' => 'passthrough',
+            ]
+        ],
+        'sorting' => [
+            'config' => [
+                'type' => 'passthrough',
+            ]
         ],
     ],
     'palettes' => [

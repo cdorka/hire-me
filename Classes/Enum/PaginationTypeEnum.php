@@ -14,7 +14,7 @@ declare(strict_types=1);
 
 namespace ChristianDorka\HireMe\Enum;
 
-use ChristianDorka\HireMe\Trait\TcaItemsTrait;
+use ChristianDorka\HireMe\Traits\TcaItemsTrait;
 
 /**
  * TODO

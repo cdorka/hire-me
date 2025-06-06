@@ -30,6 +30,38 @@ return [
         ],
     ],
     'columns' => [
+        // Custom fields from Content Block
+        'title' => [
+            'exclude' => false,
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_department.title',
+            'config' => [
+                'type' => 'input',
+                'size' => 50,
+                'max' => 255,
+                'eval' => 'trim',
+                'required' => true,
+            ],
+        ],
+        'slug' => [
+            'exclude' => false,
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_department.slug',
+            'config' => [
+                'type' => 'slug',
+                'generatorOptions' => [
+                    'fields' => ['title'],
+                    'fieldSeparator' => '-',
+                    'prefixParentPageSlug' => false,
+
+                    'replacements' => \ChristianDorka\HireMe\UserFuncs\FormEngine\ReplacementsProcFunc::generalSlugProcFunc(),
+                ],
+                'fallbackCharacter' => '-',
+                'eval' => 'unique',
+                'default' => '',
+                'required' => true,
+            ],
+        ],
+
+        // System fields
         'hidden' => [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.visible',
@@ -106,8 +138,8 @@ return [
                         'value' => 0,
                     ],
                 ],
-                'foreign_table' => 'tx_hireme_domain_model_department',
-                'foreign_table_where' => 'AND {#tx_hireme_domain_model_department}.{#pid}=###CURRENT_PID### AND {#tx_hireme_domain_model_department}.{#sys_language_uid} IN (-1,0)',
+                'foreign_table' => 'tx_hireme_domain_model_physicalrequirement',
+                'foreign_table_where' => 'AND {#tx_hireme_domain_model_physicalrequirement}.{#pid}=###CURRENT_PID### AND {#tx_hireme_domain_model_physicalrequirement}.{#sys_language_uid} IN (-1,0)',
                 'default' => 0,
             ],
         ],
@@ -122,36 +154,20 @@ return [
                 'default' => '',
             ],
         ],
-
-        // Custom fields from Content Block
-        'title' => [
-            'exclude' => false,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_department.title',
+        'crdate' => [
             'config' => [
-                'type' => 'input',
-                'size' => 50,
-                'max' => 255,
-                'eval' => 'trim',
-                'required' => true,
-            ],
+                'type' => 'passthrough',
+            ]
         ],
-        'slug' => [
-            'exclude' => false,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_department.slug',
+        'tstamp' => [
             'config' => [
-                'type' => 'slug',
-                'generatorOptions' => [
-                    'fields' => ['title'],
-                    'fieldSeparator' => '-',
-                    'prefixParentPageSlug' => false,
-
-                    'replacements' => \ChristianDorka\HireMe\UserFuncs\FormEngine\ReplacementsProcFunc::generalSlugProcFunc(),
-                ],
-                'fallbackCharacter' => '-',
-                'eval' => 'unique',
-                'default' => '',
-                'required' => true,
-            ],
+                'type' => 'passthrough',
+            ]
+        ],
+        'sorting' => [
+            'config' => [
+                'type' => 'passthrough',
+            ]
         ],
     ],
     'palettes' => [

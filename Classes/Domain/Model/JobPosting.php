@@ -14,17 +14,21 @@ declare(strict_types=1);
 
 namespace ChristianDorka\HireMe\Domain\Model;
 
-use ChristianDorka\HireMe\Domain\Trait\ApplicationProperties;
-use ChristianDorka\HireMe\Domain\Trait\CategoriesProperties;
-use ChristianDorka\HireMe\Domain\Trait\LocationsProperty;
-use ChristianDorka\HireMe\Domain\Trait\SalaryProperties;
-use ChristianDorka\HireMe\Domain\Trait\SlugProperty;
-use ChristianDorka\HireMe\Domain\Trait\SystemProperties;
-use ChristianDorka\HireMe\Domain\Trait\TitleProperty;
-use ChristianDorka\HireMe\Enum\Job\EducationRequirements;
-use ChristianDorka\HireMe\Enum\Job\JobLocationType;
+use ChristianDorka\HireMe\Traits\Properties\ApplicationProperties;
+use ChristianDorka\HireMe\Traits\Properties\SalaryProperties;
+use ChristianDorka\HireMe\Traits\Properties\SystemProperties;
+use ChristianDorka\HireMe\Traits\Property\BenefitsProperty;
+use ChristianDorka\HireMe\Traits\Property\EmploymentTypesProperty;
+use ChristianDorka\HireMe\Traits\Property\HiringOrganizationsProperty;
+use ChristianDorka\HireMe\Traits\Property\IncentivesProperty;
+use ChristianDorka\HireMe\Traits\Property\LocationsProperty;
+use ChristianDorka\HireMe\Traits\Property\PhysicalRequirementsProperty;
+use ChristianDorka\HireMe\Traits\Property\ScopesProperty;
+use ChristianDorka\HireMe\Traits\Property\SensoryRequirementsProperty;
+use ChristianDorka\HireMe\Traits\Property\SlugProperty;
+use ChristianDorka\HireMe\Traits\Property\TitleProperty;
+use ChristianDorka\HireMe\Traits\Property\TypesProperty;
 use TYPO3\CMS\Extbase\DomainObject\AbstractDomainObject;
-use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 /**
  * TODO
@@ -40,39 +44,26 @@ class JobPosting extends AbstractDomainObject
     use SystemProperties;
     use TitleProperty;
 
-    protected ?Type $type = null;
-    protected ?Scope $scope = null;
-
     use SlugProperty;
 
-    protected ?Organization $hiringOrganizations = null;
-    protected ?string $jobId = null;
-    protected ?string $employmentType = null; // EmploymentType::class
-    protected ?string $teaser = null;
-    protected ?string $intro = null;
-    protected ?string $eligibilityToWorkRequirement = null;
-    protected ?string $responsibilities = null;
-    protected ?string $qualifications = null;
-    protected ?string $skills = null;
-    protected ?string $workingHours = null;
-    protected ?string $educationRequirementsText = null;
     protected ?string $educationRequirements = null; // EducationRequirements::class
-    protected ?string $experienceRequirementsText = null;
-    protected ?string $incentives = null; // Collection?!
-    /** @var ObjectStorage<Benefit>|null */
-    protected ?ObjectStorage $benefits = null; //
-    protected ?string $physicalRequirements = null; // Collection?!
-    protected ?string $sensoryRequirement = null; // Collection?!
+
     protected ?int $experienceRequirements = null;
 
-    protected ?string $jobLocationType = null; // JobLocationType::
+
 
     use LocationsProperty;
     use SalaryProperties;
     use ApplicationProperties;
 
-
-
+    use HiringOrganizationsProperty;
+    use BenefitsProperty;
+    use TypesProperty;
+    use ScopesProperty;
+    use EmploymentTypesProperty;
+    use IncentivesProperty;
+    use PhysicalRequirementsProperty;
+    use SensoryRequirementsProperty;
 
 
 

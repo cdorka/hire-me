@@ -9,7 +9,7 @@
 
     <f:if condition="{data.tx_hireme_detail_page}">
         <f:then>
-            <f:variable name="link" value="{f:uri.action(pageUid: data.tx_hireme_detail_page, extensionName: 'hire_me', pluginName: 'JobPostingDetails', action: 'detail', controller: 'JobPosting', arguments: '{jobPosting: item.uid}')}"/>
+            <f:variable name="link" value="{f:uri.action(pageUid: data.tx_hireme_detail_page, extensionName: 'HireMe', pluginName: 'JobPostingDetails', action: 'detail', controller: 'JobPosting', arguments: '{jobPosting: jobPosting.uid}')}"/>
         </f:then>
         <f:else>
             <f:variable name="link" value=""/>

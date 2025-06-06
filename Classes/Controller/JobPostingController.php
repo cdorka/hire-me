@@ -6,8 +6,16 @@ use ChristianDorka\HireMe\Domain\DTO\FilterDto;
 use ChristianDorka\HireMe\Domain\Model\JobPosting;
 use ChristianDorka\HireMe\Domain\Repository\JobPostingRepository;
 use ChristianDorka\HireMe\Domain\Repository\TypeRepository;
+use ChristianDorka\HireMe\Utility\ResponseUtility;
+use GuzzleHttp\Psr7\ServerRequest;
 use Psr\Http\Message\ResponseInterface;
+use TYPO3\CMS\Core\Error\Http\PageNotFoundException;
+use TYPO3\CMS\Core\Error\PageErrorHandler\PageContentErrorHandler;
+use TYPO3\CMS\Core\Http\ImmediateResponseException;
+use TYPO3\CMS\Core\Http\NormalizedParams;
+use TYPO3\CMS\Core\Http\ServerRequestFactory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Utility\MathUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Mvc\Controller\MvcPropertyMappingConfiguration;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
@@ -16,10 +24,11 @@ use TYPO3\CMS\Extbase\Property\TypeConverter\ObjectStorageConverter;
 use TYPO3\CMS\Extbase\Property\TypeConverter\PersistentObjectConverter;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3\CMS\Frontend\Controller\ErrorController;
+use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 class JobPostingController extends ActionController
 {
-    private array $commonData = [];
+    private array $data = [];
 
 
     public function __construct(
@@ -38,6 +47,10 @@ class JobPostingController extends ActionController
 
         $currentLanguage = $this->request->getAttribute('language') ?? null;
 
+        DebuggerUtility::var_dump($currentLanguage);
+
+        $this->data = $contentObjectData;
+
         $this->view->assignMultiple([
             'data' => $contentObjectData,
             'language' => $currentLanguage,
@@ -45,25 +58,53 @@ class JobPostingController extends ActionController
     }
 
 
+    /**
+     * TODO
+     *
+     * @param JobPosting|null $jobPosting Optional jobposting to allow custom redirect if page is called without a job
+     *                                    posting provided, instead of typo3 exception
+     *
+     * @return ResponseInterface
+     *
+     * @throws PageNotFoundException|ImmediateResponseException
+     *
+     * @noinspection PhpUnused
+     */
     public function detailAction(?JobPosting $jobPosting = null): ResponseInterface
     {
-        // Option 1: Common data is already assigned via initializeView()
+        // TODO
+        if ($jobPosting === null) {
+            // TODO
+            return ResponseUtility::handleFallbackOrErrorResponse(
+                pid: $this->data['tx_hireme_fallback_page'] ?? null,
+                uriBuilder: $this->uriBuilder,
+                errorMessage: 'Job Posting not found'
+            );
+        }
 
-        // Option 2: If you need action-specific common setup, call:
-        // $this->initializeCommonActionData();
+        // TODO
+        $jobPosting = $this->jobPostingRepository->findByUidWithResult($jobPosting->getUid());
 
-      // if ($jobPosting === null) {
-      //     // TODO error page content is called twice
-      //     /** @var ErrorController $errorController */
-      //     $errorController = GeneralUtility::makeInstance(ErrorController::class);
-      //     return $errorController->pageNotFoundAction($this->request, 'Job Posting not found');
-      // }
+        // TODO
+        if ($jobPosting->isError() ) {
+            return ResponseUtility::handleFallbackOrErrorResponse(
+                pid: $this->data['tx_hireme_fallback_page'] ?? null,
+                uriBuilder: $this->uriBuilder,
+                errorMessage: 'Job Posting not found'
+            );
+        }
+
+        // TODO
+        if (is_countable($jobPosting->getData()) && count($jobPosting->getData()) > 0) {
 
 
-        $this->view->assignMultiple([
-            "jobPosting" => $this->jobPostingRepository->findByConfigWithResult()
-        ]);
 
+            $this->view->assignMultiple([
+                "jobPosting" => $jobPosting->getData()[0],
+            ]);
+        }
+
+        // TODO
         return $this->htmlResponse();
     }
 
@@ -150,11 +191,11 @@ class JobPostingController extends ActionController
         // Common data is already available via initializeView()
 
         // Handle search logic here
-        $searchTerm = $this->request->getArgument('search') ?? '';
+        // $searchTerm = $this->request->getArgument('search') ?? '';
 
         $this->view->assignMultiple([
-            'searchTerm' => $searchTerm,
-            'searchResults' => $searchTerm ? $this->jobPostingRepository->findBySearchTerm($searchTerm) : [],
+            // 'searchTerm' => $searchTerm,
+            // 'searchResults' => $searchTerm ? $this->jobPostingRepository->findBySearchTerm($searchTerm) : [],
         ]);
 
         return $this->htmlResponse();

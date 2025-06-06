@@ -82,6 +82,7 @@ return [
             ],
         ],
 
+        // System fields
         'hidden' => [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.visible',
@@ -158,8 +159,8 @@ return [
                         'value' => 0,
                     ],
                 ],
-                'foreign_table' => 'tx_hireme_domain_model_type',
-                'foreign_table_where' => 'AND {#tx_hireme_domain_model_type}.{#pid}=###CURRENT_PID### AND {#tx_hireme_domain_model_type}.{#sys_language_uid} IN (-1,0)',
+                'foreign_table' => 'tx_hireme_domain_model_physicalrequirement',
+                'foreign_table_where' => 'AND {#tx_hireme_domain_model_physicalrequirement}.{#pid}=###CURRENT_PID### AND {#tx_hireme_domain_model_physicalrequirement}.{#sys_language_uid} IN (-1,0)',
                 'default' => 0,
             ],
         ],
@@ -173,6 +174,21 @@ return [
                 'type' => 'passthrough',
                 'default' => '',
             ],
+        ],
+        'crdate' => [
+            'config' => [
+                'type' => 'passthrough',
+            ]
+        ],
+        'tstamp' => [
+            'config' => [
+                'type' => 'passthrough',
+            ]
+        ],
+        'sorting' => [
+            'config' => [
+                'type' => 'passthrough',
+            ]
         ],
     ],
     'palettes' => [

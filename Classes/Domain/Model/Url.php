@@ -14,9 +14,9 @@ declare(strict_types=1);
 
 namespace ChristianDorka\HireMe\Domain\Model;
 
-use ChristianDorka\HireMe\Domain\Trait\LinkProperty;
-use ChristianDorka\HireMe\Domain\Trait\LinkTypeProperty;
-use ChristianDorka\HireMe\Domain\Trait\SystemProperties;
+use ChristianDorka\HireMe\Traits\Properties\SystemProperties;
+use ChristianDorka\HireMe\Traits\Property\LinkProperty;
+use ChristianDorka\HireMe\Traits\Property\LinkTypeProperty;
 use TYPO3\CMS\Extbase\DomainObject\AbstractDomainObject;
 
 /**

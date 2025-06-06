@@ -132,6 +132,34 @@ ExtensionManagementUtility::addTCAcolumns('tt_content', [
             ],
         ],
     ],
+    "tx_hireme_fallback_page" => [
+        "exclude" => false,
+        "label" => $languageFile . "tt_content.tx_hireme_fallback_page.label",
+        "description" => $languageFile . "tt_content.tx_hireme_fallback_page.description",
+        "config" => [
+            "type" => "group",
+            "internal_type" => "db",
+            "allowed" => "pages",
+            "size" => 1,
+            "maxitems" => 1,
+            "minitems" => 0,
+            "default" => null,
+            "suggestOptions" => [
+                "default" => [
+                    "searchWholePhrase" => true,
+                ],
+            ],
+            "behaviour" => [
+                "allowLanguageSynchronization" => true,
+            ],
+            "eval" => "int,null",
+            "fieldControl" => [
+                "elementBrowser" => [
+                    "disabled" => false,
+                ],
+            ],
+        ],
+    ],
     'tx_hireme_btn_overview_link' => [
         'exclude' => true,
         'label' => $languageFile . 'tt_content.tx_hireme_btn_overview_link.label',
@@ -259,6 +287,17 @@ ExtensionManagementUtility::addTCAcolumns('tt_content', [
         'config' => [
             'type' => 'check',
             'renderType' => 'checkboxToggle',
+        ],
+    ],
+    'tx_hireme_date_format' => [
+        'exclude' => true,
+        'label' => $languageFile . 'tt_content.tx_hireme_show_direct_apply_link.label',
+        'description' => $languageFile . 'tt_content.tx_hireme_show_direct_apply_link.description',
+        "config" => [
+            "type" => "select",
+            "renderType" => "selectSingle",
+            "items" => \ChristianDorka\HireMe\Enum\DateFormat::getTcaItems(),
+            "default" => \ChristianDorka\HireMe\Enum\DateFormat::FULL_DATE->value,
         ],
     ],
 ]);
@@ -944,6 +983,7 @@ ExtensionManagementUtility::addToAllTCAtypes(
     'tt_content',
     'tx_hireme_header,
         tx_hireme_text,
+        tx_hireme_date_format,
         tx_hireme_detail_page,
         tx_hireme_results_limit,
         tx_hireme_hide_newtime,
@@ -965,6 +1005,7 @@ ExtensionManagementUtility::addToAllTCAtypes(
     'tt_content',
     'tx_hireme_header,
         tx_hireme_text,
+        tx_hireme_date_format,
         tx_hireme_hide_newtime,
         tx_hireme_hide_toptime,
         tx_hireme_hide_filter,
@@ -973,5 +1014,23 @@ ExtensionManagementUtility::addToAllTCAtypes(
         tx_hireme_hide_orderby,
         tx_hireme_show_direct_apply_link,',
     'hireme_jobpostingsearch',
+    'after:subheader',
+);
+
+
+
+ExtensionManagementUtility::addToAllTCAtypes(
+    'tt_content',
+    'tx_hireme_fallback_page,
+        tx_hireme_date_format,
+        tx_hireme_hide_newtime,
+        tx_hireme_hide_toptime,
+        tx_hireme_hide_valid_through,
+        tx_hireme_hide_job_start_date,
+        tx_hireme_hide_location,
+        tx_hireme_hide_companies,
+        tx_hireme_btn_overview_link,
+        tx_hireme_btn_overview_text,',
+    'hireme_jobpostingdetails',
     'after:subheader',
 );

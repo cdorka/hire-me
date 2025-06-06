@@ -146,7 +146,6 @@ return [
                     'fields' => ['title'],
                     'fieldSeparator' => '-',
                     'prefixParentPageSlug' => false,
-
                     'replacements' => \ChristianDorka\HireMe\UserFuncs\FormEngine\ReplacementsProcFunc::generalSlugProcFunc(),
                 ],
                 'fallbackCharacter' => '-',

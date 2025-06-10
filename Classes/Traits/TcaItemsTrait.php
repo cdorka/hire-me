@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 namespace ChristianDorka\HireMe\Traits;
+
 /**
  * Provides methods to convert PHP Enums to TYPO3 TCA items arrays
  */
@@ -11,12 +12,15 @@ trait TcaItemsTrait
     /**
      * Generate TCA configuration array for TYPO3
      *
-     * @param bool $includeEmpty Whether to include an empty option at the beginning
-     * @param string|null $emptyLabel Label for the empty option (defaults to "Please select")
+     * @param bool        $includeEmpty Whether to include an empty option at the beginning
+     * @param string|null $emptyLabel   Label for the empty option (defaults to "Please select")
+     *
      * @return array The TCA configuration array
      */
-    public static function getTcaItems(bool $includeEmpty = false, ?string $emptyLabel = 'LLL:EXT:core/Resources/Private/Language/locallang_core.xlf:labels.pleaseSelect'): array
-    {
+    public static function getTcaItems(
+        bool $includeEmpty = false,
+        ?string $emptyLabel = 'LLL:EXT:core/Resources/Private/Language/locallang_core.xlf:labels.pleaseSelect'
+    ): array {
         $items = [];
 
         // Add empty option if requested
@@ -47,7 +51,8 @@ trait TcaItemsTrait
     public function getLabel(): string
     {
         // Generate the standard label path
-        return sprintf('%s:%s.items.%s.label',
+        return sprintf(
+            '%s:%s.items.%s.label',
             static::EXT_LANGUAGE_FILE_PATH,
             static::LABEL_KEY,
             $this->name

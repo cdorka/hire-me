@@ -77,6 +77,17 @@ return [
                 'MM_opposite_field' => 'job_postings',
                 'minitems' => 0,
                 'maxitems' => 9999,
+                'fieldControl' => [
+                    'editPopup' => [
+                        'disabled' => false,
+                    ],
+                    'addRecord' => [
+                        'disabled' => false,
+                    ],
+                    'listModule' => [
+                        'disabled' => false,
+                    ],
+                ],
             ],
         ],
         'scopes' => [
@@ -93,6 +104,17 @@ return [
                 'MM_opposite_field' => 'job_postings',
                 'minitems' => 0,
                 'maxitems' => 9999,
+                'fieldControl' => [
+                    'editPopup' => [
+                        'disabled' => false,
+                    ],
+                    'addRecord' => [
+                        'disabled' => false,
+                    ],
+                    'listModule' => [
+                        'disabled' => false,
+                    ],
+                ],
             ],
         ],
         'slug' => [
@@ -137,6 +159,17 @@ return [
                 'MM_opposite_field' => 'job_postings',
                 'minitems' => 0,
                 'maxitems' => 9999,
+                'fieldControl' => [
+                    'editPopup' => [
+                        'disabled' => false,
+                    ],
+                    'addRecord' => [
+                        'disabled' => false,
+                    ],
+                    'listModule' => [
+                        'disabled' => false,
+                    ],
+                ],
             ],
         ],
         'job_id' => [
@@ -216,8 +249,7 @@ return [
             'description' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_jobposting.responsibilities.description',
             'config' => [
                 'type' => 'text',
-                'cols' => 50,
-                'rows' => 5,
+                'enableRichtext' => true,
             ],
         ],
         'qualifications' => [
@@ -226,8 +258,7 @@ return [
             'description' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_jobposting.qualifications.description',
             'config' => [
                 'type' => 'text',
-                'cols' => 50,
-                'rows' => 5,
+                'enableRichtext' => true,
             ],
         ],
         'skills' => [
@@ -236,8 +267,7 @@ return [
             'description' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_jobposting.skills.description',
             'config' => [
                 'type' => 'text',
-                'cols' => 50,
-                'rows' => 5,
+                'enableRichtext' => true,
             ],
         ],
         'working_hours' => [
@@ -246,8 +276,7 @@ return [
             'description' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_jobposting.working_hours.description',
             'config' => [
                 'type' => 'text',
-                'cols' => 50,
-                'rows' => 3,
+                'enableRichtext' => true,
             ],
         ],
         'education_requirements_text' => [
@@ -320,6 +349,17 @@ return [
                 'MM' => 'tx_hireme_domain_model_jobposting_incentive_mm',
                 'minitems' => 0,
                 'maxitems' => 9999,
+                'fieldControl' => [
+                    'editPopup' => [
+                        'disabled' => false,
+                    ],
+                    'addRecord' => [
+                        'disabled' => false,
+                    ],
+                    'listModule' => [
+                        'disabled' => false,
+                    ],
+                ],
             ],
         ],
         'benefits' => [
@@ -335,6 +375,17 @@ return [
                 'MM' => 'tx_hireme_domain_model_jobposting_benefit_mm',
                 'minitems' => 0,
                 'maxitems' => 9999,
+                'fieldControl' => [
+                    'editPopup' => [
+                        'disabled' => false,
+                    ],
+                    'addRecord' => [
+                        'disabled' => false,
+                    ],
+                    'listModule' => [
+                        'disabled' => false,
+                    ],
+                ],
             ],
         ],
         'physical_requirements' => [
@@ -350,6 +401,17 @@ return [
                 'MM' => 'tx_hireme_domain_model_jobposting_physicalrequirement_mm',
                 'minitems' => 0,
                 'maxitems' => 9999,
+                'fieldControl' => [
+                    'editPopup' => [
+                        'disabled' => false,
+                    ],
+                    'addRecord' => [
+                        'disabled' => false,
+                    ],
+                    'listModule' => [
+                        'disabled' => false,
+                    ],
+                ],
             ],
         ],
         'sensory_requirements' => [
@@ -365,6 +427,17 @@ return [
                 'MM' => 'tx_hireme_domain_model_jobposting_sensoryrequirement_mm',
                 'minitems' => 0,
                 'maxitems' => 9999,
+                'fieldControl' => [
+                    'editPopup' => [
+                        'disabled' => false,
+                    ],
+                    'addRecord' => [
+                        'disabled' => false,
+                    ],
+                    'listModule' => [
+                        'disabled' => false,
+                    ],
+                ],
             ],
         ],
         'job_location_type' => [
@@ -392,6 +465,17 @@ return [
                 'minitems' => 1,
                 'size' => 10,
                 'maxitems' => 9999,
+                'fieldControl' => [
+                    'editPopup' => [
+                        'disabled' => false,
+                    ],
+                    'addRecord' => [
+                        'disabled' => false,
+                    ],
+                    'listModule' => [
+                        'disabled' => false,
+                    ],
+                ],
             ],
         ],
         'applicant_location_requirements' => [

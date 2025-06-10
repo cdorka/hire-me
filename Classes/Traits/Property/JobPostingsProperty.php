@@ -1,14 +1,5 @@
 <?php
 
-/**
- * TODO
- * php version 8.2
- *
- * @category     TODO
- * @package      TODO
- * @license      TODO
- * @author       Christian Dorka <mail@christiandorka.de>
- */
 
 declare(strict_types=1);
 
@@ -17,15 +8,7 @@ namespace ChristianDorka\HireMe\Traits\Property;
 use ChristianDorka\HireMe\Domain\Model\JobPosting;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
-/**
- * TODO
- *
- * @category TODO
- * @package  TODO
- * @author   Christian Dorka <mail@christiandorka.de>
- * @license  TODO
- * @link     TODO
- */
+
 trait JobPostingsProperty
 {
     /**
@@ -34,27 +17,15 @@ trait JobPostingsProperty
     protected ?ObjectStorage $jobPostings = null;
 
     /**
-     * @param ObjectStorage<JobPosting>|null $jobPostings
-     *
-     * @return self
-     */
-    public function setJobPostings(?ObjectStorage $jobPostings): self
-    {
-        $this->jobPostings = $jobPostings;
-        return $this;
-    }
-
-    /**
      * Add a jobPosting to the storage
      *
      * @param JobPosting $jobPosting
      *
-     * @return self
+     * @return void
      */
-    public function addJobPosting(JobPosting $jobPosting): self
+    public function addJobPosting(JobPosting $jobPosting): void
     {
         $this->jobPostings->attach($jobPosting);
-        return $this;
     }
 
     /**
@@ -62,23 +33,21 @@ trait JobPostingsProperty
      *
      * @param JobPosting $jobPosting
      *
-     * @return self
+     * @return void
      */
-    public function removeJobPosting(JobPosting $jobPosting): self
+    public function removeJobPosting(JobPosting $jobPosting): void
     {
         $this->jobPostings->detach($jobPosting);
-        return $this;
     }
 
     /**
      * Remove all jobPostings from the storage
      *
-     * @return self
+     * @return void
      */
-    public function removeAllJobPostings(): self
+    public function removeAllJobPostings(): void
     {
         $this->jobPostings = new ObjectStorage();
-        return $this;
     }
 
     /**
@@ -89,5 +58,15 @@ trait JobPostingsProperty
     public function getJobPostings(): ?array
     {
         return $this->jobPostings?->toArray();
+    }
+
+    /**
+     * @param ObjectStorage<JobPosting>|null $jobPostings
+     *
+     * @return void
+     */
+    public function setJobPostings(?ObjectStorage $jobPostings): void
+    {
+        $this->jobPostings = $jobPostings;
     }
 }

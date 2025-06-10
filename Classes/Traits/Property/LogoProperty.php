@@ -1,32 +1,13 @@
 <?php
 
-/**
- * TODO
- * php version 8.2
- *
- * @category     TODO
- * @package      TODO
- * @license      TODO
- * @author       Christian Dorka <mail@christiandorka.de>
- */
 
 declare(strict_types=1);
 
 namespace ChristianDorka\HireMe\Traits\Property;
 
-use ChristianDorka\HireMe\Domain\Model\Category;
-use RuntimeException;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 
-/**
- * TODO
- *
- * @category TODO
- * @package  TODO
- * @author   Christian Dorka <mail@christiandorka.de>
- * @license  TODO
- * @link     TODO
- */
+
 trait LogoProperty
 {
     protected ?FileReference $logo = null;
@@ -36,9 +17,8 @@ trait LogoProperty
         return $this->logo;
     }
 
-    public function setLogo(?FileReference $logo): self
+    public function setLogo(?FileReference $logo): void
     {
         $this->logo = $logo;
-        return $this;
     }
 }

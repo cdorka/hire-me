@@ -24,29 +24,19 @@ enum EmploymentType: int implements LanguageFilePaths
     case PART_TIME = 1;
 
     /**
-     * Contractor or freelance
-     */
-    case CONTRACTOR = 2;
-
-    /**
      * Temporary employment
      */
-    case TEMPORARY = 3;
+    case TEMPORARY = 2;
 
     /**
      * Internship
      */
-    case INTERN = 4;
+    case INTERN = 3;
 
     /**
      * Volunteer position
      */
-    case VOLUNTEER = 5;
-
-    /**
-     * Other employment type
-     */
-    case OTHER = 6;
+    case VOLUNTEER = 4;
 
     /**
      * Path to the language file

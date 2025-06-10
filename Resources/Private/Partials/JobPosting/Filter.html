@@ -19,25 +19,27 @@
         </div>
         <div class="card-body">
             <!-- Job Type Filter -->
-            <div class="mb-4">
-                <h6 class="fw-bold">Anstellungsart</h6>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="vollzeit" checked>
-                    <label class="form-check-label" for="vollzeit">Vollzeit</label>
+            <f:if condition="{employmentTypes}">
+                <div class="mb-4">
+                    <h6 class="fw-bold">Anstellungsart</h6>
+                    <f:for each="{employmentTypes}" as="employmentType">
+                        <div class="form-check">
+                            <f:form.checkbox
+                                property="employmentTypes"
+                                value="{employmentType}"
+                                id="c{data.uid}-employmentType-{employmentType}"
+                                class="form-check-input"/>
+                            <label class="form-check-label" for="c{data.uid}-employmentType-{employmentType}">
+                                <f:translate key="jobPostingSearch.employmentTypes.items.{employmentType}.label" />
+                            </label>
+                        </div>
+                    </f:for>
                 </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="teilzeit">
-                    <label class="form-check-label" for="teilzeit">Teilzeit</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="remote">
-                    <label class="form-check-label" for="remote">Remote</label>
-                </div>
-            </div>
+            </f:if>
 
             <!-- Career Level -->
             <div class="mb-4">
-                <h6 class="fw-bold">Karrierelevel</h6>
+                <h6 class="fw-bold">Scope</h6>
                 <select class="form-select">
                     <option selected>Alle Level</option>
                     <option>Berufseinsteiger</option>
@@ -46,6 +48,25 @@
                     <option>Lead/Manager</option>
                 </select>
             </div>
+
+            <!-- Career Level -->
+            <f:if condition="{careerLevels}">
+                <div class="mb-4">
+                    <h6 class="fw-bold">Karrierelevel</h6>
+                    <f:for each="{careerLevels}" as="careerLevel">
+                        <div class="form-check">
+                            <f:form.checkbox
+                                property="careerLevels"
+                                value="{careerLevel}"
+                                id="c{data.uid}-careerLevel-{careerLevel}"
+                                class="form-check-input"/>
+                            <label class="form-check-label" for="c{data.uid}-careerLevel-{careerLevel}">
+                                <f:translate key="jobPostingSearch.careerLevels.items.{careerLevel}.label" />
+                            </label>
+                        </div>
+                    </f:for>
+                </div>
+            </f:if>
 
             <!-- Department -->
             <div class="mb-4">

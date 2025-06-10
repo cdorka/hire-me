@@ -1,14 +1,5 @@
 <?php
 
-/**
- * TODO
- * php version 8.2
- *
- * @category     TODO
- * @package      TODO
- * @license      TODO
- * @author       Christian Dorka <mail@christiandorka.de>
- */
 
 declare(strict_types=1);
 
@@ -17,31 +8,13 @@ namespace ChristianDorka\HireMe\Traits\Property;
 use ChristianDorka\HireMe\Domain\Model\SensoryRequirement;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
-/**
- * TODO
- *
- * @category TODO
- * @package  TODO
- * @author   Christian Dorka <mail@christiandorka.de>
- * @license  TODO
- * @link     TODO
- */
+
 trait SensoryRequirementsProperty
 {
     /**
      * @var ObjectStorage<SensoryRequirement>|null
      */
     protected ?ObjectStorage $sensoryRequirements = null;
-
-    /**
-     * @param ObjectStorage<SensoryRequirement>|null $sensoryRequirements
-     *
-     * @return void
-     */
-    public function setSensoryRequirements(?ObjectStorage $sensoryRequirements): void
-    {
-        $this->sensoryRequirements = $sensoryRequirements;
-    }
 
     /**
      * Add a sensoryRequirement to the storage
@@ -90,6 +63,16 @@ trait SensoryRequirementsProperty
     public function getSensoryRequirements(): ?ObjectStorage
     {
         return $this->sensoryRequirements;
+    }
+
+    /**
+     * @param ObjectStorage<SensoryRequirement>|null $sensoryRequirements
+     *
+     * @return void
+     */
+    public function setSensoryRequirements(?ObjectStorage $sensoryRequirements): void
+    {
+        $this->sensoryRequirements = $sensoryRequirements;
     }
 
     /**

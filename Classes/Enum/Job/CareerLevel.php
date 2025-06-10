@@ -13,12 +13,11 @@ enum CareerLevel: int implements LanguageFilePaths
 {
     use EnumTcaTrait;
 
-    case ALL = 0;
-    case CAREER_STARTER = 1;
-    case JUNIOR = 2;
-    case MID_LEVEL = 3;
-    case SENIOR = 4;
-    case LEAD_MANAGER = 5;
+    case CAREER_STARTER = 0;
+    case JUNIOR = 1;
+    case MID_LEVEL = 2;
+    case SENIOR = 3;
+    case LEAD_MANAGER = 4;
 
     /**
      * Path to the language file

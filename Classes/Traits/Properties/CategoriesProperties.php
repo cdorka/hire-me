@@ -1,14 +1,5 @@
 <?php
 
-/**
- * TODO
- * php version 8.2
- *
- * @category     TODO
- * @package      TODO
- * @license      TODO
- * @author       Christian Dorka <mail@christiandorka.de>
- */
 
 declare(strict_types=1);
 
@@ -17,15 +8,7 @@ namespace ChristianDorka\HireMe\Traits\Properties;
 use ChristianDorka\HireMe\Domain\Model\Category;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
-/**
- * TODO
- *
- * @category TODO
- * @package  TODO
- * @author   Christian Dorka <mail@christiandorka.de>
- * @license  TODO
- * @link     TODO
- */
+
 trait CategoriesProperties
 {
     /**
@@ -34,27 +17,15 @@ trait CategoriesProperties
     protected ?ObjectStorage $categories = null;
 
     /**
-     * @param ObjectStorage<Category>|null $categories
-     *
-     * @return self
-     */
-    public function setCategories(?ObjectStorage $categories): self
-    {
-        $this->categories = $categories;
-        return $this;
-    }
-
-    /**
      * Add a category to the storage
      *
      * @param Category $category
      *
-     * @return self
+     * @return void
      */
-    public function addCategory(Category $category): self
+    public function addCategory(Category $category): void
     {
         $this->categories->attach($category);
-        return $this;
     }
 
     /**
@@ -62,23 +33,21 @@ trait CategoriesProperties
      *
      * @param Category $category
      *
-     * @return self
+     * @return void
      */
-    public function removeCategory(Category $category): self
+    public function removeCategory(Category $category): void
     {
         $this->categories->detach($category);
-        return $this;
     }
 
     /**
      * Remove all categories from the storage
      *
-     * @return self
+     * @return void
      */
-    public function removeAllCategories(): self
+    public function removeAllCategories(): void
     {
         $this->categories = new ObjectStorage();
-        return $this;
     }
 
     /**
@@ -89,5 +58,15 @@ trait CategoriesProperties
     public function getCategories(): ?array
     {
         return $this->categories?->toArray();
+    }
+
+    /**
+     * @param ObjectStorage<Category>|null $categories
+     *
+     * @return void
+     */
+    public function setCategories(?ObjectStorage $categories): void
+    {
+        $this->categories = $categories;
     }
 }

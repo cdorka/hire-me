@@ -1,14 +1,5 @@
 <?php
 
-/**
- * TODO
- * php version 8.2
- *
- * @category     TODO
- * @package      TODO
- * @license      TODO
- * @author       Christian Dorka <mail@christiandorka.de>
- */
 
 declare(strict_types=1);
 
@@ -17,15 +8,7 @@ namespace ChristianDorka\HireMe\Traits\Property;
 use ChristianDorka\HireMe\Domain\Model\Url;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
-/**
- * TODO
- *
- * @category TODO
- * @package  TODO
- * @author   Christian Dorka <mail@christiandorka.de>
- * @license  TODO
- * @link     TODO
- */
+
 trait UrlsProperty
 {
     /**
@@ -34,27 +17,15 @@ trait UrlsProperty
     protected ?ObjectStorage $urls = null;
 
     /**
-     * @param ObjectStorage<Url>|null $urls
-     *
-     * @return self
-     */
-    public function setUrls(?ObjectStorage $urls): self
-    {
-        $this->urls = $urls;
-        return $this;
-    }
-
-    /**
      * Add a url to the storage
      *
      * @param Url $url
      *
-     * @return self
+     * @return void
      */
-    public function addUrl(Url $url): self
+    public function addUrl(Url $url): void
     {
         $this->urls->attach($url);
-        return $this;
     }
 
     /**
@@ -62,23 +33,21 @@ trait UrlsProperty
      *
      * @param Url $url
      *
-     * @return self
+     * @return void
      */
-    public function removeUrl(Url $url): self
+    public function removeUrl(Url $url): void
     {
         $this->urls->detach($url);
-        return $this;
     }
 
     /**
      * Remove all urls from the storage
      *
-     * @return self
+     * @return void
      */
-    public function removeAllUrls(): self
+    public function removeAllUrls(): void
     {
         $this->urls = new ObjectStorage();
-        return $this;
     }
 
     /**
@@ -89,5 +58,15 @@ trait UrlsProperty
     public function getUrls(): ?array
     {
         return $this->urls?->toArray();
+    }
+
+    /**
+     * @param ObjectStorage<Url>|null $urls
+     *
+     * @return void
+     */
+    public function setUrls(?ObjectStorage $urls): void
+    {
+        $this->urls = $urls;
     }
 }

@@ -1,34 +1,13 @@
 <?php
 
-/**
- * TODO
- * php version 8.2
- *
- * @category     TODO
- * @package      TODO
- * @license      TODO
- * @author       Christian Dorka <mail@christiandorka.de>
- */
 
 declare(strict_types=1);
 
 namespace ChristianDorka\HireMe\Traits\Properties;
 
-use ChristianDorka\HireMe\Domain\Model\Category;
-use ChristianDorka\HireMe\Domain\Model\Country;
 use DateTime;
-use RuntimeException;
-use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
-/**
- * TODO
- *
- * @category TODO
- * @package  TODO
- * @author   Christian Dorka <mail@christiandorka.de>
- * @license  TODO
- * @link     TODO
- */
+
 trait ApplicationProperties
 {
     protected ?string $intro = null;
@@ -57,6 +36,11 @@ trait ApplicationProperties
         return $this->toptime;
     }
 
+    public function setToptime(?DateTime $toptime): void
+    {
+        $this->toptime = $toptime;
+    }
+
     public function getEligibilityToWorkRequirement(): ?string
     {
         return $this->eligibilityToWorkRequirement;
@@ -76,7 +60,6 @@ trait ApplicationProperties
     {
         $this->experienceRequirementsText = $experienceRequirementsText;
     }
-
 
     public function getResponsibilities(): ?string
     {
@@ -128,8 +111,6 @@ trait ApplicationProperties
         $this->workingHours = $workingHours;
     }
 
-
-
     /** if is it still top */
     public function isTop(): bool
     {
@@ -140,14 +121,14 @@ trait ApplicationProperties
         return new DateTime() <= time();
     }
 
-    public function setToptime(?DateTime $toptime): void
-    {
-        $this->toptime = $toptime;
-    }
-
     public function getNewtime(): ?DateTime
     {
         return $this->newtime;
+    }
+
+    public function setNewtime(?DateTime $newtime): void
+    {
+        $this->newtime = $newtime;
     }
 
     public function getIntro(): ?string
@@ -170,7 +151,6 @@ trait ApplicationProperties
         $this->teaser = $teaser;
     }
 
-
     /** if is it still new */
     public function isNew(): bool
     {
@@ -181,20 +161,14 @@ trait ApplicationProperties
         return new DateTime() <= time();
     }
 
-    public function setNewtime(?DateTime $newtime): void
-    {
-        $this->newtime = $newtime;
-    }
-
     public function getStarttime(): ?DateTime
     {
         return $this->starttime;
     }
 
-    public function setStarttime(?DateTime $starttime): ApplicationProperties
+    public function setStarttime(?DateTime $starttime): void
     {
         $this->starttime = $starttime;
-        return $this;
     }
 
     public function getValidThrough(): ?DateTime
@@ -202,10 +176,9 @@ trait ApplicationProperties
         return $this->validThrough;
     }
 
-    public function setValidThrough(?DateTime $validThrough): ApplicationProperties
+    public function setValidThrough(?DateTime $validThrough): void
     {
         $this->validThrough = $validThrough;
-        return $this;
     }
 
     public function getJobImmediateStart(): bool
@@ -213,10 +186,9 @@ trait ApplicationProperties
         return $this->jobImmediateStart;
     }
 
-    public function setJobImmediateStart(bool $jobImmediateStart): ApplicationProperties
+    public function setJobImmediateStart(bool $jobImmediateStart): void
     {
         $this->jobImmediateStart = $jobImmediateStart;
-        return $this;
     }
 
     public function getJobStartDate(): ?DateTime
@@ -224,10 +196,9 @@ trait ApplicationProperties
         return $this->jobStartDate;
     }
 
-    public function setJobStartDate(?DateTime $jobStartDate): ApplicationProperties
+    public function setJobStartDate(?DateTime $jobStartDate): void
     {
         $this->jobStartDate = $jobStartDate;
-        return $this;
     }
 
     public function getHasDirectApply(): bool
@@ -235,10 +206,9 @@ trait ApplicationProperties
         return $this->hasDirectApply;
     }
 
-    public function setHasDirectApply(bool $hasDirectApply): ApplicationProperties
+    public function setHasDirectApply(bool $hasDirectApply): void
     {
         $this->hasDirectApply = $hasDirectApply;
-        return $this;
     }
 
     public function getJobId(): ?string
@@ -250,8 +220,6 @@ trait ApplicationProperties
     {
         $this->jobId = $jobId;
     }
-
-
 
 
 }

@@ -1,14 +1,5 @@
 <?php
 
-/**
- * TODO
- * php version 8.2
- *
- * @category     TODO
- * @package      TODO
- * @license      TODO
- * @author       Christian Dorka <mail@christiandorka.de>
- */
 
 declare(strict_types=1);
 
@@ -17,15 +8,7 @@ namespace ChristianDorka\HireMe\Traits\Property;
 use ChristianDorka\HireMe\Domain\Model\Organization;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
-/**
- * TODO
- *
- * @category TODO
- * @package  TODO
- * @author   Christian Dorka <mail@christiandorka.de>
- * @license  TODO
- * @link     TODO
- */
+
 trait HiringOrganizationsProperty
 {
     /**
@@ -34,30 +17,18 @@ trait HiringOrganizationsProperty
     protected ?ObjectStorage $hiringOrganizations = null;
 
     /**
-     * @param ObjectStorage<Organization>|null $hiringOrganizations
-     *
-     * @return self
-     */
-    public function setHiringOrganizations(?ObjectStorage $hiringOrganizations): self
-    {
-        $this->hiringOrganizations = $hiringOrganizations;
-        return $this;
-    }
-
-    /**
      * Add an organization to the storage
      *
      * @param Organization $organization
      *
-     * @return self
+     * @return void
      */
-    public function addHiringOrganization(Organization $organization): self
+    public function addHiringOrganization(Organization $organization): void
     {
         if ($this->hiringOrganizations === null) {
             $this->hiringOrganizations = new ObjectStorage();
         }
         $this->hiringOrganizations->attach($organization);
-        return $this;
     }
 
     /**
@@ -65,25 +36,23 @@ trait HiringOrganizationsProperty
      *
      * @param Organization $organization
      *
-     * @return self
+     * @return void
      */
-    public function removeHiringOrganization(Organization $organization): self
+    public function removeHiringOrganization(Organization $organization): void
     {
         if ($this->hiringOrganizations !== null) {
             $this->hiringOrganizations->detach($organization);
         }
-        return $this;
     }
 
     /**
      * Remove all hiringOrganizations from the storage
      *
-     * @return self
+     * @return void
      */
-    public function removeAllHiringOrganizations(): self
+    public function removeAllHiringOrganizations(): void
     {
         $this->hiringOrganizations = new ObjectStorage();
-        return $this;
     }
 
     /**
@@ -94,6 +63,16 @@ trait HiringOrganizationsProperty
     public function getHiringOrganizations(): ?ObjectStorage
     {
         return $this->hiringOrganizations;
+    }
+
+    /**
+     * @param ObjectStorage<Organization>|null $hiringOrganizations
+     *
+     * @return void
+     */
+    public function setHiringOrganizations(?ObjectStorage $hiringOrganizations): void
+    {
+        $this->hiringOrganizations = $hiringOrganizations;
     }
 
     /**

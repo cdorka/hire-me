@@ -1,35 +1,15 @@
 <?php
 
-/**
- * TODO
- * php version 8.2
- *
- * @category     TODO
- * @package      TODO
- * @license      TODO
- * @author       Christian Dorka <mail@christiandorka.de>
- */
 
 declare(strict_types=1);
 
 namespace ChristianDorka\HireMe\Traits\Properties;
 
-use ChristianDorka\HireMe\Domain\Model\Category;
 use ChristianDorka\HireMe\Enum\Salary\SalaryCurrency;
 use ChristianDorka\HireMe\Enum\Salary\SalaryType;
 use ChristianDorka\HireMe\Enum\Salary\SalaryUnit;
-use DateTime;
-use RuntimeException;
 
-/**
- * TODO
- *
- * @category TODO
- * @package  TODO
- * @author   Christian Dorka <mail@christiandorka.de>
- * @license  TODO
- * @link     TODO
- */
+
 trait SalaryProperties
 {
     protected ?bool $hasBaseSalary = null;
@@ -45,10 +25,9 @@ trait SalaryProperties
         return $this->hasBaseSalary;
     }
 
-    public function setHasBaseSalary(?bool $hasBaseSalary): self
+    public function setHasBaseSalary(?bool $hasBaseSalary): void
     {
         $this->hasBaseSalary = $hasBaseSalary;
-        return $this;
     }
 
     public function getBaseSalaryType(): ?SalaryType
@@ -56,10 +35,9 @@ trait SalaryProperties
         return SalaryType::tryFrom($this->baseSalaryType);
     }
 
-    public function setBaseSalaryType(?int $baseSalaryType): self
+    public function setBaseSalaryType(?int $baseSalaryType): void
     {
         $this->baseSalaryType = $baseSalaryType;
-        return $this;
     }
 
     public function getBaseSalary(): ?float
@@ -67,10 +45,9 @@ trait SalaryProperties
         return $this->baseSalary;
     }
 
-    public function setBaseSalary(?float $baseSalary): self
+    public function setBaseSalary(?float $baseSalary): void
     {
         $this->baseSalary = $baseSalary;
-        return $this;
     }
 
     public function getBaseSalaryMin(): ?float
@@ -78,10 +55,9 @@ trait SalaryProperties
         return $this->baseSalaryMin;
     }
 
-    public function setBaseSalaryMin(?float $baseSalaryMin): self
+    public function setBaseSalaryMin(?float $baseSalaryMin): void
     {
         $this->baseSalaryMin = $baseSalaryMin;
-        return $this;
     }
 
     public function getBaseSalaryMax(): ?float
@@ -89,10 +65,9 @@ trait SalaryProperties
         return $this->baseSalaryMax;
     }
 
-    public function setBaseSalaryMax(?float $baseSalaryMax): self
+    public function setBaseSalaryMax(?float $baseSalaryMax): void
     {
         $this->baseSalaryMax = $baseSalaryMax;
-        return $this;
     }
 
     public function getBaseSalaryUnit(): ?SalaryUnit
@@ -100,10 +75,9 @@ trait SalaryProperties
         return SalaryUnit::tryFrom($this->baseSalaryUnit);
     }
 
-    public function setBaseSalaryUnit(?int $baseSalaryUnit): self
+    public function setBaseSalaryUnit(?int $baseSalaryUnit): void
     {
         $this->baseSalaryUnit = $baseSalaryUnit;
-        return $this;
     }
 
     public function getBaseSalaryCurrency(): ?SalaryCurrency
@@ -111,9 +85,8 @@ trait SalaryProperties
         return SalaryCurrency::tryFrom($this->baseSalaryCurrency);
     }
 
-    public function setBaseSalaryCurrency(?int $baseSalaryCurrency): self
+    public function setBaseSalaryCurrency(?int $baseSalaryCurrency): void
     {
         $this->baseSalaryCurrency = $baseSalaryCurrency;
-        return $this;
     }
 }

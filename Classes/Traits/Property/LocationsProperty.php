@@ -1,14 +1,5 @@
 <?php
 
-/**
- * TODO
- * php version 8.2
- *
- * @category     TODO
- * @package      TODO
- * @license      TODO
- * @author       Christian Dorka <mail@christiandorka.de>
- */
 
 declare(strict_types=1);
 
@@ -17,15 +8,7 @@ namespace ChristianDorka\HireMe\Traits\Property;
 use ChristianDorka\HireMe\Domain\Model\Location;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
-/**
- * TODO
- *
- * @category TODO
- * @package  TODO
- * @author   Christian Dorka <mail@christiandorka.de>
- * @license  TODO
- * @link     TODO
- */
+
 trait LocationsProperty
 {
     /**
@@ -34,27 +17,15 @@ trait LocationsProperty
     protected ?ObjectStorage $locations = null;
 
     /**
-     * @param ObjectStorage<Location>|null $locations
-     *
-     * @return self
-     */
-    public function setLocations(?ObjectStorage $locations): self
-    {
-        $this->locations = $locations;
-        return $this;
-    }
-
-    /**
      * Add a location to the storage
      *
      * @param Location $location
      *
-     * @return self
+     * @return void
      */
-    public function addLocation(Location $location): self
+    public function addLocation(Location $location): void
     {
         $this->locations->attach($location);
-        return $this;
     }
 
     /**
@@ -62,23 +33,21 @@ trait LocationsProperty
      *
      * @param Location $location
      *
-     * @return self
+     * @return void
      */
-    public function removeLocation(Location $location): self
+    public function removeLocation(Location $location): void
     {
         $this->locations->detach($location);
-        return $this;
     }
 
     /**
      * Remove all locations from the storage
      *
-     * @return self
+     * @return void
      */
-    public function removeAllLocations(): self
+    public function removeAllLocations(): void
     {
         $this->locations = new ObjectStorage();
-        return $this;
     }
 
     /**
@@ -89,5 +58,15 @@ trait LocationsProperty
     public function getLocations(): ?array
     {
         return $this->locations?->toArray();
+    }
+
+    /**
+     * @param ObjectStorage<Location>|null $locations
+     *
+     * @return void
+     */
+    public function setLocations(?ObjectStorage $locations): void
+    {
+        $this->locations = $locations;
     }
 }

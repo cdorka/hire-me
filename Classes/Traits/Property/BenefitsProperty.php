@@ -1,14 +1,5 @@
 <?php
 
-/**
- * TODO
- * php version 8.2
- *
- * @category     TODO
- * @package      TODO
- * @license      TODO
- * @author       Christian Dorka <mail@christiandorka.de>
- */
 
 declare(strict_types=1);
 
@@ -17,15 +8,7 @@ namespace ChristianDorka\HireMe\Traits\Property;
 use ChristianDorka\HireMe\Domain\Model\Benefit;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
-/**
- * TODO
- *
- * @category TODO
- * @package  TODO
- * @author   Christian Dorka <mail@christiandorka.de>
- * @license  TODO
- * @link     TODO
- */
+
 trait BenefitsProperty
 {
     /**
@@ -34,30 +17,18 @@ trait BenefitsProperty
     protected ?ObjectStorage $benefits = null;
 
     /**
-     * @param ObjectStorage<Benefit>|null $benefits
-     *
-     * @return self
-     */
-    public function setBenefits(?ObjectStorage $benefits): self
-    {
-        $this->benefits = $benefits;
-        return $this;
-    }
-
-    /**
      * Add an organization to the storage
      *
      * @param Benefit $organization
      *
-     * @return self
+     * @return void
      */
-    public function addBenefit(Benefit $organization): self
+    public function addBenefit(Benefit $organization): void
     {
         if ($this->benefits === null) {
             $this->benefits = new ObjectStorage();
         }
         $this->benefits->attach($organization);
-        return $this;
     }
 
     /**
@@ -65,25 +36,23 @@ trait BenefitsProperty
      *
      * @param Benefit $organization
      *
-     * @return self
+     * @return void
      */
-    public function removeBenefit(Benefit $organization): self
+    public function removeBenefit(Benefit $organization): void
     {
         if ($this->benefits !== null) {
             $this->benefits->detach($organization);
         }
-        return $this;
     }
 
     /**
      * Remove all benefits from the storage
      *
-     * @return self
+     * @return void
      */
-    public function removeAllBenefits(): self
+    public function removeAllBenefits(): void
     {
         $this->benefits = new ObjectStorage();
-        return $this;
     }
 
     /**
@@ -94,6 +63,16 @@ trait BenefitsProperty
     public function getBenefits(): ?ObjectStorage
     {
         return $this->benefits;
+    }
+
+    /**
+     * @param ObjectStorage<Benefit>|null $benefits
+     *
+     * @return void
+     */
+    public function setBenefits(?ObjectStorage $benefits): void
+    {
+        $this->benefits = $benefits;
     }
 
     /**

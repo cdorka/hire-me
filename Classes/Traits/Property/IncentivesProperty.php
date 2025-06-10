@@ -1,14 +1,5 @@
 <?php
 
-/**
- * TODO
- * php version 8.2
- *
- * @category     TODO
- * @package      TODO
- * @license      TODO
- * @author       Christian Dorka <mail@christiandorka.de>
- */
 
 declare(strict_types=1);
 
@@ -17,31 +8,13 @@ namespace ChristianDorka\HireMe\Traits\Property;
 use ChristianDorka\HireMe\Domain\Model\Incentive;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
-/**
- * TODO
- *
- * @category TODO
- * @package  TODO
- * @author   Christian Dorka <mail@christiandorka.de>
- * @license  TODO
- * @link     TODO
- */
+
 trait IncentivesProperty
 {
     /**
      * @var ObjectStorage<Incentive>|null
      */
     protected ?ObjectStorage $incentives = null;
-
-    /**
-     * @param ObjectStorage<Incentive>|null $incentives
-     *
-     * @return void
-     */
-    public function setIncentives(?ObjectStorage $incentives): void
-    {
-        $this->incentives = $incentives;
-    }
 
     /**
      * Add an incentive to the storage
@@ -90,6 +63,16 @@ trait IncentivesProperty
     public function getIncentives(): ?ObjectStorage
     {
         return $this->incentives;
+    }
+
+    /**
+     * @param ObjectStorage<Incentive>|null $incentives
+     *
+     * @return void
+     */
+    public function setIncentives(?ObjectStorage $incentives): void
+    {
+        $this->incentives = $incentives;
     }
 
     /**

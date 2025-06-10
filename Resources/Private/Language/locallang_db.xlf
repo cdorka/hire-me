@@ -501,17 +501,11 @@
             <trans-unit id="tx_hireme_domain_model_jobposting.employment_type.description">
                 <source>Several options can be selected here</source>
             </trans-unit>
-            <trans-unit id="tx_hireme_domain_model_jobposting.employment_type.items.CONTRACTOR.label">
-                <source>Contractor position</source>
-            </trans-unit>
             <trans-unit id="tx_hireme_domain_model_jobposting.employment_type.items.FULL_TIME.label">
                 <source>Full-time position</source>
             </trans-unit>
             <trans-unit id="tx_hireme_domain_model_jobposting.employment_type.items.INTERN.label">
                 <source>Internship</source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_domain_model_jobposting.employment_type.items.OTHER.label">
-                <source>Other job type (not covered by the other possible values)</source>
             </trans-unit>
             <trans-unit id="tx_hireme_domain_model_jobposting.employment_type.items.PART_TIME.label">
                 <source>Part-time position</source>

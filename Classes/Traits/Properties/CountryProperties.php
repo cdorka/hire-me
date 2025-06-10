@@ -1,34 +1,11 @@
 <?php
 
-/**
- * TODO
- * php version 8.2
- *
- * @category     TODO
- * @package      TODO
- * @license      TODO
- * @author       Christian Dorka <mail@christiandorka.de>
- */
 
 declare(strict_types=1);
 
 namespace ChristianDorka\HireMe\Traits\Properties;
 
-use ChristianDorka\HireMe\Domain\Model\Category;
-use ChristianDorka\HireMe\Domain\Model\Country;
-use DateTime;
-use RuntimeException;
-use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
-/**
- * TODO
- *
- * @category TODO
- * @package  TODO
- * @author   Christian Dorka <mail@christiandorka.de>
- * @license  TODO
- * @link     TODO
- */
 trait CountryProperties
 {
     protected ?string $twoLetterIsoCode = null;
@@ -39,10 +16,9 @@ trait CountryProperties
         return $this->twoLetterIsoCode;
     }
 
-    public function setTwoLetterIsoCode(?string $twoLetterIsoCode): self
+    public function setTwoLetterIsoCode(?string $twoLetterIsoCode): void
     {
         $this->twoLetterIsoCode = $twoLetterIsoCode;
-        return $this;
     }
 
     public function getThreeLetterIsoCode(): ?string
@@ -50,9 +26,8 @@ trait CountryProperties
         return $this->threeLetterIsoCode;
     }
 
-    public function setThreeLetterIsoCode(?string $threeLetterIsoCode): self
+    public function setThreeLetterIsoCode(?string $threeLetterIsoCode): void
     {
         $this->threeLetterIsoCode = $threeLetterIsoCode;
-        return $this;
     }
 }

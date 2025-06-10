@@ -300,6 +300,55 @@ ExtensionManagementUtility::addTCAcolumns('tt_content', [
             "default" => \ChristianDorka\HireMe\Enum\DateFormat::FULL_DATE->value,
         ],
     ],
+
+
+    'tx_hireme_filter_employment_types' => [
+        'exclude' => true,
+        'label' => $languageFile . 'tt_content.tx_hireme_filter_employment_types.label',
+        'description' => $languageFile . 'tt_content.tx_hireme_filter_employment_types.description',
+        'config' => [
+            'type' => 'select',
+            'renderType' => 'selectMultipleSideBySide',
+            "items" => \ChristianDorka\HireMe\Enum\Job\EmploymentType::getTcaItems()
+        ],
+    ],
+    'tx_hireme_filter_career_levels' => [
+        'exclude' => true,
+        'label' => $languageFile . 'tt_content.tx_hireme_filter_career_levels.label',
+        'description' => $languageFile . 'tt_content.tx_hireme_filter_career_levels.description',
+        'config' => [
+            'type' => 'select',
+            'renderType' => 'selectMultipleSideBySide',
+            "items" => \ChristianDorka\HireMe\Enum\Job\CareerLevel::getTcaItems()
+        ],
+    ],
+    'tx_hireme_filter_scopes' => [
+        'exclude' => true,
+        'label' => $languageFile . 'tt_content.tx_hireme_filter_scopes.label',
+        'description' => $languageFile . 'tt_content.tx_hireme_filter_scopes.description',
+        'config' => [
+            'type' => 'select',
+            'renderType' => 'selectMultipleSideBySide',
+            'foreign_table' => 'tx_hireme_domain_model_scope',
+            'multiple' => false,
+            'foreign_table_where' => 'AND {#tx_hireme_domain_model_scope}.{#sys_language_uid} IN (-1,0)',
+            'MM' => 'tx_hireme_domain_model_ttcontent_scope_mm',
+            'minitems' => 0,
+            'maxitems' => 9999,
+            'fieldControl' => [
+                'editPopup' => [
+                    'disabled' => true,
+                ],
+                'addRecord' => [
+                    'disabled' => true,
+                ],
+                'listModule' => [
+                    'disabled' => true,
+                ],
+            ],
+        ],
+    ],
+
 ]);
 
 
@@ -1005,6 +1054,11 @@ ExtensionManagementUtility::addToAllTCAtypes(
     'tt_content',
     'tx_hireme_header,
         tx_hireme_text,
+
+        tx_hireme_filter_employment_types,
+        tx_hireme_filter_career_levels,
+        tx_hireme_filter_scopes,
+
         tx_hireme_date_format,
         tx_hireme_hide_newtime,
         tx_hireme_hide_toptime,

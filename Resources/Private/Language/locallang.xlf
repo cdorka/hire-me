@@ -6,6 +6,44 @@
             <authorEmail>mail@christiandorka.de</authorEmail>
         </header>
         <body>
+
+            <trans-unit id="jobPostingSearch.employmentTypes.items.0.label">
+                <source>Full-time</source>
+            </trans-unit>
+            <trans-unit id="jobPostingSearch.employmentTypes.items.1.label">
+                <source>Part-time</source>
+            </trans-unit>
+            <trans-unit id="jobPostingSearch.employmentTypes.items.2.label">
+                <source>Temporary</source>
+            </trans-unit>
+            <trans-unit id="jobPostingSearch.employmentTypes.items.3.label">
+                <source>Intern</source>
+            </trans-unit>
+            <trans-unit id="jobPostingSearch.employmentTypes.items.4.label">
+                <source>Volunteer</source>
+            </trans-unit>
+
+
+            <trans-unit id="jobPostingSearch.careerLevels.items.0.label">
+                <source>CAREER_STARTER</source>
+            </trans-unit>
+            <trans-unit id="jobPostingSearch.careerLevels.items.1.label">
+                <source>JUNIOR</source>
+            </trans-unit>
+            <trans-unit id="jobPostingSearch.careerLevels.items.2.label">
+                <source>MID_LEVEL</source>
+            </trans-unit>
+            <trans-unit id="jobPostingSearch.careerLevels.items.3.label">
+                <source>SENIOR</source>
+            </trans-unit>
+            <trans-unit id="jobPostingSearch.careerLevels.items.4.label">
+                <source>LEAD_MANAGER</source>
+            </trans-unit>
+
+
+
+
+
         </body>
     </file>
 </xliff>

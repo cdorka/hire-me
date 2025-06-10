@@ -6,6 +6,8 @@ use ChristianDorka\HireMe\Domain\DTO\FilterDto;
 use ChristianDorka\HireMe\Domain\Model\JobPosting;
 use ChristianDorka\HireMe\Domain\Repository\JobPostingRepository;
 use ChristianDorka\HireMe\Domain\Repository\TypeRepository;
+use ChristianDorka\HireMe\Enum\Job\EmploymentType;
+use ChristianDorka\HireMe\Traits\Property\EmploymentTypesProperty;
 use ChristianDorka\HireMe\Utility\ResponseUtility;
 use GuzzleHttp\Psr7\ServerRequest;
 use Psr\Http\Message\ResponseInterface;
@@ -18,6 +20,8 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\MathUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Mvc\Controller\MvcPropertyMappingConfiguration;
+use TYPO3\CMS\Extbase\Persistence\Generic\Mapper\ColumnMap;
+use TYPO3\CMS\Extbase\Persistence\Generic\Mapper\DataMapper;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Property\PropertyMappingConfiguration;
 use TYPO3\CMS\Extbase\Property\TypeConverter\ObjectStorageConverter;
@@ -188,12 +192,60 @@ class JobPostingController extends ActionController
 
     public function searchAction(): ResponseInterface
     {
+
+
+
+
+
+
         // Common data is already available via initializeView()
 
         // Handle search logic here
         // $searchTerm = $this->request->getArgument('search') ?? '';
 
+        // TODO
+        // TODO
+        $employmentTypes = GeneralUtility::intExplode(',', $this->data['tx_hireme_filter_employment_types'] ?? '', true);
+
+        $careerLevels = GeneralUtility::intExplode(',', $this->data['tx_hireme_filter_career_levels'] ?? '', true);
+
+        DebuggerUtility::var_dump('test');
+
+
+        /** @var DataMapper $dataMapper */
+        $dataMapper = GeneralUtility::makeInstance(DataMapper::class);
+
+        // Create a dummy content element object to fetch relations from
+        $contentElement = $dataMapper->map(
+            \TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::class, // Or your content model if you have one
+            $this->data
+        );
+
+        DebuggerUtility::var_dump($contentElement);
+
+        /** @var DataMapper $dataMapper */
+        $dataMapper = GeneralUtility::makeInstance(DataMapper::class);
+
+        // Create a column map manually for the MM relation
+        $columnMap = ColumnMap::class
+            GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Persistence\Generic\Mapper\ColumnMap::class,
+            'tx_hireme_filter_scopes',
+            'tx_hireme_filter_scopes'
+        );
+
+
+
+
+        DebuggerUtility::var_dump($columnMap); // Now you have the actual scope objects
+
+
+
+
         $this->view->assignMultiple([
+            // enum types
+            "employmentTypes" => $employmentTypes,
+            "careerLevels" => $careerLevels,
+
             // 'searchTerm' => $searchTerm,
             // 'searchResults' => $searchTerm ? $this->jobPostingRepository->findBySearchTerm($searchTerm) : [],
         ]);

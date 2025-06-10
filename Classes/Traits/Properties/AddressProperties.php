@@ -1,34 +1,13 @@
 <?php
 
-/**
- * TODO
- * php version 8.2
- *
- * @category     TODO
- * @package      TODO
- * @license      TODO
- * @author       Christian Dorka <mail@christiandorka.de>
- */
 
 declare(strict_types=1);
 
 namespace ChristianDorka\HireMe\Traits\Properties;
 
-use ChristianDorka\HireMe\Domain\Model\Category;
 use ChristianDorka\HireMe\Domain\Model\Country;
-use DateTime;
-use RuntimeException;
-use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
-/**
- * TODO
- *
- * @category TODO
- * @package  TODO
- * @author   Christian Dorka <mail@christiandorka.de>
- * @license  TODO
- * @link     TODO
- */
+
 trait AddressProperties
 {
     protected ?string $streetName = null;
@@ -43,10 +22,9 @@ trait AddressProperties
         return $this->streetName;
     }
 
-    public function setStreetName(?string $streetName): AddressProperties
+    public function setStreetName(?string $streetName): void
     {
         $this->streetName = $streetName;
-        return $this;
     }
 
     public function getHouseNumber(): ?string
@@ -54,10 +32,9 @@ trait AddressProperties
         return $this->houseNumber;
     }
 
-    public function setHouseNumber(?string $houseNumber): AddressProperties
+    public function setHouseNumber(?string $houseNumber): void
     {
         $this->houseNumber = $houseNumber;
-        return $this;
     }
 
     public function getPostalCode(): ?string
@@ -65,10 +42,9 @@ trait AddressProperties
         return $this->postalCode;
     }
 
-    public function setPostalCode(?string $postalCode): self
+    public function setPostalCode(?string $postalCode): void
     {
         $this->postalCode = $postalCode;
-        return $this;
     }
 
     public function getCity(): ?string
@@ -76,10 +52,9 @@ trait AddressProperties
         return $this->city;
     }
 
-    public function setCity(?string $city): self
+    public function setCity(?string $city): void
     {
         $this->city = $city;
-        return $this;
     }
 
     public function getRegion(): ?string
@@ -87,10 +62,9 @@ trait AddressProperties
         return $this->region;
     }
 
-    public function setRegion(?string $region): self
+    public function setRegion(?string $region): void
     {
         $this->region = $region;
-        return $this;
     }
 
     public function getCountry(): ?Country
@@ -98,9 +72,8 @@ trait AddressProperties
         return $this->country;
     }
 
-    public function setCountry(?Country $country): self
+    public function setCountry(?Country $country): void
     {
         $this->country = $country;
-        return $this;
     }
 }

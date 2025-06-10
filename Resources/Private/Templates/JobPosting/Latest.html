@@ -19,7 +19,6 @@
                 </header>
             </f:if>
 
-
             <f:debug>{_all}</f:debug>
             <f:form
                 id="c{data.uid}-form"
@@ -30,7 +29,9 @@
                 objectName="filterDto"
                 noCache="1"
                 additionalAttributes="{class: 'ajax-form'}"
+
                 data="{
+                    'general-error-text': '',
                     typenum: '1748959345',
                     target: 'results-{data.uid}',
                     uid: '{data.uid}',
@@ -103,16 +104,32 @@
                 </f:if>
 
 
+                noResults
+                errorOccurred
+
+
+
+                <f:debug>jobPostings</f:debug>
+                <f:debug>{jobPostings}</f:debug>
                 <div id="results-{data.uid}" class="results-container" data-uid="{data.uid}">
                     <f:if condition="{jobPostings.success}">
                         <f:then>
-                            <f:for each="{jobPostings.data}" as="jobPosting">
-                                <f:render partial="JobPosting/Card" section="Default" arguments="{_all}" />
-                            </f:for>
+
+                            <f:if condition="{jobPostings.data -> f:count()} == 0">
+                                <f:then>
+                                    <f:translate key="jobPostingLatest.noResults.label" extensionName="hire_me"/>
+                                </f:then>
+                                <f:else>
+                                    <f:for each="{jobPostings.data}" as="jobPosting">
+                                        <f:render partial="JobPosting/Card" section="Default" arguments="{_all}" />
+                                    </f:for>
+                                </f:else>
+                                </f:if>
+
 
                         </f:then>
                         <f:else>
-                            Errors occured
+                            <f:translate key="jobPostingLatest.noResults.label" extensionName="hire_me"/>
                         </f:else>
                     </f:if>
 

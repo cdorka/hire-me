@@ -1,29 +1,17 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<xliff version="1.0">
-    <file source-language="en" datatype="plaintext" original="messages" date="2025-02-22UTC07:30:570">
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" original="messages" datatype="plaintext" date="2025-06-10T13:17:11+02:00">
         <header>
             <authorName>Christian Dorka</authorName>
             <authorEmail>mail@christiandorka.de</authorEmail>
         </header>
         <body>
-
-            <trans-unit id="jobPostingSearch.employmentTypes.items.0.label">
-                <source>Full-time</source>
+            <trans-unit id="jobPostingLatest.errorOccurred.label">
+                <source>An error has occurred.</source>
             </trans-unit>
-            <trans-unit id="jobPostingSearch.employmentTypes.items.1.label">
-                <source>Part-time</source>
+            <trans-unit id="jobPostingLatest.noResults.label">
+                <source>No results found.</source>
             </trans-unit>
-            <trans-unit id="jobPostingSearch.employmentTypes.items.2.label">
-                <source>Temporary</source>
-            </trans-unit>
-            <trans-unit id="jobPostingSearch.employmentTypes.items.3.label">
-                <source>Intern</source>
-            </trans-unit>
-            <trans-unit id="jobPostingSearch.employmentTypes.items.4.label">
-                <source>Volunteer</source>
-            </trans-unit>
-
-
             <trans-unit id="jobPostingSearch.careerLevels.items.0.label">
                 <source>CAREER_STARTER</source>
             </trans-unit>
@@ -39,11 +27,21 @@
             <trans-unit id="jobPostingSearch.careerLevels.items.4.label">
                 <source>LEAD_MANAGER</source>
             </trans-unit>
-
-
-
-
-
+            <trans-unit id="jobPostingSearch.employmentTypes.items.0.label">
+                <source>Full-time</source>
+            </trans-unit>
+            <trans-unit id="jobPostingSearch.employmentTypes.items.1.label">
+                <source>Part-time</source>
+            </trans-unit>
+            <trans-unit id="jobPostingSearch.employmentTypes.items.2.label">
+                <source>Temporary</source>
+            </trans-unit>
+            <trans-unit id="jobPostingSearch.employmentTypes.items.3.label">
+                <source>Intern</source>
+            </trans-unit>
+            <trans-unit id="jobPostingSearch.employmentTypes.items.4.label">
+                <source>Volunteer</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

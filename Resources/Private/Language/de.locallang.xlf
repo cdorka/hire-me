@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="de" original="" datatype="plaintext" date="2025-06-10T13:17:11+02:00">
+        <body>
+            <trans-unit id="jobPostingLatest.errorOccurred.label">
+                <source>An error has occurred.</source>
+                <target>Es ist ein Fehler aufgetreten.</target>
+            </trans-unit>
+            <trans-unit id="jobPostingLatest.noResults.label">
+                <source>No results found.</source>
+                <target>Keine Ergebnisse gefunden.</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

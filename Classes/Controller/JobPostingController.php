@@ -3,7 +3,9 @@
 namespace ChristianDorka\HireMe\Controller;
 
 use ChristianDorka\HireMe\Domain\DTO\FilterDto;
+use ChristianDorka\HireMe\Domain\Model\Content;
 use ChristianDorka\HireMe\Domain\Model\JobPosting;
+use ChristianDorka\HireMe\Domain\Repository\ContentRepository;
 use ChristianDorka\HireMe\Domain\Repository\JobPostingRepository;
 use ChristianDorka\HireMe\Domain\Repository\TypeRepository;
 use ChristianDorka\HireMe\Enum\Job\EmploymentType;
@@ -21,6 +23,7 @@ use TYPO3\CMS\Core\Utility\MathUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Mvc\Controller\MvcPropertyMappingConfiguration;
 use TYPO3\CMS\Extbase\Persistence\Generic\Mapper\ColumnMap;
+use TYPO3\CMS\Extbase\Persistence\Generic\Mapper\DataMapFactory;
 use TYPO3\CMS\Extbase\Persistence\Generic\Mapper\DataMapper;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Property\PropertyMappingConfiguration;
@@ -33,10 +36,12 @@ use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 class JobPostingController extends ActionController
 {
     private array $data = [];
+    private ?int $uid = null;
 
 
     public function __construct(
-        protected readonly JobPostingRepository $jobPostingRepository
+        protected readonly JobPostingRepository $jobPostingRepository,
+        protected readonly DataMapper $dataMapper
     ) {}
 
 
@@ -51,9 +56,8 @@ class JobPostingController extends ActionController
 
         $currentLanguage = $this->request->getAttribute('language') ?? null;
 
-        DebuggerUtility::var_dump($currentLanguage);
-
         $this->data = $contentObjectData;
+        $this->uid = isset($contentObjectData['uid']) ? (int)$contentObjectData['uid'] : null;
 
         $this->view->assignMultiple([
             'data' => $contentObjectData,
@@ -189,65 +193,34 @@ class JobPostingController extends ActionController
 
 
 
-
     public function searchAction(): ResponseInterface
     {
+        $contentObjects = $this->dataMapper->map(Content::class, [$this->data]);
+        /** @var Content|null $contentObject */
+        $contentObject = array_pop($contentObjects);
 
 
 
 
+        if ($contentObject !== null) {
+            $employmentTypesUids = GeneralUtility::intExplode(',', $contentObject->getTxHiremeFilterEmploymentTypes(), true);
+
+            // Now you have the content element with all relations loaded
+            $scopes = $contentObject->getTxHiremeFilterScopesAsArray();
+
+            $hiringCompanies = $contentObject->getTxHiremeFilterHiringOrganizations();
+
+            $careerLevelsUids = GeneralUtility::intExplode(',',  $contentObject->getTxHiremeFilterCareerLevels(), true);
+        }
 
 
-        // Common data is already available via initializeView()
-
-        // Handle search logic here
-        // $searchTerm = $this->request->getArgument('search') ?? '';
-
-        // TODO
-        // TODO
-        $employmentTypes = GeneralUtility::intExplode(',', $this->data['tx_hireme_filter_employment_types'] ?? '', true);
-
-        $careerLevels = GeneralUtility::intExplode(',', $this->data['tx_hireme_filter_career_levels'] ?? '', true);
-
-        DebuggerUtility::var_dump('test');
-
-
-        /** @var DataMapper $dataMapper */
-        $dataMapper = GeneralUtility::makeInstance(DataMapper::class);
-
-        // Create a dummy content element object to fetch relations from
-        $contentElement = $dataMapper->map(
-            \TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::class, // Or your content model if you have one
-            $this->data
-        );
-
-        DebuggerUtility::var_dump($contentElement);
-
-        /** @var DataMapper $dataMapper */
-        $dataMapper = GeneralUtility::makeInstance(DataMapper::class);
-
-        // Create a column map manually for the MM relation
-        $columnMap = ColumnMap::class
-            GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Persistence\Generic\Mapper\ColumnMap::class,
-            'tx_hireme_filter_scopes',
-            'tx_hireme_filter_scopes'
-        );
-
-
-
-
-        DebuggerUtility::var_dump($columnMap); // Now you have the actual scope objects
-
-
-
+        DebuggerUtility::var_dump($contentObject);
 
         $this->view->assignMultiple([
-            // enum types
-            "employmentTypes" => $employmentTypes,
-            "careerLevels" => $careerLevels,
-
-            // 'searchTerm' => $searchTerm,
-            // 'searchResults' => $searchTerm ? $this->jobPostingRepository->findBySearchTerm($searchTerm) : [],
+            'employmentTypesUids' => $employmentTypesUids ?? null,
+            'scopes' => $scopes ?? null,
+            '$hiringCompanies' => $hiringCompanies ?? null,
+            'careerLevelsUids' => $careerLevelsUids ?? null,
         ]);
 
         return $this->htmlResponse();

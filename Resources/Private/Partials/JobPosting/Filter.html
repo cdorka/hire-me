@@ -11,6 +11,7 @@
 </f:section>
 
 <f:section name="Search">
+    <f:debug>{_all}</f:debug>
     <div class="card shadow-sm">
         <div class="card-header bg-primary text-white">
             <h5 class="mb-0">
@@ -19,18 +20,18 @@
         </div>
         <div class="card-body">
             <!-- Job Type Filter -->
-            <f:if condition="{employmentTypes}">
+            <f:if condition="{employmentTypesUids}">
                 <div class="mb-4">
                     <h6 class="fw-bold">Anstellungsart</h6>
-                    <f:for each="{employmentTypes}" as="employmentType">
+                    <f:for each="{employmentTypesUids}" as="employmentTypeUid">
                         <div class="form-check">
                             <f:form.checkbox
                                 property="employmentTypes"
-                                value="{employmentType}"
-                                id="c{data.uid}-employmentType-{employmentType}"
+                                value="{employmentTypeUid}"
+                                id="c{data.uid}-employmentType-{employmentTypeUid}"
                                 class="form-check-input"/>
-                            <label class="form-check-label" for="c{data.uid}-employmentType-{employmentType}">
-                                <f:translate key="jobPostingSearch.employmentTypes.items.{employmentType}.label" />
+                            <label class="form-check-label" for="c{data.uid}-employmentType-{employmentTypeUid}">
+                                <f:translate key="jobPostingSearch.employmentTypes.items.{employmentTypeUid}.label" />
                             </label>
                         </div>
                     </f:for>
@@ -38,35 +39,38 @@
             </f:if>
 
             <!-- Career Level -->
-            <div class="mb-4">
-                <h6 class="fw-bold">Scope</h6>
-                <select class="form-select">
-                    <option selected>Alle Level</option>
-                    <option>Berufseinsteiger</option>
-                    <option>Junior</option>
-                    <option>Senior</option>
-                    <option>Lead/Manager</option>
-                </select>
-            </div>
-
-            <!-- Career Level -->
-            <f:if condition="{careerLevels}">
+            <f:if condition="{careerLevelsUids}">
                 <div class="mb-4">
                     <h6 class="fw-bold">Karrierelevel</h6>
-                    <f:for each="{careerLevels}" as="careerLevel">
+                    <f:for each="{careerLevelsUids}" as="careerLevelUid">
                         <div class="form-check">
                             <f:form.checkbox
                                 property="careerLevels"
-                                value="{careerLevel}"
-                                id="c{data.uid}-careerLevel-{careerLevel}"
+                                value="{careerLevelUid}"
+                                id="c{data.uid}-careerLevel-{careerLevelUid}"
                                 class="form-check-input"/>
-                            <label class="form-check-label" for="c{data.uid}-careerLevel-{careerLevel}">
-                                <f:translate key="jobPostingSearch.careerLevels.items.{careerLevel}.label" />
+                            <label class="form-check-label" for="c{data.uid}-careerLevel-{careerLevelUid}">
+                                <f:translate key="jobPostingSearch.careerLevels.items.{careerLevelUid}.label" />
                             </label>
                         </div>
                     </f:for>
                 </div>
             </f:if>
+
+
+
+            <!-- Department -->
+            <div class="mb-4">
+                <h6 class="fw-bold">Bereich</h6>
+                <select class="form-select">
+                    <option selected>Alle Bereiche</option>
+                    <option>IT & Software</option>
+                    <option>Marketing</option>
+                    <option>Vertrieb</option>
+                    <option>Personal</option>
+                    <option>Finanzen</option>
+                </select>
+            </div>
 
             <!-- Department -->
             <div class="mb-4">

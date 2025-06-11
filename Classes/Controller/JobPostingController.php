@@ -3,6 +3,7 @@
 namespace ChristianDorka\HireMe\Controller;
 
 use ChristianDorka\HireMe\Domain\DTO\FilterDto;
+use ChristianDorka\HireMe\Domain\DTO\TtContentFilter;
 use ChristianDorka\HireMe\Domain\Model\Content;
 use ChristianDorka\HireMe\Domain\Model\JobPosting;
 use ChristianDorka\HireMe\Domain\Repository\ContentRepository;
@@ -18,6 +19,7 @@ use TYPO3\CMS\Core\Error\PageErrorHandler\PageContentErrorHandler;
 use TYPO3\CMS\Core\Http\ImmediateResponseException;
 use TYPO3\CMS\Core\Http\NormalizedParams;
 use TYPO3\CMS\Core\Http\ServerRequestFactory;
+use TYPO3\CMS\Core\Site\Entity\SiteLanguage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\MathUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
@@ -30,13 +32,14 @@ use TYPO3\CMS\Extbase\Property\PropertyMappingConfiguration;
 use TYPO3\CMS\Extbase\Property\TypeConverter\ObjectStorageConverter;
 use TYPO3\CMS\Extbase\Property\TypeConverter\PersistentObjectConverter;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\Controller\ErrorController;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 class JobPostingController extends ActionController
 {
     private array $data = [];
-    private ?int $uid = null;
+    private SiteLanguage|null $language = null;
 
 
     public function __construct(
@@ -47,21 +50,15 @@ class JobPostingController extends ActionController
 
     /**
      * Initialize view - called after view is created but before action
-     * Use this for view-specific initialization
      */
     protected function initializeView(): void
     {
-        $contentObject = $this->request->getAttribute('currentContentObject');
-        $contentObjectData = $contentObject?->data ?? [];
-
-        $currentLanguage = $this->request->getAttribute('language') ?? null;
-
-        $this->data = $contentObjectData;
-        $this->uid = isset($contentObjectData['uid']) ? (int)$contentObjectData['uid'] : null;
+        $this->data = $this->request->getAttribute("currentContentObject")?->data ?? [];
+        $this->language  = $this->request->getAttribute("language") ?? null;
 
         $this->view->assignMultiple([
-            'data' => $contentObjectData,
-            'language' => $currentLanguage,
+            "data" => $this->data,
+            "language" => $this->language,
         ]);
     }
 
@@ -195,26 +192,27 @@ class JobPostingController extends ActionController
 
     public function searchAction(): ResponseInterface
     {
-        $contentObjects = $this->dataMapper->map(Content::class, [$this->data]);
-        /** @var Content|null $contentObject */
-        $contentObject = array_pop($contentObjects);
+        /**
+         * @var TtContentFilter|null $cObjFilter The mapped tt_content to a filter DTO, or null if mapping failed
+         */
+        $cObjFilter = $this->dataMapper->map(TtContentFilter::class, [$this->data])[0] ?? null;
 
 
 
 
-        if ($contentObject !== null) {
-            $employmentTypesUids = GeneralUtility::intExplode(',', $contentObject->getTxHiremeFilterEmploymentTypes(), true);
+
+        if ($cObjFilter !== null) {
+            $employmentTypesUids = GeneralUtility::intExplode(',', $cObjFilter->getTxHiremeFilterEmploymentTypes(), true);
 
             // Now you have the content element with all relations loaded
-            $scopes = $contentObject->getTxHiremeFilterScopesAsArray();
+            $scopes = $cObjFilter->getTxHiremeFilterScopesAsArray();
 
-            $hiringCompanies = $contentObject->getTxHiremeFilterHiringOrganizations();
+            $hiringCompanies = $cObjFilter->getTxHiremeFilterHiringOrganizations();
 
-            $careerLevelsUids = GeneralUtility::intExplode(',',  $contentObject->getTxHiremeFilterCareerLevels(), true);
+            $careerLevelsUids = GeneralUtility::intExplode(',',  $cObjFilter->getTxHiremeFilterCareerLevels(), true);
         }
 
 
-        DebuggerUtility::var_dump($contentObject);
 
         $this->view->assignMultiple([
             'employmentTypesUids' => $employmentTypesUids ?? null,

@@ -1,9 +1,9 @@
 <?php
-
 declare(strict_types=1);
 
 namespace ChristianDorka\HireMe\UserFuncs\FormEngine;
 
+use ChristianDorka\HireMe\Enum\Job\ApplicationType;
 use ChristianDorka\HireMe\Enum\Job\CareerLevel;
 use ChristianDorka\HireMe\Enum\Job\EducationRequirements;
 use ChristianDorka\HireMe\Enum\Job\EmploymentType;
@@ -12,6 +12,7 @@ use ChristianDorka\HireMe\Enum\Job\JobLocationType;
 use ChristianDorka\HireMe\Enum\Salary\SalaryCurrency;
 use ChristianDorka\HireMe\Enum\Salary\SalaryType;
 use ChristianDorka\HireMe\Enum\Salary\SalaryUnit;
+use ChristianDorka\HireMe\Registry\ApplicationFormRegistry;
 
 /**
  * ItemsProcFunc for url type items
@@ -41,5 +42,18 @@ class JobPostingItemsProcFunc
     }
     public function careerLevelsItemsProcFunc(array &$params) : void {
         $params['items'] = CareerLevel::getTcaItems();
+    }
+
+
+    public function applicationTypeItemsProcFunc(array &$params) : void {
+        $params['items'] = ApplicationType::getTcaItems();
+    }
+
+    /**
+     * Get all registered application forms for TCA select field
+     */
+    public function applicationFormsItemsProcFunc(array &$params) : void {
+        $registry = ApplicationFormRegistry::getInstance();
+        $params['items'] = $registry->getTcaItems();
     }
 }

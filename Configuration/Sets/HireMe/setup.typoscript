@@ -1,1 +1,95 @@
-@import 'EXT:hire_me/Configuration/TypoScript/setup.typoscript'
+
+
+plugin.tx_form {
+    settings {
+        yamlConfigurations {
+            1749642891 = EXT:hire_me/Configuration/Yaml/BaseSetup.yaml
+        }
+    }
+}
+
+module.tx_form {
+    settings {
+        yamlConfigurations {
+            1749642891 = EXT:hire_me/Configuration/Yaml/BaseSetup.yaml
+        }
+    }
+}
+
+
+# Configure the content element (plugin) with DataProcessor
+tt_content.hireme_jobpostingdetails {
+    dataProcessing {
+        # Process FAQ references
+        10 = ChristianDorka\HireMe\DataProcessing\FaqDataProcessor
+        10 {
+            # Field containing the FAQ references from the JobPosting record
+            referenceField = faqs
+            # Variable name available in Fluid template
+            as = resolvedFaqs
+            # Apply sorting based on sorting field
+            respectSorting = 1
+        }
+
+        # You can add more processors if needed
+        # 20 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
+        # 20 {
+        #     # Additional data processing...
+        # }
+    }
+}
+
+
+# Configuration/Sets/hire-me/setup.typoscript
+
+# =====================================================
+# Hire Me Extension Setup
+# =====================================================
+
+# Plugin view configuration
+# plugin.tx_hireme {
+#     view {
+#         templateRootPaths {
+#             10 = EXT:hire_me/Resources/Private/Plugins/Templates/
+#         }
+#         partialRootPaths {
+#             10 = EXT:hire_me/Resources/Private/Plugins/Partials/
+#         }
+#         layoutRootPaths {
+#             10 = EXT:hire_me/Resources/Private/Plugins/Layouts/
+#         }
+#     }
+# }
+
+# =====================================================
+# AJAX Page Types
+# =====================================================
+
+# AJAX Page Type for Job Posting Filter
+# jobPostingLatestFiltered = PAGE
+# jobPostingLatestFiltered {
+#     typeNum = {$plugin.tx_hireme.settings.ajax.pageTypes.jobPostingFilter}
+
+#     10 = EXTBASEPLUGIN
+#     10 {
+#         extensionName = HireMe
+#         pluginName = JobPostingLatest
+#     }
+
+#     config {
+#         disableAllHeaderCode = 1
+#         xhtml_cleaning = 0
+#         admPanel = 0
+#         debug = 0
+#         cache = 0
+#         no_cache = 1
+#         additionalHeaders {
+#             10.header = Cache-Control: no-store, no-cache, must-revalidate, max-age=0
+#             20.header = Pragma: no-cache
+#             30.header = Expires: 0
+#             40.header = Content-Type: text/html; charset=utf-8
+#         }
+#     }
+# }
+
+

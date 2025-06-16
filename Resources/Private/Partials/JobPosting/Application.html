@@ -1,0 +1,92 @@
+<html
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:hire="http://typo3.org/ns/ChristianDorka/HireMe/ViewHelpers"
+    data-namespace-typo3-fluid="true"
+    lang="en">
+
+<section id="application" class="mb-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card shadow">
+
+                    <f:switch expression="{jobPosting.applicationType.value}">
+                        <f:case value="1">
+                            <f:render section="Email" arguments="{_all}" />
+                        </f:case>
+                        <f:case value="2">
+                            <f:render section="ExternalLink" arguments="{_all}" />
+                        </f:case>
+                        <f:case value="3">
+                            <f:render section="TYPO3Form" arguments="{_all}" />
+                        </f:case>
+                    </f:switch>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<f:section name="Email">
+    <div class="card-header bg-primary text-white py-3">
+        <h2 class="my-0 py-0 text-white">
+            <f:translate key="jobPostingDetail.application.header" extensionName="hire_me"/>
+        </h2>
+    </div>
+    <div class="card-body p-5 text-center">
+        <p class="h4 mb-4">
+            <f:translate key="jobPostingDetail.application.email.bodyHeader" extensionName="hire_me"/>
+        </p>
+        <p class="mb-4">
+            <f:sanitize.html><f:translate key="jobPostingDetail.application.email.body" extensionName="hire_me"/></f:sanitize.html>
+        </p>
+        <f:link.email
+            email="{jobPosting.applicationEmail}"
+            class="btn btn-primary btn-lg px-5">
+            <f:translate key="jobPostingDetail.application.email.ctaBtnText" extensionName="hire_me"/>
+        </f:link.email>
+    </div>
+</f:section>
+
+<f:section name="ExternalLink">
+    <div class="card-header bg-primary text-white py-3">
+        <h2 class="my-0 py-0 text-white">
+            <f:translate key="jobPostingDetail.application.header" extensionName="hire_me"/>
+        </h2>
+    </div>
+    <div class="card-body p-5 text-center">
+        <p class="h4 mb-4">
+            <f:translate key="jobPostingDetail.application.externalLink.bodyHeader" extensionName="hire_me"/>
+        </p>
+        <p class="mb-4">
+            <f:sanitize.html><f:translate key="jobPostingDetail.application.externalLink.body" extensionName="hire_me"/></f:sanitize.html>
+        </p>
+        <f:link.typolink
+            parameter="{jobPosting.applicationLink}"
+            class="btn btn-primary btn-lg px-5"
+            additionalAttributes="{rel: 'noopener noreferrer'}">
+            <f:translate key="jobPostingDetail.application.externalLink.ctaBtnText" extensionName="hire_me"/>
+        </f:link.typolink>
+    </div>
+</f:section>
+
+<f:section name="TYPO3Form">
+    <div class="card-header bg-primary text-white py-3">
+        <h2 class="my-0 py-0 text-white">
+            <f:translate key="jobPostingDetail.application.header" extensionName="hire_me"/>
+        </h2>
+    </div>
+    <div class="card-body p-3">
+        <f:if condition="{applicationFormError}">
+            <f:then>
+                {applicationFormError}
+            </f:then>
+            <f:else>
+                <f:format.raw>{applicationForm}</f:format.raw>
+            </f:else>
+        </f:if>
+    </div>
+</f:section>
+
+</html>

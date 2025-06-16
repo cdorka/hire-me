@@ -2,39 +2,25 @@
 
 namespace ChristianDorka\HireMe\Controller;
 
+use ChristianDorka\HireMe\DataProcessing\FaqDataProcessor;
 use ChristianDorka\HireMe\Domain\DTO\FilterDto;
 use ChristianDorka\HireMe\Domain\DTO\TtContentFilter;
-use ChristianDorka\HireMe\Domain\Model\Content;
 use ChristianDorka\HireMe\Domain\Model\JobPosting;
-use ChristianDorka\HireMe\Domain\Repository\ContentRepository;
 use ChristianDorka\HireMe\Domain\Repository\JobPostingRepository;
 use ChristianDorka\HireMe\Domain\Repository\TypeRepository;
-use ChristianDorka\HireMe\Enum\Job\EmploymentType;
-use ChristianDorka\HireMe\Traits\Property\EmploymentTypesProperty;
 use ChristianDorka\HireMe\Utility\ResponseUtility;
-use GuzzleHttp\Psr7\ServerRequest;
 use Psr\Http\Message\ResponseInterface;
+use Symfony\Component\Yaml\Yaml;
 use TYPO3\CMS\Core\Error\Http\PageNotFoundException;
-use TYPO3\CMS\Core\Error\PageErrorHandler\PageContentErrorHandler;
 use TYPO3\CMS\Core\Http\ImmediateResponseException;
-use TYPO3\CMS\Core\Http\NormalizedParams;
-use TYPO3\CMS\Core\Http\ServerRequestFactory;
 use TYPO3\CMS\Core\Site\Entity\SiteLanguage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Core\Utility\MathUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-use TYPO3\CMS\Extbase\Mvc\Controller\MvcPropertyMappingConfiguration;
-use TYPO3\CMS\Extbase\Persistence\Generic\Mapper\ColumnMap;
-use TYPO3\CMS\Extbase\Persistence\Generic\Mapper\DataMapFactory;
 use TYPO3\CMS\Extbase\Persistence\Generic\Mapper\DataMapper;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
-use TYPO3\CMS\Extbase\Property\PropertyMappingConfiguration;
-use TYPO3\CMS\Extbase\Property\TypeConverter\ObjectStorageConverter;
-use TYPO3\CMS\Extbase\Property\TypeConverter\PersistentObjectConverter;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
-use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
-use TYPO3\CMS\Frontend\Controller\ErrorController;
-use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
+use TYPO3\CMS\Form\Domain\Factory\ArrayFormFactory;
+use TYPO3\CMS\Form\Domain\Configuration\ConfigurationService as FormConfigurationService;
 
 class JobPostingController extends ActionController
 {
@@ -44,7 +30,8 @@ class JobPostingController extends ActionController
 
     public function __construct(
         protected readonly JobPostingRepository $jobPostingRepository,
-        protected readonly DataMapper $dataMapper
+        protected readonly DataMapper $dataMapper,
+        protected FormConfigurationService $formConfigurationService,
     ) {}
 
 
@@ -68,18 +55,15 @@ class JobPostingController extends ActionController
      *
      * @param JobPosting|null $jobPosting Optional jobposting to allow custom redirect if page is called without a job
      *                                    posting provided, instead of typo3 exception
+     * @param bool            $applicationSend
      *
      * @return ResponseInterface
-     *
-     * @throws PageNotFoundException|ImmediateResponseException
-     *
-     * @noinspection PhpUnused
+     * @throws ImmediateResponseException
+     * @throws PageNotFoundException
      */
-    public function detailAction(?JobPosting $jobPosting = null): ResponseInterface
+    public function detailAction(?JobPosting $jobPosting = null, bool $applicationSend = false): ResponseInterface
     {
-        // TODO
         if ($jobPosting === null) {
-            // TODO
             return ResponseUtility::handleFallbackOrErrorResponse(
                 pid: $this->data['tx_hireme_fallback_page'] ?? null,
                 uriBuilder: $this->uriBuilder,
@@ -87,11 +71,9 @@ class JobPostingController extends ActionController
             );
         }
 
-        // TODO
         $jobPosting = $this->jobPostingRepository->findByUidWithResult($jobPosting->getUid());
 
-        // TODO
-        if ($jobPosting->isError() ) {
+        if ($jobPosting->isError()) {
             return ResponseUtility::handleFallbackOrErrorResponse(
                 pid: $this->data['tx_hireme_fallback_page'] ?? null,
                 uriBuilder: $this->uriBuilder,
@@ -99,18 +81,160 @@ class JobPostingController extends ActionController
             );
         }
 
-        // TODO
+        $viewData = [
+            'applicationSend' => $applicationSend
+        ];
+
         if (is_countable($jobPosting->getData()) && count($jobPosting->getData()) > 0) {
+            /** @var JobPosting $jobPostingData */
+            $jobPostingData = $jobPosting->getData()[0];
+            $viewData['jobPosting'] = $jobPostingData;
 
-
-
-            $this->view->assignMultiple([
-                "jobPosting" => $jobPosting->getData()[0],
-            ]);
+            // Render the form if configured
+            if ($jobPostingData->getRenderApplication()) {
+                $this->assignApplicationForm(jobPosting: $jobPostingData);
+            }
         }
 
-        // TODO
+
+        if ($jobPostingData) {
+            // Manually resolve FAQs using the same logic as DataProcessor
+            $dataProcessor = GeneralUtility::makeInstance(FaqDataProcessor::class);
+            $resolvedFaqs = $dataProcessor->resolveFaqReferences($jobPostingData->getFaqs());
+            $this->view->assign('faqs', $resolvedFaqs);
+        }
+
+
+
+
+        $this->view->assignMultiple($viewData);
         return $this->htmlResponse();
+    }
+
+
+    /**
+     * Render the configured TYPO3 form from the JobPosting object and assign it as variable to the action view
+     *
+     * @param JobPosting $jobPosting
+     * @param string     $renderedFormVariableName
+     * @param string     $formErrorVariableName
+     *
+     * @return void
+     */
+    protected function assignApplicationForm(
+        JobPosting $jobPosting,
+        string $renderedFormVariableName = "applicationForm",
+        string $formErrorVariableName = "applicationFormError",
+    ): void {
+        $yamlPath = 'EXT:hire_me/Resources/Private/Forms/BasicApplicationForm.form.yaml';
+
+        try {
+            $formFactory = GeneralUtility::makeInstance(ArrayFormFactory::class);
+            $yamlContent = GeneralUtility::getUrl(GeneralUtility::getFileAbsFileName($yamlPath));
+            $formConfiguration = Yaml::parse($yamlContent);
+
+            // Custom Finisher hinzufügen
+            $this->addCustomFinishers($formConfiguration, $jobPosting);
+
+            // Form-Action explizit setzen (falls gewünscht)
+            $formConfiguration['renderingOptions']['submitButtonLabel'] = 'Bewerbung absenden';
+            $formConfiguration['renderingOptions']['controllerAction'] = 'detail';
+            $formConfiguration['renderingOptions']['additionalParams'] = [
+                'tx_hireme_jobpostingdetails[applicationSend]' => true,
+                'tx_hireme_jobpostingdetails[jobPosting]'=> $jobPosting->getUid()
+            ];
+
+            DebuggerUtility::var_dump('$formConfiguration');
+            DebuggerUtility::var_dump($formConfiguration);
+
+            // https://www.bahnen.nrw.dev.arpa/detail-jobs.html?tx_hireme_jobpostingdetails[action]=detail&tx_hireme_jobpostingdetails[controller]=JobPosting&tx_hireme_jobpostingdetails[jobPosting]=987346123&cHash=89d279897706829d73e23e533a5aab77
+
+            // https://www.bahnen.nrw.dev.arpa/detail-jobs.html?tx_hireme_jobpostingdetails[action]=detail&tx_hireme_jobpostingdetails[controller]=JobPosting&cHash=67296f57ee3e785409753c5f3c82f279#basicApplicationForm
+
+            // /detail-jobs.html?jobPosting=987346123&tx_hireme_jobpostingdetails[action]=detail&tx_hireme_jobpostingdetails[controller]=JobPosting&cHash=45b968b0c85b11d6cecdbd2a86c1e92b#basicApplicationForm
+            // /detail-jobs.html?tx_hireme_jobpostingdetails[action]=detail&tx_hireme_jobpostingdetails[controller]=JobPosting&cHash=67296f57ee3e785409753c5f3c82f279#basicApplicationForm
+            // /detail-jobs.html?tx_hireme_jobpostingdetails[action]=detail&tx_hireme_jobpostingdetails[controller]=JobPosting&cHash=67296f57ee3e785409753c5f3c82f279#basicApplicationForm
+            // /detail-jobs.html?test=test&tx_hireme_jobpostingdetails[action]=detail&tx_hireme_jobpostingdetails[controller]=JobPosting&cHash=6db2366b6b7c219f256b75440e7555cd#basicApplicationForm
+            // /detail-jobs.html?tx_hireme_jobpostingdetails[action]=detail&tx_hireme_jobpostingdetails[controller]=JobPosting&tx_hireme_jobpostingdetails[jobPosting]=987346123&cHash=89d279897706829d73e23e533a5aab77#basicApplicationForm
+
+            // https://www.bahnen.nrw.dev.arpa/detail-jobs.html?tx_hireme_jobpostingdetails%5Baction%5D=detail&tx_hireme_jobpostingdetails%5Bcontroller%5D=JobPosting&tx_hireme_jobpostingdetails%5BjobPosting%5D=987346123&cHash=89d279897706829d73e23e533a5aab77#basicApplicationForm
+            // https://www.bahnen.nrw.dev.arpa/detail-jobs.html?tx_hireme_jobpostingdetails%5Baction%5D=detail&tx_hireme_jobpostingdetails%5Bcontroller%5D=JobPosting&tx_hireme_jobpostingdetails%5BjobPosting%5D=987346123&cHash=89d279897706829d73e23e533a5aab77#basicApplicationForm
+
+
+            // Form erstellen
+            $formDefinition = $formFactory->build($formConfiguration);
+            $formRuntime = $formDefinition->bind($this->request);
+
+            // Rendern
+            $formHtml = $formRuntime->render();
+            $this->view->assign($renderedFormVariableName, $formHtml);
+
+        } catch (\Exception $e) {
+            $this->view->assign($formErrorVariableName, 'Formular konnte nicht geladen werden: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Handle form submissions from TYPO3 Forms
+     * das TYPO3 Form Framework standardmäßig versucht, Form-Submissions an eine performAction zu senden
+     */
+    public function performAction(): ResponseInterface
+    {
+        // Form-Verarbeitung läuft über Finisher
+        // Hier nur Redirect oder Response handling
+
+      //  $arguments = $this->request->getArguments();
+
+      //  // Falls ein JobPosting-Parameter vorhanden ist, zurück zur Detail-Seite
+      //  if (isset($arguments['jobPosting'])) {
+      //      return $this->redirect('detail', null, null, ['jobPosting' => $arguments['jobPosting']]);
+      //  }
+
+
+      //  // Andernfalls zur Liste
+      //  return $this->redirect('list');
+        return $this->htmlResponse();
+    }
+
+
+    /**
+     * Add custom finishers to the form configuration
+     */
+    protected function addCustomFinishers(array &$formConfiguration, JobPosting $jobPosting): void
+    {
+        // Ensure finishers array exists
+        if (!isset($formConfiguration['finishers'])) {
+            $formConfiguration['finishers'] = [];
+        }
+
+/*
+        // Add SaveApplication finisher at the beginning
+        array_unshift($formConfiguration['finishers'], [
+            'identifier' => 'SaveApplicationFinisher',
+            'options' => [
+                'jobPostingUid' => $jobPosting->getUid(),
+            ],
+        ]);
+*/
+
+        $formConfiguration['finishers'][] = [
+            'identifier' => 'SaveApplication',
+            'options' => [
+                'jobPostingUid' => $jobPosting->getUid(),
+            ],
+        ];
+
+        // Redirect finisher - redirect zu einer statischen Success-Seite
+        $formConfiguration['finishers'][] = [
+            'identifier' => 'Redirect',
+            'options' => [
+                'pageUid' => $this->settings['applicationSuccessPage'] ?? $GLOBALS['TSFE']->id,
+                'additionalParameters' => [
+                    'submitted' => '1',
+                    'job' => $jobPosting->getUid()
+                ],
+            ],
+        ];
     }
 
     public function listAction(): ResponseInterface
@@ -158,9 +282,7 @@ class JobPostingController extends ActionController
 
 
         $typeRepository = GeneralUtility::makeInstance(TypeRepository::class);
-        $typeFilters = $typeRepository->findByConfigWithResult();
 
-        DebuggerUtility::var_dump($jobPostings);
 
         // Assign to view
         $this->view->assignMultiple([

@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 return [
     'ctrl' => [
-        'title' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_sensoryrequirement',
+        'title' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_department',
         'label' => 'title',
         'descriptionColumn' => 'internal_description',
         'sortby' => 'sorting',
@@ -20,7 +20,7 @@ return [
         ],
         'hideAtCopy' => true,
         'searchFields' => 'title,slug',
-        'iconfile' => 'EXT:hire_me/Resources/Public/Icons/tx_hireme_domain_model_sensoryrequirement.svg',
+        'iconfile' => 'EXT:hire_me/Resources/Public/Icons/tx_hireme_department.svg',
         'languageField' => 'sys_language_uid',
         'transOrigPointerField' => 'l10n_parent',
         'transOrigDiffSourceField' => 'l10n_diffsource',
@@ -30,10 +30,10 @@ return [
         ],
     ],
     'columns' => [
-        // Custom fields
+        // Custom fields from Content Block
         'title' => [
             'exclude' => false,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_sensoryrequirement.title',
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_department.title',
             'config' => [
                 'type' => 'input',
                 'size' => 50,
@@ -44,7 +44,7 @@ return [
         ],
         'slug' => [
             'exclude' => false,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_sensoryrequirement.slug',
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_department.slug',
             'config' => [
                 'type' => 'slug',
                 'generatorOptions' => [
@@ -58,42 +58,6 @@ return [
                 'eval' => 'unique',
                 'default' => '',
                 'required' => true,
-            ],
-        ],
-        'description' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_sensoryrequirement.description',
-            'config' => [
-                'type' => 'text',
-                'cols' => 40,
-                'rows' => 15,
-                'softref' => 'email[subst],url',
-            ],
-        ],
-        'icon' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_sensoryrequirement.icon',
-            'config' => [
-                'type' => 'file',
-                'allowed' => 'png,jpg,jpeg,gif,webp',
-                'maxitems' => 1,
-                'appearance' => [
-                    'fileUploadAllowed' => false,
-                    'fileByUrlAllowed' => false,
-                ],
-            ],
-        ],
-        'job_postings' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_sensoryrequirement.job_postings',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectMultipleSideBySide',
-                'foreign_table' => 'tx_hireme_domain_model_jobposting',
-                'MM' => 'tx_hireme_domain_model_jobposting_sensoryrequirement_mm',
-                'MM_opposite_field' => 'sensory_requirements',
-                'size' => 10,
-                'maxitems' => 9999,
             ],
         ],
 
@@ -174,8 +138,8 @@ return [
                         'value' => 0,
                     ],
                 ],
-                'foreign_table' => 'tx_hireme_domain_model_sensoryrequirement',
-                'foreign_table_where' => 'AND {#tx_hireme_domain_model_sensoryrequirement}.{#pid}=###CURRENT_PID### AND {#tx_hireme_domain_model_sensoryrequirement}.{#sys_language_uid} IN (-1,0)',
+                'foreign_table' => 'tx_hireme_physicalrequirement',
+                'foreign_table_where' => 'AND {#tx_hireme_physicalrequirement}.{#pid}=###CURRENT_PID### AND {#tx_hireme_physicalrequirement}.{#sys_language_uid} IN (-1,0)',
                 'default' => 0,
             ],
         ],
@@ -221,7 +185,7 @@ return [
         '0' => [
             'showitem' => '
                 --div--;LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.general,
-                    title,slug,description,icon,job_postings,
+                    title,slug,
                 --div--;LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language,
                     --palette--;;language,
                 --div--;LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.access,

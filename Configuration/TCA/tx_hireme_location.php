@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 return [
     'ctrl' => [
-        'title' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_location',
+        'title' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_location',
         'label' => 'title',
         'descriptionColumn' => 'internal_description',
         'sortby' => 'sorting',
@@ -20,7 +20,7 @@ return [
         ],
         'hideAtCopy' => true,
         'searchFields' => 'title,street_name,house_number,postal_code,city,region',
-        'iconfile' => 'EXT:hire_me/Resources/Public/Icons/tx_hireme_domain_model_location.svg',
+        'iconfile' => 'EXT:hire_me/Resources/Public/Icons/tx_hireme_location.svg',
         'languageField' => 'sys_language_uid',
         'transOrigPointerField' => 'l10n_parent',
         'transOrigDiffSourceField' => 'l10n_diffsource',
@@ -33,7 +33,7 @@ return [
         // Custom fields from Content Block
         'title' => [
             'exclude' => false,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_location.title',
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_location.title',
             'config' => [
                 'type' => 'input',
                 'size' => 50,
@@ -43,7 +43,7 @@ return [
         ],
         'street_name' => [
             'exclude' => false,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_location.street_name',
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_location.street_name',
             'config' => [
                 'type' => 'input',
                 'size' => 50,
@@ -53,7 +53,7 @@ return [
         ],
         'house_number' => [
             'exclude' => false,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_location.house_number',
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_location.house_number',
             'config' => [
                 'type' => 'input',
                 'size' => 20,
@@ -63,7 +63,7 @@ return [
         ],
         'postal_code' => [
             'exclude' => false,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_location.postal_code',
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_location.postal_code',
             'config' => [
                 'type' => 'input',
                 'size' => 20,
@@ -73,7 +73,7 @@ return [
         ],
         'city' => [
             'exclude' => false,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_location.city',
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_location.city',
             'config' => [
                 'type' => 'input',
                 'size' => 50,
@@ -83,7 +83,7 @@ return [
         ],
         'region' => [
             'exclude' => false,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_location.region',
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_location.region',
             'config' => [
                 'type' => 'input',
                 'size' => 50,
@@ -93,15 +93,15 @@ return [
         ],
         'country' => [
             'exclude' => false,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_location.country',
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_location.country',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
-                'foreign_table' => 'tx_hireme_domain_model_country',
-                'foreign_table_where' => 'AND {#tx_hireme_domain_model_country}.{#sys_language_uid} IN (-1,0)',
+                'foreign_table' => 'tx_hireme_country',
+                'foreign_table_where' => 'AND {#tx_hireme_country}.{#sys_language_uid} IN (-1,0)',
                 'items' => [
                     [
-                        'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_location.country.empty',
+                        'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_location.country.empty',
                         'value' => 0,
                     ],
                 ],
@@ -110,13 +110,13 @@ return [
         ],
         'job_postings' => [
             'exclude' => false,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_location.job_postings',
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_location.job_postings',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
-                'foreign_table' => 'tx_hireme_domain_model_jobposting',
-                'foreign_table_where' => 'AND {#tx_hireme_domain_model_jobposting}.{#sys_language_uid} IN (-1,0)',
-                'MM' => 'tx_hireme_domain_model_jobposting_location_mm',
+                'foreign_table' => 'tx_hireme_jobposting',
+                'foreign_table_where' => 'AND {#tx_hireme_jobposting}.{#sys_language_uid} IN (-1,0)',
+                'MM' => 'tx_hireme_jobposting_location_mm',
                 'MM_opposite_field' => 'locations',
                 'size' => 10,
                 'minitems' => 0,
@@ -221,8 +221,8 @@ return [
                         'value' => 0,
                     ],
                 ],
-                'foreign_table' => 'tx_hireme_domain_model_physicalrequirement',
-                'foreign_table_where' => 'AND {#tx_hireme_domain_model_physicalrequirement}.{#pid}=###CURRENT_PID### AND {#tx_hireme_domain_model_physicalrequirement}.{#sys_language_uid} IN (-1,0)',
+                'foreign_table' => 'tx_hireme_physicalrequirement',
+                'foreign_table_where' => 'AND {#tx_hireme_physicalrequirement}.{#pid}=###CURRENT_PID### AND {#tx_hireme_physicalrequirement}.{#sys_language_uid} IN (-1,0)',
                 'default' => 0,
             ],
         ],
@@ -273,7 +273,7 @@ return [
                 --div--;LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.general,
                     title,
                     --palette--;;address,
-                --div--;LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_location.tab.relations,
+                --div--;LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_location.tab.relations,
                     job_postings,
                 --div--;LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language,
                     --palette--;;language,

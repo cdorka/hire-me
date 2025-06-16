@@ -1,8 +1,10 @@
 <?php
-
 declare(strict_types=1);
 
 use ChristianDorka\HireMe\Controller\JobPostingController;
+use ChristianDorka\HireMe\Registry\ApplicationFormRegistry;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 
 defined('TYPO3') or die('Access denied.');
@@ -17,8 +19,8 @@ defined('TYPO3') or die('Access denied.');
     ExtensionUtility::configurePlugin(
         'hire_me',
         'JobPostingDetails',
-        [JobPostingController::class => 'detail'],
-        [],
+        [JobPostingController::class => 'detail,perform'],
+        [JobPostingController::class => 'perform'],
         ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
     );
 
@@ -45,5 +47,19 @@ defined('TYPO3') or die('Access denied.');
         [],
         ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
     );
-})();
 
+    /** @var ApplicationFormRegistry $applicationFormRegistry */
+    $applicationFormRegistry = GeneralUtility::makeInstance(ApplicationFormRegistry::class);
+    $applicationFormRegistry->registerForm(
+        identifier: 'basicApplicationForm',
+        path: "EXT:hire_me/Resources/Private/Forms/BasicApplicationForm.form.yaml",
+        label: "Basic application form",
+    );
+    $applicationFormRegistry->registerForm(
+        identifier: "basicApprenticeApplicationForm",
+        path: "EXT:hire_me/Resources/Private/Forms/BasicApprenticeApplicationForm.form.yaml",
+        label: "Basic application form for apprenticeships",
+    );
+
+
+})();

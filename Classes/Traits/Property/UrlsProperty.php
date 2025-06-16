@@ -8,7 +8,6 @@ namespace ChristianDorka\HireMe\Traits\Property;
 use ChristianDorka\HireMe\Domain\Model\Url;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
-
 trait UrlsProperty
 {
     /**
@@ -17,47 +16,44 @@ trait UrlsProperty
     protected ?ObjectStorage $urls = null;
 
     /**
-     * Add a url to the storage
-     *
      * @param Url $url
      *
      * @return void
      */
     public function addUrl(Url $url): void
     {
+        if ($this->urls === null) {
+            $this->urls = new ObjectStorage();
+        }
         $this->urls->attach($url);
     }
 
     /**
-     * Remove a url from the storage
-     *
      * @param Url $url
      *
      * @return void
      */
     public function removeUrl(Url $url): void
     {
-        $this->urls->detach($url);
+        if ($this->urls !== null) {
+            $this->urls->detach($url);
+        }
     }
 
     /**
-     * Remove all urls from the storage
-     *
      * @return void
      */
-    public function removeAllUrls(): void
+    public function removeAllUrl(): void
     {
         $this->urls = new ObjectStorage();
     }
 
     /**
-     * Remove all urls from the storage
-     *
-     * @return null|array
+     * @return ObjectStorage<Url>|null
      */
-    public function getUrls(): ?array
+    public function getUrls(): ?ObjectStorage
     {
-        return $this->urls?->toArray();
+        return $this->urls;
     }
 
     /**
@@ -68,5 +64,13 @@ trait UrlsProperty
     public function setUrls(?ObjectStorage $urls): void
     {
         $this->urls = $urls;
+    }
+
+    /**
+     * @return array<Url>
+     */
+    public function getUrlArray(): array
+    {
+        return $this->urls?->toArray() ?? [];
     }
 }

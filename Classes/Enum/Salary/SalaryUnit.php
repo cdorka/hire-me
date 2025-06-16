@@ -46,5 +46,5 @@ enum SalaryUnit: int implements LanguageFilePaths
     /**
      * Key for the label in language file
      */
-    const LABEL_KEY = 'tx_hireme_domain_model_jobposting.base_salary_unit';
+    const LABEL_KEY = 'tx_hireme_jobposting.base_salary_unit';
 }

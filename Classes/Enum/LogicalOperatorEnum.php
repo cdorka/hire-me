@@ -1,16 +1,4 @@
 <?php
-
-/**
- * Logical operator enum for query conditions
- * php version 8.2
- *
- * @category     Enum
- * @package      CpCompartner\Blog\Enum\General
- * @license      TODO
- * @author       Christian Dorka <mail@christiandorka.de>
- * @noinspection PhpUnused
- */
-
 declare(strict_types=1);
 
 namespace ChristianDorka\HireMe\Enum;

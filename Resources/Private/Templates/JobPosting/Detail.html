@@ -7,51 +7,43 @@
 <f:layout name="Default"/>
 
 <f:section name="Content">
-
-
-    <f:debug>{_all}</f:debug>
     <div class="container-fluid px-0">
-        <f:flashMessages />
 
-        <!-- Progress Navigation -->
-        <nav class="progress-nav py-2 mb-4">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-6">
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb mb-0">
-                                <li class="breadcrumb-item"><a href="{f:uri.page(pageUid: settings.listPageId)}">Job Listings</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">{jobPosting.title}</li>
-                            </ol>
-                        </nav>
-                    </div>
-                    <div class="col-md-6">
-                        <ul class="nav nav-pills justify-content-md-end">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#overview">Overview</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#details">Details</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#application">Apply</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </nav>
-
-        <!-- Hero Section -->
         <section id="hero" class="bg-light py-5 mb-5">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-8">
 
-                            {f:variable(name: 'orgLogo', value: organization.logo)}
-                            <img src="{f:if(condition: orgLogo, then: orgLogo, else: '{f:uri.resource(path: \'Images/placeholder-logo.png\')}'}"
-                                 alt="{jobPosting.hiringOrganizations.title}" class="mb-4" style="max-height: 60px;">
-                            <h1 class="display-5 fw-bold mb-3">{jobPosting.title}</h1>
+                        <div>
+                            <f:if condition="{jobPosting.top}">
+                                <span class="badge badge-primary">Top</span>
+                            </f:if>
+                            <f:if condition="{jobPosting.new}">
+                                <span class="badge badge-primary">Neu</span>
+                            </f:if>
+                        </div>
+
+                        <div>
+                            <f:for as="type" each="{jobPosting.types}">
+                                <span class="badge badge-primary">{type.title}</span>
+                            </f:for>
+                        </div>
+
+                        <h1 class="display-5 fw-bold mb-3">{jobPosting.title}</h1>
+
+                        <f:if condition="{jobPosting.jobId}">
+                            <div>Job-ID: <b>{jobPosting.jobId}</b></div>
+                        </f:if>
+
+                        <f:if condition="{jobPosting.employmentTypes}">
+                            <div>Anstellungsart:
+                                <f:for as="type" each="{jobPosting.employmentTypes}">
+                                    <span class="badge badge-primary">
+                                        <f:translate key="jobPostingDetail.employmentTypes.items.{type}.label" extensionName="hire_me"/>
+                                    </span>
+                                </f:for>
+                            </div>
+                        </f:if>
 
                             <div class="d-flex flex-wrap gap-2 mb-4">
                                 <f:if condition="{jobPosting.types}">
@@ -78,11 +70,6 @@
                                 </span>
                                 </f:if>
 
-                                <f:if condition="{jobPosting.employmentType}">
-                                    <f:for each="{jobPosting.employmentType}" as="type">
-                                        <span class="badge bg-success py-2 px-3">{type}</span>
-                                    </f:for>
-                                </f:if>
                             </div>
 
                             <div class="d-flex flex-wrap gap-4 text-muted">
@@ -256,32 +243,47 @@
                             </div>
                         </f:if>
 
-                        <f:if condition="{jobPosting.hiringOrganizations}">
+
+
+                        <f:if condition="{jobPosting.renderHiringOrganizations}">
                             <div class="card shadow-sm mb-4">
                                 <div class="card-header bg-white">
-                                    <h3 class="h5 fw-bold mb-0">About the Company</h3>
+                                    <f:if condition="{jobPosting.hiringOrganizations -> f:count() > 1}">
+                                        <f:then>
+                                            <h3 class="h5 fw-bold mb-0">About the Companies</h3>
+                                        </f:then>
+                                        <f:else>
+                                            <h3 class="h5 fw-bold mb-0">About the Company</h3>
+                                        </f:else>
+                                    </f:if>
                                 </div>
                                 <div class="card-body">
-                                    <div class="d-flex align-items-center mb-3">
-                                            {f:variable(name: 'companyLogo', value: jobPosting.hiringOrganizations.logo)}
-                                            <img src="{f:if(condition: companyLogo, then: companyLogo, else: '{f:uri.resource(path: \'Images/placeholder-company.png\')}'}"
-                                                 alt="{jobPosting.hiringOrganizations.title}" class="me-3" style="max-width: 80px; max-height: 50px;">
+                                    <f:for as="organization" each="{jobPosting.hiringOrganizations}">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <f:image
+                                                image="{organization.logo}"
+                                                maxWidth="80"
+                                                maxHeight="80" />
                                             <div>
-                                                <h4 class="h6 mb-0">{jobPosting.hiringOrganizations.title}</h4>
-                                                <f:if condition="{jobPosting.hiringOrganizations.legalName} != {jobPosting.hiringOrganizations.title}">
-                                                    <small class="text-muted">{jobPosting.hiringOrganizations.legalName}</small>
+                                                <h4 class="h6 mb-0">{organization.title}</h4>
+                                                <f:if condition="{organization.legalName} != {organization.title}">
+                                                    <small class="text-muted">{organization.legalName}</small>
                                                 </f:if>
                                             </div>
-                                    </div>
+                                        </div>
+                                        <f:if condition="{organization.homepage}">
+                                            <a href="{organization.homepage}" class="btn btn-outline-primary btn-sm" target="_blank" rel="noopener noreferrer">
+                                                <i class="fas fa-external-link-alt"></i> Visit Website
+                                            </a>
+                                        </f:if>
+                                    </f:for>
 
-                                    <f:if condition="{jobPosting.hiringOrganizations.homepage}">
-                                        <a href="{jobPosting.hiringOrganizations.homepage}" class="btn btn-outline-primary btn-sm" target="_blank" rel="noopener noreferrer">
-                                            <i class="fas fa-external-link-alt"></i> Visit Website
-                                        </a>
-                                    </f:if>
                                 </div>
                             </div>
                         </f:if>
+
+
+
                     </div>
                 </div>
             </div>
@@ -445,27 +447,6 @@
                                 </div>
                             </f:if>
 
-                            <f:if condition="{jobPosting.specialCommitments}">
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="headingCommitments">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCommitments" aria-expanded="false" aria-controls="collapseCommitments">
-                                            Special Commitments
-                                        </button>
-                                    </h2>
-                                    <div id="collapseCommitments" class="accordion-collapse collapse" aria-labelledby="headingCommitments" data-bs-parent="#jobDetailsAccordion">
-                                        <div class="accordion-body">
-                                            <ul class="list-group list-group-flush">
-                                                <f:for each="{jobPosting.specialCommitments}" as="commitment">
-                                                    <li class="list-group-item border-0 px-0">
-                                                        <i class="fas fa-star me-2 text-warning"></i>
-                                                        {commitment.description}
-                                                    </li>
-                                                </f:for>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </f:if>
                         </div>
                     </div>
 
@@ -544,443 +525,33 @@
             </div>
         </section>
 
-        <!-- Application Section -->
-        <section id="application" class="mb-5">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-10">
-                        <div class="card shadow">
-                            <div class="card-header bg-primary text-white py-3">
-                                <h2 class="h3 fw-bold mb-0">Apply for this Position</h2>
-                            </div>
-                            <div class="card-body p-4">
-                                <f:if condition="{jobPosting.hasDirectApply}">
-                                    <f:then>
-                                        <div id="application-form">
-                                            <div class="alert alert-info mb-4">
-                                                <div class="d-flex">
-                                                    <div class="me-3">
-                                                        <i class="fas fa-info-circle fa-2x"></i>
-                                                    </div>
-                                                    <div>
-                                                        <h4 class="h5 alert-heading">Before you apply</h4>
-                                                        <p class="mb-0">Make sure your resume is up-to-date and specifically tailored for this position. For the best results, match your qualifications to the job requirements.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
+        <f:if condition="{jobPosting.renderApplication}">
+            <f:if condition="{applicationSend}">
+                <f:then>
+                    <f:render partial="JobPosting/ApplicationSend" arguments="{_all}" />
+                </f:then>
+                <f:else>
+                    <f:render partial="JobPosting/Application" arguments="{_all}" />
+                </f:else>
+            </f:if>
+        </f:if>
 
-                                            <f:form action="apply" name="application" object="{application}" enctype="multipart/form-data" class="needs-validation" novalidate="novalidate">
-                                                <f:form.hidden property="jobPosting" value="{jobPosting}" />
+        <f:if condition="{jobPosting.renderJourney}">
+            <f:render partial="JobPosting/Journey" arguments="{_all}" />
+        </f:if>
 
-                                                <div class="row mb-4">
-                                                    <div class="col-md-6 mb-3 mb-md-0">
-                                                        <label for="firstName" class="form-label">First Name*</label>
-                                                        <f:form.textfield property="firstName" id="firstName" class="form-control" required="true" />
-                                                        <div class="invalid-feedback">Please enter your first name</div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label for="lastName" class="form-label">Last Name*</label>
-                                                        <f:form.textfield property="lastName" id="lastName" class="form-control" required="true" />
-                                                        <div class="invalid-feedback">Please enter your last name</div>
-                                                    </div>
-                                                </div>
+        <f:if condition="{faqs}">
+            <f:render partial="JobPosting/Faqs" arguments="{_all}" />
+        </f:if>
 
-                                                <div class="row mb-4">
-                                                    <div class="col-md-6 mb-3 mb-md-0">
-                                                        <label for="email" class="form-label">Email Address*</label>
-                                                        <f:form.textfield type="email" property="email" id="email" class="form-control" required="true" />
-                                                        <div class="invalid-feedback">Please enter a valid email address</div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label for="phone" class="form-label">Phone Number</label>
-                                                        <f:form.textfield property="phone" id="phone" class="form-control" />
-                                                    </div>
-                                                </div>
-
-                                                <div class="mb-4">
-                                                    <label for="coverLetter" class="form-label">Cover Letter</label>
-                                                    <small class="text-muted d-block mb-2">Introduce yourself and explain why you're a good fit for this role</small>
-                                                    <f:form.textarea property="coverLetter" id="coverLetter" class="form-control" rows="5" />
-                                                </div>
-
-                                                <div class="mb-4">
-                                                    <label for="resume" class="form-label">Resume/CV* (PDF)</label>
-                                                    <f:form.upload property="resume" id="resume" class="form-control" accept=".pdf,.doc,.docx" required="true" />
-                                                    <div class="invalid-feedback">Please upload your resume</div>
-                                                    <small class="text-muted">Accepted formats: PDF, DOC, DOCX. Max size: 5MB</small>
-                                                </div>
-
-                                                <div class="mb-4">
-                                                    <div class="form-check">
-                                                        <f:form.checkbox value="1" property="privacyPolicy" id="privacyPolicy" class="form-check-input" required="true" />
-                                                        <label class="form-check-label" for="privacyPolicy">
-                                                            I agree to the <a href="#" target="_blank">privacy policy</a> and consent to the processing of my personal data.*
-                                                        </label>
-                                                        <div class="invalid-feedback">You must agree to the privacy policy</div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="d-grid">
-                                                    <f:form.button type="submit" class="btn btn-primary btn-lg">
-                                                        <i class="fas fa-paper-plane me-2"></i> Submit Application
-                                                    </f:form.button>
-                                                </div>
-                                            </f:form>
-                                        </div>
-                                    </f:then>
-                                    <f:else>
-                                        <div class="text-center py-5">
-                                            <div class="mb-4">
-                                                <i class="fas fa-external-link-alt fa-3x text-primary"></i>
-                                            </div>
-                                            <h3 class="h4 mb-4">Ready to apply?</h3>
-                                            <p class="mb-4">Please continue to our company website to complete your application.</p>
-                                            <a href="{jobPosting.hiringOrganizations.homepage}" class="btn btn-primary btn-lg px-5" target="_blank" rel="noopener noreferrer">
-                                                Apply on Company Website
-                                            </a>
-                                        </div>
-                                    </f:else>
-                                </f:if>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Milestones Section -->
-        <section id="milestones" class="mb-5">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-10">
-                        <div class="card shadow">
-                            <div class="card-header bg-white py-3">
-                                <h2 class="h3 fw-bold mb-0">Your Application Journey</h2>
-                            </div>
-                            <div class="card-body p-4">
-                                <div class="timeline position-relative">
-                                    <!-- Timeline Line -->
-                                    <div class="position-absolute h-100" style="width: 4px; background-color: #e9ecef; left: 20px; top: 0;"></div>
-
-                                    <!-- Milestone 1 -->
-                                    <div class="d-flex mb-4 position-relative">
-                                        <div class="timeline-point rounded-circle bg-primary text-white d-flex align-items-center justify-content-center position-relative" style="width: 40px; height: 40px; z-index: 1;">
-                                            <span class="fw-bold">1</span>
-                                        </div>
-                                        <div class="ms-4">
-                                            <h3 class="h5 fw-bold">Application Submission</h3>
-                                            <p class="mb-0">After you submit your application, you'll receive a confirmation email within 24 hours.</p>
-                                        </div>
-                                    </div>
-
-                                    <!-- Milestone 2 -->
-                                    <div class="d-flex mb-4 position-relative">
-                                        <div class="timeline-point rounded-circle bg-primary text-white d-flex align-items-center justify-content-center position-relative" style="width: 40px; height: 40px; z-index: 1;">
-                                            <span class="fw-bold">2</span>
-                                        </div>
-                                        <div class="ms-4">
-                                            <h3 class="h5 fw-bold">Initial Screening</h3>
-                                            <p class="mb-0">Our HR team will review your application within 5-7 business days. Suitable candidates will be contacted for an initial phone interview.</p>
-                                        </div>
-                                    </div>
-
-                                    <!-- Milestone 3 -->
-                                    <div class="d-flex mb-4 position-relative">
-                                        <div class="timeline-point rounded-circle bg-primary text-white d-flex align-items-center justify-content-center position-relative" style="width: 40px; height: 40px; z-index: 1;">
-                                            <span class="fw-bold">3</span>
-                                        </div>
-                                        <div class="ms-4">
-                                            <h3 class="h5 fw-bold">Interview & Assessment</h3>
-                                            <p class="mb-0">Selected candidates will be invited for an in-person interview and practical assessment at our headquarters. This typically occurs within 2 weeks of phone screening.</p>
-                                        </div>
-                                    </div>
-
-                                    <!-- Milestone 4 -->
-                                    <div class="d-flex mb-4 position-relative">
-                                        <div class="timeline-point rounded-circle bg-primary text-white d-flex align-items-center justify-content-center position-relative" style="width: 40px; height: 40px; z-index: 1;">
-                                            <span class="fw-bold">4</span>
-                                        </div>
-                                        <div class="ms-4">
-                                            <h3 class="h5 fw-bold">Final Decision</h3>
-                                            <p class="mb-0">Final hiring decisions are usually made within 1 week after interviews are completed. All applicants will be notified regardless of outcome.</p>
-                                        </div>
-                                    </div>
-
-                                    <!-- Milestone 5 -->
-                                    <div class="d-flex position-relative">
-                                        <div class="timeline-point rounded-circle bg-success text-white d-flex align-items-center justify-content-center position-relative" style="width: 40px; height: 40px; z-index: 1;">
-                                            <i class="fas fa-check"></i>
-                                        </div>
-                                        <div class="ms-4">
-                                            <h3 class="h5 fw-bold">Onboarding</h3>
-                                            <p class="mb-0">If selected, you'll enter our comprehensive 3-week training program before starting your position officially.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- FAQ Section -->
-        <section id="faq" class="py-5 bg-light mb-5">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-10">
-                        <div class="text-center mb-5">
-                            <h2 class="h3 fw-bold">Frequently Asked Questions</h2>
-                            <p class="text-muted">Everything you need to know about this position</p>
-                        </div>
-
-                        <div class="accordion" id="faqAccordion">
-                            <!-- FAQ Item 1 -->
-                            <div class="accordion-item border mb-3 shadow-sm">
-                                <h3 class="accordion-header" id="faqHeading1">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="true" aria-controls="faqCollapse1">
-                                        What qualifications do I need for this position?
-                                    </button>
-                                </h3>
-                                <div id="faqCollapse1" class="accordion-collapse collapse show" aria-labelledby="faqHeading1" data-bs-parent="#faqAccordion">
-                                    <div class="accordion-body">
-                                        <p>
-                                            The minimum qualifications include:
-                                        </p>
-                                        <ul>
-                                            <f:if condition="{jobPosting.educationRequirementsText}">
-                                                <li><strong>Education:</strong> {jobPosting.educationRequirementsText}</li>
-                                            </f:if>
-                                            <f:if condition="{jobPosting.experienceRequirementsText}">
-                                                <li><strong>Experience:</strong> {jobPosting.experienceRequirementsText}</li>
-                                            </f:if>
-                                            <f:if condition="{jobPosting.eligibilityToWorkRequirement}">
-                                                <li><strong>Legal Requirements:</strong> {jobPosting.eligibilityToWorkRequirement}</li>
-                                            </f:if>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- FAQ Item 2 -->
-                            <div class="accordion-item border mb-3 shadow-sm">
-                                <h3 class="accordion-header" id="faqHeading2">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
-                                        What does the application process look like?
-                                    </button>
-                                </h3>
-                                <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faqHeading2" data-bs-parent="#faqAccordion">
-                                    <div class="accordion-body">
-                                        <p>Our application process typically consists of:</p>
-                                        <ol>
-                                            <li>Initial application review (5-7 business days)</li>
-                                            <li>Phone screening for qualified candidates</li>
-                                            <li>In-person interview and skills assessment</li>
-                                            <li>Final decision and offer</li>
-                                        </ol>
-                                        <p>Please see the "Your Application Journey" section above for more detailed information about timelines.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- FAQ Item 3 -->
-                            <div class="accordion-item border mb-3 shadow-sm">
-                                <h3 class="accordion-header" id="faqHeading3">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse3" aria-expanded="false" aria-controls="faqCollapse3">
-                                        What are the working hours and schedule?
-                                    </button>
-                                </h3>
-                                <div id="faqCollapse3" class="accordion-collapse collapse" aria-labelledby="faqHeading3" data-bs-parent="#faqAccordion">
-                                    <div class="accordion-body">
-                                        <f:if condition="{jobPosting.workingHours}">
-                                            <p>{jobPosting.workingHours}</p>
-                                            <f:else>
-                                                <p>This position follows our standard working hours. Please contact us for more information about schedules and flexibility.</p>
-                                            </f:else>
-                                        </f:if>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- FAQ Item 4 -->
-                            <div class="accordion-item border mb-3 shadow-sm">
-                                <h3 class="accordion-header" id="faqHeading4">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse4" aria-expanded="false" aria-controls="faqCollapse4">
-                                        What benefits and perks come with this position?
-                                    </button>
-                                </h3>
-                                <div id="faqCollapse4" class="accordion-collapse collapse" aria-labelledby="faqHeading4" data-bs-parent="#faqAccordion">
-                                    <div class="accordion-body">
-                                        <p>We offer a comprehensive benefits package that includes:</p>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <f:if condition="{jobPosting.benefits}">
-                                                    <h4 class="h6 fw-bold">Benefits</h4>
-                                                    <ul>
-                                                        <f:for each="{jobPosting.benefits}" as="benefit">
-                                                            <li>{benefit.title}</li>
-                                                        </f:for>
-                                                    </ul>
-                                                </f:if>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <f:if condition="{jobPosting.incentives}">
-                                                    <h4 class="h6 fw-bold">Incentives</h4>
-                                                    <ul>
-                                                        <f:for each="{jobPosting.incentives}" as="incentive">
-                                                            <li>{incentive.description}</li>
-                                                        </f:for>
-                                                    </ul>
-                                                </f:if>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- FAQ Item 5 -->
-                            <div class="accordion-item border mb-3 shadow-sm">
-                                <h3 class="accordion-header" id="faqHeading5">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse5" aria-expanded="false" aria-controls="faqCollapse5">
-                                        Is there a training program for new employees?
-                                    </button>
-                                </h3>
-                                <div id="faqCollapse5" class="accordion-collapse collapse" aria-labelledby="faqHeading5" data-bs-parent="#faqAccordion">
-                                    <div class="accordion-body">
-                                        <p>Yes, all new employees undergo a comprehensive training program. The program typically includes:</p>
-                                        <ul>
-                                            <li>Initial orientation to our company and policies</li>
-                                            <li>Role-specific technical training</li>
-                                            <li>Hands-on practical experience under supervision</li>
-                                            <li>Regular feedback and support from team leaders</li>
-                                        </ul>
-                                        <p>The training period lasts approximately 3 weeks, depending on the specific role and prior experience.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- FAQ Item 6 -->
-                            <div class="accordion-item border shadow-sm">
-                                <h3 class="accordion-header" id="faqHeading6">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse6" aria-expanded="false" aria-controls="faqCollapse6">
-                                        What are the career growth opportunities?
-                                    </button>
-                                </h3>
-                                <div id="faqCollapse6" class="accordion-collapse collapse" aria-labelledby="faqHeading6" data-bs-parent="#faqAccordion">
-                                    <div class="accordion-body">
-                                        <p>We're committed to the professional development of our employees. Career growth opportunities include:</p>
-                                        <ul>
-                                            <li>Internal promotions to team lead and supervisory positions</li>
-                                            <li>Cross-training in related departments</li>
-                                            <li>Specialized certifications and advanced training</li>
-                                            <li>Management development programs for high-performing employees</li>
-                                        </ul>
-                                        <p>Many of our current managers started in entry-level positions and advanced through dedication and strong performance.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="text-center mt-4">
-                            <p>Still have questions? Contact our HR department at <a href="mailto:hr@example.com">hr@example.com</a> or call us at <a href="tel:+491234567890">+49 (0) 123 456 7890</a>.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
     </div>
 
-    <!-- Sticky Apply Button (Mobile) -->
-    <div class="sticky-apply-btn">
-        <div class="container">
-            <a href="#application" class="btn btn-primary btn-lg w-100 shadow">Apply Now</a>
-        </div>
-    </div>
 
-    <!-- Back to Top Button -->
-    <button id="back-to-top" class="btn btn-primary rounded-circle position-fixed bottom-0 end-0 translate-middle d-none" style="z-index: 1030;">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <f:comment>Bootstrap 5 JS Bundle with Popper</f:comment>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Form validation
-            var forms = document.querySelectorAll('.needs-validation');
-            Array.prototype.slice.call(forms).forEach(function(form) {
-                form.addEventListener('submit', function(event) {
-                    if (!form.checkValidity()) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                    }
-                    form.classList.add('was-validated');
-                }, false);
-            });
-
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 70,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-
-            // Back to top button
-            const backToTopButton = document.getElementById('back-to-top');
-            if (backToTopButton) {
-                window.addEventListener('scroll', function() {
-                    if (window.scrollY > 300) {
-                        backToTopButton.classList.remove('d-none');
-                        backToTopButton.classList.add('d-flex', 'm-4');
-                    } else {
-                        backToTopButton.classList.remove('d-flex', 'm-4');
-                        backToTopButton.classList.add('d-none');
-                    }
-                });
-
-                backToTopButton.addEventListener('click', function() {
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
-                });
-            }
-
-            // Active nav links based on scroll position
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('.nav-link');
-
-            window.addEventListener('scroll', function() {
-                let current = '';
-
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop - 100;
-                    const sectionHeight = section.offsetHeight;
-
-                    if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-                        current = section.getAttribute('id');
-                    }
-                });
-
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === '#' + current) {
-                        link.classList.add('active');
-                    }
-                });
-            });
-        });
-    </script>
+    <style>
+        .card {
+            aspect-ratio: auto !important;
+        }
+    </style>
 </f:section>
 
 </html>

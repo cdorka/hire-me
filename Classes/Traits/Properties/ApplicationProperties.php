@@ -6,6 +6,8 @@ declare(strict_types=1);
 namespace ChristianDorka\HireMe\Traits\Properties;
 
 use DateTime;
+use PhpOffice\PhpSpreadsheet\Shared\Date;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 
 trait ApplicationProperties
@@ -118,7 +120,7 @@ trait ApplicationProperties
             return false;
         }
 
-        return new DateTime() <= time();
+        return $this->toptime >= new DateTime('now');
     }
 
     public function getNewtime(): ?DateTime
@@ -158,7 +160,7 @@ trait ApplicationProperties
             return false;
         }
 
-        return new DateTime() <= time();
+        return $this->newtime >= new DateTime('now');
     }
 
     public function getStarttime(): ?DateTime

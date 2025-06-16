@@ -32,5 +32,5 @@ enum ExperienceRequirementsType: int implements LanguageFilePaths
     /**
      * Key for the label in language file
      */
-    const LABEL_KEY = 'tx_hireme_domain_model_jobposting.experience_requirements_type';
+    const LABEL_KEY = 'tx_hireme_jobposting.experience_requirements_type';
 }

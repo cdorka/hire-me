@@ -14,19 +14,10 @@ use TYPO3\CMS\Extbase\Annotation\ORM\Lazy;
  */
 class TtContentSource extends AbstractEntity
 {
-
     /**
      * Constructor
      */
     public function __construct()
-    {
-        $this->initializeObject();
-    }
-
-    /**
-     * Initialize object
-     */
-    public function initializeObject(): void
     {
     }
 }

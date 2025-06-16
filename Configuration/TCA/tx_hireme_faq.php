@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 return [
     'ctrl' => [
-        'title' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_incentive',
+        'title' => 'faq LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_faq',
         'label' => 'title',
         'descriptionColumn' => 'internal_description',
         'sortby' => 'sorting',
@@ -20,7 +20,7 @@ return [
         ],
         'hideAtCopy' => true,
         'searchFields' => 'title,slug',
-        'iconfile' => 'EXT:hire_me/Resources/Public/Icons/tx_hireme_domain_model_incentive.svg',
+        'iconfile' => 'EXT:hire_me/Resources/Public/Icons/tx_hireme_faq.svg',
         'languageField' => 'sys_language_uid',
         'transOrigPointerField' => 'l10n_parent',
         'transOrigDiffSourceField' => 'l10n_diffsource',
@@ -30,10 +30,11 @@ return [
         ],
     ],
     'columns' => [
-        // Custom fields
+        // Custom fields from Content Block
         'title' => [
-            'exclude' => false,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_incentive.title',
+            'exclude' => true,
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_faq.title.label',
+            'description' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_faq.title.description',
             'config' => [
                 'type' => 'input',
                 'size' => 50,
@@ -43,15 +44,15 @@ return [
             ],
         ],
         'slug' => [
-            'exclude' => false,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_incentive.slug',
+            'exclude' => true,
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_faq.slug.label',
+            'description' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_faq.slug.description',
             'config' => [
                 'type' => 'slug',
                 'generatorOptions' => [
                     'fields' => ['title'],
                     'fieldSeparator' => '-',
                     'prefixParentPageSlug' => false,
-
                     'replacements' => \ChristianDorka\HireMe\UserFuncs\FormEngine\ReplacementsProcFunc::generalSlugProcFunc(),
                 ],
                 'fallbackCharacter' => '-',
@@ -62,38 +63,37 @@ return [
         ],
         'description' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_incentive.description',
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_faq.description.label',
+            'description' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_faq.description.description',
             'config' => [
                 'type' => 'text',
-                'cols' => 40,
-                'rows' => 15,
-                'softref' => 'email[subst],url',
+                'enableRichtext' => true,
             ],
         ],
-        'icon' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_incentive.icon',
-            'config' => [
-                'type' => 'file',
-                'allowed' => 'png,jpg,jpeg,gif,webp',
-                'maxitems' => 1,
-                'appearance' => [
-                    'fileUploadAllowed' => false,
-                    'fileByUrlAllowed' => false,
-                ],
-            ],
-        ],
-        'job_postings' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_incentive.job_postings',
+        'groups' => [
+            'exclude' => false,
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_faq.groups.label',
+            'description' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_faq.groups.description',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
-                'foreign_table' => 'tx_hireme_domain_model_jobposting',
-                'MM' => 'tx_hireme_domain_model_jobposting_incentive_mm',
-                'MM_opposite_field' => 'incentives',
-                'size' => 10,
+                'foreign_table' => 'tx_hireme_faqgroup',
+                'multiple' => false,
+                'foreign_table_where' => 'AND {#tx_hireme_faqgroup}.{#sys_language_uid} IN (-1,0)',
+                'MM' => 'tx_hireme_faqgroup_faq_mm',
+                'minitems' => 0,
                 'maxitems' => 9999,
+                'fieldControl' => [
+                    'editPopup' => [
+                        'disabled' => false,
+                    ],
+                    'addRecord' => [
+                        'disabled' => false,
+                    ],
+                    'listModule' => [
+                        'disabled' => false,
+                    ],
+                ],
             ],
         ],
 
@@ -174,8 +174,8 @@ return [
                         'value' => 0,
                     ],
                 ],
-                'foreign_table' => 'tx_hireme_domain_model_physicalrequirement',
-                'foreign_table_where' => 'AND {#tx_hireme_domain_model_physicalrequirement}.{#pid}=###CURRENT_PID### AND {#tx_hireme_domain_model_physicalrequirement}.{#sys_language_uid} IN (-1,0)',
+                'foreign_table' => 'tx_hireme_faq',
+                'foreign_table_where' => 'AND {#tx_hireme_faq}.{#pid}=###CURRENT_PID### AND {#tx_hireme_faq}.{#sys_language_uid} IN (-1,0)',
                 'default' => 0,
             ],
         ],
@@ -221,7 +221,7 @@ return [
         '0' => [
             'showitem' => '
                 --div--;LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.general,
-                    title,slug,description,icon,job_postings,
+                    title,slug,description,groups,
                 --div--;LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language,
                     --palette--;;language,
                 --div--;LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.access,

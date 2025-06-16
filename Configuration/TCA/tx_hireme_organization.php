@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 return [
     'ctrl' => [
-        'title' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_type',
+        'title' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_organization',
         'label' => 'title',
         'descriptionColumn' => 'internal_description',
         'sortby' => 'sorting',
@@ -19,8 +19,8 @@ return [
             'fe_group' => 'fe_group',
         ],
         'hideAtCopy' => true,
-        'searchFields' => 'title,slug',
-        'iconfile' => 'EXT:hire_me/Resources/Public/Icons/tx_hireme_domain_model_type.svg',
+        'searchFields' => 'title,legal_name,slug',
+        'iconfile' => 'EXT:hire_me/Resources/Public/Icons/tx_hireme_organization.svg',
         'languageField' => 'sys_language_uid',
         'transOrigPointerField' => 'l10n_parent',
         'transOrigDiffSourceField' => 'l10n_diffsource',
@@ -30,21 +30,32 @@ return [
         ],
     ],
     'columns' => [
-
         // Custom fields from Content Block
         'title' => [
             'exclude' => false,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_type.title',
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_organization.title',
             'config' => [
                 'type' => 'input',
                 'size' => 50,
                 'max' => 255,
                 'eval' => 'trim',
+                'required' => true,
+            ],
+        ],
+        'legal_name' => [
+            'exclude' => false,
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_organization.legal_name',
+            'config' => [
+                'type' => 'input',
+                'size' => 50,
+                'max' => 255,
+                'eval' => 'trim',
+                'required' => true,
             ],
         ],
         'slug' => [
             'exclude' => false,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_type.slug',
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_organization.slug',
             'config' => [
                 'type' => 'slug',
                 'generatorOptions' => [
@@ -60,17 +71,75 @@ return [
                 'required' => true,
             ],
         ],
-        'icon' => [
+        'job_postings' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_organization.job_postings',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectMultipleSideBySide',
+                'foreign_table' => 'tx_hireme_jobposting',
+                'MM' => 'tx_hireme_jobposting_organization_mm',
+                'MM_opposite_field' => 'hiring_organizations',
+                'maxitems' => 9999,
+            ],
+        ],
+        'homepage' => [
             'exclude' => false,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_type.icon',
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_organization.homepage',
+            'config' => [
+                'type' => 'link',
+                'allowedTypes' => ['page', 'url'],
+            ],
+        ],
+        'urls' => [
+            'exclude' => false,
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_organization.urls',
+            'config' => [
+                'type' => 'inline',
+                'foreign_table' => 'tx_hireme_url',
+                'foreign_field' => 'parent_uid',
+                'foreign_table_field' => 'parent_table',
+                'appearance' => [
+                    'collapseAll' => true,
+                    'expandSingle' => true,
+                    'newRecordLinkTitle' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_organization.urls.add',
+                    'levelLinksPosition' => 'top',
+                    'showPossibleLocalizationRecords' => true,
+                    'showAllLocalizationLink' => true,
+                    'showSynchronizationLink' => true,
+                    'enabledControls' => [
+                        'info' => true,
+                        'new' => true,
+                        'dragdrop' => true,
+                        'sort' => true,
+                        'hide' => true,
+                        'delete' => true,
+                        'localize' => true,
+                    ],
+                ],
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true,
+                ],
+            ],
+        ],
+        'detail_page' => [
+            'exclude' => false,
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_organization.detail_page',
+            'config' => [
+                'type' => 'link',
+                'allowedTypes' => ['page'],
+            ],
+        ],
+        'logo' => [
+            'exclude' => false,
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_organization.logo',
             'config' => [
                 'type' => 'file',
-                'allowed' => 'png,jpg,jpeg,gif,webp',
+                'allowed' => 'jpeg,png,webp,svg,gif,bmp',
                 'minitems' => 0,
                 'maxitems' => 1,
                 'appearance' => [
                     'fileUploadAllowed' => false,
-                    'fileByUrlAllowed' => false,
                 ],
                 'overrideChildTca' => [
                     'types' => [
@@ -159,8 +228,8 @@ return [
                         'value' => 0,
                     ],
                 ],
-                'foreign_table' => 'tx_hireme_domain_model_physicalrequirement',
-                'foreign_table_where' => 'AND {#tx_hireme_domain_model_physicalrequirement}.{#pid}=###CURRENT_PID### AND {#tx_hireme_domain_model_physicalrequirement}.{#sys_language_uid} IN (-1,0)',
+                'foreign_table' => 'tx_hireme_physicalrequirement',
+                'foreign_table_where' => 'AND {#tx_hireme_physicalrequirement}.{#pid}=###CURRENT_PID### AND {#tx_hireme_physicalrequirement}.{#sys_language_uid} IN (-1,0)',
                 'default' => 0,
             ],
         ],
@@ -206,7 +275,11 @@ return [
         '0' => [
             'showitem' => '
                 --div--;LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.general,
-                    title,slug,icon,
+                    title,legal_name,slug,job_postings,
+                --div--;LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_organization.tab.contact,
+                    homepage,detail_page,
+                --div--;LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_organization.tab.media,
+                    logo,urls,
                 --div--;LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language,
                     --palette--;;language,
                 --div--;LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.access,

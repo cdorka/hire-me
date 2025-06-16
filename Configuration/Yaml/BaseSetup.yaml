@@ -1,0 +1,21 @@
+TYPO3:
+  CMS:
+    Form:
+      persistenceManager:
+        allowSaveToExtensionPaths: true
+        allowDeleteFromExtensionPaths: false
+        allowedExtensionPaths:
+          1749642891: EXT:hire_me/Resources/Private/Forms/
+
+      prototypes:
+        standard:
+          formElementsDefinition:
+            Form:
+              renderingOptions:
+                templateRootPaths:
+                  1749642892: 'EXT:hire_me/Resources/Private/Templates/Form/'
+                partialRootPaths:
+                  1749642893: 'EXT:hire_me/Resources/Private/Partials/Form/'
+          finishersDefinition:
+            SaveApplication:
+              implementationClassName: 'ChristianDorka\HireMe\Form\Finisher\SaveApplicationFinisher'

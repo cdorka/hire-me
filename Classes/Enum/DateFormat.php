@@ -1,14 +1,4 @@
 <?php
-/**
- * TODO
- * php version 8.2
- *
- * @category     TODO
- * @package      TODO
- * @license      TODO
- * @author       Christian Dorka <dorka@cp-compartner.de>
- */
-
 declare(strict_types=1);
 
 namespace ChristianDorka\HireMe\Enum;

@@ -1,10 +1,5 @@
-name: cdorka/hire-me
+name: christian-dorka/hire-me
 label: 'Hire me - base'
 dependencies:
   - typo3/fluid-styled-content
-
-# Optional: Add settings that can be used in TypoScript
-settings:
-  ajax:
-    pageTypes:
-      jobPostingFilter: 1748959345
+  - typo3/form

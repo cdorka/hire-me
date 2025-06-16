@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 return [
     'ctrl' => [
-        'title' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_scope',
+        'title' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_country',
         'label' => 'title',
         'descriptionColumn' => 'internal_description',
         'sortby' => 'sorting',
@@ -20,7 +20,7 @@ return [
         ],
         'hideAtCopy' => true,
         'searchFields' => 'title,slug',
-        'iconfile' => 'EXT:hire_me/Resources/Public/Icons/tx_hireme_domain_model_scope.svg',
+        'iconfile' => 'EXT:hire_me/Resources/Public/Icons/tx_hireme_country.svg',
         'languageField' => 'sys_language_uid',
         'transOrigPointerField' => 'l10n_parent',
         'transOrigDiffSourceField' => 'l10n_diffsource',
@@ -30,6 +30,60 @@ return [
         ],
     ],
     'columns' => [
+        // Custom fields
+        'title' => [
+            'exclude' => false,
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_country.title',
+            'config' => [
+                'type' => 'input',
+                'size' => 50,
+                'max' => 255,
+                'eval' => 'trim',
+                'required' => true,
+            ],
+        ],
+        'slug' => [
+            'exclude' => false,
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_country.slug',
+            'config' => [
+                'type' => 'slug',
+                'generatorOptions' => [
+                    'fields' => ['title'],
+                    'fieldSeparator' => '-',
+                    'prefixParentPageSlug' => false,
+
+                    'replacements' => \ChristianDorka\HireMe\UserFuncs\FormEngine\ReplacementsProcFunc::generalSlugProcFunc(),
+                ],
+                'fallbackCharacter' => '-',
+                'eval' => 'unique',
+                'default' => '',
+                'required' => true,
+            ],
+        ],
+        'two_letter_iso_code' => [
+            'exclude' => false,
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_country.two_letter_iso_code',
+            'config' => [
+                'type' => 'input',
+                'size' => 2,
+                'max' => 2,
+                'eval' => 'trim',
+                'required' => true,
+            ],
+        ],
+        'three_letter_iso_code' => [
+            'exclude' => false,
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_country.three_letter_iso_code',
+            'config' => [
+                'type' => 'input',
+                'size' => 3,
+                'max' => 3,
+                'eval' => 'trim',
+                'required' => true,
+            ],
+        ],
+
+        // System fields
         'hidden' => [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.visible',
@@ -58,9 +112,7 @@ return [
             'config' => [
                 'type' => 'datetime',
                 'default' => 0,
-                'range' => [
-                    'upper' => mktime(0, 0, 0, 1, 1, 2038),
-                ],
+
             ],
         ],
         'fe_group' => [
@@ -108,8 +160,8 @@ return [
                         'value' => 0,
                     ],
                 ],
-                'foreign_table' => 'tx_hireme_domain_model_scope',
-                'foreign_table_where' => 'AND {#tx_hireme_domain_model_scope}.{#pid}=###CURRENT_PID### AND {#tx_hireme_domain_model_scope}.{#sys_language_uid} IN (-1,0)',
+                'foreign_table' => 'tx_hireme_physicalrequirement',
+                'foreign_table_where' => 'AND {#tx_hireme_physicalrequirement}.{#pid}=###CURRENT_PID### AND {#tx_hireme_physicalrequirement}.{#sys_language_uid} IN (-1,0)',
                 'default' => 0,
             ],
         ],
@@ -124,35 +176,20 @@ return [
                 'default' => '',
             ],
         ],
-
-        // Custom fields from Content Block
-        'title' => [
-            'exclude' => false,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_scope.title',
+        'crdate' => [
             'config' => [
-                'type' => 'input',
-                'size' => 50,
-                'max' => 255,
-                'eval' => 'trim',
-                'required' => true,
-            ],
+                'type' => 'passthrough',
+            ]
         ],
-        'slug' => [
-            'exclude' => false,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_scope.slug',
+        'tstamp' => [
             'config' => [
-                'type' => 'slug',
-                'generatorOptions' => [
-                    'fields' => ['title'],
-                    'fieldSeparator' => '-',
-                    'prefixParentPageSlug' => false,
-                    'replacements' => \ChristianDorka\HireMe\UserFuncs\FormEngine\ReplacementsProcFunc::generalSlugProcFunc(),
-                ],
-                'fallbackCharacter' => '-',
-                'eval' => 'unique',
-                'default' => '',
-                'required' => true,
-            ],
+                'type' => 'passthrough',
+            ]
+        ],
+        'sorting' => [
+            'config' => [
+                'type' => 'passthrough',
+            ]
         ],
     ],
     'palettes' => [
@@ -170,7 +207,7 @@ return [
         '0' => [
             'showitem' => '
                 --div--;LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.general,
-                    title,slug,
+                    title,slug,two_letter_iso_code,three_letter_iso_code,
                 --div--;LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language,
                     --palette--;;language,
                 --div--;LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.access,

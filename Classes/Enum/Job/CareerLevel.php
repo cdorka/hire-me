@@ -27,5 +27,5 @@ enum CareerLevel: int implements LanguageFilePaths
     /**
      * Key for the label in language file
      */
-    const LABEL_KEY = 'tx_hireme_domain_model_jobposting.career_level';
+    const LABEL_KEY = 'tx_hireme_jobposting.career_level';
 }

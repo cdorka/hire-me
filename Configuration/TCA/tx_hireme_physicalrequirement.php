@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 return [
     'ctrl' => [
-        'title' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_category',
+        'title' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_physicalrequirement',
         'label' => 'title',
         'descriptionColumn' => 'internal_description',
         'sortby' => 'sorting',
@@ -20,7 +20,7 @@ return [
         ],
         'hideAtCopy' => true,
         'searchFields' => 'title,slug',
-        'iconfile' => 'EXT:hire_me/Resources/Public/Icons/tx_hireme_domain_model_category.svg',
+        'iconfile' => 'EXT:hire_me/Resources/Public/Icons/tx_hireme_physicalrequirement.svg',
         'languageField' => 'sys_language_uid',
         'transOrigPointerField' => 'l10n_parent',
         'transOrigDiffSourceField' => 'l10n_diffsource',
@@ -33,7 +33,7 @@ return [
         // Custom fields
         'title' => [
             'exclude' => false,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_category.title',
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_physicalrequirement.title',
             'config' => [
                 'type' => 'input',
                 'size' => 50,
@@ -44,7 +44,7 @@ return [
         ],
         'slug' => [
             'exclude' => false,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_category.slug',
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_physicalrequirement.slug',
             'config' => [
                 'type' => 'slug',
                 'generatorOptions' => [
@@ -61,16 +61,18 @@ return [
             ],
         ],
         'description' => [
-            'exclude' => false,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_category.description',
+            'exclude' => true,
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_physicalrequirement.description',
             'config' => [
                 'type' => 'text',
-                'eval' => 'trim',
+                'cols' => 40,
+                'rows' => 15,
+                'softref' => 'email[subst],url',
             ],
         ],
         'icon' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_category.icon',
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_physicalrequirement.icon',
             'config' => [
                 'type' => 'file',
                 'allowed' => 'png,jpg,jpeg,gif,webp',
@@ -83,34 +85,15 @@ return [
         ],
         'job_postings' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_category.job_postings',
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_physicalrequirement.job_postings',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
-                'foreign_table' => 'tx_hireme_domain_model_jobposting',
-                'MM' => 'tx_hireme_domain_model_jobposting_category_mm',
-                'multiple' => true,
-                'MM_opposite_field' => 'categories',
+                'foreign_table' => 'tx_hireme_jobposting',
+                'MM' => 'tx_hireme_jobposting_physicalrequirement_mm',
+                'MM_opposite_field' => 'physical_requirements',
                 'size' => 10,
                 'maxitems' => 9999,
-            ],
-        ],
-        'parent' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:hireme/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_category.parent',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectTree',
-                'foreign_table' => 'tx_hireme_domain_model_category',
-                'foreign_table_where' => 'ORDER BY tx_hireme_domain_model_category.sorting',
-                'treeConfig' => [
-                    'parentField' => 'parent',
-                    'appearance' => [
-                        'expandAll' => true,
-                        'showHeader' => true,
-                    ],
-                ],
-                'size' => 20,
             ],
         ],
 
@@ -191,8 +174,8 @@ return [
                         'value' => 0,
                     ],
                 ],
-                'foreign_table' => 'tx_hireme_domain_model_physicalrequirement',
-                'foreign_table_where' => 'AND {#tx_hireme_domain_model_physicalrequirement}.{#pid}=###CURRENT_PID### AND {#tx_hireme_domain_model_physicalrequirement}.{#sys_language_uid} IN (-1,0)',
+                'foreign_table' => 'tx_hireme_physicalrequirement',
+                'foreign_table_where' => 'AND {#tx_hireme_physicalrequirement}.{#pid}=###CURRENT_PID### AND {#tx_hireme_physicalrequirement}.{#sys_language_uid} IN (-1,0)',
                 'default' => 0,
             ],
         ],
@@ -238,7 +221,7 @@ return [
         '0' => [
             'showitem' => '
                 --div--;LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.general,
-                    title,slug,description,icon,job_postings,parent,
+                    title,slug,description,icon,job_postings,
                 --div--;LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language,
                     --palette--;;language,
                 --div--;LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.access,

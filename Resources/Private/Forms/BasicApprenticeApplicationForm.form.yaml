@@ -1,0 +1,263 @@
+renderingOptions:
+  submitButtonLabel: Absenden
+  submitButtonClass: 'formular_allgemein btn btn-primary'
+  additionalClass: form-application
+  hookType: job
+type: Form
+identifier: basicApprenticeApplicationForm
+label: 'Bewerbungsformular Azubi'
+prototypeName: standard
+renderables:
+  - renderingOptions:
+      previousButtonLabel: 'Vorherige Seite'
+      nextButtonLabel: 'Neue Seite'
+    type: Page
+    identifier: page-1
+    label: null
+    renderables:
+      - type: StaticText
+        identifier: personal_data
+        properties:
+          text: Persönliche Daten
+          containerClassAttribute: 'bold col-12'
+      - type: Text
+        identifier: vorname
+        defaultValue: ''
+        label: Vorname
+        properties:
+          fluidAdditionalAttributes:
+            placeholder: 'Vorname*'
+            required: required
+            data-error-message: 'Bitte gebe deinen Vornamen an.'
+          containerClassAttribute: col-md-6
+        validators:
+          - identifier: NotEmpty
+      - type: Text
+        identifier: nachname
+        defaultValue: ''
+        label: Nachname
+        properties:
+          fluidAdditionalAttributes:
+            placeholder: 'Nachname*'
+            required: required
+            data-error-message: 'Bitte gebe deinen Nachnamen an.'
+          containerClassAttribute: col-md-6
+        validators:
+          - identifier: NotEmpty
+      - type: Text
+        identifier: email
+        defaultValue: ''
+        label: E-Mail
+        properties:
+          fluidAdditionalAttributes:
+            placeholder: 'E-Mail-Adresse*'
+            required: required
+            data-rule: email
+            data-error-message: 'Bitte gebe deine E-Mail-Adresse an.'
+          containerClassAttribute: col-md-6
+        validators:
+          - identifier: NotEmpty
+          - identifier: EmailAddress
+      - type: Text
+        identifier: telefonnummer
+        defaultValue: ''
+        label: Telefonnummer
+        properties:
+          fluidAdditionalAttributes:
+            placeholder: 'Telefonnummer'
+            data-error-message: 'Bitte gebe deine Telefonnummer an.'
+          containerClassAttribute: col-md-6
+      - type: SingleSelect
+        identifier: geschlecht
+        defaultValue: ''
+        label: Geschlecht*
+        properties:
+          fluidAdditionalAttributes:
+            required: required
+            data-error-message: 'Bitte wähle dein Geschlecht aus.'
+          containerClassAttribute: col-md-6
+          options:
+            1: Männlich
+            2: Weiblich
+            3: Divers
+          prependOptionLabel: Geschlecht*
+          prependOptionValue:
+        validators:
+          - identifier: NotEmpty
+      - type: SingleSelect
+        identifier: geburtsjahr
+        defaultValue: ''
+        label: Geburtsjahr*
+        properties:
+          fluidAdditionalAttributes:
+            required: required
+            data-error-message: 'Bitte wähle dein Geburtsjahr aus.'
+          containerClassAttribute: col-md-6
+          options:
+            2008: 2008
+            2007: 2007
+            2006: 2006
+            2005: 2005
+            2004: 2004
+            2003: 2003
+            2002: 2002
+            2001: 2001
+            2000: 2000
+            1999: 1999
+            1998: 1998
+            1997: 1997
+            1996: 1996
+            1995: 1995
+            1994: 1994
+            1993: 1993
+            1992: 1992
+            1991: 1991
+            1990: 1990
+            1989: 1989
+            1988: 1988
+            1987: 1987
+            1986: 1986
+            1985: 1985
+            1984: 1984
+            1983: 1983
+            1982: 1982
+            1981: 1981
+            1980: 1980
+            1979: 1979
+            1978: 1978
+            1977: 1977
+            1976: 1976
+            1975: 1975
+            1974: 1974
+            1973: 1973
+            1972: 1972
+            1971: 1971
+            1970: 1970
+            1969: 1969
+            1968: 1968
+            1967: 1967
+            1966: 1966
+            1965: 1965
+            1964: 1964
+            1963: 1963
+            1962: 1962
+            1961: 1961
+            1960: 1960
+            1959: 1959
+            1958: 1958
+            1957: 1957
+            1956: 1956
+            1955: 1955
+          prependOptionLabel: 'Geburtsjahr*'
+          prependOptionValue: null
+        validators:
+          - identifier: NotEmpty
+      - type: Text
+        identifier: wohnort
+        defaultValue: ''
+        label: Wohnort
+        properties:
+          fluidAdditionalAttributes:
+            placeholder: 'Wohnort*'
+            required: required
+            data-error-message: 'Bitte gebe deinen Wohnort an.'
+          containerClassAttribute: col-md-6
+        validators:
+          - identifier: NotEmpty
+      - type: StaticText
+        identifier: infos
+        properties:
+          text: Zusätzliche Angaben
+          containerClassAttribute: 'bold frame-space-before-extra-large col-12'
+      - type: Fieldset
+        identifier: info_features
+        label:
+        properties:
+          elementClassAttribute: 'col-12 text-highlight'
+        renderables:
+          - type: StaticText
+            identifier: motivation_headline
+            properties:
+              text: 'Verrate uns deine persönliche Motivation'
+              containerClassAttribute: 'h3 yellow'
+          - type: StaticText
+            identifier: motivation_text
+            properties:
+              text: 'In der Eisenbahnfamilie geht es nicht nur um Zuverlässigkeit und Verantwortungsbewusstsein: Hier sind deine Persönlichkeit und dein Teamgeist gefragt. Deswegen möchten wir gern in zwei bis drei Sätzen von dir erfahren, warum du Bahner*in werden möchtest.'
+          - type: Textarea
+            identifier: why
+            defaultValue: ''
+            properties:
+              fluidAdditionalAttributes:
+                placeholder: Warum möchtest du Bahner*in werden?*
+                required: required
+                maxlength: 2000
+                data-error-message: 'Bitte gebe an, warum du Bahner*in werden möchtest.'
+          - type: Textarea
+            identifier: whyyou
+            defaultValue: ''
+            properties:
+              fluidAdditionalAttributes:
+                placeholder: Warum bist du dafür geeignet?*
+                required: required
+                maxlength: 2000
+                data-error-message: 'Bitte gebe an, warum du dafür geeignet bist.'
+          - type: Textarea
+            identifier: jobimage
+            defaultValue: ''
+            properties:
+              fluidAdditionalAttributes:
+                placeholder: Welches Bild hast du von dem Beruf als Bahner*in?*
+                required: required
+                maxlength: 2000
+                data-error-message: 'Bitte gebe an, welches Bild du vom Beruf des / der Bahner*in hast.'
+      - type: Fieldset
+        identifier: footer
+        label:
+        properties:
+          elementClassAttribute: 'col-12 col-md-8 pr-0 frame-space-before-large'
+        renderables:
+          - type: StaticText
+            identifier: aufmerksam_headline
+            properties:
+              text: Wie bist du auf uns aufmerksam geworden?
+              containerClassAttribute: bold
+          - type: RadioButton
+            identifier: aufmerksam
+            defaultValue: ''
+            label:
+            properties:
+              containerClassAttribute: social-media
+              options:
+                kampagne: 'Kampagne "Die Bahnen in NRW"'
+                jobcenter: 'Jobcenter/Arbeitsagentur'
+                media: 'Presse und sonstige Medien'
+                friend: 'Persönliche Empfehlung von Freunden/Bekannten'
+                social: 'Social Media'
+                other: 'Sonstiges'
+          - type: MultiCheckbox
+            identifier: dataPrivacyCheckbox
+            defaultValue: ''
+            label:
+            properties:
+              containerClassAttribute: frame-space-before-large
+              fluidAdditionalAttributes:
+                required: required
+                data-error-message: 'Bitte stimme der Verarbeitung deiner Daten zu.'
+              options:
+                datenschutz: 'Mit Aktivieren dieser Checkbox erklärst du dich ausdrücklich damit einverstanden, dass unsere Partnerunternehmen deine personenbezogenen Daten verarbeiten und dich sowohl telefonisch als auch per E-Mail zu einem Gespräch einladen dürfen. Informationen und Widerrufshinweise findest du in der <a href="/index.php?id=14" target="_blank">Datenschutzerklärung</a>.*'
+          - type: Recaptcha
+            identifier: recaptcha-1
+            defaultValue: ''
+            label: reCAPTCHA
+            validators:
+              - identifier: Recaptcha
+      - type: Hidden
+        defaultValue: '520'
+        identifier: verifypid
+      - type: Hidden
+        defaultValue: ''
+        identifier: uniquehash
+      - type: Hidden
+        defaultValue: 'Bahner*in'
+        identifier: jobtype

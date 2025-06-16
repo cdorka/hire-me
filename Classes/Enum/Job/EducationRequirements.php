@@ -51,5 +51,5 @@ enum EducationRequirements: int implements LanguageFilePaths
     /**
      * Key for the label in language file
      */
-    const LABEL_KEY = 'tx_hireme_domain_model_jobposting.education_requirements';
+    const LABEL_KEY = 'tx_hireme_jobposting.education_requirements';
 }

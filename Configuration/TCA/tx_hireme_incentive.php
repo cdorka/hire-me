@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 return [
     'ctrl' => [
-        'title' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_url',
-        'label' => 'link',
+        'title' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_incentive',
+        'label' => 'title',
         'descriptionColumn' => 'internal_description',
         'sortby' => 'sorting',
         'tstamp' => 'tstamp',
@@ -19,8 +19,8 @@ return [
             'fe_group' => 'fe_group',
         ],
         'hideAtCopy' => true,
-        'searchFields' => 'link',
-        'iconfile' => 'EXT:hire_me/Resources/Public/Icons/tx_hireme_domain_model_url.svg',
+        'searchFields' => 'title,slug',
+        'iconfile' => 'EXT:hire_me/Resources/Public/Icons/tx_hireme_incentive.svg',
         'languageField' => 'sys_language_uid',
         'transOrigPointerField' => 'l10n_parent',
         'transOrigDiffSourceField' => 'l10n_diffsource',
@@ -31,23 +31,69 @@ return [
     ],
     'columns' => [
         // Custom fields
-        'link' => [
+        'title' => [
             'exclude' => false,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_url.link',
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_incentive.title',
             'config' => [
-                'type' => 'link',
+                'type' => 'input',
+                'size' => 50,
+                'max' => 255,
+                'eval' => 'trim',
                 'required' => true,
-                'allowedTypes' => ['page', 'url', 'record', 'file', 'folder', 'telephone', 'email'],
             ],
         ],
-        'link_type' => [
+        'slug' => [
             'exclude' => false,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_url.link_type',
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_incentive.slug',
+            'config' => [
+                'type' => 'slug',
+                'generatorOptions' => [
+                    'fields' => ['title'],
+                    'fieldSeparator' => '-',
+                    'prefixParentPageSlug' => false,
+
+                    'replacements' => \ChristianDorka\HireMe\UserFuncs\FormEngine\ReplacementsProcFunc::generalSlugProcFunc(),
+                ],
+                'fallbackCharacter' => '-',
+                'eval' => 'unique',
+                'default' => '',
+                'required' => true,
+            ],
+        ],
+        'description' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_incentive.description',
+            'config' => [
+                'type' => 'text',
+                'cols' => 40,
+                'rows' => 15,
+                'softref' => 'email[subst],url',
+            ],
+        ],
+        'icon' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_incentive.icon',
+            'config' => [
+                'type' => 'file',
+                'allowed' => 'png,jpg,jpeg,gif,webp',
+                'maxitems' => 1,
+                'appearance' => [
+                    'fileUploadAllowed' => false,
+                    'fileByUrlAllowed' => false,
+                ],
+            ],
+        ],
+        'job_postings' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_incentive.job_postings',
             'config' => [
                 'type' => 'select',
-                'renderType' => 'selectSingle',
-                'required' => true,
-                'itemsProcFunc' => \ChristianDorka\HireMe\UserFuncs\FormEngine\ItemsProcFunc::class . '->urlTypeItems',
+                'renderType' => 'selectMultipleSideBySide',
+                'foreign_table' => 'tx_hireme_jobposting',
+                'MM' => 'tx_hireme_jobposting_incentive_mm',
+                'MM_opposite_field' => 'incentives',
+                'size' => 10,
+                'maxitems' => 9999,
             ],
         ],
 
@@ -128,8 +174,8 @@ return [
                         'value' => 0,
                     ],
                 ],
-                'foreign_table' => 'tx_hireme_domain_model_physicalrequirement',
-                'foreign_table_where' => 'AND {#tx_hireme_domain_model_physicalrequirement}.{#pid}=###CURRENT_PID### AND {#tx_hireme_domain_model_physicalrequirement}.{#sys_language_uid} IN (-1,0)',
+                'foreign_table' => 'tx_hireme_physicalrequirement',
+                'foreign_table_where' => 'AND {#tx_hireme_physicalrequirement}.{#pid}=###CURRENT_PID### AND {#tx_hireme_physicalrequirement}.{#sys_language_uid} IN (-1,0)',
                 'default' => 0,
             ],
         ],
@@ -175,7 +221,7 @@ return [
         '0' => [
             'showitem' => '
                 --div--;LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.general,
-                    link,link_type,
+                    title,slug,description,icon,job_postings,
                 --div--;LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language,
                     --palette--;;language,
                 --div--;LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.access,

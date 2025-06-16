@@ -1,11 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" original="messages" datatype="plaintext" date="2025-06-10T13:17:11+02:00">
+    <file source-language="en" original="messages" datatype="plaintext" date="2025-06-13T10:49:06+02:00">
         <header>
             <authorName>Christian Dorka</authorName>
             <authorEmail>mail@christiandorka.de</authorEmail>
         </header>
         <body>
+            <trans-unit id="jobPostingDetail.application.email.body">
+                <source><![CDATA[Would you prefer to apply directly via email?<br/>Please send your complete application documents (cover letter, CV, and relevant certificates) as PDF attachments to our HR department.]]></source>
+            </trans-unit>
+            <trans-unit id="jobPostingDetail.application.email.ctaBtnText">
+                <source>send email</source>
+            </trans-unit>
+            <trans-unit id="jobPostingDetail.application.externalLink.body">
+                <source>Please go to our company website to complete your application.</source>
+            </trans-unit>
+            <trans-unit id="jobPostingDetail.application.externalLink.bodyHeader">
+                <source>Are you ready to apply?</source>
+            </trans-unit>
+            <trans-unit id="jobPostingDetail.application.externalLink.ctaBtnText">
+                <source>apply on the company&#39;s website</source>
+            </trans-unit>
+            <trans-unit id="jobPostingDetail.application.header">
+                <source>Apply for this position</source>
+            </trans-unit>
+            <trans-unit id="jobPostingDetail.applicationJourney.header">
+                <source>Your application journey</source>
+            </trans-unit>
+            <trans-unit id="jobPostingDetail.applicationFaq.header">
+                <source>Frequently Asked Questions</source>
+            </trans-unit>
+            <trans-unit id="jobPostingDetail.applicationFaq.body">
+                <source>Everything you need to know about this position</source>
+            </trans-unit>
+            <trans-unit id="jobPostingDetail.applicationFaq.footer">
+                <source><![CDATA[Still have questions? Contact our HR department at <a href="mailto:%1$s">%1$s</a> or call us at <a href="tel:%2$s">%2$s</a>.]]></source>
+            </trans-unit>
+            <trans-unit id="jobPostingDetail.applicationSend.body">
+                <source><![CDATA[Thank you for your application!<br/><br/>We have sent a confirmation link to the email address you provided. Please click the link in the email to confirm your application and forward it to our HR team. The email may take a few minutes to arrive - please also check your spam folder.<br/><br/><b>Important:</b> Your application will be automatically deleted after 48 hours if the confirmation link is not clicked.]]></source>
+            </trans-unit>
+            <trans-unit id="jobPostingDetail.applicationSend.bodyHeader">
+                <source>Confirm your email address</source>
+            </trans-unit>
+            <trans-unit id="jobPostingDetail.applicationSend.ctaBtnText">
+                <source>View application process</source>
+            </trans-unit>
+            <trans-unit id="jobPostingDetail.applicationSend.header">
+                <source>Application confirmation</source>
+            </trans-unit>
             <trans-unit id="jobPostingLatest.errorOccurred.label">
                 <source>An error has occurred.</source>
             </trans-unit>
@@ -40,6 +82,23 @@
                 <source>Intern</source>
             </trans-unit>
             <trans-unit id="jobPostingSearch.employmentTypes.items.4.label">
+                <source>Volunteer</source>
+            </trans-unit>
+
+
+            <trans-unit id="jobPostingDetail.employmentTypes.items.0.label">
+                <source>Full-time</source>
+            </trans-unit>
+            <trans-unit id="jobPostingDetail.employmentTypes.items.1.label">
+                <source>Part-time</source>
+            </trans-unit>
+            <trans-unit id="jobPostingDetail.employmentTypes.items.2.label">
+                <source>Temporary</source>
+            </trans-unit>
+            <trans-unit id="jobPostingDetail.employmentTypes.items.3.label">
+                <source>Intern</source>
+            </trans-unit>
+            <trans-unit id="jobPostingDetail.employmentTypes.items.4.label">
                 <source>Volunteer</source>
             </trans-unit>
         </body>

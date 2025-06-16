@@ -1,12 +1,11 @@
 <?php
-
 declare(strict_types=1);
 
 defined('TYPO3') or die();
 
-// Override TCA for tx_hireme_domain_model_jobposting table
+// Override TCA for tx_hireme_jobposting table
 (function () {
-    $table = 'tx_hireme_domain_model_jobposting';
+    $table = 'tx_hireme_jobposting';
 
     // Common palettes that might contain starttime
     $commonTimePalettes = ['access', 'timeRestriction', 'hiddenTime', 'visibility'];

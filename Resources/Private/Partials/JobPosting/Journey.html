@@ -1,0 +1,49 @@
+<html
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:hire="http://typo3.org/ns/ChristianDorka/HireMe/ViewHelpers"
+    data-namespace-typo3-fluid="true"
+    lang="en">
+
+<section id="milestones" class="mb-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card shadow">
+                    <div class="card-header bg-white py-3">
+                        <h2 class="my-0 py-0">
+                            <f:translate key="jobPostingDetail.applicationJourney.header" extensionName="hire_me"/>
+                        </h2>
+                    </div>
+                    <div class="card-body p-4">
+                        <f:if condition="{jobPosting.journey.description}">
+                            <f:sanitize.html>{jobPosting.journey.description}</f:sanitize.html>
+                        </f:if>
+                        <f:if condition="{jobPosting.journey.milestones}">
+                            <div class="timeline position-relative">
+                                <f:for as="milestone" each="{jobPosting.journey.milestones}">
+                                    <f:render section="Milestone" arguments="{_all}"/>
+                                </f:for>
+                            </div>
+                        </f:if>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<f:section name="Milestone">
+    <div class="d-flex mb-4 position-relative">
+        <div class="timeline-point rounded-circle bg-primary text-white d-flex align-items-center justify-content-center position-relative" style="width: 40px; height: 40px; z-index: 1;">
+            <span class="fw-bold">1</span>
+        </div>
+        <div class="ms-4">
+            <h3 class="h5 fw-bold">{milestone.title}</h3>
+            <f:if condition="{milestone.description}">
+                <f:sanitize.html>{milestone.description}</f:sanitize.html>
+            </f:if>
+        </div>
+    </div>
+</f:section>
+
+</html>

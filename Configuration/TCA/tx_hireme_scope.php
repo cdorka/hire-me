@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 return [
     'ctrl' => [
-        'title' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_physicalrequirement',
+        'title' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_scope',
         'label' => 'title',
         'descriptionColumn' => 'internal_description',
         'sortby' => 'sorting',
@@ -20,7 +20,7 @@ return [
         ],
         'hideAtCopy' => true,
         'searchFields' => 'title,slug',
-        'iconfile' => 'EXT:hire_me/Resources/Public/Icons/tx_hireme_domain_model_physicalrequirement.svg',
+        'iconfile' => 'EXT:hire_me/Resources/Public/Icons/tx_hireme_scope.svg',
         'languageField' => 'sys_language_uid',
         'transOrigPointerField' => 'l10n_parent',
         'transOrigDiffSourceField' => 'l10n_diffsource',
@@ -30,74 +30,6 @@ return [
         ],
     ],
     'columns' => [
-        // Custom fields
-        'title' => [
-            'exclude' => false,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_physicalrequirement.title',
-            'config' => [
-                'type' => 'input',
-                'size' => 50,
-                'max' => 255,
-                'eval' => 'trim',
-                'required' => true,
-            ],
-        ],
-        'slug' => [
-            'exclude' => false,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_physicalrequirement.slug',
-            'config' => [
-                'type' => 'slug',
-                'generatorOptions' => [
-                    'fields' => ['title'],
-                    'fieldSeparator' => '-',
-                    'prefixParentPageSlug' => false,
-
-                    'replacements' => \ChristianDorka\HireMe\UserFuncs\FormEngine\ReplacementsProcFunc::generalSlugProcFunc(),
-                ],
-                'fallbackCharacter' => '-',
-                'eval' => 'unique',
-                'default' => '',
-                'required' => true,
-            ],
-        ],
-        'description' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_physicalrequirement.description',
-            'config' => [
-                'type' => 'text',
-                'cols' => 40,
-                'rows' => 15,
-                'softref' => 'email[subst],url',
-            ],
-        ],
-        'icon' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_physicalrequirement.icon',
-            'config' => [
-                'type' => 'file',
-                'allowed' => 'png,jpg,jpeg,gif,webp',
-                'maxitems' => 1,
-                'appearance' => [
-                    'fileUploadAllowed' => false,
-                    'fileByUrlAllowed' => false,
-                ],
-            ],
-        ],
-        'job_postings' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_domain_model_physicalrequirement.job_postings',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectMultipleSideBySide',
-                'foreign_table' => 'tx_hireme_domain_model_jobposting',
-                'MM' => 'tx_hireme_domain_model_jobposting_physicalrequirement_mm',
-                'MM_opposite_field' => 'physical_requirements',
-                'size' => 10,
-                'maxitems' => 9999,
-            ],
-        ],
-
-        // System fields
         'hidden' => [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.visible',
@@ -126,7 +58,9 @@ return [
             'config' => [
                 'type' => 'datetime',
                 'default' => 0,
-
+                'range' => [
+                    'upper' => mktime(0, 0, 0, 1, 1, 2038),
+                ],
             ],
         ],
         'fe_group' => [
@@ -174,8 +108,8 @@ return [
                         'value' => 0,
                     ],
                 ],
-                'foreign_table' => 'tx_hireme_domain_model_physicalrequirement',
-                'foreign_table_where' => 'AND {#tx_hireme_domain_model_physicalrequirement}.{#pid}=###CURRENT_PID### AND {#tx_hireme_domain_model_physicalrequirement}.{#sys_language_uid} IN (-1,0)',
+                'foreign_table' => 'tx_hireme_scope',
+                'foreign_table_where' => 'AND {#tx_hireme_scope}.{#pid}=###CURRENT_PID### AND {#tx_hireme_scope}.{#sys_language_uid} IN (-1,0)',
                 'default' => 0,
             ],
         ],
@@ -190,20 +124,35 @@ return [
                 'default' => '',
             ],
         ],
-        'crdate' => [
+
+        // Custom fields from Content Block
+        'title' => [
+            'exclude' => false,
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_scope.title',
             'config' => [
-                'type' => 'passthrough',
-            ]
+                'type' => 'input',
+                'size' => 50,
+                'max' => 255,
+                'eval' => 'trim',
+                'required' => true,
+            ],
         ],
-        'tstamp' => [
+        'slug' => [
+            'exclude' => false,
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_scope.slug',
             'config' => [
-                'type' => 'passthrough',
-            ]
-        ],
-        'sorting' => [
-            'config' => [
-                'type' => 'passthrough',
-            ]
+                'type' => 'slug',
+                'generatorOptions' => [
+                    'fields' => ['title'],
+                    'fieldSeparator' => '-',
+                    'prefixParentPageSlug' => false,
+                    'replacements' => \ChristianDorka\HireMe\UserFuncs\FormEngine\ReplacementsProcFunc::generalSlugProcFunc(),
+                ],
+                'fallbackCharacter' => '-',
+                'eval' => 'unique',
+                'default' => '',
+                'required' => true,
+            ],
         ],
     ],
     'palettes' => [
@@ -221,7 +170,7 @@ return [
         '0' => [
             'showitem' => '
                 --div--;LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.general,
-                    title,slug,description,icon,job_postings,
+                    title,slug,
                 --div--;LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language,
                     --palette--;;language,
                 --div--;LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.access,

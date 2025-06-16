@@ -1,5 +1,4 @@
 <?php
-
 declare(strict_types=1);
 
 use ChristianDorka\HireMe\Enum\FilterOptionGenerationTypeEnum;
@@ -329,10 +328,10 @@ ExtensionManagementUtility::addTCAcolumns('tt_content', [
         'config' => [
             'type' => 'select',
             'renderType' => 'selectMultipleSideBySide',
-            'foreign_table' => 'tx_hireme_domain_model_scope',
+            'foreign_table' => 'tx_hireme_scope',
             'multiple' => false,
-            'foreign_table_where' => 'AND {#tx_hireme_domain_model_scope}.{#sys_language_uid} IN (-1,0)',
-            'MM' => 'tx_hireme_domain_model_ttcontent_scope_mm',
+            'foreign_table_where' => 'AND {#tx_hireme_scope}.{#sys_language_uid} IN (-1,0)',
+            'MM' => 'tx_hireme_ttcontent_scope_mm',
             'minitems' => 0,
             'maxitems' => 9999,
             'fieldControl' => [
@@ -399,7 +398,7 @@ ExtensionManagementUtility::addTCAcolumns('tt_content', [
         'config' => [
             'type' => 'select',
             'renderType' => 'selectMultipleSideBySide',
-            'foreign_table' => 'tx_hireme_domain_model_category',
+            'foreign_table' => 'tx_hireme_category',
             'MM' => 'tx_cpblog_ttcontent_category_mm',
         ],
     ],
@@ -421,7 +420,7 @@ ExtensionManagementUtility::addTCAcolumns('tt_content', [
         'config' => [
             'type' => 'select',
             'renderType' => 'selectMultipleSideBySide',
-            'foreign_table' => 'tx_hireme_domain_model_country',
+            'foreign_table' => 'tx_hireme_country',
             'MM' => 'tx_cpblog_ttcontent_country_mm',
         ],
     ],
@@ -443,7 +442,7 @@ ExtensionManagementUtility::addTCAcolumns('tt_content', [
         'config' => [
             'type' => 'select',
             'renderType' => 'selectMultipleSideBySide',
-            'foreign_table' => 'tx_hireme_domain_model_location',
+            'foreign_table' => 'tx_hireme_location',
             'MM' => 'tx_cpblog_ttcontent_location_mm',
         ],
     ],
@@ -465,7 +464,7 @@ ExtensionManagementUtility::addTCAcolumns('tt_content', [
         'config' => [
             'type' => 'select',
             'renderType' => 'selectMultipleSideBySide',
-            'foreign_table' => 'tx_hireme_domain_model_department',
+            'foreign_table' => 'tx_hireme_department',
             'MM' => 'tx_cpblog_ttcontent_department_mm',
         ],
     ],
@@ -487,7 +486,7 @@ ExtensionManagementUtility::addTCAcolumns('tt_content', [
         'config' => [
             'type' => 'select',
             'renderType' => 'selectMultipleSideBySide',
-            'foreign_table' => 'tx_hireme_domain_model_organization',
+            'foreign_table' => 'tx_hireme_organization',
             'MM' => 'tx_cpblog_ttcontent_organization_mm',
         ],
     ],
@@ -559,7 +558,7 @@ ExtensionManagementUtility::addTCAcolumns('tt_content', [
         'config' => [
             'type' => 'select',
             'renderType' => 'selectMultipleSideBySide',
-            'foreign_table' => 'tx_hireme_domain_model_category',
+            'foreign_table' => 'tx_hireme_category',
             'MM' => 'tx_cpblog_ttcontent_category_mm',
         ],
     ],
@@ -623,7 +622,7 @@ ExtensionManagementUtility::addTCAcolumns('tt_content', [
         'config' => [
             'type' => 'select',
             'renderType' => 'selectMultipleSideBySide',
-            'foreign_table' => 'tx_hireme_domain_model_location',
+            'foreign_table' => 'tx_hireme_location',
             'MM' => 'tx_cpblog_ttcontent_location_mm',
         ],
     ],
@@ -687,7 +686,7 @@ ExtensionManagementUtility::addTCAcolumns('tt_content', [
         'config' => [
             'type' => 'select',
             'renderType' => 'selectMultipleSideBySide',
-            'foreign_table' => 'tx_hireme_domain_model_country',
+            'foreign_table' => 'tx_hireme_country',
             'MM' => 'tx_cpblog_ttcontent_country_mm',
         ],
     ],
@@ -751,7 +750,7 @@ ExtensionManagementUtility::addTCAcolumns('tt_content', [
         'config' => [
             'type' => 'select',
             'renderType' => 'selectMultipleSideBySide',
-            'foreign_table' => 'tx_hireme_domain_model_department',
+            'foreign_table' => 'tx_hireme_department',
             'MM' => 'tx_cpblog_ttcontent_department_mm',
         ],
     ],
@@ -815,7 +814,7 @@ ExtensionManagementUtility::addTCAcolumns('tt_content', [
         'config' => [
             'type' => 'select',
             'renderType' => 'selectMultipleSideBySide',
-            'foreign_table' => 'tx_hireme_domain_model_organization',
+            'foreign_table' => 'tx_hireme_organization',
             'MM' => 'tx_cpblog_ttcontent_organization_mm',
         ],
     ],

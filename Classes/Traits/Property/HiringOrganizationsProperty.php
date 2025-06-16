@@ -5,8 +5,10 @@ declare(strict_types=1);
 
 namespace ChristianDorka\HireMe\Traits\Property;
 
+use ChristianDorka\HireMe\Domain\Model\Journey;
 use ChristianDorka\HireMe\Domain\Model\Organization;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 
 trait HiringOrganizationsProperty
@@ -15,6 +17,9 @@ trait HiringOrganizationsProperty
      * @var ObjectStorage<Organization>|null
      */
     protected ?ObjectStorage $hiringOrganizations = null;
+
+
+    protected bool $hideHiringOrganization = false;
 
     /**
      * Add an organization to the storage
@@ -83,5 +88,27 @@ trait HiringOrganizationsProperty
     public function getHiringOrganizationsArray(): array
     {
         return $this->hiringOrganizations?->toArray() ?? [];
+    }
+
+    public function isHideHiringOrganization(): bool
+    {
+        return $this->hideHiringOrganization;
+    }
+
+    public function setHideHiringOrganization(bool $hideHiringOrganization): void
+    {
+        $this->hideHiringOrganization = $hideHiringOrganization;
+    }
+
+    public function getRenderHiringOrganizations(): bool {
+        if (
+            $this->hideHiringOrganization === true ||
+            $this->hiringOrganizations === null ||
+            (is_countable($this->hiringOrganizations) && $this->hiringOrganizations->count() == 0)
+        ) {
+            return false;
+        }
+
+        return true;
     }
 }

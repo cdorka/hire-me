@@ -4,10 +4,12 @@ declare(strict_types=1);
 namespace ChristianDorka\HireMe\Domain\Model;
 
 use ChristianDorka\HireMe\Traits\Properties\ApplicationProperties;
+use ChristianDorka\HireMe\Traits\Properties\ExperienceProperties;
 use ChristianDorka\HireMe\Traits\Properties\JobPostingApplicationProperties;
 use ChristianDorka\HireMe\Traits\Properties\SalaryProperties;
 use ChristianDorka\HireMe\Traits\Properties\SystemProperties;
 use ChristianDorka\HireMe\Traits\Property\BenefitsProperty;
+use ChristianDorka\HireMe\Traits\Property\EducationRequirementsProperty;
 use ChristianDorka\HireMe\Traits\Property\EmploymentTypesProperty;
 use ChristianDorka\HireMe\Traits\Property\HiringOrganizationsProperty;
 use ChristianDorka\HireMe\Traits\Property\IncentivesProperty;
@@ -34,10 +36,6 @@ class JobPosting extends AbstractDomainObject
 
     use SlugProperty;
 
-    protected ?string $educationRequirements = null; // EducationRequirements::class
-
-    protected ?int $experienceRequirements = null;
-
 
     use LocationsProperty;
     use SalaryProperties;
@@ -52,6 +50,9 @@ class JobPosting extends AbstractDomainObject
     use PhysicalRequirementsProperty;
     use SensoryRequirementsProperty;
 
+    use EducationRequirementsProperty;
+
+    use ExperienceProperties;
 
     use JobPostingApplicationProperties;
 

@@ -28,5 +28,4 @@ trait EmploymentTypesProperty
     {
         $this->employmentTypes = $employmentTypes;
     }
-
 }

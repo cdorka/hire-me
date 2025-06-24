@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" original="messages" datatype="plaintext" date="2025-06-11T08:45:56+02:00">
+    <file source-language="en" original="messages" datatype="plaintext" date="2025-06-16T13:14:27+02:00">
         <header>
             <authorName>Christian Dorka</authorName>
             <authorEmail>mail@christiandorka.de</authorEmail>
@@ -177,140 +177,14 @@
             <trans-unit id="tx_hireme_department.title.label">
                 <source>Title</source>
             </trans-unit>
-            <trans-unit id="tx_hireme_location">
-                <source>Location</source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_location.city.description">
-                <source></source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_location.city.label">
-                <source>City</source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_location.country.description">
-                <source></source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_location.country.label">
-                <source>Country</source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_location.house_number.description">
-                <source></source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_location.house_number.label">
-                <source>House number</source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_location.job_postings.description">
-                <source>Job postings that have selected this location.</source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_location.job_postings.label">
-                <source>Job postings</source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_location.postal_code.description">
-                <source></source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_location.postal_code.label">
-                <source>Postal code</source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_location.region.description">
-                <source></source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_location.region.label">
-                <source>Region/State</source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_location.street_name.description">
-                <source></source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_location.street_name.label">
-                <source>Street</source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_location.title.description">
-                <source></source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_location.title.label">
-                <source>Title</source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_organization">
-                <source>Organization</source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_organization.detail_page.description">
-                <source>Page within the TYPO3 system with further information or a profile of the company, e.g. “About us” area or a profile of the company</source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_organization.detail_page.label">
-                <source>Detail page to the company profile</source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_organization.homepage.description">
-                <source></source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_organization.homepage.label">
-                <source>Website of the company</source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_organization.legal_name.description">
-                <source>Company name including company name “CP/COMPARTNER Agentur für Kommunikation GmbH” instead of “CP/COMPARTNER”</source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_organization.legal_name.label">
-                <source>Registered company name</source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_organization.logo.description">
-                <source>This logo is displayed in Google search results when the job is listed as a “job posting”.</source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_organization.logo.label">
-                <source>Logo</source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_organization.slug.description">
-                <source></source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_organization.slug.title">
-                <source>URL segment</source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_organization.title.description">
-                <source>The name of the company must be given here (e.g. “CP/COMPARTNER”) and not the specific location for which the job is advertised (e.g. “CP/COMPARTNER at Essen main station”)</source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_organization.title.label">
-                <source>Company name</source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_organization.urls.description">
-                <source>URLs of pages on another website with additional information about your organization. For example, a URL to your organization&#39;s profile page on a social media site, review platform, Wikipedia, ... .</source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_organization.urls.label">
-                <source>URLs</source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_scope">
-                <source>Area of work</source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_scope.slug.description">
-                <source></source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_scope.slug.label">
-                <source>URL segment</source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_scope.tile.description">
-                <source></source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_scope.title.label">
-                <source>Title</source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_type">
-                <source>Job posting type</source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_type.icon.description">
-                <source></source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_type.icon.label">
-                <source>Icon</source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_type.slug.description">
-                <source></source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_type.slug.label">
-                <source>URL segment</source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_type.title.description">
-                <source></source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_type.title.label">
-                <source>Title</source>
-            </trans-unit>
             <trans-unit id="tx_hireme_jobposting">
                 <source>Job posting</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_jobposting.accepts_education_or_experience.description">
+                <source>Activate this option if either education or professional experience is sufficient qualification.</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_jobposting.accepts_education_or_experience.label">
+                <source>Formal education or experience accepted</source>
             </trans-unit>
             <trans-unit id="tx_hireme_jobposting.base_salary.description">
                 <source></source>
@@ -466,7 +340,7 @@
                 <source>The categories are used exclusively for internal organization and the targeted output of several related job advertisements, e.g. &#39;Training 2025&#39;. They are only displayed to the site visitor as a filter option in the &#39;Job advertisements with filter&#39; element if this has been explicitly activated.</source>
             </trans-unit>
             <trans-unit id="tx_hireme_jobposting.categories.label">
-                <source>Categories</source>
+                <source>Job categories</source>
             </trans-unit>
             <trans-unit id="tx_hireme_jobposting.education_requirements.items.ASSOCIATE_DEGREE.label">
                 <source>Für den Job ist eine Berufszusatzausbildung erforderlich.</source>
@@ -498,38 +372,44 @@
             <trans-unit id="tx_hireme_jobposting.eligibility_to_work_requirement.label">
                 <source>Legal requirements</source>
             </trans-unit>
-            <trans-unit id="tx_hireme_jobposting.employment_type.description">
+            <trans-unit id="tx_hireme_jobposting.employment_types.description">
                 <source>Several options can be selected here</source>
             </trans-unit>
-            <trans-unit id="tx_hireme_jobposting.employment_type.items.FULL_TIME.label">
+            <trans-unit id="tx_hireme_jobposting.employment_types.items.FULL_TIME.label">
                 <source>Full-time position</source>
             </trans-unit>
-            <trans-unit id="tx_hireme_jobposting.employment_type.items.INTERN.label">
+            <trans-unit id="tx_hireme_jobposting.employment_types.items.INTERN.label">
                 <source>Internship</source>
             </trans-unit>
-            <trans-unit id="tx_hireme_jobposting.employment_type.items.PART_TIME.label">
+            <trans-unit id="tx_hireme_jobposting.employment_types.items.PART_TIME.label">
                 <source>Part-time position</source>
             </trans-unit>
-            <trans-unit id="tx_hireme_jobposting.employment_type.items.TEMPORARY.label">
+            <trans-unit id="tx_hireme_jobposting.employment_types.items.TEMPORARY.label">
                 <source>Temporary position</source>
             </trans-unit>
-            <trans-unit id="tx_hireme_jobposting.employment_type.items.VOLUNTEER.label">
+            <trans-unit id="tx_hireme_jobposting.employment_types.items.VOLUNTEER.label">
                 <source>Volunteer position</source>
             </trans-unit>
-            <trans-unit id="tx_hireme_jobposting.employment_type.label">
+            <trans-unit id="tx_hireme_jobposting.employment_types.label">
                 <source>Employment type</source>
             </trans-unit>
+            <trans-unit id="tx_hireme_jobposting.endtime.description">
+                <source>Date from which the job advertisement is hidden. Direct links to this job redirect to the configured overview/search page, with the note that the job advertisement is no longer active.</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_jobposting.endtime.label">
+                <source>End date</source>
+            </trans-unit>
             <trans-unit id="tx_hireme_jobposting.experience_requirements.description">
-                <source></source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_jobposting.experience_requirements.label">
-                <source>Number of months of professional experience required in this profession</source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_jobposting.experience_requirements_text.description">
                 <source>Description of the skills and experience required for the profession</source>
             </trans-unit>
-            <trans-unit id="tx_hireme_jobposting.experience_requirements_text.label">
-                <source>Professional experience</source>
+            <trans-unit id="tx_hireme_jobposting.experience_requirements.label">
+                <source>Professional experience required</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_jobposting.experience_requirements_month.description">
+                <source>Is only required for Google and is not displayed directly on the details page and must be included in the “Required work experience” field if required.</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_jobposting.experience_requirements_month.label">
+                <source>Number of months of professional experience required in this profession</source>
             </trans-unit>
             <trans-unit id="tx_hireme_jobposting.experience_requirements_type.description">
                 <source>Selection of skills and experience required for the position, as free text or number of months of experience required, as a number.</source>
@@ -543,6 +423,9 @@
             <trans-unit id="tx_hireme_jobposting.experience_requirements_type.label">
                 <source>Type of “required experience” issue.</source>
             </trans-unit>
+            <trans-unit id="tx_hireme_jobposting.fe_group.description">
+                <source>Selected user group(s) to which this entry is displayed.</source>
+            </trans-unit>
             <trans-unit id="tx_hireme_jobposting.has_base_salary.description">
                 <source></source>
             </trans-unit>
@@ -554,6 +437,9 @@
             </trans-unit>
             <trans-unit id="tx_hireme_jobposting.has_direct_apply.label">
                 <source>Activate direct application for this position on the details page?</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_jobposting.hidden.description">
+                <source>If this option is selected, the job advertisement is not accessible to visitors. When the link to the detail page is opened, a 404 page is displayed.</source>
             </trans-unit>
             <trans-unit id="tx_hireme_jobposting.hide_hiring_organization.description">
                 <source></source>
@@ -597,6 +483,36 @@
             <trans-unit id="tx_hireme_jobposting.newtime.label">
                 <source>“New” until</source>
             </trans-unit>
+            <trans-unit id="tx_hireme_jobposting.palette.benefits.description">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_jobposting.palette.benefits.label">
+                <source>Benefits</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_jobposting.palette.cognitive_requirements.description">
+                <source>Physical and sensory requirements for this position.</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_jobposting.palette.cognitive_requirements.label">
+                <source>Cognitive requirements</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_jobposting.palette.education.description">
+                <source>TODO</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_jobposting.palette.education.label">
+                <source>TODO</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_jobposting.palette.experience.description">
+                <source>TODO</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_jobposting.palette.experience.label">
+                <source>TODO</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_jobposting.physical_requirements.description">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_jobposting.physical_requirements.label">
+                <source></source>
+            </trans-unit>
             <trans-unit id="tx_hireme_jobposting.qualifications.description">
                 <source>Specific qualifications required for this role or profession</source>
             </trans-unit>
@@ -608,6 +524,12 @@
             </trans-unit>
             <trans-unit id="tx_hireme_jobposting.responsibilities.label">
                 <source>Responsibilities</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_jobposting.scopes.description">
+                <source>Indicates the field of activity of the job. Is not displayed on the detail page or in the Google output, but is used to filter the search, e.g. “IT &amp; Software” for “TYPO3 developer”.</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_jobposting.scopes.label">
+                <source>Scope of activity</source>
             </trans-unit>
             <trans-unit id="tx_hireme_jobposting.skills.description">
                 <source>Knowledge, skills and abilities desired or required for practicing this profession</source>
@@ -621,8 +543,32 @@
             <trans-unit id="tx_hireme_jobposting.slug.label">
                 <source>URL segment</source>
             </trans-unit>
+            <trans-unit id="tx_hireme_jobposting.starttime.description">
+                <source>Date from which the job advertisement is published.</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_jobposting.starttime.label">
+                <source>Start date</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_jobposting.sys_categories.description">
+                <source>Like “Job categories”, except that a selection of general categories created in the TYPO3 system is possible here.</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_jobposting.sys_categories.label">
+                <source>General TYPO3 categories</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_jobposting.tab.access">
+                <source>Access</source>
+            </trans-unit>
             <trans-unit id="tx_hireme_jobposting.tab.application">
                 <source>Application</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_jobposting.tab.benefits">
+                <source>Benefitsv</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_jobposting.tab.categories">
+                <source>Categories</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_jobposting.tab.cognitive_requirements">
+                <source>Cognitive requirements</source>
             </trans-unit>
             <trans-unit id="tx_hireme_jobposting.tabs.tab_application">
                 <source>Application</source>
@@ -671,6 +617,138 @@
             </trans-unit>
             <trans-unit id="tx_hireme_jobposting.working_hours.label">
                 <source>Typical working hours</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_location">
+                <source>Location</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_location.city.description">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_location.city.label">
+                <source>City</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_location.country.description">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_location.country.label">
+                <source>Country</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_location.house_number.description">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_location.house_number.label">
+                <source>House number</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_location.job_postings.description">
+                <source>Job postings that have selected this location.</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_location.job_postings.label">
+                <source>Job postings</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_location.postal_code.description">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_location.postal_code.label">
+                <source>Postal code</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_location.region.description">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_location.region.label">
+                <source>Region/State</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_location.street_name.description">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_location.street_name.label">
+                <source>Street</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_location.title.description">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_location.title.label">
+                <source>Title</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_organization">
+                <source>Organization</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_organization.detail_page.description">
+                <source>Page within the TYPO3 system with further information or a profile of the company, e.g. “About us” area or a profile of the company</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_organization.detail_page.label">
+                <source>Detail page to the company profile</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_organization.homepage.description">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_organization.homepage.label">
+                <source>Website of the company</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_organization.legal_name.description">
+                <source>Company name including company name “CP/COMPARTNER Agentur für Kommunikation GmbH” instead of “CP/COMPARTNER”</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_organization.legal_name.label">
+                <source>Registered company name</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_organization.logo.description">
+                <source>This logo is displayed in Google search results when the job is listed as a “job posting”.</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_organization.logo.label">
+                <source>Logo</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_organization.slug.description">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_organization.slug.title">
+                <source>URL segment</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_organization.title.description">
+                <source>The name of the company must be given here (e.g. “CP/COMPARTNER”) and not the specific location for which the job is advertised (e.g. “CP/COMPARTNER at Essen main station”)</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_organization.title.label">
+                <source>Company name</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_organization.urls.description">
+                <source>URLs of pages on another website with additional information about your organization. For example, a URL to your organization&#39;s profile page on a social media site, review platform, Wikipedia, ... .</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_organization.urls.label">
+                <source>URLs</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_scope">
+                <source>Area of work</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_scope.slug.description">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_scope.slug.label">
+                <source>URL segment</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_scope.tile.description">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_scope.title.label">
+                <source>Title</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_type">
+                <source>Job posting type</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_type.icon.description">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_type.icon.label">
+                <source>Icon</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_type.slug.description">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_type.slug.label">
+                <source>URL segment</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_type.title.description">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_type.title.label">
+                <source>Title</source>
             </trans-unit>
         </body>
     </file>

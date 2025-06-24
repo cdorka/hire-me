@@ -46,5 +46,5 @@ enum EmploymentType: int implements LanguageFilePaths
     /**
      * Key for the label in language file
      */
-    const LABEL_KEY = 'tx_hireme_jobposting.employment_type';
+    const LABEL_KEY = 'tx_hireme_jobposting.employment_types';
 }

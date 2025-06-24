@@ -15,7 +15,6 @@ trait ApplicationProperties
     protected ?string $intro = null;
     protected ?string $teaser = null;
     protected ?string $educationRequirementsText = null;
-    protected ?string $experienceRequirementsText = null;
     protected ?string $eligibilityToWorkRequirement = null;
     protected ?string $responsibilities = null;
     protected ?string $qualifications = null;
@@ -51,16 +50,6 @@ trait ApplicationProperties
     public function setEligibilityToWorkRequirement(?string $eligibilityToWorkRequirement): void
     {
         $this->eligibilityToWorkRequirement = $eligibilityToWorkRequirement;
-    }
-
-    public function getExperienceRequirementsText(): ?string
-    {
-        return $this->experienceRequirementsText;
-    }
-
-    public function setExperienceRequirementsText(?string $experienceRequirementsText): void
-    {
-        $this->experienceRequirementsText = $experienceRequirementsText;
     }
 
     public function getResponsibilities(): ?string

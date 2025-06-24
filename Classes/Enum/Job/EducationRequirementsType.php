@@ -7,21 +7,21 @@ use ChristianDorka\HireMe\Enum\EnumTcaTrait;
 use ChristianDorka\HireMe\Enum\LanguageFilePaths;
 
 /**
- * Education requirements options
+ * Education requirements type options
  */
-enum ExperienceRequirementsType: int implements LanguageFilePaths
+enum EducationRequirementsType: int implements LanguageFilePaths
 {
     use EnumTcaTrait;
 
     /**
-     * TODO free text
+     * TODO
      */
-    case TEXT = 0;
+    case FREE_TEXT = 0;
 
     /**
-     * TODO number of month of exp
+     * TODO
      */
-    case MONTH = 1;
+    case SELECTION = 1;
 
 
     /**
@@ -32,5 +32,5 @@ enum ExperienceRequirementsType: int implements LanguageFilePaths
     /**
      * Key for the label in language file
      */
-    const LABEL_KEY = 'tx_hireme_jobposting.experience_requirements_type';
+    const LABEL_KEY = 'tx_hireme_jobposting.education_requirements_type';
 }

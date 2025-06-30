@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="de" original="" datatype="plaintext" date="2025-06-30T09:50:45+02:00">
+        <body>
+            <trans-unit id="relations">
+                <source>Relations</source>
+                <target>Verknüpfungen</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

@@ -32,8 +32,9 @@ return [
     'columns' => [
         // Custom fields
         'title' => [
-            'exclude' => false,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_category.title',
+            'exclude' => true,
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_category.title.label',
+            'description' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_category.title.description',
             'config' => [
                 'type' => 'input',
                 'size' => 50,
@@ -43,8 +44,9 @@ return [
             ],
         ],
         'slug' => [
-            'exclude' => false,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_category.slug',
+            'exclude' => true,
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_category.slug.label',
+            'description' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_category.slug.description',
             'config' => [
                 'type' => 'slug',
                 'generatorOptions' => [
@@ -61,8 +63,9 @@ return [
             ],
         ],
         'description' => [
-            'exclude' => false,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_category.description',
+            'exclude' => true,
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_category.description.label',
+            'description' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_category.description.description',
             'config' => [
                 'type' => 'text',
                 'eval' => 'trim',
@@ -70,7 +73,8 @@ return [
         ],
         'icon' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_category.icon',
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_category.icon.label',
+            'description' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_category.icon.description',
             'config' => [
                 'type' => 'file',
                 'allowed' => 'png,jpg,jpeg,gif,webp',
@@ -83,7 +87,8 @@ return [
         ],
         'job_postings' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_category.job_postings',
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_category.job_postings.label',
+            'description' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_category.job_postings.description',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
@@ -97,7 +102,8 @@ return [
         ],
         'parent' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:hireme/Resources/Private/Language/locallang_db.xlf:tx_hireme_category.parent',
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_category.parent.label',
+            'description' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_category.parent.description',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectTree',
@@ -237,11 +243,14 @@ return [
     'types' => [
         '0' => [
             'showitem' => '
-                --div--;LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.general,
-                    title,slug,description,icon,job_postings,parent,
-                --div--;LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language,
+                --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
+                    title,slug,description,icon,
+                --div--;LLL:EXT:hire_me/Resources/Private/Language/locallang_tabs.xlf:relations,
+                    parent,
+                    job_postings,
+                --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language,
                     --palette--;;language,
-                --div--;LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.access,
+                --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access,
                     --palette--;;hidden,
                     --palette--;;access,
             '

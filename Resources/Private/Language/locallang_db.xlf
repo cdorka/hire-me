@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" original="messages" datatype="plaintext" date="2025-06-16T13:14:27+02:00">
+    <file source-language="en" original="messages" datatype="plaintext" date="2025-06-30T11:11:03+02:00">
         <header>
             <authorName>Christian Dorka</authorName>
             <authorEmail>mail@christiandorka.de</authorEmail>
@@ -8,6 +8,27 @@
         <body>
             <trans-unit id="enum.filter_option_generation_type.items.GENERATED.label">
                 <source>generated (based on the storage location configuration) </source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_faqgroup">
+                <source>FAQ group</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_faqgroup.title.label">
+                <source>Title</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_faqgroup.title.description">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_faqgroup.slug.label">
+                <source>URL segment</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_faqgroup.slug.description">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_faqgroup.faqs.label">
+                <source>FAQs</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_faqgroup.faqs.description">
+                <source></source>
             </trans-unit>
             <trans-unit id="enum.filter_option_generation_type.items.MANUALLY.label">
                 <source>manually (using the element selection)</source>
@@ -54,6 +75,54 @@
             <trans-unit id="enum.starting_point_depth.items.ONLY_SELECTION.label">
                 <source>0 levels (only selected page)</source>
             </trans-unit>
+            <trans-unit id="enum.url_type_enum.items.DISCORD.label">
+                <source>Discord</source>
+            </trans-unit>
+            <trans-unit id="enum.url_type_enum.items.FACEBOOK.label">
+                <source>Facebook</source>
+            </trans-unit>
+            <trans-unit id="enum.url_type_enum.items.GENERAL.label">
+                <source>Miscellaneous</source>
+            </trans-unit>
+            <trans-unit id="enum.url_type_enum.items.INSTAGRAM.label">
+                <source>Instagram</source>
+            </trans-unit>
+            <trans-unit id="enum.url_type_enum.items.LINKEDIN.label">
+                <source>LinkedIn</source>
+            </trans-unit>
+            <trans-unit id="enum.url_type_enum.items.MASTODON.label">
+                <source>Mastodon</source>
+            </trans-unit>
+            <trans-unit id="enum.url_type_enum.items.NOT_SET.label">
+                <source>-- Please select --</source>
+            </trans-unit>
+            <trans-unit id="enum.url_type_enum.items.PINTEREST.label">
+                <source>Pinterest</source>
+            </trans-unit>
+            <trans-unit id="enum.url_type_enum.items.REDDIT.label">
+                <source>Reddit</source>
+            </trans-unit>
+            <trans-unit id="enum.url_type_enum.items.SNAPCHAT.label">
+                <source>Snapchat</source>
+            </trans-unit>
+            <trans-unit id="enum.url_type_enum.items.TELEGRAM.label">
+                <source>Telegram</source>
+            </trans-unit>
+            <trans-unit id="enum.url_type_enum.items.TIKTOK.label">
+                <source>TikTok</source>
+            </trans-unit>
+            <trans-unit id="enum.url_type_enum.items.TWITCH.label">
+                <source>Twitch</source>
+            </trans-unit>
+            <trans-unit id="enum.url_type_enum.items.X.label">
+                <source>X/Twitter</source>
+            </trans-unit>
+            <trans-unit id="enum.url_type_enum.items.XING.label">
+                <source>Xing</source>
+            </trans-unit>
+            <trans-unit id="enum.url_type_enum.items.YOUTUBE.label">
+                <source>YouTube</source>
+            </trans-unit>
             <trans-unit id="tabs.filter_config">
                 <source>Filter</source>
             </trans-unit>
@@ -89,6 +158,12 @@
             </trans-unit>
             <trans-unit id="tx_hireme_benefit.slug.label">
                 <source>URL segment</source>
+            </trans-unit>
+            <trans-unit id="new.10">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="new.9">
+                <source></source>
             </trans-unit>
             <trans-unit id="tx_hireme_benefit.title.description">
                 <source></source>
@@ -145,7 +220,7 @@
                 <source>URL segment</source>
             </trans-unit>
             <trans-unit id="tx_hireme_country.three_letter_iso_code.description">
-                <source>Official three-letter ISO 3166-1 alpha-2 country code.</source>
+                <source>Official three-letter ISO 3166-1 alpha-2 country code</source>
             </trans-unit>
             <trans-unit id="tx_hireme_country.three_letter_iso_code.label">
                 <source>Three-letter ISO code</source>
@@ -154,13 +229,13 @@
                 <source></source>
             </trans-unit>
             <trans-unit id="tx_hireme_country.title.label">
-                <source>Title</source>
+                <source>Name</source>
             </trans-unit>
             <trans-unit id="tx_hireme_country.two_letter_iso_code.description">
-                <source>Official two-letter ISO 3166-1 alpha-2 country code.</source>
+                <source>Input in capital letters.</source>
             </trans-unit>
             <trans-unit id="tx_hireme_country.two_letter_iso_code.label">
-                <source>Two-letter ISO code</source>
+                <source>Official two-letter ISO 3166-1 alpha-2 country code</source>
             </trans-unit>
             <trans-unit id="tx_hireme_department">
                 <source>Department</source>
@@ -168,7 +243,7 @@
             <trans-unit id="tx_hireme_department.slug.description">
                 <source></source>
             </trans-unit>
-            <trans-unit id="tx_hireme_department.slug.title">
+            <trans-unit id="tx_hireme_department.slug.label">
                 <source>URL segment</source>
             </trans-unit>
             <trans-unit id="tx_hireme_department.title.description">
@@ -630,6 +705,9 @@
             <trans-unit id="tx_hireme_location.country.description">
                 <source></source>
             </trans-unit>
+            <trans-unit id="tx_hireme_location.country.empty.label">
+                <source>-- Please select --</source>
+            </trans-unit>
             <trans-unit id="tx_hireme_location.country.label">
                 <source>Country</source>
             </trans-unit>
@@ -664,10 +742,10 @@
                 <source>Street</source>
             </trans-unit>
             <trans-unit id="tx_hireme_location.title.description">
-                <source></source>
+                <source>Optional name of the location.</source>
             </trans-unit>
             <trans-unit id="tx_hireme_location.title.label">
-                <source>Title</source>
+                <source>Name</source>
             </trans-unit>
             <trans-unit id="tx_hireme_organization">
                 <source>Organization</source>
@@ -698,6 +776,9 @@
             </trans-unit>
             <trans-unit id="tx_hireme_organization.slug.description">
                 <source></source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_organization.slug.label">
+                <source>URL segment</source>
             </trans-unit>
             <trans-unit id="tx_hireme_organization.slug.title">
                 <source>URL segment</source>
@@ -749,6 +830,21 @@
             </trans-unit>
             <trans-unit id="tx_hireme_type.title.label">
                 <source>Title</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_url">
+                <source>Link</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_url.link.description">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_url.link.label">
+                <source>Link</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_url.link_type.description">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_url.link_type.label">
+                <source>Link type</source>
             </trans-unit>
         </body>
     </file>

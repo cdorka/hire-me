@@ -30,7 +30,8 @@ return [
         // Custom fields
         'title' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_benefit.title',
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_benefit.title.label',
+            'description' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_benefit.title.description',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -40,7 +41,8 @@ return [
         ],
         'slug' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_benefit.slug',
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_benefit.slug.label',
+            'description' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_benefit.slug.description',
             'config' => [
                 'type' => 'slug',
                 'generatorOptions' => [
@@ -54,7 +56,8 @@ return [
         ],
         'description' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_benefit.description',
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_benefit.description.label',
+            'description' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_benefit.description.description',
             'config' => [
                 'type' => 'text',
                 'rows' => 3,
@@ -62,7 +65,8 @@ return [
         ],
         'icon' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_benefit.icon',
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_benefit.icon.label',
+            'description' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_benefit.icon.description',
             'config' => [
                 'type' => 'file',
                 'allowed' => 'png,jpg,jpeg,gif,webp',
@@ -75,7 +79,8 @@ return [
         ],
         'job_postings' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_benefit.job_postings',
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_benefit.job_postings.label',
+            'description' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_benefit.job_postings.description',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
@@ -196,11 +201,26 @@ return [
             ]
         ],
     ],
+    'palettes' => [
+        'hidden' => [
+            'showitem' => 'hidden',
+        ],
+        'access' => [
+            'showitem' => 'starttime;LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.starttime,endtime;LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.endtime,--linebreak--,fe_group;LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.fe_group',
+        ],
+        'language' => [
+            'showitem' => 'sys_language_uid,l10n_parent',
+        ],
+    ],
     'types' => [
         '0' => [
             'showitem' => '
                 --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
-                    title, slug, description, icon, job_postings,
+                    title, slug, description, icon,
+                --div--;LLL:EXT:hire_me/Resources/Private/Language/locallang_tabs.xlf:relations,
+                    job_postings,
+                --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language,
+                    --palette--;;language,
                 --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access,
                     hidden, starttime, endtime, fe_group
             ',

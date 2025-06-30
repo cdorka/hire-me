@@ -1,6 +1,6 @@
 <?php
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 namespace ChristianDorka\HireMe\Domain\Repository;
 
@@ -15,7 +15,6 @@ use CpCompartner\Base\Core\Repository\ExtendedRepository;
 use Doctrine\DBAL\Query\QueryException;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class JobPostingRepository extends ExtendedRepository
 {

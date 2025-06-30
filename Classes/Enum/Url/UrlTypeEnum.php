@@ -35,7 +35,7 @@ enum UrlTypeEnum: int
     case GENERAL = 1;
     case FACEBOOK = 2;
     case INSTAGRAM = 3;
-    case TWITTER = 4;
+    case X = 4;
     case LINKEDIN = 5;
     case XING = 6;
     case YOUTUBE = 7;

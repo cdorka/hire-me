@@ -1,11 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" target-language="de" original="messages" datatype="plaintext" date="2025-06-16T13:14:27+02:00">
+    <file source-language="en" target-language="de" original="messages" datatype="plaintext" date="2025-06-30T11:11:03+02:00">
         <header>
             <authorName>Christian Dorka</authorName>
             <authorEmail>mail@christiandorka.de</authorEmail>
         </header>
         <body>
+            <trans-unit id="tx_hireme_faqgroup">
+                <source>FAQ group</source>
+                <target>FAQ-Gruppe</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_faqgroup.title.label">
+                <source>Title</source>
+                <target>Titel</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_faqgroup.slug.label">
+                <source>URL segment</source>
+                <target>URL-Segment</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_faqgroup.faqs.label">
+                <source>FAQs</source>
+                <target>FAQs</target>
+            </trans-unit>
+            <trans-unit id="enum.url_type_enum.items.GENERAL.label">
+                <source>Miscellaneous</source>
+                <target>Sonstiges</target>
+            </trans-unit>
+            <trans-unit id="enum.url_type_enum.items.NOT_SET.label">
+                <source>-- Please select --</source>
+                <target>-- Bitte wählen --</target>
+            </trans-unit>
             <trans-unit id="tx_hireme_benefit">
                 <source>Benefit</source>
                 <target>Benefit</target>
@@ -79,30 +103,30 @@
                 <target>URL-Segment</target>
             </trans-unit>
             <trans-unit id="tx_hireme_country.three_letter_iso_code.description">
-                <source>Official three-letter ISO 3166-1 alpha-2 country code.</source>
-                <target>Offizieller Drei-Buchstaben-ISO-3166-1-Alpha-3-Ländercode.</target>
+                <source>Official three-letter ISO 3166-1 alpha-2 country code</source>
+                <target>Offizieller Drei-Buchstaben-ISO-3166-1-Alpha-3-Ländercode</target>
             </trans-unit>
             <trans-unit id="tx_hireme_country.three_letter_iso_code.label">
                 <source>Three-letter ISO code</source>
                 <target>Drei-Buchstaben-ISO-Code</target>
             </trans-unit>
             <trans-unit id="tx_hireme_country.title.label">
-                <source>Title</source>
-                <target>Titel</target>
+                <source>Name</source>
+                <target>Name</target>
             </trans-unit>
             <trans-unit id="tx_hireme_country.two_letter_iso_code.description">
-                <source>Official two-letter ISO 3166-1 alpha-2 country code.</source>
-                <target>Offizieller Zwei-Buchstaben-ISO-3166-1-Alpha-2-Ländercode.</target>
+                <source>Input in capital letters.</source>
+                <target>Eingabe in Großbuchstaben.</target>
             </trans-unit>
             <trans-unit id="tx_hireme_country.two_letter_iso_code.label">
-                <source>Two-letter ISO code</source>
-                <target>Zwei-Buchstaben-ISO-Code</target>
+                <source>Official two-letter ISO 3166-1 alpha-2 country code</source>
+                <target>Offizieller Zwei-Buchstaben-ISO-3166-1-Alpha-2-Ländercode</target>
             </trans-unit>
             <trans-unit id="tx_hireme_department">
                 <source>Department</source>
                 <target>Abteilung</target>
             </trans-unit>
-            <trans-unit id="tx_hireme_department.slug.title">
+            <trans-unit id="tx_hireme_department.slug.label">
                 <source>URL segment</source>
                 <target>URL-Segment</target>
             </trans-unit>
@@ -514,6 +538,10 @@
                 <source>City</source>
                 <target>Stadt</target>
             </trans-unit>
+            <trans-unit id="tx_hireme_location.country.empty.label">
+                <source>-- Please select --</source>
+                <target>-- Bitte wählen --</target>
+            </trans-unit>
             <trans-unit id="tx_hireme_location.country.label">
                 <source>Country</source>
                 <target>Land</target>
@@ -542,9 +570,13 @@
                 <source>Street</source>
                 <target>Straße und Hausnummer</target>
             </trans-unit>
+            <trans-unit id="tx_hireme_location.title.description">
+                <source>Optional name of the location.</source>
+                <target>Optionaler Name des Orts.</target>
+            </trans-unit>
             <trans-unit id="tx_hireme_location.title.label">
-                <source>Title</source>
-                <target>Titel</target>
+                <source>Name</source>
+                <target>Name</target>
             </trans-unit>
             <trans-unit id="tx_hireme_organization">
                 <source>Organization</source>
@@ -577,6 +609,10 @@
             <trans-unit id="tx_hireme_organization.logo.label">
                 <source>Logo</source>
                 <target>Logo</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_organization.slug.label">
+                <source>URL segment</source>
+                <target>URL-Segment</target>
             </trans-unit>
             <trans-unit id="tx_hireme_organization.slug.title">
                 <source>URL segment</source>
@@ -625,6 +661,18 @@
             <trans-unit id="tx_hireme_type.title.label">
                 <source>Title</source>
                 <target>Titel</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_url">
+                <source>Link</source>
+                <target>Link</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_url.link.label">
+                <source>Link</source>
+                <target>Link</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_url.link_type.label">
+                <source>Link type</source>
+                <target>Link-Typ</target>
             </trans-unit>
         </body>
     </file>

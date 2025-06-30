@@ -1087,7 +1087,7 @@ return [
     "types" => [
         "0" => [
             "showitem" => '
-                --div--;LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.general,
+                --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
                     title,newtime,toptime,types,scopes,slug,hide_hiring_organization,hiring_organizations,job_id,employment_types,career_levels,employment_unit,
                 --div--;LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_jobposting.tab.information,
                     teaser,intro,eligibility_to_work_requirement,responsibilities,qualifications,skills,working_hours,
@@ -1115,7 +1115,7 @@ return [
                     --palette--;;palette_open_graph_twitter,
                 --div--;LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_jobposting.tab.categories,
                     categories,sys_categories,
-                --div--;LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language,
+                --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language,
                     --palette--;;language,
                 --div--;LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_jobposting.tab.access,
                     --palette--;;hidden,

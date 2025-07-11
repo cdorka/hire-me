@@ -19,7 +19,6 @@
                 </header>
             </f:if>
 
-            <f:debug>{_all}</f:debug>
             <f:form
                 id="c{data.uid}-form"
                 method="post"
@@ -109,10 +108,8 @@
 
 
 
-                <f:debug>jobPostings</f:debug>
-                <f:debug>{jobPostings}</f:debug>
-                <div id="results-{data.uid}" class="results-container" data-uid="{data.uid}">
-                    <f:if condition="{jobPostings.success}">
+                <div id="results-{data.uid}" class="results-container row row-cols-4" data-uid="{data.uid}">
+                    <f:if condition="{pagination.items}">
                         <f:then>
 
                             <f:if condition="{jobPostings.data -> f:count()} == 0">
@@ -120,9 +117,23 @@
                                     <f:translate key="jobPostingLatest.noResults.label" extensionName="hire_me"/>
                                 </f:then>
                                 <f:else>
-                                    <f:for each="{jobPostings.data}" as="jobPosting">
+
+
+
+                                    <f:if condition="{pagination.config.positionTop}">
+                                        <f:render partial="JobPosting/Pagination" arguments="{pagination: pagination}"/>
+                                    </f:if>
+
+
+
+                                    <f:for each="{pagination.items}" as="jobPosting">
                                         <f:render partial="JobPosting/Card" section="Default" arguments="{_all}" />
                                     </f:for>
+
+
+                                    <f:if condition="{pagination.config.positionBottom}">
+                                        <f:render partial="JobPosting/Pagination" arguments="{pagination: pagination}"/>
+                                    </f:if>
                                 </f:else>
                                 </f:if>
 

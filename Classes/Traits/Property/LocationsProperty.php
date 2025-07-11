@@ -61,6 +61,16 @@ trait LocationsProperty
     }
 
     /**
+     * Return the amount of location items
+     *
+     * @return int
+     */
+    public function getLocationsCount(): int
+    {
+        return count($this->locations?->toArray()) ?? 0;
+    }
+
+    /**
      * @param ObjectStorage<Location>|null $locations
      *
      * @return void

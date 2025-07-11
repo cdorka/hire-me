@@ -6,8 +6,6 @@ declare(strict_types=1);
 namespace ChristianDorka\HireMe\Traits\Properties;
 
 use DateTime;
-use PhpOffice\PhpSpreadsheet\Shared\Date;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 
 trait ApplicationProperties
@@ -32,6 +30,16 @@ trait ApplicationProperties
     protected ?DateTime $toptime = null;
     protected ?string $jobId = null;
 
+
+    /** if is it still top */
+    public function getIsTop(): bool
+    {
+        if ($this->toptime === null) {
+            return false;
+        }
+
+        return $this->toptime >= new DateTime('now');
+    }
     public function getToptime(): ?DateTime
     {
         return $this->toptime;
@@ -103,13 +111,13 @@ trait ApplicationProperties
     }
 
     /** if is it still top */
-    public function isTop(): bool
+    public function getIsNew(): bool
     {
-        if ($this->toptime === null) {
+        if ($this->newtime === null) {
             return false;
         }
 
-        return $this->toptime >= new DateTime('now');
+        return $this->newtime >= new DateTime('now');
     }
 
     public function getNewtime(): ?DateTime

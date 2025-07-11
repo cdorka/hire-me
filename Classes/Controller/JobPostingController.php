@@ -5,14 +5,20 @@ namespace ChristianDorka\HireMe\Controller;
 use ChristianDorka\HireMe\DataProcessing\FaqDataProcessor;
 use ChristianDorka\HireMe\Domain\DTO\FilterDto;
 use ChristianDorka\HireMe\Domain\DTO\TtContentFilter;
+use ChristianDorka\HireMe\Domain\DTO\TtContentPagination;
 use ChristianDorka\HireMe\Domain\Model\JobPosting;
 use ChristianDorka\HireMe\Domain\Repository\JobPostingRepository;
 use ChristianDorka\HireMe\Domain\Repository\TypeRepository;
+use ChristianDorka\HireMe\Service\PaginationService;
+use ChristianDorka\HireMe\Utility\DataMapperUtility;
 use ChristianDorka\HireMe\Utility\ResponseUtility;
+use CpCompartner\Base\Core\Pattern\Result;
+use CpCompartner\Blog\Domain\Dto\PaginationConfig;
 use Psr\Http\Message\ResponseInterface;
 use Symfony\Component\Yaml\Yaml;
 use TYPO3\CMS\Core\Error\Http\PageNotFoundException;
 use TYPO3\CMS\Core\Http\ImmediateResponseException;
+use TYPO3\CMS\Core\Pagination\SlidingWindowPagination;
 use TYPO3\CMS\Core\Site\Entity\SiteLanguage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
@@ -30,8 +36,9 @@ class JobPostingController extends ActionController
 
     public function __construct(
         protected readonly JobPostingRepository $jobPostingRepository,
-        protected readonly DataMapper $dataMapper,
+        protected readonly DataMapperUtility $dataMapperUtility,
         protected FormConfigurationService $formConfigurationService,
+        protected PaginationService $paginationService,
     ) {}
 
 
@@ -144,8 +151,6 @@ class JobPostingController extends ActionController
                 'tx_hireme_jobpostingdetails[jobPosting]'=> $jobPosting->getUid()
             ];
 
-            DebuggerUtility::var_dump('$formConfiguration');
-            DebuggerUtility::var_dump($formConfiguration);
 
             // https://www.bahnen.nrw.dev.arpa/detail-jobs.html?tx_hireme_jobpostingdetails[action]=detail&tx_hireme_jobpostingdetails[controller]=JobPosting&tx_hireme_jobpostingdetails[jobPosting]=987346123&cHash=89d279897706829d73e23e533a5aab77
 
@@ -263,6 +268,7 @@ class JobPostingController extends ActionController
             $filterDto = new FilterDto();
         }
 
+
         // Handle direct filter parameter from request (for backward compatibility)
       // if ($this->request->hasArgument('filter')) {
       //     $directFilter = $this->request->getArgument('filter');
@@ -275,23 +281,67 @@ class JobPostingController extends ActionController
         // Get filtered job postings
         // $jobPostings = $this->getFilteredJobPostings($filterDto);
         $limit = $this->request->getAttribute('currentContentObject')?->data['tx_hireme_results_limit'] ?? null;
+
         $jobPostings = $this->jobPostingRepository->findByConfigAndFilterDtoWithResult(
             limit: $limit,
             filterDto: $filterDto,
         );
 
-
         $typeRepository = GeneralUtility::makeInstance(TypeRepository::class);
+
+
+        $pagination = $this->processPagination($jobPostings, 1);
 
 
         // Assign to view
         $this->view->assignMultiple([
             'jobPostings' => $jobPostings,
+            'pagination' => $pagination,
             'filterDto' => $filterDto,
             'typeFilters' => $typeRepository->findByConfigWithResult(),
         ]);
 
         return $this->htmlResponse();
+    }
+
+    /**
+     * @param Result $items
+     * @param int    $currentPage
+     *
+     * @return ?array{
+     *      config: TtContentPagination,
+     *      items: array,
+     *      currentPage: int,
+     *      totalPages: int,
+     *      totalItems: int,
+     *      itemsPerPage: int|null,
+     *      hasPages: bool,
+     *      hasPreviousPage: bool,
+     *      hasNextPage: bool,
+     *      isFirstPage: bool,
+     *      isLastPage: bool,
+     *      startItem: int,
+     *      endItem: int,
+     *      paginationEnabled: bool
+     *  }
+     */
+    private function processPagination(Result $items, int $currentPage = 1): ?array {
+        /** @var TtContentPagination|null $mapped */
+        $paginationConfig = $this->dataMapperUtility->mapFirstItem(
+            className: TtContentPagination::class,
+            data: $this->data
+        );
+
+
+
+        if ($paginationConfig !== null && $items->isSuccess()) {
+            return $this->paginationService->generateFromConfig(
+                items: $items->getData(),
+                currentPage: $currentPage,
+                config: $paginationConfig
+            );
+        }
+        return null;
     }
 
     /**

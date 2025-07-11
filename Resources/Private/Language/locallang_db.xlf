@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" original="messages" datatype="plaintext" date="2025-06-30T11:11:03+02:00">
+    <file source-language="en" original="messages" datatype="plaintext" date="2025-07-10T15:41:12+02:00">
         <header>
             <authorName>Christian Dorka</authorName>
             <authorEmail>mail@christiandorka.de</authorEmail>
@@ -8,27 +8,6 @@
         <body>
             <trans-unit id="enum.filter_option_generation_type.items.GENERATED.label">
                 <source>generated (based on the storage location configuration) </source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_faqgroup">
-                <source>FAQ group</source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_faqgroup.title.label">
-                <source>Title</source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_faqgroup.title.description">
-                <source></source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_faqgroup.slug.label">
-                <source>URL segment</source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_faqgroup.slug.description">
-                <source></source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_faqgroup.faqs.label">
-                <source>FAQs</source>
-            </trans-unit>
-            <trans-unit id="tx_hireme_faqgroup.faqs.description">
-                <source></source>
             </trans-unit>
             <trans-unit id="enum.filter_option_generation_type.items.MANUALLY.label">
                 <source>manually (using the element selection)</source>
@@ -123,6 +102,12 @@
             <trans-unit id="enum.url_type_enum.items.YOUTUBE.label">
                 <source>YouTube</source>
             </trans-unit>
+            <trans-unit id="new.10">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="new.9">
+                <source></source>
+            </trans-unit>
             <trans-unit id="tabs.filter_config">
                 <source>Filter</source>
             </trans-unit>
@@ -131,6 +116,123 @@
             </trans-unit>
             <trans-unit id="tabs.source_config">
                 <source>Data source</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_btn_overview_link.description">
+                <source>Link to a page with search or list elements of the job postings.</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_btn_overview_link.label">
+                <source>Button link (Overview page)</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_btn_overview_text.description">
+                <source>Labeling of the button for the link to an overview page with further/all orders. Is required if a link is set, otherwise the button has no label.</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_btn_overview_text.label">
+                <source>Button labeling (Overview page)</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_date_format.description">
+                <source>The format in which the date for elements should be displayed.</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_date_format.items.FULL_DATE.label">
+                <source>28.05.2025</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_date_format.items.FULL_DATE_WITH_FULL_TIME.label">
+                <source>28.05.2025 14:30:45</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_date_format.items.FULL_DATE_WITH_TIME.label">
+                <source>28.05.2025 14:30</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_date_format.items.FULL_TIME_ONLY.label">
+                <source>14:30:45</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_date_format.items.FULL_WEEKDAY_WITH_DATE.label">
+                <source>Wednesday, 28.05.2025</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_date_format.items.ISO_8601_DATETIME.label">
+                <source>2025-03-05T14:14:00</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_date_format.items.MONTH_YEAR.label">
+                <source>May 2025</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_date_format.items.SHORT_DATE.label">
+                <source>28.05.25</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_date_format.items.SHORT_WEEK_DAY_BEFORE_FULL_DATE.label">
+                <source>Tue. 28.05.2025</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_date_format.items.TIME_ONLY.label">
+                <source>14:30</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_date_format.items.WEEK_NUMBER.label">
+                <source>KW 22</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_date_format.label">
+                <source>Date format</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_detail_page.description">
+                <source>Is required to link the card elements. The &#34;Details for job posting&#34; content element must be present on the linked page.</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_detail_page.label">
+                <source>Detail page</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_header.description">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_header.label">
+                <source>Headline</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_hide_companies.description">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_hide_companies.label">
+                <source>Hide company/companies?</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_hide_filter.description">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_hide_filter.label">
+                <source>Hide filter?</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_hide_job_start_date.description">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_hide_job_start_date.label">
+                <source>Hide job start date?</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_hide_location.description">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_hide_location.label">
+                <source>Standort ausblenden?</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_hide_newtime.description">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_hide_newtime.label">
+                <source>Hide &#34;new&#34; badge?</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_hide_toptime.description">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_hide_toptime.label">
+                <source>Hide &#34;top&#34; badge?</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_hide_valid_through.description">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_hide_valid_through.label">
+                <source>Hide end of the application period?</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_results_limit.description">
+                <source>The maximum number of elements to be displayed. Not the number of all elements that should be displayed on each pagination page, but the general limit.</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_results_limit.label">
+                <source>Maximum number of elements</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_text.description">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_text.label">
+                <source>Text</source>
             </trans-unit>
             <trans-unit id="tx_hireme_benefit">
                 <source>Benefit</source>
@@ -158,12 +260,6 @@
             </trans-unit>
             <trans-unit id="tx_hireme_benefit.slug.label">
                 <source>URL segment</source>
-            </trans-unit>
-            <trans-unit id="new.10">
-                <source></source>
-            </trans-unit>
-            <trans-unit id="new.9">
-                <source></source>
             </trans-unit>
             <trans-unit id="tx_hireme_benefit.title.description">
                 <source></source>
@@ -250,6 +346,27 @@
                 <source></source>
             </trans-unit>
             <trans-unit id="tx_hireme_department.title.label">
+                <source>Title</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_faqgroup">
+                <source>FAQ group</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_faqgroup.faqs.description">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_faqgroup.faqs.label">
+                <source>FAQs</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_faqgroup.slug.description">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_faqgroup.slug.label">
+                <source>URL segment</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_faqgroup.title.description">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_faqgroup.title.label">
                 <source>Title</source>
             </trans-unit>
             <trans-unit id="tx_hireme_jobposting">
@@ -722,6 +839,18 @@
             </trans-unit>
             <trans-unit id="tx_hireme_location.job_postings.label">
                 <source>Job postings</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_location.latitude.description">
+                <source>Decimal places with a &#34;.&#34; (dot) instead of a &#34;,&#34; comma.</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_location.latitude.label">
+                <source>Latitude</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_location.longitude.description">
+                <source>Decimal places with a &#34;.&#34; (dot) instead of a &#34;,&#34; comma.</source>
+            </trans-unit>
+            <trans-unit id="tx_hireme_location.longitude.label">
+                <source>Longitude</source>
             </trans-unit>
             <trans-unit id="tx_hireme_location.postal_code.description">
                 <source></source>

@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace ChristianDorka\HireMe\DataProcessing;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\ContentObject\DataProcessorInterface;
 use ChristianDorka\HireMe\Domain\Repository\FaqRepository;

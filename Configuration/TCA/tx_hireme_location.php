@@ -1,4 +1,24 @@
 <?php
+
+/*
+ * This file is part of the TYPO3 CMS extension "hire_me".
+ *
+ * Copyright (C) 2025-2025 Christian Dorka <mail@christiandorka.de>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 declare(strict_types=1);
 
 return [
@@ -115,6 +135,26 @@ return [
                     ],
                 ],
                 'default' => 0,
+            ],
+        ],
+        'latitude' => [
+            'exclude' => false,
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_location.latitude.label',
+            'description' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_location.latitude.description',
+            'config' => [
+                'type' => 'input',
+                'eval' => 'trim',
+                'nullable' => true,
+            ],
+        ],
+        'longitude' => [
+            'exclude' => false,
+            'label' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_location.longitude.label',
+            'description' => 'LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tx_hireme_location.longitude.description',
+            'config' => [
+                'type' => 'input',
+                'eval' => 'trim',
+                'nullable' => true,
             ],
         ],
         'job_postings' => [
@@ -274,7 +314,7 @@ return [
             'showitem' => 'sys_language_uid,l10n_parent',
         ],
         'address' => [
-            'showitem' => 'street_name,house_number,--linebreak--,postal_code,city,--linebreak--,region,country',
+            'showitem' => 'street_name,house_number,--linebreak--,postal_code,city,--linebreak--,region,country,--linebreak--,latitude,longitude',
         ],
     ],
     'types' => [

@@ -1,27 +1,210 @@
+<html
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:blog="http://typo3.org/ns/CpCompartner/Blog/ViewHelpers"
+    data-namespace-typo3-fluid="true"
+    lang="en">
 
-<!-- Pagination -->
-<nav class="mt-5">
-    <ul class="pagination justify-content-center">
-        <li class="page-item disabled">
-            <span class="page-link">Zurück</span>
-        </li>
-        <li class="page-item active">
-            <span class="page-link">1</span>
-        </li>
-        <li class="page-item">
-            <a class="page-link" href="#">2</a>
-        </li>
-        <li class="page-item">
-            <a class="page-link" href="#">3</a>
-        </li>
-        <li class="page-item">
-            <span class="page-link">...</span>
-        </li>
-        <li class="page-item">
-            <a class="page-link" href="#">42</a>
-        </li>
-        <li class="page-item">
-            <a class="page-link" href="#">Weiter</a>
-        </li>
-    </ul>
-</nav>
+<!-- Only show pagination if it's enabled and we have multiple pages -->
+<f:if condition="{pagination.enabled}">
+    <section>
+        <nav aria-label="{f:translate(key: 'pagination.aria.label')}" class="search-pagination">
+            <!-- Status display: "Showing 1-10 of 50 items" -->
+            <p id="search-results-status" class="search-results-status">
+                <f:translate key="pagination.status" arguments="{0: pagination.startItem, 1: pagination.endItem, 2: pagination.totalItems}" />
+            </p>
+
+            <ul class="search-pagination-list">
+                <!-- First page link -->
+                <f:if condition="{pagination.config.showFirstLast}">
+                    <li>
+                        <f:variable name="firstPageAriaLabel" value="{f:translate(key: 'pagination.first.page.aria', arguments: {0: 1, 1: pagination.itemsPerPage})}" />
+
+                        <f:if condition="{pagination.isFirstPage}">
+                            <f:then>
+                                <!-- Disabled first page button -->
+                                <f:form.button
+                                    type="submit"
+                                    property="currentPageNumber"
+                                    value="1"
+                                    aria="{label: firstPageAriaLabel}"
+                                    title="{firstPageAriaLabel}"
+                                    additionalAttributes="{disabled: ''}">
+                                    <span aria-hidden="true">&laquo;</span>
+                                    <span class="visually-hidden"><f:translate key="pagination.first.page.text" /></span>
+                                </f:form.button>
+                            </f:then>
+                            <f:else>
+                                <!-- Active first page button -->
+                                <f:form.button
+                                    type="submit"
+                                    property="currentPageNumber"
+                                    value="1"
+                                    aria="{label: firstPageAriaLabel}"
+                                    title="{firstPageAriaLabel}">
+                                    <span aria-hidden="true">&laquo;</span>
+                                    <span class="visually-hidden"><f:translate key="pagination.first.page.text" /></span>
+                                </f:form.button>
+                            </f:else>
+                        </f:if>
+                    </li>
+                </f:if>
+
+                <!-- Previous page link -->
+                <f:if condition="{pagination.config.showPrevNext}">
+                    <li>
+                        <f:variable name="prevPageNumber" value="{pagination.currentPage - 1}" />
+                        <f:variable name="prevPageAriaLabel" value="{f:translate(key: 'pagination.previous.page.aria', arguments: {0: prevPageNumber})}" />
+
+                        <f:if condition="{pagination.hasPreviousPage}">
+                            <f:then>
+                                <!-- Active previous page button -->
+                                <f:form.button
+                                    type="submit"
+                                    property="currentPageNumber"
+                                    value="{prevPageNumber}"
+                                    aria="{label: prevPageAriaLabel}"
+                                    title="{prevPageAriaLabel}">
+                                    <span aria-hidden="true">&lsaquo;</span>
+                                    <span class="visually-hidden"><f:translate key="pagination.previous.page.text" arguments="{0: pagination.itemsPerPage}" /></span>
+                                </f:form.button>
+                            </f:then>
+                            <f:else>
+                                <!-- Disabled previous page button -->
+                                <f:form.button
+                                    type="submit"
+                                    property="currentPageNumber"
+                                    value="{prevPageNumber}"
+                                    aria="{label: prevPageAriaLabel}"
+                                    title="{prevPageAriaLabel}"
+                                    additionalAttributes="{disabled: ''}">
+                                    <span aria-hidden="true">&lsaquo;</span>
+                                    <span class="visually-hidden"><f:translate key="pagination.previous.page.text" arguments="{0: pagination.itemsPerPage}" /></span>
+                                </f:form.button>
+                            </f:else>
+                        </f:if>
+                    </li>
+                </f:if>
+
+                <!-- Page number links with dots -->
+                <f:if condition="{pagination.config.showDots}">
+                    <!-- Show dots before if needed -->
+                    <f:if condition="{pagination.hasHiddenDotsBefore}">
+                        <li class="pagination-dots">...</li>
+                    </f:if>
+
+                    <!-- Page number links using the dots array from service -->
+                    <f:for each="{pagination.dots}" as="pageNumber">
+                        <li>
+                            <f:variable name="pageAriaLabel" value="{f:translate(key: 'pagination.page.aria', arguments: {0: pageNumber})}" />
+
+                            <f:if condition="{pagination.currentPage} == {pageNumber}">
+                                <f:then>
+                                    <!-- Current page (disabled) -->
+                                    <f:form.button
+                                        type="submit"
+                                        property="currentPageNumber"
+                                        value="{pageNumber}"
+                                        aria="{label: pageAriaLabel, current: 'page'}"
+                                        class="current-page"
+                                        additionalAttributes="{disabled: ''}">
+                                        <span aria-hidden="true">{pageNumber}</span>
+                                        <span class="visually-hidden"><f:translate key="pagination.page.text" arguments="{0: pageNumber}" /></span>
+                                    </f:form.button>
+                                </f:then>
+                                <f:else>
+                                    <!-- Other pages -->
+                                    <f:form.button
+                                        type="submit"
+                                        property="currentPageNumber"
+                                        value="{pageNumber}"
+                                        aria="{label: pageAriaLabel}">
+                                        <span aria-hidden="true">{pageNumber}</span>
+                                        <span class="visually-hidden"><f:translate key="pagination.page.text" arguments="{0: pageNumber}" /></span>
+                                    </f:form.button>
+                                </f:else>
+                            </f:if>
+                        </li>
+                    </f:for>
+
+                    <!-- Show dots after if needed -->
+                    <f:if condition="{pagination.hasHiddenDotsAfter}">
+                        <li class="pagination-dots">...</li>
+                    </f:if>
+                </f:if>
+
+                <!-- Next page link -->
+                <f:if condition="{pagination.config.showPrevNext}">
+                    <li>
+                        <f:variable name="nextPageNumber" value="{pagination.currentPage + 1}" />
+                        <f:variable name="nextPageAriaLabel" value="{f:translate(key: 'pagination.next.page.aria', arguments: {0: nextPageNumber})}" />
+
+                        <f:if condition="{pagination.hasNextPage}">
+                            <f:then>
+                                <!-- Active next page button -->
+                                <f:form.button
+                                    type="submit"
+                                    property="currentPageNumber"
+                                    value="{nextPageNumber}"
+                                    aria="{label: nextPageAriaLabel}"
+                                    title="{nextPageAriaLabel}">
+                                    <span aria-hidden="true">&rsaquo;</span>
+                                    <span class="visually-hidden"><f:translate key="pagination.next.page.text" arguments="{0: pagination.itemsPerPage}" /></span>
+                                </f:form.button>
+                            </f:then>
+                            <f:else>
+                                <!-- Disabled next page button -->
+                                <f:form.button
+                                    type="submit"
+                                    property="currentPageNumber"
+                                    value="{nextPageNumber}"
+                                    aria="{label: nextPageAriaLabel}"
+                                    title="{nextPageAriaLabel}"
+                                    additionalAttributes="{disabled: ''}">
+                                    <span aria-hidden="true">&rsaquo;</span>
+                                    <span class="visually-hidden"><f:translate key="pagination.next.page.text" arguments="{0: pagination.itemsPerPage}" /></span>
+                                </f:form.button>
+                            </f:else>
+                        </f:if>
+                    </li>
+                </f:if>
+
+                <!-- Last page link -->
+                <f:if condition="{pagination.config.showFirstLast}">
+                    <li>
+                        <f:variable name="lastPageAriaLabel" value="{f:translate(key: 'pagination.last.page.aria', arguments: {0: pagination.totalPages})}" />
+
+                        <f:if condition="{pagination.isLastPage}">
+                            <f:then>
+                                <!-- Disabled last page button -->
+                                <f:form.button
+                                    type="submit"
+                                    property="currentPageNumber"
+                                    value="{pagination.totalPages}"
+                                    aria="{label: lastPageAriaLabel}"
+                                    title="{lastPageAriaLabel}"
+                                    additionalAttributes="{disabled: ''}">
+                                    <span aria-hidden="true">&raquo;</span>
+                                    <span class="visually-hidden"><f:translate key="pagination.last.page.text" /></span>
+                                </f:form.button>
+                            </f:then>
+                            <f:else>
+                                <!-- Active last page button -->
+                                <f:form.button
+                                    type="submit"
+                                    property="currentPageNumber"
+                                    value="{pagination.totalPages}"
+                                    aria="{label: lastPageAriaLabel}"
+                                    title="{lastPageAriaLabel}">
+                                    <span aria-hidden="true">&raquo;</span>
+                                    <span class="visually-hidden"><f:translate key="pagination.last.page.text" /></span>
+                                </f:form.button>
+                            </f:else>
+                        </f:if>
+                    </li>
+                </f:if>
+            </ul>
+        </nav>
+    </section>
+</f:if>
+
+</html>

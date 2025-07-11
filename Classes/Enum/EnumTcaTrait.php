@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace ChristianDorka\HireMe\Enum;
 
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
  * Trait for handling common enum functionality for TYPO3 TCA configuration

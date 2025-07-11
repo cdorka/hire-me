@@ -87,6 +87,16 @@ return [
     ],
     TtContentPagination::class => [
         "tableName" => "tt_content",
+        'properties' => [
+            'enabled' => [ 'fieldName' => 'tx_hireme_pagination_enabled' ],
+            'positionTop' => [ 'fieldName' => 'tx_hireme_pagination_position_top' ],
+            'positionBottom' => [ 'fieldName' => 'tx_hireme_pagination_position_bottom' ],
+            'showDots' => [ 'fieldName' => 'tx_hireme_pagination_show_dots' ],
+            'maxLinks' => [ 'fieldName' => 'tx_hireme_pagination_max_links' ],
+            'itemsPerPage' => [ 'fieldName' => 'tx_hireme_pagination_items_per_page' ],
+            'showPrevNext' => [ 'fieldName' => 'tx_hireme_pagination_show_prev_next' ],
+            'showFirstLast' => [ 'fieldName' => 'tx_hireme_pagination_show_first_last' ],
+        ],
     ],
     TtContentSource::class => [
         "tableName" => "tt_content",

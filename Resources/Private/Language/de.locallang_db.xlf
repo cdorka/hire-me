@@ -1,27 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" target-language="de" original="messages" datatype="plaintext" date="2025-06-30T11:11:03+02:00">
+    <file source-language="en" target-language="de" original="messages" datatype="plaintext" date="2025-07-10T15:41:12+02:00">
         <header>
             <authorName>Christian Dorka</authorName>
             <authorEmail>mail@christiandorka.de</authorEmail>
         </header>
         <body>
-            <trans-unit id="tx_hireme_faqgroup">
-                <source>FAQ group</source>
-                <target>FAQ-Gruppe</target>
-            </trans-unit>
-            <trans-unit id="tx_hireme_faqgroup.title.label">
-                <source>Title</source>
-                <target>Titel</target>
-            </trans-unit>
-            <trans-unit id="tx_hireme_faqgroup.slug.label">
-                <source>URL segment</source>
-                <target>URL-Segment</target>
-            </trans-unit>
-            <trans-unit id="tx_hireme_faqgroup.faqs.label">
-                <source>FAQs</source>
-                <target>FAQs</target>
-            </trans-unit>
             <trans-unit id="enum.url_type_enum.items.GENERAL.label">
                 <source>Miscellaneous</source>
                 <target>Sonstiges</target>
@@ -29,6 +13,94 @@
             <trans-unit id="enum.url_type_enum.items.NOT_SET.label">
                 <source>-- Please select --</source>
                 <target>-- Bitte wählen --</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_btn_overview_link.description">
+                <source>Link to a page with search or list elements of the job postings.</source>
+                <target>Link zu einer Seite mit Such- oder Listenelementen der Stellenausschreibungen.</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_btn_overview_link.label">
+                <source>Button link (Overview page)</source>
+                <target>Button-Verlinkung (Übersichtsseite)</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_btn_overview_text.description">
+                <source>Labeling of the button for the link to an overview page with further/all orders. Is required if a link is set, otherwise the button has no label.</source>
+                <target>Beschriftung des Buttons für die Verknüpfung zu einer Übersichtsseite mit weiteren/allen Aufträgen. Wird benötigt, wenn ein Link gesetzt ist, ansonsten hat der Button keine Beschriftung.</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_btn_overview_text.label">
+                <source>Button labeling (Overview page)</source>
+                <target>Button-Beschriftung (Übersichtsseite)</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_date_format.description">
+                <source>The format in which the date for elements should be displayed.</source>
+                <target>Das Format, in dem das Datum für Elemente angezeigt werden soll.</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_date_format.items.FULL_WEEKDAY_WITH_DATE.label">
+                <source>Wednesday, 28.05.2025</source>
+                <target>Mittwoch, 28.05.2025</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_date_format.items.MONTH_YEAR.label">
+                <source>May 2025</source>
+                <target>Mai 2025</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_date_format.items.SHORT_WEEK_DAY_BEFORE_FULL_DATE.label">
+                <source>Tue. 28.05.2025</source>
+                <target>Di. 28.05.2025</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_date_format.label">
+                <source>Date format</source>
+                <target>Datumsformat</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_detail_page.description">
+                <source>Is required to link the card elements. The &#34;Details for job posting&#34; content element must be present on the linked page.</source>
+                <target>Ist erforderlich, um die Card-Elemente zu verknüpfen. Das „Details zur Stellenanzeige“ Inhaltselement muss auf der verlinkten Detailseite vorhanden sein.</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_detail_page.label">
+                <source>Detail page</source>
+                <target>Detailseite</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_header.label">
+                <source>Headline</source>
+                <target>Überschrift</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_hide_companies.label">
+                <source>Hide company/companies?</source>
+                <target>Firma/Firmen ausblenden?</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_hide_filter.label">
+                <source>Hide filter?</source>
+                <target>Filter ausblenden?</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_hide_job_start_date.label">
+                <source>Hide job start date?</source>
+                <target>Datum des Jobstarts ausblenden?</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_hide_location.label">
+                <source>Standort ausblenden?</source>
+                <target>Standort ausblenden?</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_hide_newtime.label">
+                <source>Hide &#34;new&#34; badge?</source>
+                <target>&#34;Neu&#34; Badge ausblenden?</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_hide_toptime.label">
+                <source>Hide &#34;top&#34; badge?</source>
+                <target>&#34;Top&#34; Badge ausblenden?</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_hide_valid_through.label">
+                <source>Hide end of the application period?</source>
+                <target>Ende der Bewerbungsfrist ausblenden?</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_results_limit.description">
+                <source>The maximum number of elements to be displayed. Not the number of all elements that should be displayed on each pagination page, but the general limit.</source>
+                <target>Die maximale Anzahl von Elementen, die angezeigt werden sollen. Nicht die Anzahl aller Elemente, die auf jeder Paginierungsseite angezeigt werden sollen, sondern die allgemeine Grenze.</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_results_limit.label">
+                <source>Maximum number of elements</source>
+                <target>Maximale Elementanzahl</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_text.label">
+                <source>Text</source>
+                <target>Text</target>
             </trans-unit>
             <trans-unit id="tx_hireme_benefit">
                 <source>Benefit</source>
@@ -131,6 +203,22 @@
                 <target>URL-Segment</target>
             </trans-unit>
             <trans-unit id="tx_hireme_department.title.label">
+                <source>Title</source>
+                <target>Titel</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_faqgroup">
+                <source>FAQ group</source>
+                <target>FAQ-Gruppe</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_faqgroup.faqs.label">
+                <source>FAQs</source>
+                <target>FAQs</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_faqgroup.slug.label">
+                <source>URL segment</source>
+                <target>URL-Segment</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_faqgroup.title.label">
                 <source>Title</source>
                 <target>Titel</target>
             </trans-unit>
@@ -557,6 +645,22 @@
             <trans-unit id="tx_hireme_location.job_postings.label">
                 <source>Job postings</source>
                 <target>Stellenausschreibungen</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_location.latitude.description">
+                <source>Decimal places with a &#34;.&#34; (dot) instead of a &#34;,&#34; comma.</source>
+                <target>Decimalstellen mit einem &#34;.&#34; (Punkt) anstelle eines &#34;,&#34; Kommas.</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_location.latitude.label">
+                <source>Latitude</source>
+                <target>Breitengrad (latitude)</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_location.longitude.description">
+                <source>Decimal places with a &#34;.&#34; (dot) instead of a &#34;,&#34; comma.</source>
+                <target>Decimalstellen mit einem &#34;.&#34; (Punkt) anstelle eines &#34;,&#34; Kommas.</target>
+            </trans-unit>
+            <trans-unit id="tx_hireme_location.longitude.label">
+                <source>Longitude</source>
+                <target>Längengrad (longitude)</target>
             </trans-unit>
             <trans-unit id="tx_hireme_location.postal_code.label">
                 <source>Postal code</source>

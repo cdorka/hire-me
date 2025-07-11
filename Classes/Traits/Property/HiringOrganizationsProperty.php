@@ -8,7 +8,6 @@ namespace ChristianDorka\HireMe\Traits\Property;
 use ChristianDorka\HireMe\Domain\Model\Journey;
 use ChristianDorka\HireMe\Domain\Model\Organization;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 
 trait HiringOrganizationsProperty

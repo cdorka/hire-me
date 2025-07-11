@@ -83,7 +83,7 @@ class JobPostingRepository extends ExtendedRepository
 
         return $this->findWithResult(
             constraints: $constraints,
-            limit: 1);
+            limit: $limit);
 
     }
 

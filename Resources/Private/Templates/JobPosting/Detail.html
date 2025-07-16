@@ -7,6 +7,319 @@
 <f:layout name="Default"/>
 
 <f:section name="Content">
+
+    <style>
+        /* Container Query Layout */
+        .job-detail-container {
+            container-type: inline-size;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 30px 30px;
+            grid-auto-flow: row;
+            align-items: start;
+            grid-template-areas:
+    "banner  aside"
+    "content  aside"
+    "apply apply"
+    "faq faq"
+    "similar similar";
+        }
+
+        .banner {
+            grid-area: banner;
+        }
+
+        .content {
+            grid-area: content;
+        }
+
+        .faq {
+            grid-area: faq;
+        }
+        .apply {
+            grid-area: apply;
+        }
+        .similar {
+            grid-area: similar;
+        }
+
+        .aside {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: auto;
+            gap: 30px 0px;
+            grid-auto-flow: row;
+            align-items: start;
+            grid-template-areas:
+    "overview"
+    "benefits"
+    "incentives";
+            grid-area: aside;
+        }
+
+        .overview {
+            grid-area: overview;
+        }
+
+        .benefits {
+            grid-area: benefits;
+        }
+        .incentives {
+            grid-area: incentives;
+        }
+
+        /* Mobile Layout using Container Query */
+        @media (max-width: 768px) {
+            .job-detail-container {
+            container-type: inline-size;
+            display: grid
+        ;
+            grid-template-columns: 1fr;
+            grid-template-rows: auto;
+            gap: 30px 30px;
+            grid-auto-flow: row;
+            grid-template-areas:
+        "banner"
+        "overview"
+        "content"
+        "benefits"
+        "incentives"
+        "apply"
+        "faq"
+        "similar"
+            ;
+        }
+    </style>
+
+
+    <div class="job-detail-container">
+
+        <div class="banner">
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+
+                    <f:if condition="{jobPosting.types}">
+                        <div class="d-flex gap-2 mb-2">
+                            <f:for as="type" each="{jobPosting.types}">
+                                <span class="badge bg-warning text-dark mb-2">{type.title}</span>
+                            </f:for>
+                        </div>
+                    </f:if>
+
+                    <f:if condition="{jobPosting.isTop} || {jobPosting.isNew}">
+                        <div class="d-flex gap-2 mb-2">
+                            <f:if condition="{jobPosting.isTop}">
+                                <span class="badge bg-danger text-white px-3 py-2 rounded-pill fw-bold small">new</span>
+                            </f:if>
+                            <f:if condition="{jobPosting.isNew}">
+                                <span class="badge bg-success text-white px-3 py-2 rounded-pill fw-bold small">TOP</span>
+                            </f:if>
+                        </div>
+                    </f:if>
+
+                    <h1>{jobPosting.title}</h1>
+
+                    <div class="text-muted">
+
+                        <f:if condition="{jobPosting.locations}">
+                            <p>
+                                <f:if condition="{jobPosting.locations -> f:count()} > 1">
+                                    <f:then>
+                                        <b>Orte</b><br>
+                                    </f:then>
+                                    <f:else>
+                                        <b>Ort</b><br>
+                                    </f:else>
+                                </f:if>
+                                <f:for as="location" each="{jobPosting.locations}" iteration="i">
+                                    <span>{location.title}<f:if condition="{i.isLast}"><f:else>, </f:else></f:if></span>
+                                </f:for>
+                            </p>
+                        </f:if>
+
+                        <f:if condition="{jobPosting.validThrough}">
+                            <p>
+                                <b>Bewerbungsfrist</b><br>
+                                <span><f:format.date format="d.m.Y">{jobPosting.validThrough}</f:format.date></span>
+                            </p>
+                        </f:if>
+
+                        <f:if condition="{jobPosting.jobId}">
+                            <p>
+                                <b>Job-ID</b><br>
+                                <span>{jobPosting.jobId}</span>
+                            </p>
+                        </f:if>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+
+                    <h2>Übersicht</h2>
+                    <f:sanitize.html>{jobPosting.intro}</f:sanitize.html>
+
+                    <f:if condition="{jobPosting.responsibilities}">
+                        <h3>Aufgaben</h3>
+                        <f:sanitize.html>{jobPosting.responsibilities}</f:sanitize.html>
+                    </f:if>
+
+                    <f:if condition="{jobPosting.qualifications}">
+                        <h3>Qualifikationen</h3>
+                        <f:sanitize.html>{jobPosting.qualifications}</f:sanitize.html>
+                    </f:if>
+
+                    <f:if condition="{jobPosting.skills}">
+                        <h3>Kompetenzen / Fähigkeiten</h3>
+                        <f:sanitize.html>{jobPosting.skills}</f:sanitize.html>
+                    </f:if>
+
+                    <f:if condition="{jobPosting.workingHhours}">
+                        <h3>Arbeitszeiten</h3>
+                        <f:sanitize.html>{jobPosting.workingHhours}</f:sanitize.html>
+                    </f:if>
+                </div>
+            </div>
+        </div>
+
+        <div class="aside">
+
+            <div class="overview">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="text-success me-2">Infos im Überblick</span>
+                            <i class="bi bi-check-circle-fill text-success"></i>
+                        </div>
+
+
+                        <f:sanitize.html>{jobPosting.eligibilityToWorkRequirement}</f:sanitize.html>
+                        <div class="small text-muted">
+                            <div class="mb-2">
+                                <span class="text-dark">Hauptsächlichkeitsatz:</span><br>
+                                <span>www.corp.com</span>
+                            </div>
+                            <div class="mb-2">
+                                <span class="text-dark">01.05.2025</span>
+                            </div>
+                            <div class="mb-3">
+                                <span class="text-dark">GEHALT</span><br>
+                                <span>50000€</span>
+                            </div>
+
+                            <f:if condition="{jobPosting.careerLevels}">
+                                <div class="mb-3">
+                                    <b>Karrierelevel</b><br>
+                                    <f:for as="careerLevel" each="{jobPosting.careerLevels}">
+                                        <span>
+                                            <f:translate key="jobPostingDetail.careerLevels.items.{careerLevel}.label" extensionName="hire_me" />
+                                        </span>
+                                        <br>
+                                    </f:for>
+                                </div>
+                            </f:if>
+
+                            <f:if condition="{jobPosting.employmentTypes}">
+                                <div class="mb-3">
+                                    <b>Anstellungsart</b><br>
+                                    <f:for as="employmentType" each="{jobPosting.employmentTypes}">
+                                        <span>
+                                            <f:translate key="jobPostingDetail.employmentTypes.items.{employmentType}.label" extensionName="hire_me" />
+                                        </span>
+                                        <br>
+                                    </f:for>
+                                </div>
+                            </f:if>
+
+
+                        </div>
+                        <button class="btn btn-warning w-100">
+                            <i class="bi bi-arrow-right me-1"></i>
+                            BEWERBEN
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <f:if condition="{jobPosting.benefits}">
+                <div class="benefits">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h3>Benefits</h3>
+                            <ul class="list-unstyled">
+                                <f:for as="benefit" each="{jobPosting.benefits}">
+                                    <li class="mb-2">
+                                        <i class="bi bi-check-lg text-success me-2"></i>
+                                        <span class="text-muted">{benefit.title}</span>
+                                    </li>
+                                </f:for>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </f:if>
+
+            <f:if condition="{jobPosting.incentives}">
+                <div class="incentives">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h3>Zusatzleistungen</h3>
+                            <ul class="list-unstyled">
+                                <f:for as="incentive" each="{jobPosting.incentives}">
+                                    <li class="mb-2">
+                                        <i class="bi bi-check-lg text-success me-2"></i>
+                                        <span class="text-muted">{incentive.title}</span>
+                                    </li>
+                                </f:for>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </f:if>
+
+        </div>
+
+        <div class="apply">
+
+            <f:if condition="{jobPosting.renderApplication}">
+                <f:if condition="{applicationSend}">
+                    <f:then>
+                        <f:render partial="JobPosting/ApplicationSend" arguments="{_all}" />
+                    </f:then>
+                    <f:else>
+                        <f:render partial="JobPosting/Application" arguments="{_all}" />
+                    </f:else>
+                </f:if>
+            </f:if>
+        </div>
+
+        <div class="faq">
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+
+                    <f:if condition="{faqs}">
+                        <f:render partial="JobPosting/Faqs" arguments="{_all}" />
+                    </f:if>
+                </div>
+            </div>
+        </div>
+
+        <div class="similar">
+            <h2>similar</h2>
+        </div>
+
+
+    </div>
+
+    <f:if condition="{jobPosting.renderJourney}">
+        <f:render partial="JobPosting/Journey" arguments="{_all}" />
+    </f:if>
+    <!--
     <div class="container-fluid px-0">
 
         <section id="hero" class="bg-light py-5 mb-5">
@@ -158,7 +471,6 @@
             </div>
         </section>
 
-        <!-- Overview Section -->
         <section id="overview" class="mb-5">
             <div class="container">
                 <div class="row">
@@ -289,7 +601,6 @@
             </div>
         </section>
 
-        <!-- Details Section -->
         <section id="details" class="py-5 bg-light mb-5">
             <div class="container">
                 <h2 class="h3 fw-bold mb-4">Job Details</h2>
@@ -509,25 +820,12 @@
                 </div>
             </div>
         </section>
-
-        <f:if condition="{jobPosting.renderApplication}">
-            <f:if condition="{applicationSend}">
-                <f:then>
-                    <f:render partial="JobPosting/ApplicationSend" arguments="{_all}" />
-                </f:then>
-                <f:else>
-                    <f:render partial="JobPosting/Application" arguments="{_all}" />
-                </f:else>
-            </f:if>
-        </f:if>
+-->
 
         <f:if condition="{jobPosting.renderJourney}">
             <f:render partial="JobPosting/Journey" arguments="{_all}" />
         </f:if>
 
-        <f:if condition="{faqs}">
-            <f:render partial="JobPosting/Faqs" arguments="{_all}" />
-        </f:if>
 
     </div>
 

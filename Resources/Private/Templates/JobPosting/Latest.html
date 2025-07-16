@@ -22,10 +22,10 @@
             <f:form
                 id="c{data.uid}-form"
                 method="post"
-                name="filterDto"
+                name="filterSelection"
                 action="latest"
-                object="{filterDto}"
-                objectName="filterDto"
+                object="{filterSelection}"
+                objectName="filterSelection"
                 noCache="1"
                 additionalAttributes="{class: 'ajax-form'}"
 
@@ -63,7 +63,7 @@
                                             id="filter-alle-{data.uid}"
                                             class="form-check-input filter-checkbox"
                                             additionalAttributes="{data-label: 'Alle'}" />
-                                        <label class="form-check-label btn {filterDto.hasFilter('alle') ? 'btn-warning' : 'btn-outline-secondary'}"
+                                        <label class="form-check-label btn {filterSelection.hasFilter('alle') ? 'btn-warning' : 'btn-outline-secondary'}"
                                                for="filter-alle-{data.uid}">
                                             Alle
                                         </label>
@@ -103,8 +103,6 @@
                 </f:if>
 
 
-                noResults
-                errorOccurred
 
 
 
@@ -340,6 +338,48 @@
         });*/
     </script>
 
+
+    <style>
+        /* Screen Reader Only - versteckt visuell, aber für Screenreader verfügbar */
+        .sr-only {
+            position: absolute !important;
+            width: 1px !important;
+            height: 1px !important;
+            padding: 0 !important;
+            margin: -1px !important;
+            overflow: hidden !important;
+            clip: rect(0, 0, 0, 0) !important;
+            white-space: nowrap !important;
+            border: 0 !important;
+        }
+
+        /* Fokus-Zustand für sr-only Elemente (falls sie fokussierbar sind) */
+        .sr-only:focus {
+            position: static !important;
+            width: auto !important;
+            height: auto !important;
+            padding: inherit !important;
+            margin: inherit !important;
+            overflow: visible !important;
+            clip: auto !important;
+            white-space: normal !important;
+        }
+
+
+        /* other */
+        .pagination-nav {
+            flex: 0 0 100%;
+            max-width: 100%;
+            width: 100%;
+        }
+        button:disabled{
+            opacity: 0.33;
+        }
+        button[aria-current="page"] {
+            opacity: 1;
+            background: var(--primary);
+        }
+    </style>
 </f:section>
 
 </html>

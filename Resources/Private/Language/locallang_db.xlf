@@ -1,11 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" original="messages" datatype="plaintext" date="2025-07-10T15:41:12+02:00">
+    <file source-language="en" original="messages" datatype="plaintext" date="2025-07-15T11:35:56+02:00">
         <header>
             <authorName>Christian Dorka</authorName>
             <authorEmail>mail@christiandorka.de</authorEmail>
         </header>
         <body>
+            <trans-unit id="enum.depth.items.INFINITE.label">
+                <source>infinite</source>
+            </trans-unit>
+            <trans-unit id="enum.depth.items.LEVELS_1.label">
+                <source>1 level</source>
+            </trans-unit>
+            <trans-unit id="enum.depth.items.LEVELS_2.label">
+                <source>2 levels</source>
+            </trans-unit>
+            <trans-unit id="enum.depth.items.LEVELS_3.label">
+                <source>3 levels</source>
+            </trans-unit>
+            <trans-unit id="enum.depth.items.LEVELS_4.label">
+                <source>4 levels</source>
+            </trans-unit>
+            <trans-unit id="enum.depth.items.ONLY_SELECTION.label">
+                <source>0 levels (only selected page)</source>
+            </trans-unit>
             <trans-unit id="enum.filter_option_generation_type.items.GENERATED.label">
                 <source>generated (based on the storage location configuration) </source>
             </trans-unit>
@@ -35,24 +53,6 @@
             </trans-unit>
             <trans-unit id="enum.pagination_type.items.DOTS.label">
                 <source>as numbered dots</source>
-            </trans-unit>
-            <trans-unit id="enum.starting_point_depth.items.INFINITE.label">
-                <source>infinite</source>
-            </trans-unit>
-            <trans-unit id="enum.starting_point_depth.items.LEVELS_1.label">
-                <source>1 level</source>
-            </trans-unit>
-            <trans-unit id="enum.starting_point_depth.items.LEVELS_2.label">
-                <source>2 levels</source>
-            </trans-unit>
-            <trans-unit id="enum.starting_point_depth.items.LEVELS_3.label">
-                <source>3 levels</source>
-            </trans-unit>
-            <trans-unit id="enum.starting_point_depth.items.LEVELS_4.label">
-                <source>4 levels</source>
-            </trans-unit>
-            <trans-unit id="enum.starting_point_depth.items.ONLY_SELECTION.label">
-                <source>0 levels (only selected page)</source>
             </trans-unit>
             <trans-unit id="enum.url_type_enum.items.DISCORD.label">
                 <source>Discord</source>
@@ -102,7 +102,28 @@
             <trans-unit id="enum.url_type_enum.items.YOUTUBE.label">
                 <source>YouTube</source>
             </trans-unit>
+            <trans-unit id="new.1">
+                <source></source>
+            </trans-unit>
             <trans-unit id="new.10">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="new.14">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="new.15">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="new.16">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="new.2">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="new.3">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="new.4">
                 <source></source>
             </trans-unit>
             <trans-unit id="new.9">
@@ -116,6 +137,24 @@
             </trans-unit>
             <trans-unit id="tabs.source_config">
                 <source>Data source</source>
+            </trans-unit>
+            <trans-unit id="tt_content.condition.description">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="tt_content.condition.items.AND.label">
+                <source>(AND) Show records that must have ALL categories</source>
+            </trans-unit>
+            <trans-unit id="tt_content.condition.items.NAND.label">
+                <source>(NAND) Show records that do NOT have ALL categories simultaneously</source>
+            </trans-unit>
+            <trans-unit id="tt_content.condition.items.NOR.label">
+                <source>(NOR) Show records that have NONE of the categories</source>
+            </trans-unit>
+            <trans-unit id="tt_content.condition.items.OR.label">
+                <source>(OR) Show records that have ONE of the categories</source>
+            </trans-unit>
+            <trans-unit id="tt_content.condition.label">
+                <source></source>
             </trans-unit>
             <trans-unit id="tt_content.tx_hireme_btn_overview_link.description">
                 <source>Link to a page with search or list elements of the job postings.</source>
@@ -222,11 +261,131 @@
             <trans-unit id="tt_content.tx_hireme_hide_valid_through.label">
                 <source>Hide end of the application period?</source>
             </trans-unit>
-            <trans-unit id="tt_content.tx_hireme_results_limit.description">
+            <trans-unit id="tt_content.tx_hireme_pagination_enabled.description">
+                <source>Enable or disable pagination for this content element.</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_pagination_enabled.label">
+                <source>Enable Pagination</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_pagination_items_per_page.description">
+                <source>Number of items to display per page. Leave empty for default.</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_pagination_items_per_page.label">
+                <source>Items per Page</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_pagination_max_links.description">
+                <source>Maximum number of page links to display. Leave empty for default.</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_pagination_max_links.label">
+                <source>Maximum Page Links</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_pagination_position_bottom.description">
+                <source>Display pagination navigation below the content list.</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_pagination_position_bottom.label">
+                <source>Show Pagination at Bottom</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_pagination_position_top.description">
+                <source>Display pagination navigation above the content list.</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_pagination_position_top.label">
+                <source>Show Pagination at Top</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_pagination_show_dots.description">
+                <source>Show dots (...) to indicate hidden pages when there are many pages.</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_pagination_show_dots.label">
+                <source>Show Dots (Ellipses)</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_pagination_show_first_last.description">
+                <source>Display first and last page navigation buttons.</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_pagination_show_first_last.label">
+                <source>Show First/Last Buttons</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_pagination_show_item_info.description">
+                <source>Display item information (e.g., &#34;X - Y of Z entries&#34;) showing the range of displayed items.</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_pagination_show_item_info.label">
+                <source>Show Item Information</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_pagination_show_page_info.description">
+                <source>Display page information (e.g., &#34;Page X of Y&#34;) above or below the pagination.</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_pagination_show_page_info.label">
+                <source>Show Page Information</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_pagination_show_prev_next.description">
+                <source>Display previous and next navigation buttons.</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_pagination_show_prev_next.label">
+                <source>Show Previous/Next Buttons</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_source_category_condition.description">
+                <source>Select how the selected elements should be linked.</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_source_category_condition.label">
+                <source>Category Connection</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_source_category_items.description">
+                <source>Select the categories to be used for job search.</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_source_category_items.label">
+                <source>Select Categories</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_source_country_items.description">
+                <source>Select the countries to be used for job search.</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_source_country_items.label">
+                <source>Select Countries</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_source_department_items.description">
+                <source>Select the departments to be used for job search.</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_source_department_items.label">
+                <source>Select Departments</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_source_depth.description">
+                <source>Define the number of sub-levels to include in the job search. 0 = only selected pages, 1 = one level deeper, etc.</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_source_depth.label">
+                <source>Search Depth</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_source_include_starting_points.description">
+                <source>Enable this option to include the starting points themselves in the search.</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_source_include_starting_points.label">
+                <source>Include Starting Points</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_source_limit.description">
                 <source>The maximum number of elements to be displayed. Not the number of all elements that should be displayed on each pagination page, but the general limit.</source>
             </trans-unit>
-            <trans-unit id="tt_content.tx_hireme_results_limit.label">
+            <trans-unit id="tt_content.tx_hireme_source_limit.label">
                 <source>Maximum number of elements</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_source_location_items.description">
+                <source>Select the locations to be used for job search.</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_source_location_items.label">
+                <source>Select Locations</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_source_organization_items.description">
+                <source>Select the organizations to be used for job search.</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_source_organization_items.label">
+                <source>Select Organizations</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_source_starting_points.description">
+                <source>Select the pages to be used as starting points for the job posting storage locations.</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_source_starting_points.label">
+                <source>Starting Points</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_source_syscategory_items.description">
+                <source>Select the system categories to be used for job search.</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_source_syscategory_items.label">
+                <source>Select System Categories</source>
             </trans-unit>
             <trans-unit id="tt_content.tx_hireme_text.description">
                 <source></source>

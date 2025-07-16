@@ -23,6 +23,8 @@ declare(strict_types=1);
 
 namespace ChristianDorka\HireMe\Configuration;
 
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+
 /**
  * Localization
  *
@@ -37,17 +39,19 @@ class Localization
      * TODO
      *
      * @param string      $field
-     * @param string      $table
      * @param string|null $item
+     * @param string|null      $table
      *
      * @return string
      * @noinspection PhpUnused
      */
     public static function forLabel(
         string $field,
-        string $table = 'tt_content',
         ?string $item = null,
+        ?string $table = null,
     ): string {
+        $table = $table ?? 'tt_content';
+
         if ($item === null) {
             $labelKey = sprintf(
                 '%s.%s.label',

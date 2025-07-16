@@ -2,11 +2,6 @@
 declare(strict_types=1);
 
 use ChristianDorka\HireMe\Configuration\Localization;
-use ChristianDorka\HireMe\Enum\FilterOptionGenerationTypeEnum;
-use ChristianDorka\HireMe\Enum\LogicalOperatorEnum;
-use ChristianDorka\HireMe\Enum\PaginationPositionEnum;
-use ChristianDorka\HireMe\Enum\PaginationTypeEnum;
-use ChristianDorka\HireMe\Enum\StartingPointDepth;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 
@@ -274,19 +269,6 @@ ExtensionManagementUtility::addTCAcolumns('tt_content', [
             'renderType' => 'checkboxToggle',
         ],
     ],
-    'tx_hireme_results_limit' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_results_limit'),
-        'description' => Localization::forDescription('tx_hireme_results_limit'),
-        'config' => [
-            'type' => 'number',
-            'default' => 4,
-            'nullable' => true,
-            'range' => [
-                'lower' => 1,
-            ],
-        ],
-    ],
     'tx_hireme_show_direct_apply_link' => [
         'exclude' => true,
         'label' => Localization::forLabel('tx_hireme_show_direct_apply_link'),
@@ -404,513 +386,8 @@ ExtensionManagementUtility::addTCAcolumns('tt_content', [
 ]);
 
 
-// Add some fields to fe_users table to show TCA fields definitions
-
-/** @noinspection SpellCheckingInspection */
-ExtensionManagementUtility::addTCAcolumns('tt_content', [
-    'tx_hireme_source_starting_points' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_source_starting_points'),
-        'description' => Localization::forDescription('tx_hireme_source_starting_points'),
-        'config' => [
-            'type' => 'group',
-            'allowed' => 'pages',
-            'size' => 5,
-            'maxitems' => 25,
-            'minitems' => 0,
-            'suggestOptions' => [
-                'default' => [
-                    'additionalSearchFields' => 'nav_title, url',
-                ],
-            ],
-        ],
-    ],
-    'tx_hireme_source_include_selected_starting_point' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_source_include_selected_starting_point'),
-        'description' => Localization::forDescription('tx_hireme_source_include_selected_starting_point'),
-        'config' => [
-            'type' => 'check',
-            'renderType' => 'checkboxToggle',
-            'default' => 1,
-        ],
-    ],
-    'tx_hireme_source_starting_point_depth' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_source_starting_point_depth'),
-        'description' => Localization::forDescription('tx_hireme_source_starting_point_depth'),
-        'config' => [
-            'type' => 'select',
-            'renderType' => 'selectSingle',
-            'items' => StartingPointDepth::getTcaItems(),
-            'default' => StartingPointDepth::INFINITE->value,
-        ],
-    ],
-    'tx_hireme_source_categories' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_source_categories'),
-        'description' => Localization::forDescription('tx_hireme_source_categories'),
-        'config' => [
-            'type' => 'select',
-            'renderType' => 'selectMultipleSideBySide',
-            'foreign_table' => 'tx_hireme_category',
-            'MM' => 'tx_cpblog_ttcontent_category_mm',
-        ],
-    ],
-    'tx_hireme_source_categories_logical_operator' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_source_categories_logical_operator'),
-        'description' => Localization::forDescription('tx_hireme_source_categories_logical_operator'),
-        'config' => [
-            'type' => 'select',
-            'renderType' => 'selectSingle',
-            'items' => LogicalOperatorEnum::getTcaItems(),
-            'default' => LogicalOperatorEnum::OR->value,
-        ],
-    ],
-    'tx_hireme_source_country' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_source_country'),
-        'description' => Localization::forDescription('tx_hireme_source_country'),
-        'config' => [
-            'type' => 'select',
-            'renderType' => 'selectMultipleSideBySide',
-            'foreign_table' => 'tx_hireme_country',
-            'MM' => 'tx_cpblog_ttcontent_country_mm',
-        ],
-    ],
-    'tx_hireme_source_country_logical_operator' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_source_country_logical_operator'),
-        'description' => Localization::forDescription('tx_hireme_source_country_logical_operator'),
-        'config' => [
-            'type' => 'select',
-            'renderType' => 'selectSingle',
-            'items' => LogicalOperatorEnum::getTcaItems(),
-            'default' => LogicalOperatorEnum::OR->value,
-        ],
-    ],
-    'tx_hireme_source_location' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_source_location'),
-        'description' => Localization::forDescription('tx_hireme_source_location'),
-        'config' => [
-            'type' => 'select',
-            'renderType' => 'selectMultipleSideBySide',
-            'foreign_table' => 'tx_hireme_location',
-            'MM' => 'tx_cpblog_ttcontent_location_mm',
-        ],
-    ],
-    'tx_hireme_source_location_logical_operator' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_source_location_logical_operator'),
-        'description' => Localization::forDescription('tx_hireme_source_location_logical_operator'),
-        'config' => [
-            'type' => 'select',
-            'renderType' => 'selectSingle',
-            'items' => LogicalOperatorEnum::getTcaItems(),
-            'default' => LogicalOperatorEnum::OR->value,
-        ],
-    ],
-    'tx_hireme_source_department' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_source_department'),
-        'description' => Localization::forDescription('tx_hireme_source_department'),
-        'config' => [
-            'type' => 'select',
-            'renderType' => 'selectMultipleSideBySide',
-            'foreign_table' => 'tx_hireme_department',
-            'MM' => 'tx_cpblog_ttcontent_department_mm',
-        ],
-    ],
-    'tx_hireme_source_department_logical_operator' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_source_department_logical_operator'),
-        'description' => Localization::forDescription('tx_hireme_source_department_logical_operator'),
-        'config' => [
-            'type' => 'select',
-            'renderType' => 'selectSingle',
-            'items' => LogicalOperatorEnum::getTcaItems(),
-            'default' => LogicalOperatorEnum::OR->value,
-        ],
-    ],
-    'tx_hireme_source_organization' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_source_organization'),
-        'description' => Localization::forDescription('tx_hireme_source_organization'),
-        'config' => [
-            'type' => 'select',
-            'renderType' => 'selectMultipleSideBySide',
-            'foreign_table' => 'tx_hireme_organization',
-            'MM' => 'tx_cpblog_ttcontent_organization_mm',
-        ],
-    ],
-    'tx_hireme_source_organization_logical_operator' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_source_organization_logical_operator'),
-        'description' => Localization::forDescription('tx_hireme_source_organization_logical_operator'),
-        'config' => [
-            'type' => 'select',
-            'renderType' => 'selectSingle',
-            'items' => LogicalOperatorEnum::getTcaItems(),
-            'default' => LogicalOperatorEnum::OR->value,
-        ],
-    ],
-]);
 
 
-
-
-/** @noinspection SpellCheckingInspection */
-ExtensionManagementUtility::addTCAcolumns('tt_content', [
-    'tx_hireme_source_starting_points' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_source_starting_points'),
-        'description' => Localization::forDescription('tx_hireme_source_starting_points'),
-        'config' => [
-            'type' => 'group',
-            'allowed' => 'pages',
-            'size' => 5,
-            'maxitems' => 25,
-            'minitems' => 0,
-            'suggestOptions' => [
-                'default' => [
-                    'additionalSearchFields' => 'nav_title, url',
-                ],
-            ],
-        ],
-    ],
-    'tx_hireme_filter_show_text' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_filter_show_text'),
-        'description' => Localization::forDescription('tx_hireme_filter_show_text'),
-        'config' => [
-            'type' => 'check',
-            'renderType' => 'checkboxToggle',
-            'default' => 1,
-        ],
-    ],
-    'tx_hireme_filter_show_category' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_filter_show_category'),
-        'description' => Localization::forDescription('tx_hireme_filter_show_category'),
-        'config' => [
-            'type' => 'check',
-            'renderType' => 'checkboxToggle',
-            'default' => 1,
-        ],
-    ],
-    'tx_hireme_filter_category_type' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_filter_category_type'),
-        'description' => Localization::forDescription('tx_hireme_filter_category_type'),
-        'config' => [
-            'type' => 'select',
-            'renderType' => 'selectSingle',
-            'items' => FilterOptionGenerationTypeEnum::getTcaItems(),
-            'default' => FilterOptionGenerationTypeEnum::GENERATED->value,
-        ],
-    ],
-    'tx_hireme_filter_categories' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_filter_categories'),
-        'description' => Localization::forDescription('tx_hireme_filter_categories'),
-        'config' => [
-            'type' => 'select',
-            'renderType' => 'selectMultipleSideBySide',
-            'foreign_table' => 'tx_hireme_category',
-            'MM' => 'tx_cpblog_ttcontent_category_mm',
-        ],
-    ],
-
-'tx_hireme_filter_category_starting_points' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_filter_category_starting_points'),
-        'description' => Localization::forDescription('tx_hireme_filter_category_starting_points'),
-        'config' => [
-            'type' => 'check',
-            'renderType' => 'checkboxToggle',
-            'default' => 1,
-        ],
-    ],
-    'tx_hireme_filter_category_include_selected_starting_point' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_filter_category_include_selected_starting_point'),
-        'description' => Localization::forDescription('tx_hireme_filter_category_include_selected_starting_point'),
-        'config' => [
-            'type' => 'check',
-            'renderType' => 'checkboxToggle',
-            'default' => 1,
-        ],
-    ],
-    'tx_hireme_filter_category_starting_point_depth' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_filter_category_starting_point_depth'),
-        'description' => Localization::forDescription('tx_hireme_filter_category_starting_point_depth'),
-        'config' => [
-            'type' => 'select',
-            'renderType' => 'selectSingle',
-            'items' => StartingPointDepth::getTcaItems(),
-            'default' => StartingPointDepth::INFINITE->value,
-        ],
-    ],
-    'tx_hireme_filter_show_location' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_filter_show_location'),
-        'description' => Localization::forDescription('tx_hireme_filter_show_location'),
-        'config' => [
-            'type' => 'check',
-            'renderType' => 'checkboxToggle',
-            'default' => 1,
-        ],
-    ],
-    'tx_hireme_filter_location_type' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_filter_location_type'),
-        'description' => Localization::forDescription('tx_hireme_filter_location_type'),
-        'config' => [
-            'type' => 'select',
-            'renderType' => 'selectSingle',
-            'items' => FilterOptionGenerationTypeEnum::getTcaItems(),
-            'default' => FilterOptionGenerationTypeEnum::GENERATED->value,
-        ],
-    ],
-    'tx_hireme_filter_locations' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_filter_locations'),
-        'description' => Localization::forDescription('tx_hireme_filter_locations'),
-        'config' => [
-            'type' => 'select',
-            'renderType' => 'selectMultipleSideBySide',
-            'foreign_table' => 'tx_hireme_location',
-            'MM' => 'tx_cpblog_ttcontent_location_mm',
-        ],
-    ],
-
-'tx_hireme_filter_location_starting_points' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_filter_location_starting_points'),
-        'description' => Localization::forDescription('tx_hireme_filter_location_starting_points'),
-        'config' => [
-            'type' => 'check',
-            'renderType' => 'checkboxToggle',
-            'default' => 1,
-        ],
-    ],
-    'tx_hireme_filter_location_include_selected_starting_point' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_filter_location_include_selected_starting_point'),
-        'description' => Localization::forDescription('tx_hireme_filter_location_include_selected_starting_point'),
-        'config' => [
-            'type' => 'check',
-            'renderType' => 'checkboxToggle',
-            'default' => 1,
-        ],
-    ],
-    'tx_hireme_filter_location_starting_point_depth' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_filter_location_starting_point_depth'),
-        'description' => Localization::forDescription('tx_hireme_filter_location_starting_point_depth'),
-        'config' => [
-            'type' => 'select',
-            'renderType' => 'selectSingle',
-            'items' => StartingPointDepth::getTcaItems(),
-            'default' => StartingPointDepth::INFINITE->value,
-        ],
-    ],
-    'tx_hireme_filter_show_country' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_filter_show_country'),
-        'description' => Localization::forDescription('tx_hireme_filter_show_country'),
-        'config' => [
-            'type' => 'check',
-            'renderType' => 'checkboxToggle',
-            'default' => 1,
-        ],
-    ],
-    'tx_hireme_filter_country_type' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_filter_country_type'),
-        'description' => Localization::forDescription('tx_hireme_filter_country_type'),
-        'config' => [
-            'type' => 'select',
-            'renderType' => 'selectSingle',
-            'items' => FilterOptionGenerationTypeEnum::getTcaItems(),
-            'default' => FilterOptionGenerationTypeEnum::GENERATED->value,
-        ],
-    ],
-    'tx_hireme_filter_countries' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_filter_countries'),
-        'description' => Localization::forDescription('tx_hireme_filter_countries'),
-        'config' => [
-            'type' => 'select',
-            'renderType' => 'selectMultipleSideBySide',
-            'foreign_table' => 'tx_hireme_country',
-            'MM' => 'tx_cpblog_ttcontent_country_mm',
-        ],
-    ],
-
-'tx_hireme_filter_country_starting_points' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_filter_country_starting_points'),
-        'description' => Localization::forDescription('tx_hireme_filter_country_starting_points'),
-        'config' => [
-            'type' => 'check',
-            'renderType' => 'checkboxToggle',
-            'default' => 1,
-        ],
-    ],
-    'tx_hireme_filter_country_include_selected_starting_point' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_filter_country_include_selected_starting_point'),
-        'description' => Localization::forDescription('tx_hireme_filter_country_include_selected_starting_point'),
-        'config' => [
-            'type' => 'check',
-            'renderType' => 'checkboxToggle',
-            'default' => 1,
-        ],
-    ],
-    'tx_hireme_filter_country_starting_point_depth' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_filter_country_starting_point_depth'),
-        'description' => Localization::forDescription('tx_hireme_filter_country_starting_point_depth'),
-        'config' => [
-            'type' => 'select',
-            'renderType' => 'selectSingle',
-            'items' => StartingPointDepth::getTcaItems(),
-            'default' => StartingPointDepth::INFINITE->value,
-        ],
-    ],
-    'tx_hireme_filter_show_department' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_filter_show_department'),
-        'description' => Localization::forDescription('tx_hireme_filter_show_department'),
-        'config' => [
-            'type' => 'check',
-            'renderType' => 'checkboxToggle',
-            'default' => 1,
-        ],
-    ],
-    'tx_hireme_filter_department_type' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_filter_department_type'),
-        'description' => Localization::forDescription('tx_hireme_filter_department_type'),
-        'config' => [
-            'type' => 'select',
-            'renderType' => 'selectSingle',
-            'items' => FilterOptionGenerationTypeEnum::getTcaItems(),
-            'default' => FilterOptionGenerationTypeEnum::GENERATED->value,
-        ],
-    ],
-    'tx_hireme_filter_departments' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_filter_departments'),
-        'description' => Localization::forDescription('tx_hireme_filter_departments'),
-        'config' => [
-            'type' => 'select',
-            'renderType' => 'selectMultipleSideBySide',
-            'foreign_table' => 'tx_hireme_department',
-            'MM' => 'tx_cpblog_ttcontent_department_mm',
-        ],
-    ],
-
-'tx_hireme_filter_department_starting_points' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_filter_department_starting_points'),
-        'description' => Localization::forDescription('tx_hireme_filter_department_starting_points'),
-        'config' => [
-            'type' => 'check',
-            'renderType' => 'checkboxToggle',
-            'default' => 1,
-        ],
-    ],
-    'tx_hireme_filter_department_include_selected_starting_point' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_filter_department_include_selected_starting_point'),
-        'description' => Localization::forDescription('tx_hireme_filter_department_include_selected_starting_point'),
-        'config' => [
-            'type' => 'check',
-            'renderType' => 'checkboxToggle',
-            'default' => 1,
-        ],
-    ],
-    'tx_hireme_filter_department_starting_point_depth' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_filter_department_starting_point_depth'),
-        'description' => Localization::forDescription('tx_hireme_filter_department_starting_point_depth'),
-        'config' => [
-            'type' => 'select',
-            'renderType' => 'selectSingle',
-            'items' => StartingPointDepth::getTcaItems(),
-            'default' => StartingPointDepth::INFINITE->value,
-        ],
-    ],
-    'tx_hireme_filter_show_organization' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_filter_show_organization'),
-        'description' => Localization::forDescription('tx_hireme_filter_show_organization'),
-        'config' => [
-            'type' => 'check',
-            'renderType' => 'checkboxToggle',
-            'default' => 1,
-        ],
-    ],
-    'tx_hireme_filter_organization_type' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_filter_organization_type'),
-        'description' => Localization::forDescription('tx_hireme_filter_organization_type'),
-        'config' => [
-            'type' => 'select',
-            'renderType' => 'selectSingle',
-            'items' => FilterOptionGenerationTypeEnum::getTcaItems(),
-            'default' => FilterOptionGenerationTypeEnum::GENERATED->value,
-        ],
-    ],
-    'tx_hireme_filter_organizations' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_filter_organizations'),
-        'description' => Localization::forDescription('tx_hireme_filter_organizations'),
-        'config' => [
-            'type' => 'select',
-            'renderType' => 'selectMultipleSideBySide',
-            'foreign_table' => 'tx_hireme_organization',
-            'MM' => 'tx_cpblog_ttcontent_organization_mm',
-        ],
-    ],
-
-'tx_hireme_filter_organization_starting_points' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_filter_organization_starting_points'),
-        'description' => Localization::forDescription('tx_hireme_filter_organization_starting_points'),
-        'config' => [
-            'type' => 'check',
-            'renderType' => 'checkboxToggle',
-            'default' => 1,
-        ],
-    ],
-    'tx_hireme_filter_organization_include_selected_starting_point' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_filter_organization_include_selected_starting_point'),
-        'description' => Localization::forDescription('tx_hireme_filter_organization_include_selected_starting_point'),
-        'config' => [
-            'type' => 'check',
-            'renderType' => 'checkboxToggle',
-            'default' => 1,
-        ],
-    ],
-    'tx_hireme_filter_organization_starting_point_depth' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_filter_organization_starting_point_depth'),
-        'description' => Localization::forDescription('tx_hireme_filter_organization_starting_point_depth'),
-        'config' => [
-            'type' => 'select',
-            'renderType' => 'selectSingle',
-            'items' => StartingPointDepth::getTcaItems(),
-            'default' => StartingPointDepth::INFINITE->value,
-        ],
-    ],
-]);
 
 
 /** @noinspection SpellCheckingInspection */
@@ -927,92 +404,31 @@ ExtensionManagementUtility::addTCAcolumns('tt_content', [
     ],
 ]);
 
-/** @noinspection SpellCheckingInspection */
-ExtensionManagementUtility::addTCAcolumns('tt_content', [
-    'tx_hireme_pagination_enabled' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_pagination_enabled'),
-        'description' => Localization::forDescription('tx_hireme_pagination_enabled'),
-        'config' => [
-            'type' => 'check',
-            'renderType' => 'checkboxToggle',
-            'default' => 1,
-        ],
-    ],
-    'tx_hireme_pagination_position_top' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_pagination_position_top'),
-        'description' => Localization::forDescription('tx_hireme_pagination_position_top'),
-        'config' => [
-            'type' => 'check',
-            'renderType' => 'checkboxToggle',
-            'default' => 0,
-        ],
-    ],
-    'tx_hireme_pagination_position_bottom' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_pagination_position_bottom'),
-        'description' => Localization::forDescription('tx_hireme_pagination_position_bottom'),
-        'config' => [
-            'type' => 'check',
-            'renderType' => 'checkboxToggle',
-            'default' => 1,
-        ],
-    ],
-    'tx_hireme_pagination_show_dots' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_pagination_show_dots'),
-        'description' => Localization::forDescription('tx_hireme_pagination_show_dots'),
-        'config' => [
-            'type' => 'check',
-            'renderType' => 'checkboxToggle',
-            'default' => 1,
-        ],
-    ],
-    'tx_hireme_pagination_max_links' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_pagination_max_links'),
-        'description' => Localization::forDescription('tx_hireme_pagination_max_links'),
-        'config' => [
-            'type' => 'number',
-            'default' => null,
-            'nullable' => true,
-        ],
-    ],
-    'tx_hireme_pagination_items_per_page' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_pagination_items_per_page'),
-        'description' => Localization::forDescription('tx_hireme_pagination_items_per_page'),
-        'config' => [
-            'type' => 'number',
-            'default' => null,
-            'nullable' => true,
-            'range' => [
-                'lower' => 1,
-            ],
-        ],
-    ],
-    'tx_hireme_pagination_show_prev_next' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_pagination_show_prev_next'),
-        'description' => Localization::forDescription('tx_hireme_pagination_show_prev_next'),
-        'config' => [
-            'type' => 'check',
-            'renderType' => 'checkboxToggle',
-            'default' => 1,
-        ],
-    ],
-    'tx_hireme_pagination_show_first_last' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_pagination_show_first_last'),
-        'description' => Localization::forDescription('tx_hireme_pagination_show_first_last'),
-        'config' => [
-            'type' => 'check',
-            'renderType' => 'checkboxToggle',
-            'default' => 1,
-        ],
-    ],
-]);
+
+
+
+
+
+\ChristianDorka\HireMe\Configuration\TtContent::registerCategoryFilterFields();
+\ChristianDorka\HireMe\Configuration\TtContent::registerSysCategoryFilterFields();
+\ChristianDorka\HireMe\Configuration\TtContent::registerLocationFilterFields();
+\ChristianDorka\HireMe\Configuration\TtContent::registerCountryFilterFields();
+\ChristianDorka\HireMe\Configuration\TtContent::registerDepartmentFilterFields();
+\ChristianDorka\HireMe\Configuration\TtContent::registerOrganizationFilterFields();
+
+\ChristianDorka\HireMe\Configuration\TtContent::registerPaginationFields();
+
+
+\ChristianDorka\HireMe\Configuration\TtContent::registerGeneralSourceFields();
+\ChristianDorka\HireMe\Configuration\TtContent::registerSourceFields('category');
+\ChristianDorka\HireMe\Configuration\TtContent::registerSourceFields('syscategory');
+\ChristianDorka\HireMe\Configuration\TtContent::registerSourceFields('location');
+\ChristianDorka\HireMe\Configuration\TtContent::registerSourceFields('country');
+\ChristianDorka\HireMe\Configuration\TtContent::registerSourceFields('department');
+\ChristianDorka\HireMe\Configuration\TtContent::registerSourceFields('organization');
+
+
+
 
 
 /** @noinspection SpellCheckingInspection */
@@ -1027,62 +443,24 @@ ExtensionManagementUtility::addToAllTCAtypes(
 
 
             --div--;LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tabs.source_config,
-                tx_hireme_source_starting_points,
-                tx_hireme_source_include_selected_starting_point,
-                tx_hireme_source_starting_point_depth,
-                tx_hireme_source_categories,
-                tx_hireme_source_categories_logical_operator,
-                tx_hireme_source_country,
-                tx_hireme_source_country_logical_operator,
-                tx_hireme_source_location,
-                tx_hireme_source_location_logical_operator,
-                tx_hireme_source_department,
-                tx_hireme_source_department_logical_operator,
-                tx_hireme_source_organization,
-                tx_hireme_source_organization_logical_operator,
+                --palette--;;source_general,
+                --palette--;;source_category,
+                --palette--;;source_syscategory,
+                --palette--;;source_location,
+                --palette--;;source_country,
+                --palette--;;source_department,
+                --palette--;;source_organization,
 
             --div--;LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tabs.filter_config,
-                -- tx_hireme_filter_publication_date???_range,
-                tx_hireme_filter_show_text,
-                tx_hireme_filter_show_category,
-                tx_hireme_filter_categories,
-                tx_hireme_filter_category_type,
-                tx_hireme_filter_category_starting_points,
-                tx_hireme_filter_category_include_selected_starting_point,
-                tx_hireme_filter_category_starting_point_depth,
-                tx_hireme_filter_show_location,
-                tx_hireme_filter_locations,
-                tx_hireme_filter_location_type,
-                tx_hireme_filter_location_starting_points,
-                tx_hireme_filter_location_include_selected_starting_point,
-                tx_hireme_filter_location_starting_point_depth,
-                tx_hireme_filter_show_country,
-                tx_hireme_filter_countries,
-                tx_hireme_filter_country_type,
-                tx_hireme_filter_country_starting_points,
-                tx_hireme_filter_country_include_selected_starting_point,
-                tx_hireme_filter_country_starting_point_depth,
-                tx_hireme_filter_show_department,
-                tx_hireme_filter_departments,
-                tx_hireme_filter_department_type,
-                tx_hireme_filter_department_starting_points,
-                tx_hireme_filter_department_include_selected_starting_point,
-                tx_hireme_filter_department_starting_point_depth,
-                tx_hireme_filter_show_organization,
-                tx_hireme_filter_organizations,
-                tx_hireme_filter_organization_type,
-                tx_hireme_filter_organization_starting_points,
-                tx_hireme_filter_organization_include_selected_starting_point,
-                tx_hireme_filter_organization_starting_point_depth,
+                --palette--;;filter_category,
+                --palette--;;filter_syscategory,
+                --palette--;;filter_location,
+                --palette--;;filter_country,
+                --palette--;;filter_department,
+                --palette--;;filter_organization,
+
             --div--;LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tabs.pagination_config,
-                tx_hireme_pagination_enabled,
-                tx_hireme_pagination_position_top,
-                tx_hireme_pagination_position_bottom,
-                tx_hireme_pagination_show_dots,
-                tx_hireme_pagination_max_links,
-                tx_hireme_pagination_items_per_page,
-                tx_hireme_pagination_show_prev_next,
-                tx_hireme_pagination_show_first_last,
+                --palette--;;pagination,
         ',
     'hireme_jobpostinglatest',
     'after:subheader',
@@ -1100,7 +478,6 @@ ExtensionManagementUtility::addToAllTCAtypes(
         tx_hireme_text,
         tx_hireme_date_format,
         tx_hireme_detail_page,
-        tx_hireme_results_limit,
         tx_hireme_hide_newtime,
         tx_hireme_hide_toptime,
         tx_hireme_hide_filter,

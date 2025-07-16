@@ -1,13 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" original="messages" datatype="plaintext" date="2025-06-13T10:49:06+02:00">
+    <file source-language="en" original="messages" datatype="plaintext" date="2025-07-14T10:54:04+02:00">
         <header>
             <authorName>Christian Dorka</authorName>
             <authorEmail>mail@christiandorka.de</authorEmail>
         </header>
         <body>
             <trans-unit id="jobPostingDetail.application.email.body">
-                <source><![CDATA[Would you prefer to apply directly via email?<br/>Please send your complete application documents (cover letter, CV, and relevant certificates) as PDF attachments to our HR department.]]></source>
+                <source>Would you prefer to apply directly via email?&lt;br/&gt;Please send your complete application documents (cover letter, CV, and relevant certificates) as PDF attachments to our HR department.</source>
+            </trans-unit>
+            <trans-unit id="pagination.firstPage">
+                <source>First page</source>
+            </trans-unit>
+            <trans-unit id="pagination.lastPage">
+                <source>Last page</source>
+            </trans-unit>
+            <trans-unit id="pagination.prevPage">
+                <source>Previous page</source>
+            </trans-unit>
+            <trans-unit id="pagination.page">
+                <source>Page</source>
+            </trans-unit>
+            <trans-unit id="pagination.pageNumber">
+                <source>Page %d</source>
+            </trans-unit>
+            <trans-unit id="pagination.nextPage">
+                <source>Next page</source>
+            </trans-unit>
+            <trans-unit id="pagination.currentPage">
+                <source>Current page</source>
+            </trans-unit>
+            <trans-unit id="pagination.pageFromTo">
+                <source>Page %d from %d</source>
+            </trans-unit>
+            <trans-unit id="pagination.entriesFromTo">
+                <source>%d - %d from %d entries</source>
             </trans-unit>
             <trans-unit id="jobPostingDetail.application.email.ctaBtnText">
                 <source>send email</source>
@@ -34,10 +61,10 @@
                 <source>Everything you need to know about this position</source>
             </trans-unit>
             <trans-unit id="jobPostingDetail.applicationFaq.footer">
-                <source><![CDATA[Still have questions? Contact our HR department at <a href="mailto:%1$s">%1$s</a> or call us at <a href="tel:%2$s">%2$s</a>.]]></source>
+                <source>Still have questions? Contact our HR department at &lt;a href=&#34;mailto:%1$s&#34;&gt;%1$s&lt;/a&gt; or call us at &lt;a href=&#34;tel:%2$s&#34;&gt;%2$s&lt;/a&gt;.</source>
             </trans-unit>
             <trans-unit id="jobPostingDetail.applicationSend.body">
-                <source><![CDATA[Thank you for your application!<br/><br/>We have sent a confirmation link to the email address you provided. Please click the link in the email to confirm your application and forward it to our HR team. The email may take a few minutes to arrive - please also check your spam folder.<br/><br/><b>Important:</b> Your application will be automatically deleted after 48 hours if the confirmation link is not clicked.]]></source>
+                <source>Thank you for your application!&lt;br/&gt;&lt;br/&gt;We have sent a confirmation link to the email address you provided. Please click the link in the email to confirm your application and forward it to our HR team. The email may take a few minutes to arrive - please also check your spam folder.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Important:&lt;/b&gt; Your application will be automatically deleted after 48 hours if the confirmation link is not clicked.</source>
             </trans-unit>
             <trans-unit id="jobPostingDetail.applicationSend.bodyHeader">
                 <source>Confirm your email address</source>
@@ -69,6 +96,28 @@
             <trans-unit id="jobPostingSearch.careerLevels.items.4.label">
                 <source>LEAD_MANAGER</source>
             </trans-unit>
+
+
+
+
+            <trans-unit id="jobPostingDetail.careerLevels.items.0.label">
+                <source>CAREER_STARTER</source>
+            </trans-unit>
+            <trans-unit id="jobPostingDetail.careerLevels.items.1.label">
+                <source>JUNIOR</source>
+            </trans-unit>
+            <trans-unit id="jobPostingDetail.careerLevels.items.2.label">
+                <source>MID_LEVEL</source>
+            </trans-unit>
+            <trans-unit id="jobPostingDetail.careerLevels.items.3.label">
+                <source>SENIOR</source>
+            </trans-unit>
+            <trans-unit id="jobPostingDetail.careerLevels.items.4.label">
+                <source>LEAD_MANAGER</source>
+            </trans-unit>
+
+
+
             <trans-unit id="jobPostingSearch.employmentTypes.items.0.label">
                 <source>Full-time</source>
             </trans-unit>
@@ -84,8 +133,6 @@
             <trans-unit id="jobPostingSearch.employmentTypes.items.4.label">
                 <source>Volunteer</source>
             </trans-unit>
-
-
             <trans-unit id="jobPostingDetail.employmentTypes.items.0.label">
                 <source>Full-time</source>
             </trans-unit>

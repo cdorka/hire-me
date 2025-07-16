@@ -15,6 +15,7 @@ class FilterDto
         protected ?ObjectStorage $scopes = null,
         /** @var array<int>|null */
         protected ?array $careerLevels = null,
+        protected int $pageNumber = 1,
     ) {
         $this->initializeObject();
     }
@@ -55,6 +56,14 @@ class FilterDto
         $this->careerLevels = $careerLevels;
     }
 
+    public function getPageNumber(): int
+    {
+        return $this->pageNumber;
+    }
 
+    public function setPageNumber(int $pageNumber): void
+    {
+        $this->pageNumber = $pageNumber;
+    }
 
 }

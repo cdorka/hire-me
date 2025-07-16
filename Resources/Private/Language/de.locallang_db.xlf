@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" target-language="de" original="messages" datatype="plaintext" date="2025-07-10T15:41:12+02:00">
+    <file source-language="en" target-language="de" original="messages" datatype="plaintext" date="2025-07-15T11:35:56+02:00">
         <header>
             <authorName>Christian Dorka</authorName>
             <authorEmail>mail@christiandorka.de</authorEmail>
@@ -13,6 +13,30 @@
             <trans-unit id="enum.url_type_enum.items.NOT_SET.label">
                 <source>-- Please select --</source>
                 <target>-- Bitte wählen --</target>
+            </trans-unit>
+            <trans-unit id="tt_content.condition.description">
+                <source></source>
+                <target>Wählen Sie aus, wie die ausgewählten Elemente verknüpft werden sollen.</target>
+            </trans-unit>
+            <trans-unit id="tt_content.condition.items.AND.label">
+                <source>(AND) Show records that must have ALL categories</source>
+                <target>(AND) Datensätze anzeigen, die ALLE Kategorien haben müssen</target>
+            </trans-unit>
+            <trans-unit id="tt_content.condition.items.NAND.label">
+                <source>(NAND) Show records that do NOT have ALL categories simultaneously</source>
+                <target>(NAND) Datensätze anzeigen, die NICHT ALLE Kategorien gleichzeitig haben</target>
+            </trans-unit>
+            <trans-unit id="tt_content.condition.items.NOR.label">
+                <source>(NOR) Show records that have NONE of the categories</source>
+                <target>(NOR) Datensätze anzeigen, die KEINE der Kategorien haben</target>
+            </trans-unit>
+            <trans-unit id="tt_content.condition.items.OR.label">
+                <source>(OR) Show records that have ONE of the categories</source>
+                <target>(OR) Datensätze anzeigen, die EINE der Kategorien haben</target>
+            </trans-unit>
+            <trans-unit id="tt_content.condition.label">
+                <source></source>
+                <target>Verknüpfung</target>
             </trans-unit>
             <trans-unit id="tt_content.tx_hireme_btn_overview_link.description">
                 <source>Link to a page with search or list elements of the job postings.</source>
@@ -90,13 +114,165 @@
                 <source>Hide end of the application period?</source>
                 <target>Ende der Bewerbungsfrist ausblenden?</target>
             </trans-unit>
-            <trans-unit id="tt_content.tx_hireme_results_limit.description">
+            <trans-unit id="tt_content.tx_hireme_pagination_enabled.description">
+                <source>Enable or disable pagination for this content element.</source>
+                <target>Paginierung für dieses Inhaltselement aktivieren oder deaktivieren.</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_pagination_enabled.label">
+                <source>Enable Pagination</source>
+                <target>Paginierung aktivieren</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_pagination_items_per_page.description">
+                <source>Number of items to display per page. Leave empty for default.</source>
+                <target>Anzahl der Einträge pro Seite. Leer lassen für Standardwert.</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_pagination_items_per_page.label">
+                <source>Items per Page</source>
+                <target>Einträge pro Seite</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_pagination_max_links.description">
+                <source>Maximum number of page links to display. Leave empty for default.</source>
+                <target>Maximale Anzahl der anzuzeigenden Seitenlinks. Leer lassen für Standardwert.</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_pagination_max_links.label">
+                <source>Maximum Page Links</source>
+                <target>Maximale Anzahl Seitenlinks</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_pagination_position_bottom.description">
+                <source>Display pagination navigation below the content list.</source>
+                <target>Paginierungs-Navigation unterhalb der Inhaltsliste anzeigen.</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_pagination_position_bottom.label">
+                <source>Show Pagination at Bottom</source>
+                <target>Paginierung unten anzeigen</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_pagination_position_top.description">
+                <source>Display pagination navigation above the content list.</source>
+                <target>Paginierungs-Navigation oberhalb der Inhaltsliste anzeigen.</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_pagination_position_top.label">
+                <source>Show Pagination at Top</source>
+                <target>Paginierung oben anzeigen</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_pagination_show_dots.description">
+                <source>Show dots (...) to indicate hidden pages when there are many pages.</source>
+                <target>Punkte (...) anzeigen, um versteckte Seiten bei vielen Seiten anzudeuten.</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_pagination_show_dots.label">
+                <source>Show Dots (Ellipses)</source>
+                <target>Punkte (Auslassungszeichen) anzeigen</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_pagination_show_first_last.description">
+                <source>Display first and last page navigation buttons.</source>
+                <target>Erste und letzte Seiten-Navigations-Buttons anzeigen.</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_pagination_show_first_last.label">
+                <source>Show First/Last Buttons</source>
+                <target>Erste/Letzte Buttons anzeigen</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_pagination_show_item_info.description">
+                <source>Display item information (e.g., &#34;X - Y of Z entries&#34;) showing the range of displayed items.</source>
+                <target>Einträge-Informationen anzeigen (z.B. &#34;X - Y von Z Einträgen&#34;), die den Bereich der angezeigten Einträge zeigen.</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_pagination_show_item_info.label">
+                <source>Show Item Information</source>
+                <target>Einträge-Informationen anzeigen</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_pagination_show_page_info.description">
+                <source>Display page information (e.g., &#34;Page X of Y&#34;) above or below the pagination.</source>
+                <target>Seiteninformationen anzeigen (z.B. &#34;Seite X von Y&#34;) oberhalb oder unterhalb der Paginierung.</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_pagination_show_page_info.label">
+                <source>Show Page Information</source>
+                <target>Seiteninformationen anzeigen</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_pagination_show_prev_next.description">
+                <source>Display previous and next navigation buttons.</source>
+                <target>Vorherige und nächste Navigations-Buttons anzeigen.</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_pagination_show_prev_next.label">
+                <source>Show Previous/Next Buttons</source>
+                <target>Vorherige/Nächste Buttons anzeigen</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_source_category_items.description">
+                <source>Select the categories to be used for job search.</source>
+                <target>Wählen Sie die Kategorien aus, die für die Jobsuche verwendet werden sollen.</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_source_category_items.label">
+                <source>Select Categories</source>
+                <target>Kategorien auswählen</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_source_country_items.description">
+                <source>Select the countries to be used for job search.</source>
+                <target>Wählen Sie die Länder aus, die für die Jobsuche verwendet werden sollen.</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_source_country_items.label">
+                <source>Select Countries</source>
+                <target>Länder auswählen</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_source_department_items.description">
+                <source>Select the departments to be used for job search.</source>
+                <target>Wählen Sie die Abteilungen aus, die für die Jobsuche verwendet werden sollen.</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_source_department_items.label">
+                <source>Select Departments</source>
+                <target>Abteilungen auswählen</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_source_depth.description">
+                <source>Define the number of sub-levels to include in the job search. 0 = only selected pages, 1 = one level deeper, etc.</source>
+                <target>Definieren Sie die Anzahl der Unterebenen, die in die Jobsuche einbezogen werden sollen. 0 = nur die ausgewählten Seiten, 1 = eine Ebene tiefer, etc.</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_source_depth.label">
+                <source>Search Depth</source>
+                <target>Suchtiefe</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_source_include_starting_points.description">
+                <source>Enable this option to include the starting points themselves in the search.</source>
+                <target>Aktivieren Sie diese Option, um die Startpunkte selbst in die Suche einzubeziehen.</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_source_include_starting_points.label">
+                <source>Include Starting Points</source>
+                <target>Startpunkte einbeziehen</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_source_limit.description">
                 <source>The maximum number of elements to be displayed. Not the number of all elements that should be displayed on each pagination page, but the general limit.</source>
                 <target>Die maximale Anzahl von Elementen, die angezeigt werden sollen. Nicht die Anzahl aller Elemente, die auf jeder Paginierungsseite angezeigt werden sollen, sondern die allgemeine Grenze.</target>
             </trans-unit>
-            <trans-unit id="tt_content.tx_hireme_results_limit.label">
+            <trans-unit id="tt_content.tx_hireme_source_limit.label">
                 <source>Maximum number of elements</source>
                 <target>Maximale Elementanzahl</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_source_location_items.description">
+                <source>Select the locations to be used for job search.</source>
+                <target>Wählen Sie die Standorte aus, die für die Jobsuche verwendet werden sollen.</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_source_location_items.label">
+                <source>Select Locations</source>
+                <target>Standorte auswählen</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_source_organization_items.description">
+                <source>Select the organizations to be used for job search.</source>
+                <target>Wählen Sie die Organisationen aus, die für die Jobsuche verwendet werden sollen.</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_source_organization_items.label">
+                <source>Select Organizations</source>
+                <target>Organisationen auswählen</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_source_starting_points.description">
+                <source>Select the pages to be used as starting points for the job posting storage locations.</source>
+                <target>Wählen Sie die Seiten aus, die als Startpunkte für die Speicherorte der Stellenausschreibungen verwendet werden sollen.</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_source_starting_points.label">
+                <source>Starting Points</source>
+                <target>Startpunkte</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_source_syscategory_items.description">
+                <source>Select the system categories to be used for job search.</source>
+                <target>Wählen Sie die Systemkategorien aus, die für die Jobsuche verwendet werden sollen.</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hireme_source_syscategory_items.label">
+                <source>Select System Categories</source>
+                <target>Systemkategorien auswählen</target>
             </trans-unit>
             <trans-unit id="tt_content.tx_hireme_text.label">
                 <source>Text</source>

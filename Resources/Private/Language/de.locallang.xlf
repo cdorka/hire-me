@@ -1,10 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" target-language="de" original="" datatype="plaintext" date="2025-06-13T08:04:38+02:00">
+    <file source-language="en" target-language="de" original="" datatype="plaintext" date="2025-07-14T10:54:04+02:00">
         <body>
             <trans-unit id="jobPostingDetail.application.email.body">
-                <source><![CDATA[Would you prefer to apply directly via email?&lt;br/&gt;Please send your complete application documents (cover letter, CV, and relevant certificates) as PDF attachments to our HR department.]]></source>
-                <target><![CDATA[Möchten Sie sich direkt per E-Mail bewerben?&lt;br/&gt;Senden Sie Ihre vollständigen Bewerbungsunterlagen (Anschreiben, Lebenslauf und relevante Zeugnisse) als PDF-Anhang an unsere Personalabteilung.]]></target>
+                <source>Would you prefer to apply directly via email?&lt;br/&gt;Please send your complete application documents (cover letter, CV, and relevant certificates) as PDF attachments to our HR department.</source>
+                <target>Möchten Sie sich direkt per E-Mail bewerben?&lt;br/&gt;Senden Sie Ihre vollständigen Bewerbungsunterlagen (Anschreiben, Lebenslauf und relevante Zeugnisse) als PDF-Anhang an unsere Personalabteilung.</target>
+            </trans-unit>
+            <trans-unit id="pagination.firstPage">
+                <source>First page</source>
+                <target>Erste Seite</target>
+            </trans-unit>
+            <trans-unit id="pagination.lastPage">
+                <source>Last page</source>
+                <target>Letzte Seite</target>
+            </trans-unit>
+            <trans-unit id="pagination.prevPage">
+                <source>Previous page</source>
+                <target>Vorherige Seite</target>
+            </trans-unit>
+            <trans-unit id="pagination.page">
+                <source>Page</source>
+                <target>Seite</target>
+            </trans-unit>
+            <trans-unit id="pagination.pageNumber">
+                <source>Page %d</source>
+                <target>Seite %d</target>
+            </trans-unit>
+            <trans-unit id="pagination.nextPage">
+                <source>Next page</source>
+                <target>Nächste Seite</target>
+            </trans-unit>
+            <trans-unit id="pagination.currentPage">
+                <source>Current page</source>
+                <target>aktuelle Seite</target>
+            </trans-unit>
+            <trans-unit id="pagination.pageFromTo">
+                <source>Page %d from %d</source>
+                <target>Seite %d von %d</target>
+            </trans-unit>
+            <trans-unit id="pagination.entriesFromTo">
+                <source>%d - %d from %d entries</source>
+                <target>%d - %d von %d Einträgen</target>
             </trans-unit>
             <trans-unit id="jobPostingDetail.application.email.ctaBtnText">
                 <source>send email</source>
@@ -15,7 +51,7 @@
                 <target>Bitte gehen Sie auf unsere Unternehmenswebsite, um Ihre Bewerbung auszufüllen.</target>
             </trans-unit>
             <trans-unit id="jobPostingDetail.application.externalLink.bodyHeader">
-                <source>Are you ready to apply?Are you ready to apply?</source>
+                <source>Are you ready to apply?</source>
                 <target>Sind Sie bereit, sich zu bewerben?</target>
             </trans-unit>
             <trans-unit id="jobPostingDetail.application.externalLink.ctaBtnText">
@@ -31,7 +67,7 @@
                 <target>Ihre Bewerbungsreise</target>
             </trans-unit>
             <trans-unit id="jobPostingDetail.applicationSend.body">
-                <source>Thank you for your application!&lt;br/&gt;&lt;br/&gt;We have sent a confirmation link to the email address you provided. Please click the link in the email to confirm your application and forward it to our HR team. The email may take a few minutes to arrive - please also check your spam folder.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Important:&lt;/b&gt; Your application will be automatically deleted after 48 hours if the confirmation link is not clicked.v</source>
+                <source>Thank you for your application!&lt;br/&gt;&lt;br/&gt;We have sent a confirmation link to the email address you provided. Please click the link in the email to confirm your application and forward it to our HR team. The email may take a few minutes to arrive - please also check your spam folder.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Important:&lt;/b&gt; Your application will be automatically deleted after 48 hours if the confirmation link is not clicked.</source>
                 <target>Vielen Dank für Ihre Bewerbung!&lt;br/&gt;&lt;br/&gt;Wir haben einen Bestätigungslink an die von Ihnen angegebene E-Mail-Adresse gesendet. Bitte klicken Sie auf den Link in der E-Mail, um Ihre Bewerbung zu bestätigen und an unser HR-Team weiterzuleiten. Die E-Mail kann einige Minuten benötigen, um anzukommen - prüfen Sie auch Ihren Spam-Ordner.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Wichtig:&lt;/b&gt; Ihre Bewerbung wird nach 48 Stunden automatisch gelöscht, falls der Bestätigungslink nicht angeklickt wird.</target>
             </trans-unit>
             <trans-unit id="jobPostingDetail.applicationSend.bodyHeader">

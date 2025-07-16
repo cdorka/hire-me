@@ -3,17 +3,18 @@
 namespace ChristianDorka\HireMe\Controller;
 
 use ChristianDorka\HireMe\DataProcessing\FaqDataProcessor;
-use ChristianDorka\HireMe\Domain\DTO\FilterDto;
+use ChristianDorka\HireMe\Domain\DTO\FilterSelection;
 use ChristianDorka\HireMe\Domain\DTO\TtContentFilter;
 use ChristianDorka\HireMe\Domain\DTO\TtContentPagination;
+use ChristianDorka\HireMe\Domain\DTO\TtContentSource;
 use ChristianDorka\HireMe\Domain\Model\JobPosting;
+use ChristianDorka\HireMe\Domain\Repository\CategoryRepository;
 use ChristianDorka\HireMe\Domain\Repository\JobPostingRepository;
 use ChristianDorka\HireMe\Domain\Repository\TypeRepository;
 use ChristianDorka\HireMe\Service\PaginationService;
 use ChristianDorka\HireMe\Utility\DataMapperUtility;
 use ChristianDorka\HireMe\Utility\ResponseUtility;
 use CpCompartner\Base\Core\Pattern\Result;
-use CpCompartner\Blog\Domain\Dto\PaginationConfig;
 use Psr\Http\Message\ResponseInterface;
 use Symfony\Component\Yaml\Yaml;
 use TYPO3\CMS\Core\Error\Http\PageNotFoundException;
@@ -258,46 +259,66 @@ class JobPostingController extends ActionController
     /**
      * Latest action - handles both GET and POST requests
      */
-    public function latestAction(?FilterDto $filterDto = null): ResponseInterface
-    {
-
-
-
+    public function latestAction(
+        ?FilterSelection $filterSelection = null
+    ): ResponseInterface {
+        // Step 1: Initialize values
         // Initialize empty filter selection if none provided
-        if ($filterDto === null) {
-            $filterDto = new FilterDto();
+        if ($filterSelection === null) {
+            $filterSelection = new FilterSelection();
         }
+
+        // Step 1: Generate DTO objects out of the tca fields from the current content element
+        /** @var TtContentSource|null $mapped */
+        $sourceConfig = $this->dataMapperUtility->mapFirstItem(TtContentSource::class, $this->data);
+
+        /** @var TtContentPagination|null $mapped */
+        $paginationConfig = $this->dataMapperUtility->mapFirstItem(TtContentPagination::class, $this->data);
+
+        /** @var TtContentFilter|null $mapped */
+        $filterConfig = $this->dataMapperUtility->mapFirstItem(TtContentFilter::class, $this->data);
+
+
+
+
+
+        // Step 3: Get results to display based on the sourceConfig and the filterSelection of the user
+        $jobPostings = $this->jobPostingRepository->findBySourceConfigAndFilterSelectionWithResult(
+            $sourceConfig,
+            $filterSelection,
+        );
+
 
 
         // Handle direct filter parameter from request (for backward compatibility)
       // if ($this->request->hasArgument('filter')) {
       //     $directFilter = $this->request->getArgument('filter');
       //     if (is_array($directFilter) && !empty($directFilter)) {
-      //         $filterDto->setFilter($directFilter);
+      //         $filterSelection->setFilter($directFilter);
       //     }
       // }
 
 
         // Get filtered job postings
-        // $jobPostings = $this->getFilteredJobPostings($filterDto);
-        $limit = $this->request->getAttribute('currentContentObject')?->data['tx_hireme_results_limit'] ?? null;
+        // $jobPostings = $this->getFilteredJobPostings($filterSelection);
 
-        $jobPostings = $this->jobPostingRepository->findByConfigAndFilterDtoWithResult(
-            limit: $limit,
-            filterDto: $filterDto,
-        );
+
+
 
         $typeRepository = GeneralUtility::makeInstance(TypeRepository::class);
 
 
-        $pagination = $this->processPagination($jobPostings, 1);
+        $pagination = $this->generatePagination($paginationConfig, $jobPostings, $filterSelection->getPageNumber());
 
+        $filter = $this->processFilter();
 
         // Assign to view
         $this->view->assignMultiple([
-            'jobPostings' => $jobPostings,
+            'filter' => $filter,
             'pagination' => $pagination,
-            'filterDto' => $filterDto,
+
+            'jobPostings' => $jobPostings,
+            'filterSelection' => $filterSelection,
             'typeFilters' => $typeRepository->findByConfigWithResult(),
         ]);
 
@@ -305,8 +326,9 @@ class JobPostingController extends ActionController
     }
 
     /**
-     * @param Result $items
-     * @param int    $currentPage
+     * @param TtContentPagination $paginationConfig
+     * @param Result              $items
+     * @param int                 $currentPage
      *
      * @return ?array{
      *      config: TtContentPagination,
@@ -325,16 +347,8 @@ class JobPostingController extends ActionController
      *      paginationEnabled: bool
      *  }
      */
-    private function processPagination(Result $items, int $currentPage = 1): ?array {
-        /** @var TtContentPagination|null $mapped */
-        $paginationConfig = $this->dataMapperUtility->mapFirstItem(
-            className: TtContentPagination::class,
-            data: $this->data
-        );
-
-
-
-        if ($paginationConfig !== null && $items->isSuccess()) {
+    private function generatePagination(TtContentPagination $paginationConfig, Result $items, int $currentPage = 1): ?array {
+        if ($items->isSuccess()) {
             return $this->paginationService->generateFromConfig(
                 items: $items->getData(),
                 currentPage: $currentPage,
@@ -344,10 +358,37 @@ class JobPostingController extends ActionController
         return null;
     }
 
+
+    /**
+     * @return TtContentFilter|null
+     */
+    private function processFilter(): ?TtContentFilter {
+
+        /** @var TtContentFilter|null $mapped */
+        $mapped = $this->dataMapperUtility->mapFirstItem(
+            className: TtContentFilter::class,
+            data: $this->data
+        );
+
+
+
+
+
+        /** @var CategoryRepository $categoryRepository */
+        $categoryRepository = GeneralUtility::makeInstance(CategoryRepository::class);
+        $categoryResult = $categoryRepository->findByConfig($mapped);
+
+
+
+
+
+        return $mapped;
+    }
+
     /**
      * Get job postings based on filter selection
      */
-    protected function getFilteredJobPostings(FilterDto $filterSelection): QueryResultInterface
+    protected function getFilteredJobPostings(FilterSelection $filterSelection): QueryResultInterface
     {
         $activeFilters = $filterSelection->getFilter();
 

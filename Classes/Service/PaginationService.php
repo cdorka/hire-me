@@ -55,6 +55,8 @@ class PaginationService
      *     hasNextPage: bool,
      *     isFirstPage: bool,
      *     isLastPage: bool,
+     *     previousPage: int|null,
+     *     nextPage: int|null,
      *     startItem: int,
      *     endItem: int,
      *     dots: array,
@@ -104,6 +106,10 @@ class PaginationService
         $isFirstPage = $currentPage === 1;
         $isLastPage = $currentPage === $totalPages;
 
+        // Calculate previous and next page numbers
+        $previousPage = $hasPreviousPage ? $currentPage - 1 : null;
+        $nextPage = $hasNextPage ? $currentPage + 1 : null;
+
         // Calculate which items are shown on current page
         // This creates "Showing 1-10 of 50 items" type displays
         if ($totalItems > 0) {
@@ -134,6 +140,14 @@ class PaginationService
             // Recalculate item range for corrected page
             $startItem = (($currentPage - 1) * $itemsPerPage) + 1;
             $endItem = min($currentPage * $itemsPerPage, $totalItems);
+
+            // Recalculate navigation state after page correction
+            $hasPreviousPage = $currentPage > 1;
+            $hasNextPage = $currentPage < $totalPages;
+            $isFirstPage = $currentPage === 1;
+            $isLastPage = $currentPage === $totalPages;
+            $previousPage = $hasPreviousPage ? $currentPage - 1 : null;
+            $nextPage = $hasNextPage ? $currentPage + 1 : null;
         }
 
         // Create the sliding window pagination display
@@ -198,10 +212,12 @@ class PaginationService
 
             // Navigation state
             'hasPages' => $hasPages,            // Should we show pagination at all?
-            'hasPreviousPage' => $hasPreviousPage, // Show "Previous" button?
-            'hasNextPage' => $hasNextPage,      // Show "Next" button?
+            'hasNoPreviousPage' => !$hasPreviousPage, // Show "Previous" button?
+            'hasNoNextPage' => !$hasNextPage,      // Show "Next" button?
             'isFirstPage' => $isFirstPage,      // Are we on the first page?
             'isLastPage' => $isLastPage,        // Are we on the last page?
+            'previousPage' => $previousPage,    // Previous page number (null if no previous page)
+            'nextPage' => $nextPage,            // Next page number (null if no next page)
 
             // Item display information
             'startItem' => $startItem,          // First item number on this page

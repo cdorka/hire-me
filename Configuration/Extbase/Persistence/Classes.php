@@ -84,6 +84,44 @@ return [
     // Tt_content DTO persistence mapping
     TtContentFilter::class => [
         "tableName" => "tt_content",
+        'properties' => [
+            'categoryEnabled' => [ 'fieldName' => 'tx_hireme_filter_category_enabled' ],
+            'categoryType' => [ 'fieldName' => 'tx_hireme_filter_category_type' ],
+            'categoryItems' => [ 'fieldName' => 'tx_hireme_filter_category_items' ],
+            'categoryStartingPoints' => [ 'fieldName' => 'tx_hireme_filter_category_starting_points' ],
+            'categoryIncludeStartingPoints' => [ 'fieldName' => 'tx_hireme_filter_category_include_starting_points' ],
+            'categoryDepth' => [ 'fieldName' => 'tx_hireme_filter_category_depth' ],
+            'sysCategoryEnabled' => [ 'fieldName' => 'tx_hireme_filter_syscategory_enabled' ],
+            'sysCategoryType' => [ 'fieldName' => 'tx_hireme_filter_syscategory_type' ],
+            'sysCategoryItems' => [ 'fieldName' => 'tx_hireme_filter_syscategory_items' ],
+            'sysCategoryStartingPoints' => [ 'fieldName' => 'tx_hireme_filter_syscategory_starting_points' ],
+            'sysCategoryIncludeStartingPoints' => [ 'fieldName' => 'tx_hireme_filter_syscategory_include_starting_points' ],
+            'sysCategoryDepth' => [ 'fieldName' => 'tx_hireme_filter_syscategory_depth' ],
+            'locationEnabled' => [ 'fieldName' => 'tx_hireme_filter_location_enabled' ],
+            'locationType' => [ 'fieldName' => 'tx_hireme_filter_location_type' ],
+            'locationItems' => [ 'fieldName' => 'tx_hireme_filter_location_items' ],
+            'locationStartingPoints' => [ 'fieldName' => 'tx_hireme_filter_location_starting_points' ],
+            'locationIncludeStartingPoints' => [ 'fieldName' => 'tx_hireme_filter_location_include_starting_points' ],
+            'locationDepth' => [ 'fieldName' => 'tx_hireme_filter_location_depth' ],
+            'countryEnabled' => [ 'fieldName' => 'tx_hireme_filter_country_enabled' ],
+            'countryType' => [ 'fieldName' => 'tx_hireme_filter_country_type' ],
+            'countryItems' => [ 'fieldName' => 'tx_hireme_filter_country_items' ],
+            'countryStartingPoints' => [ 'fieldName' => 'tx_hireme_filter_country_starting_points' ],
+            'countryIncludeStartingPoints' => [ 'fieldName' => 'tx_hireme_filter_country_include_starting_points' ],
+            'countryDepth' => [ 'fieldName' => 'tx_hireme_filter_country_depth' ],
+            'departmentEnabled' => [ 'fieldName' => 'tx_hireme_filter_department_enabled' ],
+            'departmentType' => [ 'fieldName' => 'tx_hireme_filter_department_type' ],
+            'departmentItems' => [ 'fieldName' => 'tx_hireme_filter_department_items' ],
+            'departmentStartingPoints' => [ 'fieldName' => 'tx_hireme_filter_department_starting_points' ],
+            'departmentIncludeStartingPoints' => [ 'fieldName' => 'tx_hireme_filter_department_include_starting_points' ],
+            'departmentDepth' => [ 'fieldName' => 'tx_hireme_filter_department_depth' ],
+            'organizationEnabled' => [ 'fieldName' => 'tx_hireme_filter_organization_enabled' ],
+            'organizationType' => [ 'fieldName' => 'tx_hireme_filter_organization_type' ],
+            'organizationItems' => [ 'fieldName' => 'tx_hireme_filter_organization_items' ],
+            'organizationStartingPoints' => [ 'fieldName' => 'tx_hireme_filter_organization_starting_points' ],
+            'organizationIncludeStartingPoints' => [ 'fieldName' => 'tx_hireme_filter_organization_include_starting_points' ],
+            'organizationDepthcategoryEnabled' => [ 'fieldName' => 'tx_hireme_filter_organization_depth' ],
+        ]
     ],
     TtContentPagination::class => [
         "tableName" => "tt_content",
@@ -100,5 +138,29 @@ return [
     ],
     TtContentSource::class => [
         "tableName" => "tt_content",
+        'properties' => [
+            'limit' => [ 'fieldName' => 'tx_hireme_source_limit' ],
+            'startingPoints' => [ 'fieldName' => 'tx_hireme_source_starting_points' ],
+            'includeStartingPoints' => [ 'fieldName' => 'tx_hireme_source_include_starting_points' ],
+            'depth' => [ 'fieldName' => 'tx_hireme_source_depth' ],
+
+            'categoryItems' => [ 'fieldName' => 'tx_hireme_source_category_items' ],
+            'categoryCondition' => [ 'fieldName' => 'tx_hireme_source_category_condition' ],
+
+            'sysCategoryItems' => [ 'fieldName' => 'tx_hireme_source_syscategory_items' ],
+            'sysCategoryCondition' => [ 'fieldName' => 'tx_hireme_source_syscategory_condition' ],
+
+            'locationItems' => [ 'fieldName' => 'tx_hireme_source_location_items' ],
+            'locationCondition' => [ 'fieldName' => 'tx_hireme_source_location_condition' ],
+
+            'countryItems' => [ 'fieldName' => 'tx_hireme_source_country_items' ],
+            'countryCondition' => [ 'fieldName' => 'tx_hireme_source_country_condition' ],
+
+            'departmentItems' => [ 'fieldName' => 'tx_hireme_source_department_items' ],
+            'departmentCondition' => [ 'fieldName' => 'tx_hireme_source_department_condition' ],
+
+            'organizationItems' => [ 'fieldName' => 'tx_hireme_source_organization_items' ],
+            'organizationCondition' => [ 'fieldName' => 'tx_hireme_source_organization_condition' ],
+        ],
     ],
 ];

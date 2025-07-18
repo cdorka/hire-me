@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace ChristianDorka\HireMe\Domain\Model;
 
 use ChristianDorka\HireMe\Traits\Properties\AddressProperties;
+use ChristianDorka\HireMe\Traits\Properties\GeocoordinateProperties;
 use ChristianDorka\HireMe\Traits\Properties\SystemProperties;
 use ChristianDorka\HireMe\Traits\Property\JobPostingsProperty;
 use ChristianDorka\HireMe\Traits\Property\TitleProperty;
@@ -21,6 +22,7 @@ class Location extends AbstractDomainObject
     use TitleProperty;
     use AddressProperties;
     use JobPostingsProperty;
+    use GeocoordinateProperties;
 
     /**
      * Constructor

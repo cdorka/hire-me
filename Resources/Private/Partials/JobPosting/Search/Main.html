@@ -1,0 +1,29 @@
+<html
+    data-namespace-typo3-fluid="true"
+    lang="en"
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+
+<div class="hm--main container">
+
+    <f:form
+        id="calendarizeSearchForm"
+        extensionName="hire_me"
+        class="hm--form"
+        method="post"
+        action="search"
+        object="{searchSelection}"
+        objectName="searchSelection">
+        <f:if condition="{data.tx_hireme_text}">
+            <div class="hm--bodytext">
+                <f:sanitize.html>{data.tx_hireme_text}</f:sanitize.html>
+            </div>
+        </f:if>
+
+        <div class="row">
+            <f:render arguments="{_all}" partial="JobPosting/Search/Aside"/>
+            <f:render arguments="{_all}" partial="JobPosting/Search/Content"/>
+        </div>
+    </f:form>
+</div>
+
+</html>

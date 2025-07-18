@@ -1,0 +1,108 @@
+<html
+    data-namespace-typo3-fluid="true"
+    lang="en"
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+
+<f:if condition="{data.tx_hireme_filter_enabled}">
+    <aside class="hm--aside col-md-3"><h2>Filter</h2>
+
+        <fieldset class="mb-4">
+
+
+
+
+
+
+            <f:if condition="{filterCategories}">
+                <p class="h3">Kategorien</p>
+                <f:for as="item" each="{filterCategories}">
+                    <div class="form-check">
+                        <f:form.checkbox property="category" id="c{data.uid}-filter-category-{item.uid}" value="{item.uid}" />
+                        <label class="form-check-label" for="c{data.uid}-filter-category-{item.uid}">{item.title}</label>
+                    </div>
+                </f:for>
+            </f:if>
+
+            <f:if condition="{filterCountries}">
+                <p class="h3">Länder</p>
+                <f:for as="item" each="{filterCountries}">
+                    <div class="form-check">
+                        <f:form.checkbox property="country" id="c{data.uid}-filter-country-{item.uid}" value="{item.uid}" />
+                        <label class="form-check-label" for="c{data.uid}-filter-country-{item.uid}">{item.title}</label>
+                    </div>
+                </f:for>
+            </f:if>
+
+            <f:if condition="{filterDepartments}">
+                <p class="h3">Abteilungen</p>
+                <f:for as="item" each="{filterDepartments}">
+                    <div class="form-check">
+                        <f:form.checkbox property="department" id="c{data.uid}-filter-department-{item.uid}" value="{item.uid}" />
+                        <label class="form-check-label" for="c{data.uid}-filter-department-{item.uid}">{item.title}</label>
+                    </div>
+                </f:for>
+            </f:if>
+
+            <f:if condition="{filterLocations}">
+                <p class="h3">Standorte</p>
+                <f:for as="item" each="{filterLocations}">
+                    <div class="form-check">
+                        <f:form.checkbox property="location" id="c{data.uid}-filter-location-{item.uid}" value="{item.uid}" />
+                        <label class="form-check-label" for="c{data.uid}-filter-location-{item.uid}">{item.title}</label>
+                    </div>
+                </f:for>
+            </f:if>
+
+            <f:if condition="{filterOrganizations}">
+                <p class="h3">Firma</p>
+                <f:for as="item" each="{filterOrganizations}">
+                    <div class="form-check">
+                        <f:form.checkbox property="organization" id="c{data.uid}-filter-organization-{item.uid}" value="{item.uid}" />
+                        <label class="form-check-label" for="c{data.uid}-filter-organization-{item.uid}">{item.title}</label>
+                    </div>
+                </f:for>
+            </f:if>
+
+            <f:if condition="{filterScopes}">
+                <p class="h3">Tätigkeitsbereich</p>
+                <f:for as="item" each="{filterScopes}">
+                    <div class="form-check">
+                        <f:form.checkbox property="scope" id="c{data.uid}-filter-scope-{item.uid}" value="{item.uid}" />
+                        <label class="form-check-label" for="c{data.uid}-filter-scope-{item.uid}">{item.title}</label>
+                    </div>
+                </f:for>
+            </f:if>
+
+            <f:if condition="{filterSysCategories}">
+                <p class="h3">System-Kategorie</p>
+                <f:for as="item" each="{filterSysCategories}">
+                    <div class="form-check">
+                        <f:form.checkbox property="sysCategory" id="c{data.uid}-filter-sysCategory-{item.uid}" value="{item.uid}" />
+                        <label class="form-check-label" for="c{data.uid}-filter-sysCategory-{item.uid}">{item.title}</label>
+                    </div>
+                </f:for>
+            </f:if>
+
+            <f:if condition="{filterTypes}">
+                <p class="h3">Typ</p>
+                <f:for as="item" each="{filterTypes}">
+                    <div class="form-check">
+                        <f:form.checkbox property="type" id="c{data.uid}-filter-type-{item.uid}" value="{item.uid}" />
+                        <label class="form-check-label" for="c{data.uid}-filter-type-{item.uid}">{item.title}</label>
+                    </div>
+                </f:for>
+            </f:if>
+
+
+            employment_types
+
+
+
+            career_levels
+
+
+        </fieldset>
+    </aside>
+</f:if>
+
+</html>

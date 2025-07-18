@@ -2,6 +2,9 @@
 declare(strict_types=1);
 
 use ChristianDorka\HireMe\Configuration\Localization;
+use ChristianDorka\HireMe\Configuration\TtContent;
+use ChristianDorka\HireMe\Enum\Job\CareerLevel;
+use ChristianDorka\HireMe\Enum\Job\EmploymentType;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 
@@ -224,15 +227,6 @@ ExtensionManagementUtility::addTCAcolumns('tt_content', [
             'renderType' => 'checkboxToggle',
         ],
     ],
-    'tx_hireme_hide_filter' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_hide_filter'),
-        'description' => Localization::forDescription('tx_hireme_hide_filter'),
-        'config' => [
-            'type' => 'check',
-            'renderType' => 'checkboxToggle',
-        ],
-    ],
     'tx_hireme_hide_valid_through' => [
         'exclude' => true,
         'label' => Localization::forLabel('tx_hireme_hide_valid_through'),
@@ -336,26 +330,6 @@ ExtensionManagementUtility::addTCAcolumns('tt_content', [
     ],
 
 
-    'tx_hireme_filter_employment_types' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_filter_employment_types'),
-        'description' => Localization::forDescription('tx_hireme_filter_employment_types'),
-        'config' => [
-            'type' => 'select',
-            'renderType' => 'selectMultipleSideBySide',
-            'items' => \ChristianDorka\HireMe\Enum\Job\EmploymentType::getTcaItems()
-        ],
-    ],
-    'tx_hireme_filter_career_levels' => [
-        'exclude' => true,
-        'label' => Localization::forLabel('tx_hireme_filter_career_levels'),
-        'description' => Localization::forDescription('tx_hireme_filter_career_levels'),
-        'config' => [
-            'type' => 'select',
-            'renderType' => 'selectMultipleSideBySide',
-            'items' => \ChristianDorka\HireMe\Enum\Job\CareerLevel::getTcaItems()
-        ],
-    ],
     'tx_hireme_filter_scopes' => [
         'exclude' => true,
         'label' => Localization::forLabel('tx_hireme_filter_scopes'),
@@ -408,26 +382,66 @@ ExtensionManagementUtility::addTCAcolumns('tt_content', [
 
 
 
+TtContent::registerGeneralSourceFields();
+TtContent::registerSourceFields('category');
+TtContent::registerSourceFields('syscategory');
+TtContent::registerSourceFields('location');
+TtContent::registerSourceFields('country');
+TtContent::registerSourceFields('department');
+TtContent::registerSourceFields('organization');
 
-\ChristianDorka\HireMe\Configuration\TtContent::registerCategoryFilterFields();
-\ChristianDorka\HireMe\Configuration\TtContent::registerSysCategoryFilterFields();
-\ChristianDorka\HireMe\Configuration\TtContent::registerLocationFilterFields();
-\ChristianDorka\HireMe\Configuration\TtContent::registerCountryFilterFields();
-\ChristianDorka\HireMe\Configuration\TtContent::registerDepartmentFilterFields();
-\ChristianDorka\HireMe\Configuration\TtContent::registerOrganizationFilterFields();
+TtContent::registerGeneralFilterFields();
+TtContent::registerFilterFields('category');
+TtContent::registerFilterFields('syscategory');
+TtContent::registerFilterFields('location');
+TtContent::registerFilterFields('country');
+TtContent::registerFilterFields('department');
+TtContent::registerFilterFields('organization');
+TtContent::registerFilterFields('types');
+TtContent::registerFilterFields('scope');
 
-\ChristianDorka\HireMe\Configuration\TtContent::registerPaginationFields();
+TtContent::registerIntArrayFilterFields('employment_types', [
+    [
+        "label" => Localization::forLabel("employmentType", EmploymentType::FULL_TIME->name),
+        "value" => EmploymentType::FULL_TIME->value,
+    ],
+    [
+        "label" => Localization::forLabel("employmentType", EmploymentType::PART_TIME->name),
+        "value" => EmploymentType::PART_TIME->value,
+    ],
+    [
+        "label" => Localization::forLabel("employmentType", EmploymentType::INTERN->name),
+        "value" => EmploymentType::INTERN->value,
+    ],
+    [
+        "label" => Localization::forLabel("employmentType", EmploymentType::VOLUNTEER->name),
+        "value" => EmploymentType::VOLUNTEER->value,
+    ],
+]);
+TtContent::registerIntArrayFilterFields('career_levels', [
+    [
+        "label" => Localization::forLabel("careerLevel", CareerLevel::CAREER_STARTER->name),
+        "value" => CareerLevel::CAREER_STARTER->value,
+    ],
+    [
+        "label" => Localization::forLabel("careerLevel", CareerLevel::JUNIOR->name),
+        "value" => CareerLevel::JUNIOR->value,
+    ],
+    [
+        "label" => Localization::forLabel("careerLevel", CareerLevel::MID_LEVEL->name),
+        "value" => CareerLevel::MID_LEVEL->value,
+    ],
+    [
+        "label" => Localization::forLabel("careerLevel", CareerLevel::SENIOR->name),
+        "value" => CareerLevel::SENIOR->value,
+    ],
+    [
+        "label" => Localization::forLabel("careerLevel", CareerLevel::LEAD_MANAGER->name),
+        "value" => CareerLevel::LEAD_MANAGER->value,
+    ],
+]);
 
-
-\ChristianDorka\HireMe\Configuration\TtContent::registerGeneralSourceFields();
-\ChristianDorka\HireMe\Configuration\TtContent::registerSourceFields('category');
-\ChristianDorka\HireMe\Configuration\TtContent::registerSourceFields('syscategory');
-\ChristianDorka\HireMe\Configuration\TtContent::registerSourceFields('location');
-\ChristianDorka\HireMe\Configuration\TtContent::registerSourceFields('country');
-\ChristianDorka\HireMe\Configuration\TtContent::registerSourceFields('department');
-\ChristianDorka\HireMe\Configuration\TtContent::registerSourceFields('organization');
-
-
+TtContent::registerPaginationFields();
 
 
 
@@ -452,12 +466,14 @@ ExtensionManagementUtility::addToAllTCAtypes(
                 --palette--;;source_organization,
 
             --div--;LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tabs.filter_config,
+                --palette--;;filter_general,
                 --palette--;;filter_category,
                 --palette--;;filter_syscategory,
                 --palette--;;filter_location,
                 --palette--;;filter_country,
                 --palette--;;filter_department,
                 --palette--;;filter_organization,
+                --palette--;;filter_scope,
 
             --div--;LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tabs.pagination_config,
                 --palette--;;pagination,
@@ -480,12 +496,12 @@ ExtensionManagementUtility::addToAllTCAtypes(
         tx_hireme_detail_page,
         tx_hireme_hide_newtime,
         tx_hireme_hide_toptime,
-        tx_hireme_hide_filter,
+
+                --palette--;;filter_general,
         tx_hireme_hide_valid_through,
         tx_hireme_hide_job_start_date,
         tx_hireme_hide_location,
         tx_hireme_hide_companies,
-
         tx_hireme_btn_overview_link,
         tx_hireme_btn_overview_text,',
     'hireme_jobpostinglatest',
@@ -498,18 +514,28 @@ ExtensionManagementUtility::addToAllTCAtypes(
     'tx_hireme_header,
         tx_hireme_text,
 
-        tx_hireme_filter_employment_types,
-        tx_hireme_filter_career_levels,
-        tx_hireme_filter_scopes,
-
         tx_hireme_date_format,
         tx_hireme_hide_newtime,
         tx_hireme_hide_toptime,
-        tx_hireme_hide_filter,
+        ,
         tx_hireme_hide_map,
         tx_hireme_hide_search,
         tx_hireme_hide_orderby,
-        tx_hireme_show_direct_apply_link,',
+        tx_hireme_show_direct_apply_link,
+
+    --div--;LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:tabs.filter_config,
+        --palette--;;filter_general,
+        --palette--;;filter_category,
+        --palette--;;filter_syscategory,
+        --palette--;;filter_location,
+        --palette--;;filter_country,
+        --palette--;;filter_department,
+        --palette--;;filter_organization,
+        --palette--;;filter_types,
+        --palette--;;filter_scope,
+        --palette--;;filter_employment_types,
+        --palette--;;filter_career_levels,
+        ',
     'hireme_jobpostingsearch',
     'after:subheader',
 );

@@ -39,7 +39,7 @@ class Localization
      * TODO
      *
      * @param string      $field
-     * @param string|null $item
+     * @param string|null|int $item
      * @param string|null      $table
      *
      * @return string
@@ -47,7 +47,7 @@ class Localization
      */
     public static function forLabel(
         string $field,
-        ?string $item = null,
+        string|int|null $item = null,
         ?string $table = null,
     ): string {
         $table = $table ?? 'tt_content';

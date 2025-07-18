@@ -29,45 +29,45 @@ use ChristianDorka\HireMe\Enum\OrderBy;
 use ChristianDorka\HireMe\Enum\OrderDirection;
 
 /**
- * Type Repository
+ * Organization Repository
  *
  * @author  Christian Dorka <mail@christiandorka.de>
  * @license GPL-3.0-or-later
  */
-class TypeRepository extends AbstractConfigurableRepository
+class OrganizationRepository extends AbstractConfigurableRepository
 {
     protected function isFeatureEnabled(TtContentFilter $config): bool
     {
-        return $config->getTypeEnabled() !== false;
+        return $config->getOrganizationEnabled() !== false;
     }
 
     protected function getTypeEnum(TtContentFilter $config): Generation
     {
-        return $config->getTypeTypeEnum();
+        return $config->getOrganizationTypeEnum();
     }
 
     protected function getOrderByEnum(TtContentFilter $config): ?OrderBy
     {
-        return $config->getTypeOrderByEnum();
+        return $config->getOrganizationOrderByEnum();
     }
 
     protected function getOrderDirectionEnum(TtContentFilter $config): ?OrderDirection
     {
-        return $config->getTypeOrderDirectionEnum();
+        return $config->getOrganizationOrderDirectionEnum();
     }
 
     protected function getStartingPoints(TtContentFilter $config): string
     {
-        return $config->getTypeStartingPoints();
+        return $config->getOrganizationStartingPoints();
     }
 
     protected function getIncludeStartingPoints(TtContentFilter $config): ?bool
     {
-        return $config->getTypeIncludeStartingPoints();
+        return $config->getOrganizationIncludeStartingPoints();
     }
 
     protected function getDepth(TtContentFilter $config): int
     {
-        return $config->getTypeDepth();
+        return $config->getOrganizationDepth();
     }
 }

@@ -70,6 +70,48 @@ trait HiringOrganizationsProperty
     }
 
     /**
+     * Get the inforation if the current job posting has only one hiring organization or not
+     *
+     * @return bool
+     */
+    public function hasOnlyOneHiringOrganization(): bool
+    {
+        // Step 1: Guard clause: TODO
+        if ($this->hiringOrganizations === null) {
+            return false;
+        }
+
+        // Step 2: Guard clause: TODO
+        if (count($this->hiringOrganizations->toArray()) === 1) {
+            return true;
+        }
+
+        // Step 3: Guard clause: TODO
+        return false;
+    }
+
+    /**
+     * Get the first hiring organization if exactly one exists
+     *
+     * @return Organization|null
+     */
+    public function getFirstHiringOrganization(): ?Organization
+    {
+        // Step 1: Guard clause: Check if hiring organizations exist
+        if ($this->hiringOrganizations === null) {
+            return null;
+        }
+
+        // Step 2: Guard clause: Check if exactly one organization exists
+        if (!$this->hasOnlyOneHiringOrganization()) {
+            return null;
+        }
+
+        // Step 3: Return the first (and only) organization
+        return $this->hiringOrganizations->toArray()[0];
+    }
+
+    /**
      * @param ObjectStorage<Organization>|null $hiringOrganizations
      *
      * @return void
@@ -89,7 +131,7 @@ trait HiringOrganizationsProperty
         return $this->hiringOrganizations?->toArray() ?? [];
     }
 
-    public function isHideHiringOrganization(): bool
+    public function getHideHiringOrganization(): bool
     {
         return $this->hideHiringOrganization;
     }

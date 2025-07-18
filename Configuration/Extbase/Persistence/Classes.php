@@ -120,7 +120,17 @@ return [
             'organizationItems' => [ 'fieldName' => 'tx_hireme_filter_organization_items' ],
             'organizationStartingPoints' => [ 'fieldName' => 'tx_hireme_filter_organization_starting_points' ],
             'organizationIncludeStartingPoints' => [ 'fieldName' => 'tx_hireme_filter_organization_include_starting_points' ],
-            'organizationDepthcategoryEnabled' => [ 'fieldName' => 'tx_hireme_filter_organization_depth' ],
+            'organizationDepth' => [ 'fieldName' => 'tx_hireme_filter_organization_depth' ],
+
+            'scopeEnabled' => [ 'fieldName' => 'tx_hireme_filter_scope_enabled' ],
+            'scopeType' => [ 'fieldName' => 'tx_hireme_filter_scope_type' ],
+            'scopeItems' => [ 'fieldName' => 'tx_hireme_filter_scope_items' ],
+            'scopeStartingPoints' => [ 'fieldName' => 'tx_hireme_filter_scope_starting_points' ],
+            'scopeIncludeStartingPoints' => [ 'fieldName' => 'tx_hireme_filter_scope_include_starting_points' ],
+            'scopeDepth' => [ 'fieldName' => 'tx_hireme_filter_scope_depth' ],
+
+            'employmentTypes' => [ 'fieldName' => 'tx_hireme_filter_employment_types' ],
+            'careerLevels' => [ 'fieldName' => 'tx_hireme_filter_career_levels' ],
         ]
     ],
     TtContentPagination::class => [

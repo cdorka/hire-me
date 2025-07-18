@@ -29,21 +29,12 @@ namespace ChristianDorka\HireMe\Enum;
  * @author  Christian Dorka <mail@christiandorka.de>
  * @license GPL-3.0-or-later
  */
-enum OrderBy: int
+enum Operator: int
 {
-    case TITLE = 0;
-    case CRDATE = 1;
-    case MANUELL = 2;
-
-    /**
-     * Returns the TCA field name for ordering
-     */
-    public function getTcaFieldName(): string
-    {
-        return match ($this) {
-            self::TITLE => 'title',
-            self::CRDATE => 'crdate',
-            self::MANUELL => 'sorting',
-        };
-    }
+    case OR = 0;
+    case AND = 1;
+    case NOR = 2;
+    case NAND = 3;
+    case XOR = 4;       // Exclusive OR (entweder A oder B, aber nicht beide)
+    case XNOR = 5;      // Exclusive NOR (weder A noch B, oder beide)
 }

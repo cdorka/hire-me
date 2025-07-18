@@ -4,13 +4,21 @@ namespace ChristianDorka\HireMe\Controller;
 
 use ChristianDorka\HireMe\DataProcessing\FaqDataProcessor;
 use ChristianDorka\HireMe\Domain\DTO\FilterSelection;
+use ChristianDorka\HireMe\Domain\DTO\SearchSelection;
 use ChristianDorka\HireMe\Domain\DTO\TtContentFilter;
 use ChristianDorka\HireMe\Domain\DTO\TtContentPagination;
 use ChristianDorka\HireMe\Domain\DTO\TtContentSource;
 use ChristianDorka\HireMe\Domain\Model\JobPosting;
 use ChristianDorka\HireMe\Domain\Repository\CategoryRepository;
+use ChristianDorka\HireMe\Domain\Repository\CountryRepository;
+use ChristianDorka\HireMe\Domain\Repository\DepartmentRepository;
 use ChristianDorka\HireMe\Domain\Repository\JobPostingRepository;
+use ChristianDorka\HireMe\Domain\Repository\LocationRepository;
+use ChristianDorka\HireMe\Domain\Repository\OrganizationRepository;
+use ChristianDorka\HireMe\Domain\Repository\ScopeRepository;
+use ChristianDorka\HireMe\Domain\Repository\SysCategoryRepository;
 use ChristianDorka\HireMe\Domain\Repository\TypeRepository;
+use ChristianDorka\HireMe\Enum\Generation;
 use ChristianDorka\HireMe\Service\PaginationService;
 use ChristianDorka\HireMe\Utility\DataMapperUtility;
 use ChristianDorka\HireMe\Utility\ResponseUtility;
@@ -19,44 +27,40 @@ use Psr\Http\Message\ResponseInterface;
 use Symfony\Component\Yaml\Yaml;
 use TYPO3\CMS\Core\Error\Http\PageNotFoundException;
 use TYPO3\CMS\Core\Http\ImmediateResponseException;
-use TYPO3\CMS\Core\Pagination\SlidingWindowPagination;
 use TYPO3\CMS\Core\Site\Entity\SiteLanguage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-use TYPO3\CMS\Extbase\Persistence\Generic\Mapper\DataMapper;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
-use TYPO3\CMS\Form\Domain\Factory\ArrayFormFactory;
 use TYPO3\CMS\Form\Domain\Configuration\ConfigurationService as FormConfigurationService;
+use TYPO3\CMS\Form\Domain\Factory\ArrayFormFactory;
 
 class JobPostingController extends ActionController
 {
-    private array $data = [];
-    private SiteLanguage|null $language = null;
-
+    protected ?TtContentSource $sourceConfig = null;
+    protected ?TtContentPagination $paginationConfig = null;
+    protected ?TtContentFilter $filterConfig = null;
+    protected ?array $data = null;
+    protected ?SiteLanguage $language = null;
 
     public function __construct(
-        protected readonly JobPostingRepository $jobPostingRepository,
-        protected readonly DataMapperUtility $dataMapperUtility,
+
         protected FormConfigurationService $formConfigurationService,
         protected PaginationService $paginationService,
-    ) {}
 
+        protected readonly DataMapperUtility $dataMapperUtility,
 
-    /**
-     * Initialize view - called after view is created but before action
-     */
-    protected function initializeView(): void
-    {
-        $this->data = $this->request->getAttribute("currentContentObject")?->data ?? [];
-        $this->language  = $this->request->getAttribute("language") ?? null;
-
-        $this->view->assignMultiple([
-            "data" => $this->data,
-            "language" => $this->language,
-        ]);
+        protected readonly JobPostingRepository $jobPostingRepository,
+        protected readonly CategoryRepository $categoryRepository,
+        protected readonly CountryRepository $countryRepository,
+        protected readonly DepartmentRepository $departmentRepository,
+        protected readonly LocationRepository $locationRepository,
+        protected readonly OrganizationRepository $organizationRepository,
+        protected readonly ScopeRepository $scopeRepository,
+        protected readonly SysCategoryRepository $sysCategoryRepository,
+        protected readonly TypeRepository $typeRepository,
+    ) {
     }
-
 
     /**
      * TODO
@@ -113,12 +117,9 @@ class JobPostingController extends ActionController
         }
 
 
-
-
         $this->view->assignMultiple($viewData);
         return $this->htmlResponse();
     }
-
 
     /**
      * Render the configured TYPO3 form from the JobPosting object and assign it as variable to the action view
@@ -149,7 +150,7 @@ class JobPostingController extends ActionController
             $formConfiguration['renderingOptions']['controllerAction'] = 'detail';
             $formConfiguration['renderingOptions']['additionalParams'] = [
                 'tx_hireme_jobpostingdetails[applicationSend]' => true,
-                'tx_hireme_jobpostingdetails[jobPosting]'=> $jobPosting->getUid()
+                'tx_hireme_jobpostingdetails[jobPosting]' => $jobPosting->getUid()
             ];
 
 
@@ -174,34 +175,10 @@ class JobPostingController extends ActionController
             // Rendern
             $formHtml = $formRuntime->render();
             $this->view->assign($renderedFormVariableName, $formHtml);
-
         } catch (\Exception $e) {
             $this->view->assign($formErrorVariableName, 'Formular konnte nicht geladen werden: ' . $e->getMessage());
         }
     }
-
-    /**
-     * Handle form submissions from TYPO3 Forms
-     * das TYPO3 Form Framework standardmäßig versucht, Form-Submissions an eine performAction zu senden
-     */
-    public function performAction(): ResponseInterface
-    {
-        // Form-Verarbeitung läuft über Finisher
-        // Hier nur Redirect oder Response handling
-
-      //  $arguments = $this->request->getArguments();
-
-      //  // Falls ein JobPosting-Parameter vorhanden ist, zurück zur Detail-Seite
-      //  if (isset($arguments['jobPosting'])) {
-      //      return $this->redirect('detail', null, null, ['jobPosting' => $arguments['jobPosting']]);
-      //  }
-
-
-      //  // Andernfalls zur Liste
-      //  return $this->redirect('list');
-        return $this->htmlResponse();
-    }
-
 
     /**
      * Add custom finishers to the form configuration
@@ -213,15 +190,15 @@ class JobPostingController extends ActionController
             $formConfiguration['finishers'] = [];
         }
 
-/*
-        // Add SaveApplication finisher at the beginning
-        array_unshift($formConfiguration['finishers'], [
-            'identifier' => 'SaveApplicationFinisher',
-            'options' => [
-                'jobPostingUid' => $jobPosting->getUid(),
-            ],
-        ]);
-*/
+        /*
+                // Add SaveApplication finisher at the beginning
+                array_unshift($formConfiguration['finishers'], [
+                    'identifier' => 'SaveApplicationFinisher',
+                    'options' => [
+                        'jobPostingUid' => $jobPosting->getUid(),
+                    ],
+                ]);
+        */
 
         $formConfiguration['finishers'][] = [
             'identifier' => 'SaveApplication',
@@ -243,6 +220,28 @@ class JobPostingController extends ActionController
         ];
     }
 
+    /**
+     * Handle form submissions from TYPO3 Forms
+     * das TYPO3 Form Framework standardmäßig versucht, Form-Submissions an eine performAction zu senden
+     */
+    public function performAction(): ResponseInterface
+    {
+        // Form-Verarbeitung läuft über Finisher
+        // Hier nur Redirect oder Response handling
+
+        //  $arguments = $this->request->getArguments();
+
+        //  // Falls ein JobPosting-Parameter vorhanden ist, zurück zur Detail-Seite
+        //  if (isset($arguments['jobPosting'])) {
+        //      return $this->redirect('detail', null, null, ['jobPosting' => $arguments['jobPosting']]);
+        //  }
+
+
+        //  // Andernfalls zur Liste
+        //  return $this->redirect('list');
+        return $this->htmlResponse();
+    }
+
     public function listAction(): ResponseInterface
     {
         // Common data is already available via initializeView()
@@ -255,65 +254,45 @@ class JobPostingController extends ActionController
         return $this->htmlResponse();
     }
 
-
     /**
-     * Latest action - handles both GET and POST requests
+     * TODO
+     *
+     * @param FilterSelection|null $filterSelection
+     *
+     * @return ResponseInterface
+     * @noinspection PhpUnused
      */
-    public function latestAction(
-        ?FilterSelection $filterSelection = null
-    ): ResponseInterface {
+    public function latestAction(?FilterSelection $filterSelection = null): ResponseInterface
+    {
         // Step 1: Initialize values
-        // Initialize empty filter selection if none provided
-        if ($filterSelection === null) {
-            $filterSelection = new FilterSelection();
-        }
-
-        // Step 1: Generate DTO objects out of the tca fields from the current content element
-        /** @var TtContentSource|null $mapped */
-        $sourceConfig = $this->dataMapperUtility->mapFirstItem(TtContentSource::class, $this->data);
-
-        /** @var TtContentPagination|null $mapped */
-        $paginationConfig = $this->dataMapperUtility->mapFirstItem(TtContentPagination::class, $this->data);
-
-        /** @var TtContentFilter|null $mapped */
-        $filterConfig = $this->dataMapperUtility->mapFirstItem(TtContentFilter::class, $this->data);
+        $filterSelection ??= new FilterSelection();
+        $this->generateCObjData();
+        $this->generateCurrentRequestLanguage();
+        $this->generateConfigDTOs();
 
 
-
-
-
-        // Step 3: Get results to display based on the sourceConfig and the filterSelection of the user
+        // Step 2: Get results to display based on the sourceConfig and the filterSelection of the user
         $jobPostings = $this->jobPostingRepository->findBySourceConfigAndFilterSelectionWithResult(
-            $sourceConfig,
+            $this->sourceConfig,
             $filterSelection,
         );
-
-
-
-        // Handle direct filter parameter from request (for backward compatibility)
-      // if ($this->request->hasArgument('filter')) {
-      //     $directFilter = $this->request->getArgument('filter');
-      //     if (is_array($directFilter) && !empty($directFilter)) {
-      //         $filterSelection->setFilter($directFilter);
-      //     }
-      // }
-
-
-        // Get filtered job postings
-        // $jobPostings = $this->getFilteredJobPostings($filterSelection);
-
-
-
 
         $typeRepository = GeneralUtility::makeInstance(TypeRepository::class);
 
 
-        $pagination = $this->generatePagination($paginationConfig, $jobPostings, $filterSelection->getPageNumber());
+        $pagination = $this->generatePagination(
+            $this->paginationConfig,
+            $jobPostings,
+            $filterSelection->getPageNumber()
+        );
 
         $filter = $this->processFilter();
 
         // Assign to view
         $this->view->assignMultiple([
+            "data" => $this->data,
+            "language" => $this->language,
+
             'filter' => $filter,
             'pagination' => $pagination,
 
@@ -324,6 +303,40 @@ class JobPostingController extends ActionController
 
         return $this->htmlResponse();
     }
+
+    private function generateConfigDTOs(): void
+    {
+        $this->generateSourceConfigDTO();
+        $this->generatePaginationConfigDTO();
+        $this->generateFilterConfigDTO();
+    }
+
+    private function generateSourceConfigDTO(): void
+    {
+        $this->sourceConfig = $this->dataMapperUtility->mapFirstItem(TtContentSource::class, $this->data);
+    }
+
+    private function generatePaginationConfigDTO(): void
+    {
+        $this->paginationConfig = $this->dataMapperUtility->mapFirstItem(TtContentPagination::class, $this->data);
+    }
+
+    private function generateFilterConfigDTO(): void
+    {
+        $this->filterConfig = $this->dataMapperUtility->mapFirstItem(TtContentFilter::class, $this->data);
+    }
+
+    protected function generateCObjData(): void
+    {
+        $this->data = $this->request->getAttribute("currentContentObject")?->data ?? [];
+    }
+
+    protected function generateCurrentRequestLanguage(): void
+    {
+        $this->language = $this->request->getAttribute("language") ?? null;
+    }
+
+
 
     /**
      * @param TtContentPagination $paginationConfig
@@ -347,7 +360,11 @@ class JobPostingController extends ActionController
      *      paginationEnabled: bool
      *  }
      */
-    private function generatePagination(TtContentPagination $paginationConfig, Result $items, int $currentPage = 1): ?array {
+    private function generatePagination(
+        TtContentPagination $paginationConfig,
+        Result $items,
+        int $currentPage = 1
+    ): ?array {
         if ($items->isSuccess()) {
             return $this->paginationService->generateFromConfig(
                 items: $items->getData(),
@@ -358,12 +375,11 @@ class JobPostingController extends ActionController
         return null;
     }
 
-
     /**
      * @return TtContentFilter|null
      */
-    private function processFilter(): ?TtContentFilter {
-
+    private function processFilter(): ?TtContentFilter
+    {
         /** @var TtContentFilter|null $mapped */
         $mapped = $this->dataMapperUtility->mapFirstItem(
             className: TtContentFilter::class,
@@ -371,18 +387,118 @@ class JobPostingController extends ActionController
         );
 
 
-
-
-
         /** @var CategoryRepository $categoryRepository */
         $categoryRepository = GeneralUtility::makeInstance(CategoryRepository::class);
         $categoryResult = $categoryRepository->findByConfig($mapped);
 
 
-
-
-
         return $mapped;
+    }
+
+    /**
+     * TODO
+     *
+     * @param SearchSelection|null $searchSelection
+     *
+     * @return ResponseInterface
+     *
+     * @noinspection PhpUnused
+     */
+    public function searchAction(SearchSelection $searchSelection = null): ResponseInterface
+    {
+        // Step 1: Initialize values
+        $searchSelection ??= new SearchSelection();
+        $this->generateCObjData();
+        $this->generateCurrentRequestLanguage();
+        $this->generateConfigDTOs();
+
+        // Step 2: Generate filter select contents
+        $filterCategories = match ($this->filterConfig->getCategoryType()) {
+            Generation::MANUALLY->value => $this->filterConfig->getCategoryItems(),
+            Generation::GENERATED->value => $this->categoryRepository->findByConfig($this->filterConfig)->getData(),
+            default => null,
+        };
+        $filterCountries = match ($this->filterConfig->getCountryType()) {
+            Generation::MANUALLY->value => $this->filterConfig->getCountryItems(),
+            Generation::GENERATED->value => $this->countryRepository->findByConfig($this->filterConfig)->getData(),
+            default => null,
+        };
+        $filterDepartments = match ($this->filterConfig->getDepartmentType()) {
+            Generation::MANUALLY->value => $this->filterConfig->getDepartmentItems(),
+            Generation::GENERATED->value => $this->departmentRepository->findByConfig($this->filterConfig)->getData(),
+            default => null,
+        };
+        $filterLocations = match ($this->filterConfig->getLocationType()) {
+            Generation::MANUALLY->value => $this->filterConfig->getLocationItems(),
+            Generation::GENERATED->value => $this->locationRepository->findByConfig($this->filterConfig)->getData(),
+            default => null,
+        };
+        $filterOrganizations = match ($this->filterConfig->getOrganizationType()) {
+            Generation::MANUALLY->value => $this->filterConfig->getOrganizationItems(),
+            Generation::GENERATED->value => $this->organizationRepository->findByConfig($this->filterConfig)->getData(),
+            default => null,
+        };
+        $filterScopes = match ($this->filterConfig->getScopeType()) {
+            Generation::MANUALLY->value => $this->filterConfig->getScopeItems(),
+            Generation::GENERATED->value => $this->scopeRepository->findByConfig($this->filterConfig)->getData(),
+            default => null,
+        };
+        $filterSysCategories = match ($this->filterConfig->getSysCategoryType()) {
+            Generation::MANUALLY->value => $this->filterConfig->getSysCategoryItems(),
+            Generation::GENERATED->value => $this->sysCategoryRepository->findByConfig($this->filterConfig)->getData(),
+            default => null,
+        };
+        $filterTypes = match ($this->filterConfig->getTypeType()) {
+            Generation::MANUALLY->value => $this->filterConfig->getTypeItems(),
+            Generation::GENERATED->value => $this->typeRepository->findByConfig($this->filterConfig)->getData(),
+            default => null,
+        };
+
+
+
+
+        // Step TODO: Assign variables
+        $this->view->assignMultiple([
+            'data' => $this->data,
+            'language' => $this->language,
+
+            'filterCategories' => $filterCategories,
+            'filterCountries' => $filterCountries,
+            'filterDepartments' => $filterDepartments,
+            'filterLocations' => $filterLocations,
+            'filterOrganizations' => $filterOrganizations,
+            'filterScopes' => $filterScopes,
+            'filterSysCategories' => $filterSysCategories,
+            'filterTypes' => $filterTypes,
+
+            'searchSelection' => $searchSelection,
+            'employmentTypesUids' => $this->filterConfig->getEmploymentTypesArray()  ?? null,
+            'scopes' => $scopes ?? null,
+            '$hiringCompanies' => $hiringCompanies ?? null,
+            'careerLevelsUids' => $careerLevelsUids ?? null,
+        ]);
+
+        return $this->htmlResponse();
+    }
+
+    /**
+     * @return mixed[]|null
+     */
+    private function getGeneratedCategories(): ?array
+    {
+        $result = $this->categoryRepository->findByConfig($this->filterConfig);
+
+        return $result->isSuccess() ? $result->getData() : null;
+    }
+
+    /**
+     * @return mixed[]|null
+     */
+    private function getGeneratedSysCategories(): ?array
+    {
+        $result = $this->sysCategoryRepository->findByConfig($this->filterConfig);
+
+        return $result->isSuccess() ? $result->getData() : null;
     }
 
     /**
@@ -399,41 +515,5 @@ class JobPostingController extends ActionController
 
         // Apply specific filters
         return $this->jobPostingRepository->findByFilters($activeFilters);
-    }
-
-
-
-    public function searchAction(): ResponseInterface
-    {
-        /**
-         * @var TtContentFilter|null $cObjFilter The mapped tt_content to a filter DTO, or null if mapping failed
-         */
-        $cObjFilter = $this->dataMapper->map(TtContentFilter::class, [$this->data])[0] ?? null;
-
-
-
-
-
-        if ($cObjFilter !== null) {
-            $employmentTypesUids = GeneralUtility::intExplode(',', $cObjFilter->getTxHiremeFilterEmploymentTypes(), true);
-
-            // Now you have the content element with all relations loaded
-            $scopes = $cObjFilter->getTxHiremeFilterScopesAsArray();
-
-            $hiringCompanies = $cObjFilter->getTxHiremeFilterHiringOrganizations();
-
-            $careerLevelsUids = GeneralUtility::intExplode(',',  $cObjFilter->getTxHiremeFilterCareerLevels(), true);
-        }
-
-
-
-        $this->view->assignMultiple([
-            'employmentTypesUids' => $employmentTypesUids ?? null,
-            'scopes' => $scopes ?? null,
-            '$hiringCompanies' => $hiringCompanies ?? null,
-            'careerLevelsUids' => $careerLevelsUids ?? null,
-        ]);
-
-        return $this->htmlResponse();
     }
 }

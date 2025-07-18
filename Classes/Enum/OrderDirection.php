@@ -23,15 +23,30 @@ declare(strict_types=1);
 
 namespace ChristianDorka\HireMe\Enum;
 
+use Exception;
+use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+
 /**
  * TODO
  *
  * @author  Christian Dorka <mail@christiandorka.de>
  * @license GPL-3.0-or-later
  */
-enum Order: int
+enum OrderDirection: int
 {
     case ASC = 0;
     case DESC = 1;
     case RAND = 2;
+
+    /**
+     * Returns the TCA field name for ordering
+     */
+    public function getOrderByValue(): ?string
+    {
+        return match ($this) {
+            self::ASC => QueryInterface::ORDER_ASCENDING,
+            self::DESC => QueryInterface::ORDER_DESCENDING,
+            default => null,
+        };
+    }
 }

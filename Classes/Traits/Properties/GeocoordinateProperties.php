@@ -21,20 +21,36 @@
 
 declare(strict_types=1);
 
-namespace ChristianDorka\HireMe\Enum;
+namespace ChristianDorka\HireMe\Traits\Properties;
 
 /**
  * TODO
  *
- * @author  Christian Dorka <mail@christiandorka.de>
- * @license GPL-3.0-or-later
+ * @author       Christian Dorka <mail@christiandorka.de>
+ * @license      GPL-3.0-or-later
  */
-enum Condition: int
+trait GeocoordinateProperties
 {
-    case OR = 0;
-    case AND = 1;
-    case NOR = 2;
-    case NAND = 3;
-    case XOR = 4;       // Exclusive OR (entweder A oder B, aber nicht beide)
-    case XNOR = 5;      // Exclusive NOR (weder A noch B, oder beide)
+    protected ?string $latitude = null;
+    protected ?string $longitude = null;
+
+    public function getLatitude(): ?string
+    {
+        return $this->latitude;
+    }
+
+    public function setLatitude(?string $latitude): void
+    {
+        $this->latitude = $latitude;
+    }
+
+    public function getLongitude(): ?string
+    {
+        return $this->longitude;
+    }
+
+    public function setLongitude(?string $longitude): void
+    {
+        $this->longitude = $longitude;
+    }
 }

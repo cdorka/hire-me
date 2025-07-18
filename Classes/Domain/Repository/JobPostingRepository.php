@@ -26,7 +26,7 @@ namespace ChristianDorka\HireMe\Domain\Repository;
 use ChristianDorka\HireMe\Domain\DTO\FilterSelection;
 use ChristianDorka\HireMe\Domain\DTO\TtContentSource;
 use ChristianDorka\HireMe\Domain\Model\FaqItemInterface;
-use ChristianDorka\HireMe\Enum\Condition;
+use ChristianDorka\HireMe\Enum\Operator;
 use CpCompartner\Base\Core\Pattern\Result;
 use CpCompartner\Base\Core\Repository\Constraints\CollectionConstraintBuilder;
 use CpCompartner\Base\Core\Repository\Constraints\IntegerConstraintBuilder;
@@ -172,10 +172,10 @@ class JobPostingRepository extends ExtendedRepository
     private function getCollectionOperator(int $condition): CollectionConstraintOperator
     {
         return match ($condition) {
-            Condition::OR->value => CollectionConstraintOperator::OR_IN,
-            Condition::AND->value => CollectionConstraintOperator::AND_IN,
-            Condition::NOR->value => CollectionConstraintOperator::NOT_OR_IN,
-            Condition::NAND->value => CollectionConstraintOperator::NOT_AND_IN,
+            Operator::OR->value => CollectionConstraintOperator::OR_IN,
+            Operator::AND->value => CollectionConstraintOperator::AND_IN,
+            Operator::NOR->value => CollectionConstraintOperator::NOT_OR_IN,
+            Operator::NAND->value => CollectionConstraintOperator::NOT_AND_IN,
         };
     }
 

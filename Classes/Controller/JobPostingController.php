@@ -462,6 +462,8 @@ class JobPostingController extends ActionController
             'data' => $this->data,
             'language' => $this->language,
 
+            'filter' => $this->filterConfig,
+
             'filterCategories' => $filterCategories,
             'filterCountries' => $filterCountries,
             'filterDepartments' => $filterDepartments,

@@ -122,6 +122,13 @@ return [
             'organizationIncludeStartingPoints' => [ 'fieldName' => 'tx_hireme_filter_organization_include_starting_points' ],
             'organizationDepth' => [ 'fieldName' => 'tx_hireme_filter_organization_depth' ],
 
+            'typeEnabled' => [ 'fieldName' => 'tx_hireme_filter_type_enabled' ],
+            'typeType' => [ 'fieldName' => 'tx_hireme_filter_type_type' ],
+            'typeItems' => [ 'fieldName' => 'tx_hireme_filter_type_items' ],
+            'typeStartingPoints' => [ 'fieldName' => 'tx_hireme_filter_type_starting_points' ],
+            'typeIncludeStartingPoints' => [ 'fieldName' => 'tx_hireme_filter_type_include_starting_points' ],
+            'typeDepth' => [ 'fieldName' => 'tx_hireme_filter_type_depth' ],
+
             'scopeEnabled' => [ 'fieldName' => 'tx_hireme_filter_scope_enabled' ],
             'scopeType' => [ 'fieldName' => 'tx_hireme_filter_scope_type' ],
             'scopeItems' => [ 'fieldName' => 'tx_hireme_filter_scope_items' ],
@@ -129,8 +136,13 @@ return [
             'scopeIncludeStartingPoints' => [ 'fieldName' => 'tx_hireme_filter_scope_include_starting_points' ],
             'scopeDepth' => [ 'fieldName' => 'tx_hireme_filter_scope_depth' ],
 
-            'employmentTypes' => [ 'fieldName' => 'tx_hireme_filter_employment_types' ],
-            'careerLevels' => [ 'fieldName' => 'tx_hireme_filter_career_levels' ],
+
+
+            'employmentTypesEnabled' => [ 'fieldName' => 'tx_hireme_filter_employment_types_enabled' ],
+            'employmentTypesItems' => [ 'fieldName' => 'tx_hireme_filter_employment_types_items' ],
+
+            'careerLevelsEnabled' => [ 'fieldName' => 'tx_hireme_filter_career_levels_enabled' ],
+            'careerLevelsItems' => [ 'fieldName' => 'tx_hireme_filter_career_levels_items' ],
         ]
     ],
     TtContentPagination::class => [

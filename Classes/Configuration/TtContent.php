@@ -65,6 +65,10 @@ class TtContent
             "foreign_table" => "tx_hireme_organization",
             "mm_table" => "tx_hireme_ttcontent_organization_mm",
         ],
+        "type" => [
+            "foreign_table" => "tx_hireme_type",
+            "mm_table" => "tx_hireme_ttcontent_type_mm",
+        ],
         "scope" => [
             "foreign_table" => "tx_hireme_scope",
             "mm_table" => "tx_hireme_ttcontent_scope_mm",
@@ -151,13 +155,30 @@ class TtContent
     {
         /** @noinspection SpellCheckingInspection */
         ExtensionManagementUtility::addTCAcolumns("tt_content", [
-            "tx_hireme_filter_{$filterType}_types" => [
+            "tx_hireme_filter_{$filterType}_enabled" => [
+                "exclude" => true,
+                "label" => Localization::forLabel("tx_hireme_filter_{$filterType}_enabled"),
+                "description" => Localization::forDescription("tx_hireme_filter_{$filterType}_enabled"),
+                "onChange" => "reload",
+                "displayCond" => [
+                    "AND" => [
+                        "FIELD:tx_hireme_filter_enabled:=:1",
+                    ],
+                ],
+                "config" => [
+                    "type" => "check",
+                    "renderType" => "checkboxToggle",
+                    "default" => 0,
+                ],
+            ],
+            "tx_hireme_filter_{$filterType}_items" => [
                 'exclude' => true,
                 'label' => Localization::forLabel("tx_hireme_filter_{$filterType}_types"),
                 'description' => Localization::forDescription("tx_hireme_filter_{$filterType}_types"),
                 "displayCond" => [
                     "AND" => [
                         "FIELD:tx_hireme_filter_enabled:=:1",
+                        "FIELD:tx_hireme_filter_{$filterType}_enabled:=:1",
                     ],
                 ],
                 'config' => [
@@ -173,7 +194,8 @@ class TtContent
             "label" => "LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:palette.filter_$filterType.label",
             "description" => "LLL:EXT:hire_me/Resources/Private/Language/locallang_db.xlf:palette.filter_$filterType.description",
             "showitem" => "
-               tx_hireme_filter_{$filterType}_types",
+                tx_hireme_filter_{$filterType}_enabled,--linebreak--,
+                tx_hireme_filter_{$filterType}_items",
         ];
     }
 

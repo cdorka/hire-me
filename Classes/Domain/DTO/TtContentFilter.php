@@ -23,6 +23,8 @@ declare(strict_types=1);
 
 namespace ChristianDorka\HireMe\Domain\DTO;
 
+use ChristianDorka\HireMe\Traits\Filter\Properties\CareerLevelsProperties;
+use ChristianDorka\HireMe\Traits\Filter\Properties\EmploymentTypesProperties;
 use ChristianDorka\HireMe\Traits\Filter\Properties\FilterCategoryProperties;
 use ChristianDorka\HireMe\Traits\Filter\Properties\FilterCountryProperties;
 use ChristianDorka\HireMe\Traits\Filter\Properties\FilterDepartmentProperties;
@@ -51,6 +53,8 @@ class TtContentFilter extends AbstractEntity
     use FilterOrganizationProperties;
     use FilterScopeProperties;
     use FilterTypeProperties;
+    use CareerLevelsProperties;
+    use EmploymentTypesProperties;
 
     protected string $employmentTypes = '';
     protected string $careerLevels = '';
@@ -69,7 +73,6 @@ class TtContentFilter extends AbstractEntity
 
 
     }
-
 
 
 

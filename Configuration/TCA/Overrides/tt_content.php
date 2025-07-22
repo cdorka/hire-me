@@ -397,7 +397,7 @@ TtContent::registerFilterFields('location');
 TtContent::registerFilterFields('country');
 TtContent::registerFilterFields('department');
 TtContent::registerFilterFields('organization');
-TtContent::registerFilterFields('types');
+TtContent::registerFilterFields('type');
 TtContent::registerFilterFields('scope');
 
 TtContent::registerIntArrayFilterFields('employment_types', [
@@ -531,7 +531,7 @@ ExtensionManagementUtility::addToAllTCAtypes(
         --palette--;;filter_country,
         --palette--;;filter_department,
         --palette--;;filter_organization,
-        --palette--;;filter_types,
+        --palette--;;filter_type,
         --palette--;;filter_scope,
         --palette--;;filter_employment_types,
         --palette--;;filter_career_levels,

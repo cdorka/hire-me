@@ -6,6 +6,75 @@
             <authorEmail>mail@christiandorka.de</authorEmail>
         </header>
         <body>
+
+        <trans-unit id="tt_content.tx_hireme_filter_organization_enabled.label" xml:space="preserve">
+          <source>Enable Organization Filter</source>
+        </trans-unit>
+
+        <trans-unit id="tt_content.tx_hireme_filter_organization_type.label" xml:space="preserve">
+          <source>Filter Type</source>
+        </trans-unit>
+
+        <trans-unit id="tt_content.tx_hireme_filter_organization_starting_points.label" xml:space="preserve">
+          <source>Starting Points</source>
+        </trans-unit>
+
+        <trans-unit id="tt_content.tx_hireme_filter_organization_include_starting_points.label" xml:space="preserve">
+          <source>Include Starting Points</source>
+        </trans-unit>
+
+        <trans-unit id="tt_content.tx_hireme_filter_organization_depth.label" xml:space="preserve">
+          <source>Depth</source>
+        </trans-unit>
+
+        <trans-unit id="tt_content.tx_hireme_filter_organization_order_by.label" xml:space="preserve">
+          <source>Order By</source>
+        </trans-unit>
+
+        <trans-unit id="tt_content.tx_hireme_filter_organization_order_direction.label" xml:space="preserve">
+          <source>Order Direction</source>
+        </trans-unit>
+
+        <trans-unit id="tt_content.tx_hireme_filter_organization_items.label" xml:space="preserve">
+          <source>Organizations</source>
+        </trans-unit>
+<trans-unit id="tt_content.tx_hireme_filter_organization_enabled.description" xml:space="preserve">
+  <source>Activate filtering by organization</source>
+</trans-unit>
+
+<trans-unit id="tt_content.tx_hireme_filter_organization_type.description" xml:space="preserve">
+  <source>Select the type of organization filtering</source>
+</trans-unit>
+
+<trans-unit id="tt_content.tx_hireme_filter_organization_starting_points.description" xml:space="preserve">
+  <source>Choose starting points for filtering</source>
+</trans-unit>
+
+<trans-unit id="tt_content.tx_hireme_filter_organization_include_starting_points.description" xml:space="preserve">
+  <source>Include selected starting points</source>
+</trans-unit>
+
+<trans-unit id="tt_content.tx_hireme_filter_organization_depth.description" xml:space="preserve">
+  <source>Depth of page tree to search</source>
+</trans-unit>
+
+<trans-unit id="tt_content.tx_hireme_filter_organization_order_by.description" xml:space="preserve">
+  <source>Choose sorting field</source>
+</trans-unit>
+
+<trans-unit id="tt_content.tx_hireme_filter_organization_order_direction.description" xml:space="preserve">
+  <source>Choose sorting direction</source>
+</trans-unit>
+
+<trans-unit id="tt_content.tx_hireme_filter_organization_items.description" xml:space="preserve">
+  <source>Manually select organizations</source>
+</trans-unit>
+
+
+
+
+
+
             <trans-unit id="enum.depth.items.INFINITE.label">
                 <source>infinite</source>
             </trans-unit>

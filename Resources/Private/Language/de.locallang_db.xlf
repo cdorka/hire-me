@@ -6,6 +6,89 @@
             <authorEmail>mail@christiandorka.de</authorEmail>
         </header>
         <body>
+        <!-- DEUTSCH -->
+        <trans-unit id="tt_content.tx_hireme_filter_organization_enabled.label" xml:space="preserve">
+          <source>Enable Organization Filter</source>
+          <target>Organisationsfilter aktivieren</target>
+        </trans-unit>
+
+        <trans-unit id="tt_content.tx_hireme_filter_organization_type.label" xml:space="preserve">
+          <source>Filter Type</source>
+          <target>Filtertyp</target>
+        </trans-unit>
+
+        <trans-unit id="tt_content.tx_hireme_filter_organization_starting_points.label" xml:space="preserve">
+          <source>Starting Points</source>
+          <target>Startpunkte</target>
+        </trans-unit>
+
+        <trans-unit id="tt_content.tx_hireme_filter_organization_include_starting_points.label" xml:space="preserve">
+          <source>Include Starting Points</source>
+          <target>Startpunkte einbeziehen</target>
+        </trans-unit>
+
+        <trans-unit id="tt_content.tx_hireme_filter_organization_depth.label" xml:space="preserve">
+          <source>Depth</source>
+          <target>Tiefe</target>
+        </trans-unit>
+
+        <trans-unit id="tt_content.tx_hireme_filter_organization_order_by.label" xml:space="preserve">
+          <source>Order By</source>
+          <target>Sortieren nach</target>
+        </trans-unit>
+
+        <trans-unit id="tt_content.tx_hireme_filter_organization_order_direction.label" xml:space="preserve">
+          <source>Order Direction</source>
+          <target>Sortierreihenfolge</target>
+        </trans-unit>
+
+        <trans-unit id="tt_content.tx_hireme_filter_organization_items.label" xml:space="preserve">
+          <source>Organizations</source>
+          <target>Organisationen</target>
+        </trans-unit>
+<trans-unit id="tt_content.tx_hireme_filter_organization_enabled.description" xml:space="preserve">
+  <source>Activate filtering by organization</source>
+  <target>Aktiviert die Möglichkeit, Inhalte nach Organisationen zu filtern.</target>
+</trans-unit>
+
+<trans-unit id="tt_content.tx_hireme_filter_organization_type.description" xml:space="preserve">
+  <source>Select the type of organization filtering</source>
+  <target>Wähle aus, wie die Organisationen gefiltert werden sollen (Startpunkt oder manuelle Auswahl).</target>
+</trans-unit>
+
+<trans-unit id="tt_content.tx_hireme_filter_organization_starting_points.description" xml:space="preserve">
+  <source>Choose starting points for filtering</source>
+  <target>Wähle Seiten, auf denen die gesuchten Organisationen beginnen.</target>
+</trans-unit>
+
+<trans-unit id="tt_content.tx_hireme_filter_organization_include_starting_points.description" xml:space="preserve">
+  <source>Include selected starting points</source>
+  <target>Legt fest, ob auch die ausgewählten Startseiten selbst berücksichtigt werden sollen.</target>
+</trans-unit>
+
+<trans-unit id="tt_content.tx_hireme_filter_organization_depth.description" xml:space="preserve">
+  <source>Depth of page tree to search</source>
+  <target>Wie tief im Seitenbaum nach Organisationen gesucht werden soll (z. B. Unterseiten).</target>
+</trans-unit>
+
+<trans-unit id="tt_content.tx_hireme_filter_organization_order_by.description" xml:space="preserve">
+  <source>Choose sorting field</source>
+  <target>Wähle, nach welchem Feld die Organisationen sortiert werden sollen.</target>
+</trans-unit>
+
+<trans-unit id="tt_content.tx_hireme_filter_organization_order_direction.description" xml:space="preserve">
+  <source>Choose sorting direction</source>
+  <target>Wähle auf- oder absteigende Sortierung.</target>
+</trans-unit>
+
+<trans-unit id="tt_content.tx_hireme_filter_organization_items.description" xml:space="preserve">
+  <source>Manually select organizations</source>
+  <target>Wähle Organisationen manuell aus, die im Filter erscheinen sollen.</target>
+</trans-unit>
+
+
+
+
             <trans-unit id="enum.url_type_enum.items.GENERAL.label">
                 <source>Miscellaneous</source>
                 <target>Sonstiges</target>

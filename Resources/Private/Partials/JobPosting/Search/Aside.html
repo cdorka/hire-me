@@ -3,25 +3,42 @@
     lang="en"
     xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
 
+<f:debug>{filter}</f:debug>
+<f:debug>{filter.categoryType}</f:debug>
 <f:if condition="{data.tx_hireme_filter_enabled}">
     <aside class="hm--aside col-md-3"><h2>Filter</h2>
 
         <fieldset class="mb-4">
 
 
+            <f:if condition="{filter.categoryEnabled}">
+                <f:if condition="{filterCategories}">
+                    <p class="h3">Kategorien</p>
+
+                    <f:switch expression="{filter.categoryType}">
+                        <f:case value="0">
+                            <f:for as="item" each="{filterCategories}">
+                                <div class="form-check">
+                                    <f:form.checkbox property="category" id="c{data.uid}-filter-category-{item.uid}" value="{item.uid}" />
+                                    <label class="form-check-label" for="c{data.uid}-filter-category-{item.uid}">{item.title}</label>
+                                </div>
+                            </f:for>
+                        </f:case>
+                        <f:case value="1">
+                            <f:for as="item" each="{filter.categoryItems}">
+                                <div class="form-check">
+                                    <f:form.checkbox property="category" id="c{data.uid}-filter-category-{item.uid}" value="{item.uid}" />
+                                    <label class="form-check-label" for="c{data.uid}-filter-category-{item.uid}">{item.title}</label>
+                                </div>
+                            </f:for>
+                        </f:case>
+                    </f:switch>
 
 
-
-
-            <f:if condition="{filterCategories}">
-                <p class="h3">Kategorien</p>
-                <f:for as="item" each="{filterCategories}">
-                    <div class="form-check">
-                        <f:form.checkbox property="category" id="c{data.uid}-filter-category-{item.uid}" value="{item.uid}" />
-                        <label class="form-check-label" for="c{data.uid}-filter-category-{item.uid}">{item.title}</label>
-                    </div>
-                </f:for>
+                </f:if>
             </f:if>
+
+
 
             <f:if condition="{filterCountries}">
                 <p class="h3">Länder</p>
@@ -83,6 +100,34 @@
                 </f:for>
             </f:if>
 
+
+
+
+            <f:if condition="{filter.typeEnabled}">
+                <p class="h3">Kategorien</p>
+
+                <f:switch expression="{filter.categoryType}">
+                    <f:case value="0">
+                        <f:for as="item" each="{filterTypes}">
+                            <div class="form-check">
+                                <f:form.checkbox property="category" id="c{data.uid}-filter-category-{item.uid}" value="{item.uid}" />
+                                <label class="form-check-label" for="c{data.uid}-filter-category-{item.uid}">{item.title}</label>
+                            </div>
+                        </f:for>
+                    </f:case>
+                    <f:case value="1">
+                        <f:for as="item" each="{filter.categoryItems}">
+                            <div class="form-check">
+                                <f:form.checkbox property="category" id="c{data.uid}-filter-category-{item.uid}" value="{item.uid}" />
+                                <label class="form-check-label" for="c{data.uid}-filter-category-{item.uid}">{item.title}</label>
+                            </div>
+                        </f:for>
+                    </f:case>
+                </f:switch>
+            </f:if>
+
+
+
             <f:if condition="{filterTypes}">
                 <p class="h3">Typ</p>
                 <f:for as="item" each="{filterTypes}">
@@ -93,6 +138,9 @@
                 </f:for>
             </f:if>
 
+
+f:Denig
+            tx_hireme_filter_employment_types_enabled
 
             employment_types
 
